@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\super\\.nuget\\packages\\": {}
+    "C:\\Users\\sergey\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\super\\Desktop\\repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+      "projectUniqueName": "C:\\Users\\sergey\\Documents\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
       "projectName": "What_PageObject",
-      "projectPath": "C:\\Users\\super\\Desktop\\repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
-      "packagesPath": "C:\\Users\\super\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\super\\Desktop\\repository\\What_TAQC\\What_PageObject\\obj\\",
+      "projectPath": "C:\\Users\\sergey\\Documents\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+      "packagesPath": "C:\\Users\\sergey\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sergey\\Documents\\What_TAQC\\What_PageObject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\super\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sergey\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -55,12 +55,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "frameworkReferences": {
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
-          }
-        },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
