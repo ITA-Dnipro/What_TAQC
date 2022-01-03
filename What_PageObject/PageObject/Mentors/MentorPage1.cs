@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace What_PageObject.PageObject
 {
-    class Mentors
+    class MentorPage1
     {
     }
 }
