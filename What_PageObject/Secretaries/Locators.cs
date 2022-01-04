@@ -2,9 +2,9 @@
 
 namespace ConsoleApp1.Secretaries
 {
-    class Locators
+    public class Locators
     {
-        public By
+        public static By
             sidebarSecretary = By.XPath("//*[@id=\"root\"]/div/nav/div[2]/div/a[3]/span"),
             tableButton = By.XPath("//*[@id=\"root\"]/div/div/div[2]/div[1]/div/div[1]/div/button[1]"),
             cardsButton = By.XPath("//*[@id=\"root\"]/div/div/div[2]/div[1]/div[1]/div[1]/div/button[1]"),

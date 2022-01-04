@@ -6,7 +6,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace ConsoleApp1.Secretaries
 {
-    class AddSecretary
+    public class AddSecretary
     {
         protected IWebDriver driver;
         public AddSecretary(IWebDriver driver)
