@@ -21,7 +21,7 @@ namespace What_UITest
 
         [Test]
         [TestCase("thomas.roberts@example.com", @"http://localhost:8080/forgot-password")]
-        public void ForgotPasswordAndCross(string email, string expected)
+        public void VerifyThatPasswordResetRequestWasSend_WithCrossButton_ValidValues(string email, string expected)
         {
             ForgotPasswordPage forgotPassword = new ForgotPasswordPage(driver);
             forgotPassword.ClickForgotPasswordLink();
@@ -33,7 +33,7 @@ namespace What_UITest
 
         [Test]
         [TestCase("thomas.roberts@example.com", @"http://localhost:8080/auth")]
-        public void ForgotPasswordAndBack(string email, string expected)
+        public void VerifyThatPasswordResetRequestWasSend_WithBackButton_ValidValues(string email, string expected)
         {
             ForgotPasswordPage forgotPassword = new ForgotPasswordPage(driver);
             forgotPassword.ClickForgotPasswordLink();
