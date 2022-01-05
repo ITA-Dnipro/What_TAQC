@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace What_PageObject.SignIn
 {
-    internal class Locators
+    public class Locators
     {
         #region ElementLocators
         public const string SignInButton = "//*[@class='btn button__default___3hOmG button__button___24ZfP auth__form-button___3KEpa']";

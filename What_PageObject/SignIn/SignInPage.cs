@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace What_PageObject.SignIn
 {
-    internal class SignInPage
+    public class SignInPage
     {
         public static readonly By signInButton = By.XPath(Locators.SignInButton);
         public static readonly By emailField = By.XPath(Locators.EmailField);
@@ -16,7 +16,6 @@ namespace What_PageObject.SignIn
         public static readonly By forgotPasswordButton = By.XPath(Locators.ForgotPasswordButton);
 
         DriverManager.DriverManager Driver = new DriverManager.DriverManager();
-
         private IWebElement signInButtonWebElement => DriverManager.DriverManager.Current.FindElement(By.XPath("//*[@class='btn button__default___3hOmG button__button___24ZfP auth__form-button___3KEpa']"));
 
     }

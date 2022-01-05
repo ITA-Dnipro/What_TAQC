@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace What_PageObject.DriverManager
 {
-    internal class DriverManager
+    public class DriverManager
     {
         public DriverManager()
         {
