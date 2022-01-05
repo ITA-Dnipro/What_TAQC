@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "O:\\Repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {}
+    "O:\\Repository\\What_TAQC\\WHAT_UITests\\WHAT_UITests.csproj": {}
   },
   "projects": {
-    "O:\\Repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {
+    "O:\\Repository\\What_TAQC\\WHAT_UITests\\WHAT_UITests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "O:\\Repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
-        "projectName": "What_PageObject",
-        "projectPath": "O:\\Repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+        "projectUniqueName": "O:\\Repository\\What_TAQC\\WHAT_UITests\\WHAT_UITests.csproj",
+        "projectName": "WHAT_UITests",
+        "projectPath": "O:\\Repository\\What_TAQC\\WHAT_UITests\\WHAT_UITests.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "O:\\Repository\\What_TAQC\\What_PageObject\\obj\\",
+        "outputPath": "O:\\Repository\\What_TAQC\\WHAT_UITests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "O:\\Programs\\Microsoft Visual Studio\\SDK\\NuGetPackages"
@@ -42,17 +42,21 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Selenium.Support": {
+            "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[4.1.0, )"
+              "version": "[17.0.0, )"
             },
-            "Selenium.WebDriver": {
+            "NUnit": {
               "target": "Package",
-              "version": "[4.1.0, )"
+              "version": "[3.13.2, )"
             },
-            "Selenium.WebDriver.ChromeDriver": {
+            "NUnit3TestAdapter": {
               "target": "Package",
-              "version": "[96.0.4664.4500, )"
+              "version": "[4.2.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.0, )"
             }
           },
           "imports": [
