@@ -1,9 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Forgot Password",
-    "\\Secretaries"
+    "\\ForgotPassword"
   ],
-  "SelectedNode": "\\Forgot Password\\ForgotPassword.cs",
   "PreviewInSolutionExplorer": false
 }

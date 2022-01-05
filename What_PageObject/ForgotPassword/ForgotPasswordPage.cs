@@ -7,7 +7,7 @@ namespace ConsoleApp1.ForgotPassword
         protected IWebDriver driver;
         public ForgotPasswordPage(IWebDriver driver)
         {
-
+            this.driver = driver;
         }
         public ForgotPasswordPage ClickForgotPasswordLink()
         {
@@ -25,10 +25,10 @@ namespace ConsoleApp1.ForgotPassword
             driver.FindElement(Locators.crossButton).Click();
             return this;
         }
-        /*public ForgotPasswordPage ClickBackButton()
+        public ForgotPasswordPage ClickBackButton()
         {
-            driver.FindElement(new Locators().backButton).Click();
-            return new AuthPage(driver);
-        }*/
+            driver.FindElement(Locators.backButton).Click();
+            return this;
+        }
     }
 }
