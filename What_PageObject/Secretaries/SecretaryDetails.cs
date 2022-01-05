@@ -4,7 +4,7 @@ using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace ConsoleApp1.Secretaries
+namespace What_PageObject.Secretaries
 {
     public class SecretaryDetails
     {

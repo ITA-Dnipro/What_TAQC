@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace ConsoleApp1.Secretaries
+namespace What_PageObject.Secretaries
 {
     public class Locators
     {

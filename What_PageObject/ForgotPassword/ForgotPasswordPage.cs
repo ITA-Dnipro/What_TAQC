@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace ConsoleApp1.ForgotPassword
+namespace What_PageObject.ForgotPassword
 {
     public class ForgotPasswordPage
     {
