@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sergey\\Documents\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {}
+    "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sergey\\Documents\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {
+    "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sergey\\Documents\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+        "projectUniqueName": "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
         "projectName": "What_PageObject",
-        "projectPath": "C:\\Users\\sergey\\Documents\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
-        "packagesPath": "C:\\Users\\sergey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sergey\\Documents\\What_TAQC\\What_PageObject\\obj\\",
+        "projectPath": "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+        "packagesPath": "C:\\Users\\super\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_PageObject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sergey\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,24 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "Selenium.WebDriver.ChromeDriver": {
+              "target": "Package",
+              "version": "[96.0.4664.4500, )"
+            },
+            "Selenium.WebDriver.IEDriver": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
