@@ -1,5 +1,6 @@
 {
   "version": 2,
+
   "dgSpecHash": "8DYC2Kwx/vwjuEaWUFX4j6y4aYaUL6fv4avHjxUvGN7EzUTXAd4xB2jl2zB3wnIrhyWfZdVuqKV3L1BO5pnnIA==",
   "success": true,
   "projectFilePath": "D:\\Work\\SoftServe\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
@@ -8,6 +9,7 @@
     "C:\\Users\\38099\\.nuget\\packages\\selenium.support\\4.1.0\\selenium.support.4.1.0.nupkg.sha512",
     "C:\\Users\\38099\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512",
     "C:\\Users\\38099\\.nuget\\packages\\selenium.webdriver.chromedriver\\96.0.4664.4500\\selenium.webdriver.chromedriver.96.0.4664.4500.nupkg.sha512"
+
   ],
   "logs": []
 }

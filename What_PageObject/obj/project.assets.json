@@ -40,6 +40,14 @@
         "build": {
           "build/Selenium.WebDriver.ChromeDriver.targets": {}
         }
+
+      },
+      "Selenium.WebDriver.IEDriver/4.0.0": {
+        "type": "package",
+        "build": {
+          "build/Selenium.WebDriver.IEDriver.targets": {}
+        }
+
       }
     }
   },
@@ -130,6 +138,22 @@
         "selenium.webdriver.chromedriver.96.0.4664.4500.nupkg.sha512",
         "selenium.webdriver.chromedriver.nuspec"
       ]
+    },
+    "Selenium.WebDriver.IEDriver/4.0.0": {
+      "sha512": "2mACefO/tqNlPB2UDXUcmf2xqqaxeXhi8kBEoG4m9jUWGKAvC0f+t4t2QyoY5RcKptshpBNeVgD+XR2ttItkPA==",
+      "type": "package",
+      "path": "selenium.webdriver.iedriver/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/DefinePropertiesIEDriver.targets",
+        "build/Selenium.WebDriver.IEDriver.targets",
+        "driver/IEDriverServer.exe",
+        "nupkg-icon.png",
+        "selenium.webdriver.iedriver.4.0.0.nupkg.sha512",
+        "selenium.webdriver.iedriver.nuspec"
+      ]
+
     }
   },
   "projectFileDependencyGroups": {
@@ -146,6 +170,7 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+
       "projectUniqueName": "D:\\Work\\SoftServe\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
       "projectName": "What_PageObject",
       "projectPath": "D:\\Work\\SoftServe\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
@@ -156,6 +181,7 @@
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+
         "C:\\Users\\38099\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -194,6 +220,10 @@
           "Selenium.WebDriver.ChromeDriver": {
             "target": "Package",
             "version": "[96.0.4664.4500, )"
+          },
+          "Selenium.WebDriver.IEDriver": {
+            "target": "Package",
+            "version": "[4.0.0, )"
           }
         },
         "imports": [
@@ -206,12 +236,14 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+
       }
     }
   }

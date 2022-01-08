@@ -1,38 +1,32 @@
 {
   "format": 1,
   "restore": {
-
-    "D:\\Work\\SoftServe\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {}
+    "C:\\Users\\sergey\\Documents\\What_TAQC\\TestProjectMigal\\TestProjectMigal.csproj": {}
   },
   "projects": {
-    "D:\\Work\\SoftServe\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {
+    "C:\\Users\\sergey\\Documents\\What_TAQC\\TestProjectMigal\\TestProjectMigal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\SoftServe\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
-        "projectName": "What_PageObject",
-        "projectPath": "D:\\Work\\SoftServe\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
-        "packagesPath": "C:\\Users\\38099\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\SoftServe\\What_TAQC\\What_PageObject\\obj\\",
+        "projectUniqueName": "C:\\Users\\sergey\\Documents\\What_TAQC\\TestProjectMigal\\TestProjectMigal.csproj",
+        "projectName": "TestProjectMigal",
+        "projectPath": "C:\\Users\\sergey\\Documents\\What_TAQC\\TestProjectMigal\\TestProjectMigal.csproj",
+        "packagesPath": "C:\\Users\\sergey\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sergey\\Documents\\What_TAQC\\TestProjectMigal\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-
-          "C:\\Users\\38099\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\sergey\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -43,9 +37,21 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.9.4, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.1, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.17.0, )"
+            },
             "Selenium.Support": {
               "target": "Package",
               "version": "[4.1.0, )"
@@ -57,12 +63,10 @@
             "Selenium.WebDriver.ChromeDriver": {
               "target": "Package",
               "version": "[96.0.4664.4500, )"
-
             },
-            "Selenium.WebDriver.IEDriver": {
+            "coverlet.collector": {
               "target": "Package",
-              "version": "[4.0.0, )"
-
+              "version": "[3.0.2, )"
             }
           },
           "imports": [
@@ -80,8 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
-
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

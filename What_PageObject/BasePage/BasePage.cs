@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+
 using What_PageObject.UnassignedUsers;
 
 namespace What_PageObject.BasePage
@@ -8,13 +9,16 @@ namespace What_PageObject.BasePage
         public void ClickElement(By locator)
         {
             DriverManager.DriverManager.Current.FindElement(locator).Click();
+
         }
 
         public void FillField(By locator, string text)
         {
+
             var field = DriverManager.DriverManager.Current.FindElement(locator);
             field.SendKeys(Keys.Control + "a");
             field.SendKeys(Keys.Delete);
+
             field.SendKeys(text);
         }
 
