@@ -14,24 +14,17 @@ namespace WHAT_UITests.SignInTests.SignInAdmin
 {
     public class EmailFieldTestValid
     {
-        //private DriverManager driver;
-
-        //How to connect tests?
-
-        private ChromeDriver driver;
-
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("http://localhost:8080/auth");
+            Driver.Current.Manage().Window.Maximize();
+            Driver.Current.Navigate().GoToUrl("http://localhost:8080/auth");
         }
 
         [Test]
-        public void SetEmailField()
+        public void SetEmailField()               //checkField?
         {
-            driver.FindElement(SignInPage.emailField).SendKeys("james.smith@example.com");
+            Driver.Current.FindElement(SignInPage.emailField).SendKeys("james.smith@example.com");    //namesShorter(Driver)
             By expected = By.XPath("//*[contains(text(),'Add a student')]");
             By actual = By.XPath("//*[contains(text(),'Add a student')]");
             Assert.AreEqual(expected, actual);

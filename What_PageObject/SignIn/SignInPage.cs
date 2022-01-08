@@ -15,8 +15,9 @@ namespace What_PageObject.SignIn
         public static readonly By registrationButton = By.XPath(Locators.RegistrationButton);
         public static readonly By forgotPasswordButton = By.XPath(Locators.ForgotPasswordButton);
 
-        DriverManager.DriverManager Driver = new DriverManager.DriverManager();
-        private IWebElement signInButtonWebElement => DriverManager.DriverManager.Current.FindElement(By.XPath("//*[@class='btn button__default___3hOmG button__button___24ZfP auth__form-button___3KEpa']"));
+        DriverManager.Driver Driver = new DriverManager.Driver();
+        private IWebElement signInButtonWebElement => DriverManager.Driver.Current.FindElement(By.XPath("//*[@class='btn button__default___3hOmG button__button___24ZfP auth__form-button___3KEpa']"));
+
 
     }
 }
