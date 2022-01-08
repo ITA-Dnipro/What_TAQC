@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "Hv6bJ4ESbS/eqjbNLadzVA2Qc83K749VAmgARHwDZpRn2+/B/mGBLs+3ogf2tQoHlLRx6AZAOUKtnPjYmpgPRA==",
+  "dgSpecHash": "G7jH6LN8hK2AxiqFbE35ewxwQMOeHWI3yp4pgcDQ3KcuGPltBEIsMI5D1nag6Nb+Mp9wLyIgNKHI8kazMvIMjA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\super\\Desktop\\repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\super\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\super\\.nuget\\packages\\selenium.support\\4.1.0\\selenium.support.4.1.0.nupkg.sha512",
+    "C:\\Users\\super\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512",
+    "C:\\Users\\super\\.nuget\\packages\\selenium.webdriver.chromedriver\\96.0.4664.4500\\selenium.webdriver.chromedriver.96.0.4664.4500.nupkg.sha512",
+    "C:\\Users\\super\\.nuget\\packages\\selenium.webdriver.iedriver\\4.0.0\\selenium.webdriver.iedriver.4.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
