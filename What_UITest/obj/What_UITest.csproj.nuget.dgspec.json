@@ -1,0 +1,269 @@
+{
+  "format": 1,
+  "restore": {
+<<<<<<< HEAD
+    "Z:\\Work\\ConsoleApp1\\What_UITest\\What_UITest.csproj": {}
+  },
+  "projects": {
+    "Z:\\Work\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "Z:\\Work\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectName": "ConsoleApp1",
+        "projectPath": "Z:\\Work\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+        "packagesPath": "C:\\Users\\Dramsi\\.nuget\\packages\\",
+        "outputPath": "Z:\\Work\\ConsoleApp1\\ConsoleApp1\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "Z:\\Programm\\Visual Studio 2019\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dramsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+=======
+    "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_UITest\\What_UITest.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+        "projectName": "What_PageObject",
+        "projectPath": "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+        "packagesPath": "C:\\Users\\super\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_PageObject\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\super\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+>>>>>>> dev
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+<<<<<<< HEAD
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+=======
+          "net6.0": {
+            "targetAlias": "net6.0",
+>>>>>>> dev
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+<<<<<<< HEAD
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+=======
+        "net6.0": {
+          "targetAlias": "net6.0",
+>>>>>>> dev
+          "dependencies": {
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "Selenium.WebDriver.ChromeDriver": {
+              "target": "Package",
+              "version": "[96.0.4664.4500, )"
+<<<<<<< HEAD
+=======
+            },
+            "Selenium.WebDriver.IEDriver": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+>>>>>>> dev
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "Z:\\Work\\ConsoleApp1\\What_UITest\\What_UITest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "Z:\\Work\\ConsoleApp1\\What_UITest\\What_UITest.csproj",
+        "projectName": "What_UITest",
+        "projectPath": "Z:\\Work\\ConsoleApp1\\What_UITest\\What_UITest.csproj",
+        "packagesPath": "C:\\Users\\Dramsi\\.nuget\\packages\\",
+        "outputPath": "Z:\\Work\\ConsoleApp1\\What_UITest\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "Z:\\Programm\\Visual Studio 2019\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dramsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_UITest\\What_UITest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_UITest\\What_UITest.csproj",
+        "projectName": "What_UITest",
+        "projectPath": "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_UITest\\What_UITest.csproj",
+        "packagesPath": "C:\\Users\\super\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_UITest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\super\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+>>>>>>> dev
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+<<<<<<< HEAD
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "Z:\\Work\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {
+                "projectPath": "Z:\\Work\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj"
+=======
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {
+                "projectPath": "C:\\Users\\super\\Desktop\\Repo2\\What_TAQC\\What_PageObject\\What_PageObject.csproj"
+>>>>>>> dev
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+<<<<<<< HEAD
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.9.4, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.1, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.17.0, )"
+=======
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.11.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.2, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+>>>>>>> dev
+            },
+            "Selenium.WebDriver.ChromeDriver": {
+              "target": "Package",
+              "version": "[96.0.4664.4500, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+<<<<<<< HEAD
+              "version": "[3.0.2, )"
+=======
+              "version": "[3.1.0, )"
+>>>>>>> dev
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+>>>>>>> dev
+        }
+      }
+    }
+  }
+}
