@@ -1,31 +1,24 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace What_PageObject.ChangePassword
+using What_PageObject.UnassignedUsers;
+
+namespace What_PageObject.BasePage
 {
-    public class BasePage
+    public abstract class BasePage
     {
-        IWebDriver driver;
-        public BasePage(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
-
-       
-
         public void ClickElement(By locator)
         {
-            driver.FindElement(locator).Click();
+            DriverManager.DriverManager.Current.FindElement(locator).Click();
+
         }
 
         public void FillField(By locator, string text)
         {
-            var field = driver.FindElement(locator);
-            field.Click();
+
+            var field = DriverManager.DriverManager.Current.FindElement(locator);
+            field.SendKeys(Keys.Control + "a");
+            field.SendKeys(Keys.Delete);
+
             field.SendKeys(text);
         }
 
