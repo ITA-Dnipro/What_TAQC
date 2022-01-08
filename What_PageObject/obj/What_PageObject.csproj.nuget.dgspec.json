@@ -2,6 +2,7 @@
   "format": 1,
   "restore": {
 
+
     "D:\\Work\\SoftServe\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {}
   },
   "projects": {
@@ -13,14 +14,17 @@
         "projectPath": "D:\\Work\\SoftServe\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
         "packagesPath": "C:\\Users\\38099\\.nuget\\packages\\",
         "outputPath": "D:\\Work\\SoftServe\\What_TAQC\\What_PageObject\\obj\\",
+
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
 
+
           "C:\\Users\\38099\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -46,6 +50,7 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+
             "Selenium.Support": {
               "target": "Package",
               "version": "[4.1.0, )"
@@ -63,6 +68,7 @@
               "target": "Package",
               "version": "[4.0.0, )"
 
+>
             }
           },
           "imports": [
