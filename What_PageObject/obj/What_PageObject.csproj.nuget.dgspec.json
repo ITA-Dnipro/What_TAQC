@@ -1,6 +1,26 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
+    "O:\\Repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {}
+  },
+  "projects": {
+    "O:\\Repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "O:\\Repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+        "projectName": "What_PageObject",
+        "projectPath": "O:\\Repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "O:\\Repository\\What_TAQC\\What_PageObject\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "O:\\Programs\\Microsoft Visual Studio\\SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
+=======
 
 
     "D:\\Work\\SoftServe\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {}
@@ -26,12 +46,12 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
 
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> dev
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,7 +70,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
             "Selenium.Support": {
               "target": "Package",
               "version": "[4.1.0, )"
@@ -62,6 +85,8 @@
             "Selenium.WebDriver.ChromeDriver": {
               "target": "Package",
               "version": "[96.0.4664.4500, )"
+<<<<<<< HEAD
+=======
 
             },
             "Selenium.WebDriver.IEDriver": {
@@ -69,6 +94,7 @@
               "version": "[4.0.0, )"
 
 >
+>>>>>>> dev
             }
           },
           "imports": [
@@ -87,7 +113,10 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
         }
       }
     }

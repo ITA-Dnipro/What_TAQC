@@ -1,0 +1,12 @@
+O:\Repository\What_TAQC\What_PageObject\bin\Debug\net6.0\What_PageObject.deps.json
+O:\Repository\What_TAQC\What_PageObject\bin\Debug\net6.0\What_PageObject.dll
+O:\Repository\What_TAQC\What_PageObject\bin\Debug\net6.0\ref\What_PageObject.dll
+O:\Repository\What_TAQC\What_PageObject\bin\Debug\net6.0\What_PageObject.pdb
+O:\Repository\What_TAQC\What_PageObject\obj\Debug\net6.0\What_PageObject.csproj.AssemblyReference.cache
+O:\Repository\What_TAQC\What_PageObject\obj\Debug\net6.0\What_PageObject.GeneratedMSBuildEditorConfig.editorconfig
+O:\Repository\What_TAQC\What_PageObject\obj\Debug\net6.0\What_PageObject.AssemblyInfoInputs.cache
+O:\Repository\What_TAQC\What_PageObject\obj\Debug\net6.0\What_PageObject.AssemblyInfo.cs
+O:\Repository\What_TAQC\What_PageObject\obj\Debug\net6.0\What_PageObject.csproj.CoreCompileInputs.cache
+O:\Repository\What_TAQC\What_PageObject\obj\Debug\net6.0\What_PageObject.dll
+O:\Repository\What_TAQC\What_PageObject\obj\Debug\net6.0\ref\What_PageObject.dll
+O:\Repository\What_TAQC\What_PageObject\obj\Debug\net6.0\What_PageObject.pdb

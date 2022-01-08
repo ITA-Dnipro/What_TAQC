@@ -11,7 +11,10 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
       "Selenium.Support/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -24,7 +27,10 @@
           "lib/net5.0/WebDriver.Support.dll": {}
         }
       },
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
       "Selenium.WebDriver/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -36,13 +42,18 @@
         "runtime": {
           "lib/net5.0/WebDriver.dll": {}
         }
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
       },
       "Selenium.WebDriver.ChromeDriver/96.0.4664.4500": {
         "type": "package",
         "build": {
           "build/Selenium.WebDriver.ChromeDriver.targets": {}
         }
+<<<<<<< HEAD
+=======
 
       },
       "Selenium.WebDriver.IEDriver/4.0.0": {
@@ -52,6 +63,7 @@
         }
 
 
+>>>>>>> dev
       }
     }
   },
@@ -87,7 +99,10 @@
         "packageIcon.png"
       ]
     },
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
     "Selenium.Support/4.1.0": {
       "sha512": "wuK5cfgVaimOZqyuriY2geGpNsI9DWky8CuBlrkBnmebkSrRftxqwyUVy0NLooHaAB2iaMj7qM+VOdUEX5bCHQ==",
       "type": "package",
@@ -107,7 +122,10 @@
         "selenium.support.nuspec"
       ]
     },
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
     "Selenium.WebDriver/4.1.0": {
       "sha512": "d4smisz4a/wJCM2TzkKTl+BLfvZUTvaobhKElDfCVZlvY8ThsC8VAoBNWTlg1H/GGzIP//yVGko/W0FILTgkYA==",
       "type": "package",
@@ -126,7 +144,10 @@
         "selenium.webdriver.4.1.0.nupkg.sha512",
         "selenium.webdriver.nuspec"
       ]
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
     },
     "Selenium.WebDriver.ChromeDriver/96.0.4664.4500": {
       "sha512": "7bH+2/bX4IqPXxnMsbD820pCb1DFLeESIbjpUL/Zgq5wfKJHTxtknrQ1wnlMJmWtbpoNcj6Zck7OfoIVstl3zQ==",
@@ -145,6 +166,8 @@
         "selenium.webdriver.chromedriver.96.0.4664.4500.nupkg.sha512",
         "selenium.webdriver.chromedriver.nuspec"
       ]
+<<<<<<< HEAD
+=======
     },
     "Selenium.WebDriver.IEDriver/4.0.0": {
       "sha512": "2mACefO/tqNlPB2UDXUcmf2xqqaxeXhi8kBEoG4m9jUWGKAvC0f+t4t2QyoY5RcKptshpBNeVgD+XR2ttItkPA==",
@@ -162,24 +185,47 @@
       ]
 
 
+>>>>>>> dev
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
       "Selenium.Support >= 4.1.0",
       "Selenium.WebDriver >= 4.1.0",
       "Selenium.WebDriver.ChromeDriver >= 96.0.4664.4500"
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "O:\\Programs\\Microsoft Visual Studio\\SDK\\NuGetPackages": {}
+=======
     "C:\\Users\\38099\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
 
+>>>>>>> dev
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "O:\\Repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+      "projectName": "What_PageObject",
+      "projectPath": "O:\\Repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "O:\\Repository\\What_TAQC\\What_PageObject\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "O:\\Programs\\Microsoft Visual Studio\\SDK\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
+=======
 
       "projectUniqueName": "D:\\code2019\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
       "projectName": "What_PageObject",
@@ -205,12 +251,12 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
 
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> dev
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -229,7 +275,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
           "Selenium.Support": {
             "target": "Package",
             "version": "[4.1.0, )"
@@ -241,11 +290,14 @@
           "Selenium.WebDriver.ChromeDriver": {
             "target": "Package",
             "version": "[96.0.4664.4500, )"
+<<<<<<< HEAD
+=======
           },
           "Selenium.WebDriver.IEDriver": {
             "target": "Package",
             "version": "[4.0.0, )"
 
+>>>>>>> dev
           }
         },
         "imports": [
@@ -265,7 +317,10 @@
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
       }
     }
   }

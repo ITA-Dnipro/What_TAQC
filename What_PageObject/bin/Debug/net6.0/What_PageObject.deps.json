@@ -10,8 +10,12 @@
         "dependencies": {
           "Selenium.Support": "4.1.0",
           "Selenium.WebDriver": "4.1.0",
+<<<<<<< HEAD
+          "Selenium.WebDriver.ChromeDriver": "96.0.4664.4500"
+=======
           "Selenium.WebDriver.ChromeDriver": "96.0.4664.4500",
           "Selenium.WebDriver.IEDriver": "4.0.0"
+>>>>>>> dev
         },
         "runtime": {
           "What_PageObject.dll": {}
@@ -47,8 +51,12 @@
           }
         }
       },
+<<<<<<< HEAD
+      "Selenium.WebDriver.ChromeDriver/96.0.4664.4500": {}
+=======
       "Selenium.WebDriver.ChromeDriver/96.0.4664.4500": {},
       "Selenium.WebDriver.IEDriver/4.0.0": {}
+>>>>>>> dev
     }
   },
   "libraries": {
@@ -84,6 +92,8 @@
       "sha512": "sha512-7bH+2/bX4IqPXxnMsbD820pCb1DFLeESIbjpUL/Zgq5wfKJHTxtknrQ1wnlMJmWtbpoNcj6Zck7OfoIVstl3zQ==",
       "path": "selenium.webdriver.chromedriver/96.0.4664.4500",
       "hashPath": "selenium.webdriver.chromedriver.96.0.4664.4500.nupkg.sha512"
+<<<<<<< HEAD
+=======
     },
     "Selenium.WebDriver.IEDriver/4.0.0": {
       "type": "package",
@@ -91,6 +101,7 @@
       "sha512": "sha512-2mACefO/tqNlPB2UDXUcmf2xqqaxeXhi8kBEoG4m9jUWGKAvC0f+t4t2QyoY5RcKptshpBNeVgD+XR2ttItkPA==",
       "path": "selenium.webdriver.iedriver/4.0.0",
       "hashPath": "selenium.webdriver.iedriver.4.0.0.nupkg.sha512"
+>>>>>>> dev
     }
   }
 }

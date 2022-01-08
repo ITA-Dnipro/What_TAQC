@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b1d1d266-5b83-4f29-83b8-36425bdcffb7": {
+      "ProjectGuid": "b1d1d266-5b83-4f29-83b8-36425bdcffb7",
+      "DisplayName": "What_PageObject",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "53d34a08-e0ab-4060-9080-e3334dc2b67b": {
+      "ProjectGuid": "53d34a08-e0ab-4060-9080-e3334dc2b67b",
+      "DisplayName": "WHAT_UITests",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
