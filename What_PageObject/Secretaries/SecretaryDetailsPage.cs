@@ -6,12 +6,8 @@ using OpenQA.Selenium.Support.UI;
 
 namespace What_PageObject.Secretaries
 {
-    public class SecretaryDetails
+    public class SecretaryDetailsPage
     {
-        protected IWebDriver driver;
-        public SecretaryDetails(IWebDriver driver)
-        {
 
-        }
     }
 }

@@ -6,12 +6,8 @@ using OpenQA.Selenium.Support.UI;
 
 namespace What_PageObject.Secretaries
 {
-    public class EditSecretary
+    public class AddSecretaryPage
     {
-        protected IWebDriver driver;
-        public EditSecretary(IWebDriver driver)
-        {
-
-        }
+        
     }
 }
