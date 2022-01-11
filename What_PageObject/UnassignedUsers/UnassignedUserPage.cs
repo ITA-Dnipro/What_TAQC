@@ -47,7 +47,7 @@ namespace WHAT_PageObject.UnassignedUsers
 
         public UnassignedUserPage FillSearchField(string text)
         {
-            FillField(Locators.SearchInputField, text);
+            EnterField(Locators.SearchInputField, text);
 
             return this;
         }

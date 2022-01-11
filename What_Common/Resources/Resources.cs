@@ -8,5 +8,6 @@ namespace What_Common.Resources
 {
     public class Resources
     {
+        public const string url = "http://localhost:8080/auth";
     }
 }

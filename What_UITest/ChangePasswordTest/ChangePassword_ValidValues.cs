@@ -63,7 +63,7 @@ namespace What_UITest
 
             Thread.Sleep(1000);
 
-            page.Logout();
+            //page.Logout();
 
 
             Thread.Sleep(1000);
