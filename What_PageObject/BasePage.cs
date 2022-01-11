@@ -1,28 +1,21 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
+using What_Common.DriverManager;
 
-namespace PageObject
+namespace What_PageObject.BasePage
 {
     public abstract class BasePage
     {
-        protected IWebDriver driver;
-
-        public BasePage(IWebDriver driver)
+        public void ClickElement(By locator)
         {
-            this.driver = driver;
+            Driver.Current.FindElement(locator).Click();
         }
 
-        protected void FillField(By locator, string text)
+        public void FillField(By locator, string text)
         {
-            var field = driver.FindElement(locator);
-            field.Click();
-            //field.Clear(); //??
+            var field = Driver.Current.FindElement(locator);
             field.SendKeys(Keys.Control + "a");
             field.SendKeys(Keys.Delete);
             field.SendKeys(text);
-        }
-        protected void ClickItem(By locator)
-        {
-            driver.FindElement(locator).Click();
         }
     }
 }
