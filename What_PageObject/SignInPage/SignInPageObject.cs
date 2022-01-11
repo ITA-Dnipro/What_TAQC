@@ -12,12 +12,9 @@ namespace What_PageObject.SignInPage
 {
     public class SignInPageObject
     {
-        
+        private IWebDriver driver;
 
-
-        private WebDriver driver;
-
-        public SignInPageObject(WebDriver driver)
+        public SignInPageObject(IWebDriver driver)
         {
             this.driver = driver;
         }

@@ -14,33 +14,55 @@ namespace What_UITest.SignInTests
 {
     public class LogInTest
     {
-        private WebDriver? driver;
-
         string email = "james.smith@example.com";
         string password = "Nj_PJ7K9";
 
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
-
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("http://localhost:8080/auth");
+            Driver.Current.Manage().Window.Maximize();
+            Driver.Current.Navigate().GoToUrl("http://localhost:8080/auth");
         }
 
         [Test]
-        public void LogInValid()
+        public void LogInAsTest()
         {
-            var LogInPage = new SignInPageObject(driver);
+            var LogInPage = new SignInPageObject(Driver.Current);
+
+            Assert.True(LogInPage.atPage());
+
             LogInPage
-                .LogIn(email,password);
+                .LogIn(email, password);
 
-            By actual = By.XPath("//*[contains(text(),'Add a student')]");
-            By expected = By.XPath("//*[contains(text(),'Add a student')]");
-            Thread.Sleep(1000);
+            string actualUrl = Driver.Current.Url;
+            string expectedUrl = "http://localhost:8080/students";
 
-            Assert.AreEqual(actual,expected);
+            //waiter here
+
+            Assert.AreEqual(expectedUrl, actualUrl);
         }
+
+        [Test]
+        public void LogInAsAdminValidTest()
+        {
+            var LogInPage = new SignInPageObject(Driver.Current);
+
+            Assert.True(LogInPage.atPage());
+
+            LogInPage
+                .EnterEmail(email)
+                .EnterPassword(password)
+                .ClickSIgnInButton();
+
+            string actualUrl = Driver.Current.Url;
+            string expectedUrl = "http://localhost:8080/students";
+
+            //waiter here
+
+            Assert.AreEqual(expectedUrl, actualUrl);
+        }
+
+
 
     }
 }
