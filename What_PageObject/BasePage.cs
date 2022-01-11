@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using What_Common.DriverManager;
 
 namespace What_PageObject.BasePage
