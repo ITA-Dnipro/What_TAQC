@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "9I109Kwx4kfCKA/mHiJK35Q+1VtCnstPG8wVNxusaO5sLUHA6Obdw7wDxImwOSooCeevtTbKmBV5eLqyhx6K5w==",
+  "dgSpecHash": "ogR3bELZI2j0j/ueXYCcHcgC8Lgnvkk6Fvs58lGSJSRm7iLCPNTUE2yvcXPHCTeQSFuxqzukrzsJNCptFHWv6w==",
   "success": true,
-  "projectFilePath": "D:\\code2019\\asd\\What_PageObject\\What_PageObject.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "O:\\Programming\\Projects\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\selenium.webdriver.chromedriver\\97.0.4692.7100\\selenium.webdriver.chromedriver.97.0.4692.7100.nupkg.sha512"
+  ],
   "logs": []
 }

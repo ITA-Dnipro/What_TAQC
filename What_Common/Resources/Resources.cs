@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace What_PageObject
+namespace What_Common.Resources
 {
-    internal class BasePage
+    public class Resources
     {
     }
 }
