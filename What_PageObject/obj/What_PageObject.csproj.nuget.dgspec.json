@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_PageObject\\What_PageObject.csproj": {}
+    "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {}
   },
   "projects": {
-    "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_Common\\What_Common.csproj": {
+    "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_TAQC\\What_Common\\What_Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_Common\\What_Common.csproj",
+        "projectUniqueName": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_TAQC\\What_Common\\What_Common.csproj",
         "projectName": "What_Common",
-        "projectPath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_Common\\What_Common.csproj",
+        "projectPath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_TAQC\\What_Common\\What_Common.csproj",
         "packagesPath": "C:\\Users\\38099\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_Common\\obj\\",
+        "outputPath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_TAQC\\What_Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -72,14 +72,14 @@
         }
       }
     },
-    "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_PageObject\\What_PageObject.csproj": {
+    "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_TAQC\\What_PageObject\\What_PageObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_PageObject\\What_PageObject.csproj",
+        "projectUniqueName": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
         "projectName": "What_PageObject",
-        "projectPath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_PageObject\\What_PageObject.csproj",
+        "projectPath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
         "packagesPath": "C:\\Users\\38099\\.nuget\\packages\\",
-        "outputPath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_PageObject\\obj\\",
+        "outputPath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_TAQC\\What_PageObject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -100,8 +100,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_Common\\What_Common.csproj": {
-                "projectPath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_Common\\What_Common.csproj"
+              "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_TAQC\\What_Common\\What_Common.csproj": {
+                "projectPath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_TAQC\\What_Common\\What_Common.csproj"
               }
             }
           }

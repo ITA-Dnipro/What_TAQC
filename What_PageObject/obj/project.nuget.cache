@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xjPKnsvq0k7MpfiVGD5vN0fMsfDR9446jtyKwR9HcRRm3mAcXwM5rQtCwidXy9UtmkwWEzowpA6p925dI1+lMg==",
+  "dgSpecHash": "TIaPphks8h24TCW/fDZGgxXY75bxw5ciyEnjOGX52QbQ45fNpFb8BRlpvFmicf9ShcMmJSKdtnxROVI0A9lCAA==",
   "success": true,
-  "projectFilePath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_PageObject\\What_PageObject.csproj",
+  "projectFilePath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\38099\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\38099\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512",
