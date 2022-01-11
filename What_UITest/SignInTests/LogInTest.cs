@@ -22,6 +22,7 @@ namespace What_UITest.SignInTests
         {
             Driver.Current.Manage().Window.Maximize();
             Driver.GoToUrl();
+            //Console.WriteLine();
         }
 
         [Test]
