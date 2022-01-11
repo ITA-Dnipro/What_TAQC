@@ -14,4 +14,8 @@
     <ProjectReference Include="..\What_Common\What_Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ResetPasswordPage\" />
+  </ItemGroup>
+
 </Project>
