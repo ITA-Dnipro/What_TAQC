@@ -10,6 +10,7 @@ namespace What_Common.DriverManager
 {
     public class Driver
     {
+        const string url = "http://localhost:8080/";
         public Driver()
         {
 
@@ -28,5 +29,16 @@ namespace What_Common.DriverManager
                 return driver;
             }
         }
+
+        public static void GoToUrl()
+        {
+            Current.Navigate().GoToUrl("http://localhost:8080/");
+        }
+
+        public static void MaximizeWindow()
+        {
+            Current.Manage().Window.Maximize();
+        }
+
     }
 }

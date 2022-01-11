@@ -20,30 +20,26 @@ namespace What_UITest.SignInTests
         [SetUp]
         public void Setup()
         {
-            Driver.Current.Manage().Window.Maximize();
-            Driver.Current.Navigate().GoToUrl("http://localhost:8080/auth");
+            Driver.MaximizeWindow();
+            Driver.GoToUrl();
         }
 
         [Test]
-        public void LogInAsTest()
+        [TestCase("http://localhost:8080/students")]
+        public void LogInAsTest(string expectedUrl)
         {
             var LogInPage = new SignInPageObject(Driver.Current);
-
-            Assert.True(LogInPage.atPage());
-
-            LogInPage
-                .LogIn(email, password);
-
-            string actualUrl = Driver.Current.Url;
-            string expectedUrl = "http://localhost:8080/students";
-
-            //waiter here
-
-            Assert.AreEqual(expectedUrl, actualUrl);
+            Assert.Multiple(() =>
+            {
+                Assert.True(LogInPage.atPage());
+                LogInPage.LogIn(email, password, expectedUrl);
+                Assert.AreEqual(expectedUrl, Driver.Current.Url);
+            });
         }
 
         [Test]
-        public void LogInAsAdminValidTest()
+        [TestCase("http://localhost:8080/students")]
+        public void LogInAsAdminValidTest(string expectedUrl)
         {
             var LogInPage = new SignInPageObject(Driver.Current);
 
@@ -52,13 +48,9 @@ namespace What_UITest.SignInTests
             LogInPage
                 .EnterEmail(email)
                 .EnterPassword(password)
-                .ClickSIgnInButton();
+                .ClickSignInButton(expectedUrl);
 
             string actualUrl = Driver.Current.Url;
-            string expectedUrl = "http://localhost:8080/students";
-
-            //waiter here
-
             Assert.AreEqual(expectedUrl, actualUrl);
         }
 
