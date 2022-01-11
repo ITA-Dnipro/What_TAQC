@@ -11,6 +11,10 @@ namespace What_PageObject.CoursePage
     {
         private IWebDriver driver;
 
+        private By ElemPreviusButton => By.XPath("");
+
+        private By ElemNextButton => By.XPath("");
+
 
         public CoursePage(IWebDriver driver)
         {
