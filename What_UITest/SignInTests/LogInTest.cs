@@ -16,6 +16,7 @@ namespace What_UITest.SignInTests
     {
         string email = "james.smith@example.com";
         string password = "Nj_PJ7K9";
+        string variable = "";
 
         [SetUp]
         public void Setup()
