@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Hv6bJ4ESbS/eqjbNLadzVA2Qc83K749VAmgARHwDZpRn2+/B/mGBLs+3ogf2tQoHlLRx6AZAOUKtnPjYmpgPRA==",
+  "dgSpecHash": "xjPKnsvq0k7MpfiVGD5vN0fMsfDR9446jtyKwR9HcRRm3mAcXwM5rQtCwidXy9UtmkwWEzowpA6p925dI1+lMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\super\\Desktop\\repository\\What_TAQC\\What_PageObject\\What_PageObject.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Work\\SoftServe\\What_TAQC-dev1\\What_PageObject\\What_PageObject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\38099\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\38099\\.nuget\\packages\\selenium.webdriver\\4.1.0\\selenium.webdriver.4.1.0.nupkg.sha512",
+    "C:\\Users\\38099\\.nuget\\packages\\selenium.webdriver.chromedriver\\97.0.4692.7100\\selenium.webdriver.chromedriver.97.0.4692.7100.nupkg.sha512"
+  ],
   "logs": []
 }
