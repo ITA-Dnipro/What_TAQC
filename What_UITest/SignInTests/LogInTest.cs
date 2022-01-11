@@ -20,7 +20,7 @@ namespace What_UITest.SignInTests
         [SetUp]
         public void Setup()
         {
-            Driver.MaximizeWindow();
+            Driver.Current.Manage().Window.Maximize();
             Driver.GoToUrl();
         }
 
