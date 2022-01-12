@@ -11,22 +11,18 @@ using System.Threading.Tasks;
 using What_Common.DriverManager;
 
 namespace What_UITest.BaseTest
-
 {
     public class BaseTest
     {
         [SetUp]
         public void Setup()
         {
-            //Driver.Current = null;
+            Driver.Current = null;
             Driver.Current.Manage().Window.Maximize();
             Driver.Current.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Driver.Current.Navigate().GoToUrl("http://localhost:8080/");
-
         }
-
-
-
+        
         [TearDown]
         public void AfterTest()
         {
@@ -45,7 +41,3 @@ namespace What_UITest.BaseTest
         }
     }
 }
-
-
-
-    
