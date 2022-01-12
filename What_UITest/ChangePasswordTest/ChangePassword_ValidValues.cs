@@ -7,19 +7,15 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using What_PageObject.ChangePassword;
-using What_UITest.ChangePasswordTests;
 
 namespace What_UITest
 {
-    public class ChangePassword_ValidValues
+    public class ChangePassword_ValidValues : BaseTest
     {
         private const string PasswordNew = "765Rt##asd4";
         private const string PasswordOld = "765Rt##asd";
-        Login login;
-
-        IWebDriver driver;
-
-        ChangePasswordPage page;
+        private IWebDriver driver;
+        private ChangePasswordPage page;
 
         [SetUp]
 
@@ -33,46 +29,15 @@ namespace What_UITest
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Navigate().GoToUrl("http://localhost:8080/");
 
-            login = new Login(driver);
-            page = new ChangePasswordPage(driver);
+            page = new ChangePasswordPage();
 
 
         }
 
-
-        public void LoginAsSecretary(string email, string password)
-        {
-            login.FillEmail(email);
-            login.FillPassword(password);
-            login.ClickLoginButton();
-        }
 
         [Test]
         public void ChangePasswordAsSecretary()
         {
-            LoginAsSecretary("Adrian@secretar.com", PasswordNew);
-            page.ClickDropDownMenu();
-            page.ClickChangePasswordButton();
-            page.FillCurrentPasswordField(PasswordOld)
-                 .FillNewPasswordField(PasswordNew)
-                 .FillConfirmNewPasswordField(PasswordNew)
-                 .ClickSaveButton();
-
-            Thread.Sleep(1000);
-            page.ClickConfirmButtonInModalWindow();
-
-            Thread.Sleep(1000);
-
-            page.Logout();
-
-
-            Thread.Sleep(1000);
-
-            LoginAsSecretary("Adrian@secretar.com", PasswordNew);
-
-            Assert.AreEqual("http://localhost:8080/mentors", driver.Url);
-
-
         }
 
         [TearDown]

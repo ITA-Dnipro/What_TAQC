@@ -10,10 +10,6 @@ namespace What_PageObject.ChangePassword
 {
     public class ChangePasswordPage : BasePage
     {
-        public ChangePasswordPage(IWebDriver driver) : base(driver)
-        {
-        }
-
         public void ClickDropDownMenu()
         {
             ClickElement(Locators.DropDownButton);
