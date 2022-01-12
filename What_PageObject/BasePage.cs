@@ -1,7 +1,7 @@
 using OpenQA.Selenium;
 using What_Common.DriverManager;
 
-namespace What_PageObject.BasePage
+namespace What_PageObject
 {
     public abstract class BasePage
     {
