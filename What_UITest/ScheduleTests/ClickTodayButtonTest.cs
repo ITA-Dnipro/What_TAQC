@@ -15,7 +15,7 @@ namespace What_UITest.ScheduleTests
         public void Setup()
         {
             signInPage = new SignInPageObject(Driver.Current);
-            signInPage.LogIn("james.smith@example.com", "Nj_PJ7K9");
+            signInPage.LogIn("james.smith@example.com", "Nj_PJ7K9", "http://localhost:8080/");
         }
 
         [Test]

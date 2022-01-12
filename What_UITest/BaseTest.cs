@@ -7,7 +7,6 @@ using System.Reflection;
 using What_Common.DriverManager;
 
 namespace What_UITest
-
 {
     public class BaseTest
     {
@@ -18,7 +17,6 @@ namespace What_UITest
             Driver.Current.Manage().Window.Maximize();
             Driver.Current.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Driver.Current.Navigate().GoToUrl("http://localhost:8080");
-
         }
 
         [TearDown]
