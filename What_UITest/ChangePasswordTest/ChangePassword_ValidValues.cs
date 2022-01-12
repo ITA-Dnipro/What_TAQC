@@ -6,18 +6,22 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using What_Common.DriverManager;
 using What_PageObject.ChangePassword;
-using What_UITest.ChangePasswordTests;
+using What_PageObject.SignInPage;
 
-namespace What_UITest
+namespace What_UITest.ChangePasswordTests
 {
-    public class ChangePassword_ValidValues
+    public class ChangePassword_ValidValues : BaseTest.BaseTest
     {
-        private const string PasswordNew = "765Rt##asd4";
-        private const string PasswordOld = "765Rt##asd";
-        Login login;
+        private const string PasswordOld = "765Rt##asd4";
+        private const string PasswordNew = "765Rt##asd";
 
-        IWebDriver driver;
+        SignInPageObject login;
+
+        //Login login;
+
+
 
         ChangePasswordPage page;
 
@@ -26,51 +30,49 @@ namespace What_UITest
 
         public void Setup()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
+            
+           
 
-
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Navigate().GoToUrl("http://localhost:8080/");
-
-            login = new Login(driver);
-            page = new ChangePasswordPage(driver);
+            login = new SignInPageObject(Driver.Current);
+            page = new ChangePasswordPage();
 
 
         }
 
 
-        public void LoginAsSecretary(string email, string password)
-        {
-            login.FillEmail(email);
-            login.FillPassword(password);
-            login.ClickLoginButton();
-        }
+        
+
 
         [Test]
         public void ChangePasswordAsSecretary()
         {
-            LoginAsSecretary("Adrian@secretar.com", PasswordNew);
-            page.ClickDropDownMenu();
+            login.LogIn("Adrian@secretar.com", PasswordOld);
+            page.WaitClickDropDownMenu();
             page.ClickChangePasswordButton();
             page.FillCurrentPasswordField(PasswordOld)
                  .FillNewPasswordField(PasswordNew)
                  .FillConfirmNewPasswordField(PasswordNew)
                  .ClickSaveButton();
 
-            Thread.Sleep(1000);
+            
             page.ClickConfirmButtonInModalWindow();
+            page.FlashMassage();
 
-            Thread.Sleep(1000);
+            
 
             page.Logout();
 
 
-            Thread.Sleep(1000);
+            
+            page.WaiterLogin();
 
-            LoginAsSecretary("Adrian@secretar.com", PasswordNew);
+            login.LogIn("Adrian@secretar.com", PasswordNew);
 
-            Assert.AreEqual("http://localhost:8080/mentors", driver.Url);
+
+            page.Waiter();
+            Assert.AreEqual("http://localhost:8080/mentors", Driver.Current.Url);
+
+            page.Logout();
 
 
         }
@@ -79,18 +81,29 @@ namespace What_UITest
 
         public void Aftertest()
         {
-            if (TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Failure))
-            {
-                string fileName = $"{TestContext.CurrentContext.Test.Name}";
-                FileInfo screenshotPath = new FileInfo($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\screenshot\\{fileName}.png");
-                Directory.CreateDirectory(screenshotPath.DirectoryName);
+            
 
-                ITakesScreenshot takeScreenshot = (ITakesScreenshot)driver;
-                Screenshot screenshot = takeScreenshot.GetScreenshot();
-                screenshot.SaveAsFile(screenshotPath.FullName, ScreenshotImageFormat.Png);
-            }
+            ChangePasswordBack();
 
-            driver?.Quit();
+           
         }
+
+        private void ChangePasswordBack()
+        {
+            login.LogIn("Adrian@secretar.com", PasswordNew);
+            page.WaitClickDropDownMenu();
+            page.ClickChangePasswordButton();
+            page.FillCurrentPasswordField(PasswordNew)
+                 .FillNewPasswordField(PasswordOld)
+                 .FillConfirmNewPasswordField(PasswordOld)
+                 .ClickSaveButton();
+
+
+            page.ClickConfirmButtonInModalWindow();
+            page.FlashMassage();
+           
+        }
+
+
     }
 }
