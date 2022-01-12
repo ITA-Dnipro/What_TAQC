@@ -11,6 +11,7 @@ namespace What_PageObject
         public void ClickElement(By locator)
         {
             Driver.Current.FindElement(locator).Click();
+            
         }
 
         public void FillField(By locator, string text)

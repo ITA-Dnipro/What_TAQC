@@ -6,9 +6,11 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using What_Common.DriverManager;
 using What_PageObject.ChangePassword;
+using What_PageObject.SignInPage;
 
-namespace What_UITest
+namespace What_UITest.ChangePasswordTests
 {
     public class ChangePassword_ValidValues : BaseTest
     {
@@ -17,45 +19,114 @@ namespace What_UITest
         private IWebDriver driver;
         private ChangePasswordPage page;
 
+        SignInPageObject login;
+
+        //Login login;
+
+
+
+        ChangePasswordPage page;
+
         [SetUp]
 
 
         public void Setup()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
+            
+           
 
-
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Navigate().GoToUrl("http://localhost:8080/");
-
+            login = new SignInPageObject(Driver.Current);
+            page = new ChangePasswordPage();
             page = new ChangePasswordPage();
 
 
         }
 
 
+        public void LoginAsSecretary(string email, string password)
+        {
+            login.FillEmail(email);
+            login.FillPassword(password);
+            login.ClickLoginButton();
+        }
+
+            login.FillPassword(password);
+            login.ClickLoginButton();
+        }
+
+            login.FillPassword(password);
+            login.ClickLoginButton();
+        }
+
+            login.FillPassword(password);
+            login.ClickLoginButton();
+        }
+
+            login.FillPassword(password);
+            login.ClickLoginButton();
+        }
+
         [Test]
         public void ChangePasswordAsSecretary()
         {
+            login.LogIn("Adrian@secretar.com", PasswordOld);
+            page.WaitClickDropDownMenu();
+            page.ClickChangePasswordButton();
+            page.FillCurrentPasswordField(PasswordOld)
+                 .FillNewPasswordField(PasswordNew)
+                 .FillConfirmNewPasswordField(PasswordNew)
+                 .ClickSaveButton();
+
+            
+            page.ClickConfirmButtonInModalWindow();
+            page.FlashMassage();
+
+            
+
+            page.Logout();
+
+
+            
+            page.WaiterLogin();
+
+            login.LogIn("Adrian@secretar.com", PasswordNew);
+
+
+            page.Waiter();
+            Assert.AreEqual("http://localhost:8080/mentors", Driver.Current.Url);
+
+            page.Logout();
+
+
         }
 
         [TearDown]
 
         public void Aftertest()
         {
-            if (TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Failure))
-            {
-                string fileName = $"{TestContext.CurrentContext.Test.Name}";
-                FileInfo screenshotPath = new FileInfo($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\screenshot\\{fileName}.png");
-                Directory.CreateDirectory(screenshotPath.DirectoryName);
+            
 
-                ITakesScreenshot takeScreenshot = (ITakesScreenshot)driver;
-                Screenshot screenshot = takeScreenshot.GetScreenshot();
-                screenshot.SaveAsFile(screenshotPath.FullName, ScreenshotImageFormat.Png);
-            }
+            ChangePasswordBack();
 
-            driver?.Quit();
+           
         }
+
+        private void ChangePasswordBack()
+        {
+            login.LogIn("Adrian@secretar.com", PasswordNew);
+            page.WaitClickDropDownMenu();
+            page.ClickChangePasswordButton();
+            page.FillCurrentPasswordField(PasswordNew)
+                 .FillNewPasswordField(PasswordOld)
+                 .FillConfirmNewPasswordField(PasswordOld)
+                 .ClickSaveButton();
+
+
+            page.ClickConfirmButtonInModalWindow();
+            page.FlashMassage();
+           
+        }
+
+
     }
 }

@@ -1,17 +1,22 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using What_Common.DriverManager;
 
 namespace What_PageObject.ChangePassword
 
 {
     public class ChangePasswordPage : BasePage
     {
-        public void ClickDropDownMenu()
+        private WebDriverWait wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10));
+
+        public void WaitClickDropDownMenu()
         {
+            wait.Until(e => e.FindElement(By.XPath("//tbody/tr")));
             ClickElement(Locators.DropDownButton);
         }
         public void ClickChangePasswordButton()
@@ -51,6 +56,7 @@ namespace What_PageObject.ChangePassword
 
         public void ClickConfirmButtonInModalWindow()
         {
+            //
             ClickElement(Locators.ConfirmButtonInModalWindow);
 
         }
@@ -61,11 +67,31 @@ namespace What_PageObject.ChangePassword
 
         }
 
+        public void Logout()
+        {
+            ClickElement(Locators.DropDownButton);
+            ClickElement(Locators.TopDropdownLogoutButton);
+        }
 
 
+        public string FlashMassage()
+        {
+            wait.Until(e => e.FindElement(By.XPath("//tbody/tr")));
+            return Driver.Current.FindElement(By.XPath("//*[@id='root']/div[1]/div")).Text;
+         }
 
+        public void Waiter()
+        {
+            wait.Until(e => e.FindElement(By.XPath("//tbody/tr")));
+            
+        }
+        public void WaiterLogin()
+        {
+            wait.Until(e => e.FindElement(By.XPath("//*[@id='email']")));
 
+        }
 
+        
 
 
 
