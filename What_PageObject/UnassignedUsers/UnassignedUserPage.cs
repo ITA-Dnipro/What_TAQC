@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using What_Common.DriverManager;
-using What_PageObject.BasePage;
+using What_PageObject;
 using What_PageObject.UnassignedUsers;
 
 namespace WHAT_PageObject.UnassignedUsers

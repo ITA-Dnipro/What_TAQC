@@ -1,4 +1,4 @@
-﻿using What_PageObject.BasePage;
+﻿using What_PageObject;
 using What_PageObject.Schedules;
 
 namespace WHAT_PageObject.Schedules

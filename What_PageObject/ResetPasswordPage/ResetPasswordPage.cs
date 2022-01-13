@@ -1,16 +1,12 @@
 ﻿using OpenQA.Selenium;
-using PageObject;
 using ResetPassword.Locators;
-
+using What_PageObject;
 
 namespace ResetPassword
 {
     public class ResetPasswordPage : BasePage
     {
-        public ResetPasswordPage(IWebDriver driver) : base(driver)
-        {
-        }
-
+      
         public ResetPasswordPage FillEmail(string email)
         {
             FillField(ResetPasswordLocator.emailAddressField, email);
@@ -28,12 +24,12 @@ namespace ResetPassword
         }
         public ResetPasswordPage ClickConfirmButton()
         {
-            ClickItem(ResetPasswordLocator.confirmButton);
+            ClickElement(ResetPasswordLocator.confirmButton);
             return this;
         }
         public void ClickBackButton()
         {
-            ClickItem(ResetPasswordLocator.backButton);
+            ClickElement(ResetPasswordLocator.backButton);
         }
     }
 }

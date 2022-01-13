@@ -19,9 +19,7 @@ namespace What_UITest.ChangePasswordTests
 
         SignInPageObject login;
 
-        //Login login;
-
-
+        
 
         ChangePasswordPage page;
 
@@ -29,18 +27,13 @@ namespace What_UITest.ChangePasswordTests
 
 
         public void Setup()
-        {
-            
+        {         
            
-
             login = new SignInPageObject(Driver.Current);
-            page = new ChangePasswordPage();
-
+            page = new ChangePasswordPage();//назвать так же 
 
         }
-
-
-        
+              
 
 
         [Test]
@@ -70,7 +63,7 @@ namespace What_UITest.ChangePasswordTests
 
 
             page.Waiter();
-            Assert.AreEqual("http://localhost:8080/mentors", Driver.Current.Url);
+            Assert.AreEqual("http://localhost:8080/mentors", Driver.Current.Url);//вынести ассерты в отд регион
 
             page.Logout();
 
@@ -83,7 +76,7 @@ namespace What_UITest.ChangePasswordTests
         {
             
 
-            ChangePasswordBack();
+            ChangePasswordBack();//найти ему своем место
 
            
         }

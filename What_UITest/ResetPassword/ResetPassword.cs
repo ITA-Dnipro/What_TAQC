@@ -20,7 +20,7 @@ public class ResetPass
     public void Test1()
     {
         
-        ResetPasswordPage resetPassword = new ResetPasswordPage(driver);
+        ResetPasswordPage resetPassword = new ResetPasswordPage();
         resetPassword.FillEmail("test@test.com")
             .FillNewPassword("qwerT123")
             .FillConfirmPassword("qwerT123")
