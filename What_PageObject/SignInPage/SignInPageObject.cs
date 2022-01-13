@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,13 @@ namespace What_PageObject.SignInPage
     public class SignInPageObject
     {
         private IWebDriver driver;
+        private Waiter waiter;
 
        
         public SignInPageObject(IWebDriver driver)
         {
             this.driver = driver;
+            waiter = new Waiter(driver);
         }
 
         public bool atPage()
@@ -41,17 +44,18 @@ namespace What_PageObject.SignInPage
             return this;
         }
 
-        public SignInPageObject ClickSIgnInButton()
+        public SignInPageObject ClickSignInButton(string url)
         {
             driver.FindElement(Locators.SignInButton).Click();
+            waiter.wait.Until(ExpectedConditions.UrlMatches(url));
             return this;
         }
 
-        public SignInPageObject LogIn(string email, string password)
+        public SignInPageObject LogIn(string email, string password, string url)
         {
             EnterEmail(email);
             EnterPassword(password);
-            return ClickSIgnInButton();
+            return ClickSignInButton(url);
         }
     }
 }

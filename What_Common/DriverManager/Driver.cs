@@ -1,15 +1,11 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace What_Common.DriverManager
 {
     public class Driver
     {
+        const string url = "http://localhost:8080/";
         public Driver()
         {
 
@@ -27,6 +23,18 @@ namespace What_Common.DriverManager
                 }
                 return driver;
             }
+            set { driver = value; }
         }
+
+        public static void GoToUrl()
+        {
+            Current.Navigate().GoToUrl("http://localhost:8080/");
+        }
+
+        public static void MaximizeWindow()
+        {
+            Current.Manage().Window.Maximize();
+        }
+
     }
 }

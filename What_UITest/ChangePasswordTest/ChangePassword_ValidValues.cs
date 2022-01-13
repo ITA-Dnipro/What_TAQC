@@ -1,18 +1,11 @@
 ﻿using NUnit.Framework;
-using NUnit.Framework.Interfaces;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
-using System.IO;
-using System.Reflection;
-using System.Threading;
 using What_Common.DriverManager;
 using What_PageObject.ChangePassword;
 using What_PageObject.SignInPage;
 
 namespace What_UITest.ChangePasswordTests
 {
-    public class ChangePassword_ValidValues : BaseTest.BaseTest
+    public class ChangePassword_ValidValues : BaseTest
     {
         private const string PasswordOld = "765Rt##asd4";
         private const string PasswordNew = "765Rt##asd";
@@ -39,7 +32,7 @@ namespace What_UITest.ChangePasswordTests
         [Test]
         public void ChangePasswordAsSecretary()
         {
-            login.LogIn("Adrian@secretar.com", PasswordOld);
+            login.LogIn("Adrian@secretar.com", PasswordOld, null);
             page.WaitClickDropDownMenu();
             page.ClickChangePasswordButton();
             page.FillCurrentPasswordField(PasswordOld)
@@ -47,19 +40,19 @@ namespace What_UITest.ChangePasswordTests
                  .FillConfirmNewPasswordField(PasswordNew)
                  .ClickSaveButton();
 
-            
+
             page.ClickConfirmButtonInModalWindow();
             page.FlashMassage();
 
-            
+
 
             page.Logout();
 
 
-            
+
             page.WaiterLogin();
 
-            login.LogIn("Adrian@secretar.com", PasswordNew);
+            login.LogIn("Adrian@secretar.com", PasswordNew, null);
 
 
             page.Waiter();
@@ -74,16 +67,16 @@ namespace What_UITest.ChangePasswordTests
 
         public void Aftertest()
         {
-            
+
 
             ChangePasswordBack();//найти ему своем место
 
-           
+
         }
 
         private void ChangePasswordBack()
         {
-            login.LogIn("Adrian@secretar.com", PasswordNew);
+            login.LogIn("Adrian@secretar.com", PasswordNew, null);
             page.WaitClickDropDownMenu();
             page.ClickChangePasswordButton();
             page.FillCurrentPasswordField(PasswordNew)
@@ -94,7 +87,7 @@ namespace What_UITest.ChangePasswordTests
 
             page.ClickConfirmButtonInModalWindow();
             page.FlashMassage();
-           
+
         }
 
 
