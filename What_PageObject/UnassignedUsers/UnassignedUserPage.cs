@@ -1,10 +1,9 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using What_Common.DriverManager;
-using What_PageObject.BasePage;
-using What_PageObject.UnassignedUsers;
+using What_Common.Resources;
 
-namespace WHAT_PageObject.UnassignedUsers
+namespace What_PageObject.UnassignedUsersPage
 {
     public class UnassignedUserPage : BasePage
     {
@@ -12,128 +11,128 @@ namespace WHAT_PageObject.UnassignedUsers
 
         public UnassignedUserPage ClickNextTopButton()
         {
-            ClickElement(Locators.TopRightArrowButton);
+            ClickElement(Locators.UnassignedUser.TopRightArrowButton);
 
             return this;
         }
 
         public UnassignedUserPage ClickPrevTopButton()
         {
-            ClickElement(Locators.TopLeftArrowButton);
+            ClickElement(Locators.UnassignedUser.TopLeftArrowButton);
 
             return this;
         }
 
         public UnassignedUserPage ClickNextBottomButton()
         {
-            ClickElement(Locators.BottomRightArrowButton);
+            ClickElement(Locators.UnassignedUser.BottomRightArrowButton);
 
             return this;
         }
 
         public UnassignedUserPage ClickPrevBottomButton()
         {
-            ClickElement(Locators.BottomLeftArrowButton);
+            ClickElement(Locators.UnassignedUser.BottomLeftArrowButton);
 
             return this;
         }
 
         public UnassignedUserPage ClickSearchField()
         {
-            ClickElement(Locators.SearchInputField);
+            ClickElement(Locators.UnassignedUser.SearchInputField);
 
             return this;
         }
 
         public UnassignedUserPage FillSearchField(string text)
         {
-            FillField(Locators.SearchInputField, text);
+            FillField(Locators.UnassignedUser.SearchInputField, text);
 
             return this;
         }
 
         public UnassignedUserPage ClickNavbarMenuListOfUnassignedButton()
         {
-            ClickElement(Locators.ClickToNavbarMenuListOfUnassignedButton);
+            ClickElement(Locators.UnassignedUser.ClickToNavbarMenuListOfUnassignedButton);
 
             return this;
         }
 
         public UnassignedUserPage ClickSortByName()
         {
-            ClickElement(Locators.SortedByName);
+            ClickElement(Locators.UnassignedUser.SortedByName);
 
             return this;
         }
 
         public UnassignedUserPage ClickSortBySurname()
         {
-            ClickElement(Locators.SortedBySurname);
+            ClickElement(Locators.UnassignedUser.SortedBySurname);
 
             return this;
         }
 
         public UnassignedUserPage ClickSortByEmail()
         {
-            ClickElement(Locators.SortedByEmail);
+            ClickElement(Locators.UnassignedUser.SortedByEmail);
 
             return this;
         }
 
         public UnassignedUserPage ClickFirstPagination()
         {
-            ClickElement(Locators.FirstPagePagination);
+            ClickElement(Locators.UnassignedUser.FirstPagePagination);
 
             return this;
         }
 
         public UnassignedUserPage ClickLastPagination()
         {
-            ClickElement(Locators.LastPagePagination);
+            ClickElement(Locators.UnassignedUser.LastPagePagination);
 
             return this;
         }
 
         public UnassignedUserPage WaitClickNavbarMenuListOfUnassignedButton()
         {
-            wait.Until(e => e.FindElement(Locators.TableData));
+            wait.Until(e => e.FindElement(Locators.UnassignedUser.TableData));
 
-            ClickElement(Locators.ClickToNavbarMenuListOfUnassignedButton);
+            ClickElement(Locators.UnassignedUser.ClickToNavbarMenuListOfUnassignedButton);
 
             return this;
         }
 
         public UnassignedUserPage WaitClickLastPagination()
         {
-            wait.Until(e => e.FindElement(Locators.TableData));
+            wait.Until(e => e.FindElement(Locators.UnassignedUser.TableData));
 
-            ClickElement(Locators.LastPagePagination);
+            ClickElement(Locators.UnassignedUser.LastPagePagination);
 
             return this;
         }
 
         public UnassignedUserPage WaitNavigateToPage(int page)
         {
-            wait.Until(e => e.FindElement(Locators.TableData));
+            wait.Until(e => e.FindElement(Locators.UnassignedUser.TableData));
 
-            ClickElement(Locators.NavigateToPage(page));
+            ClickElement(Locators.UnassignedUser.NavigateToPage(page));
 
             return this;
         }
 
         public string GetUnassignedUserFirstName(int row)
         {
-            return GetTextValue(Locators.UnassignedUserFirstName(row));
+            return GetTextValue(Locators.UnassignedUser.UnassignedUserFirstName(row));
         }
 
         public string GetUnassignedUserLastName(int row)
         {
-            return GetTextValue(Locators.UnassignedUserLastName(row));
+            return GetTextValue(Locators.UnassignedUser.UnassignedUserLastName(row));
         }
 
         public string GetUnassignedUserEmail(int row)
         {
-            return GetTextValue(Locators.UnassignedUserEmail(row));
+            return GetTextValue(Locators.UnassignedUser.UnassignedUserEmail(row));
         }
 
         public string GetTextValue(By locator)
