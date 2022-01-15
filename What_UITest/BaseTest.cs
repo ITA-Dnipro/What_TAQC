@@ -17,7 +17,7 @@ namespace What_UITest.BaseTest
         [SetUp]
         public void Setup()
         {
-            Driver.Current = null;
+            //Driver.Current = null;
             Driver.Current.Manage().Window.Maximize();
             Driver.Current.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Driver.Current.Navigate().GoToUrl("http://localhost:8080/");
