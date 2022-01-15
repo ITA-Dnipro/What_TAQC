@@ -20,8 +20,8 @@ namespace What_PageObject.ChangePassword
         public static By NewPasswordField = By.XPath("//*[@id='newPassword']");
         public static By ConfirmNewPasswordField = By.XPath("//*[@id='confirmNewPassword']");
 
-        public static By SaveButton = By.XPath("//*[@id='root']/div/div/div/div/form/div/div[5]/div[2]/button");
-        public static By CancelButton = By.XPath("//*[@id='root']/div/div/div/div/form/div/div[5]/div[1]/button");
+        public static By SaveButton = By.XPath("//*[text()='Save']");
+        public static By CancelButton = By.XPath("//*[text()='Cancel']");
 
         public static By ConfirmButtonInModalWindow = By.XPath("/html/body/div[3]/div/div/div[3]/button[2]");
         public static By CancelButtonInModalWindow = By.XPath("/html/body/div[3]/div/div/div[3]/button[1]");

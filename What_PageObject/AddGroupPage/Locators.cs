@@ -19,5 +19,8 @@ namespace What_PageObject.AddGroupPage
         private By plusStudentsButton = By.CssSelector("//*[@id='root']/div/div/div/div/form/div[6]/div[2]/div[1]/button"); //найти
         private By clearAllButton = By.XPath("//*[text()='Clear all']");
         private By createButton = By.XPath("//*[text()='Create']");
+
+        private By groupsTable = By.XPath("//*[text()='Create']");
+
     }
 }
