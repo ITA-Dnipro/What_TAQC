@@ -10,7 +10,7 @@ namespace What_UITest.ChangePasswordTests
         private const string PasswordOld = "765Rt##asd4";
         private const string PasswordNew = "765Rt##asd";
 
-        SignInPageObject login;
+        SignInPage login;
 
 
 
@@ -21,9 +21,11 @@ namespace What_UITest.ChangePasswordTests
 
         public void Setup()
         {
+            
+           
 
-            login = new SignInPageObject(Driver.Current);
-            page = new ChangePasswordPage();//назвать так же 
+            login = new SignInPage(Driver.Current);
+            page = new ChangePasswordPage();
 
         }
 
