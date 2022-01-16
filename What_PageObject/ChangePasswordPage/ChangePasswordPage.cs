@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -14,14 +15,16 @@ namespace What_PageObject.ChangePassword
     {
         private WebDriverWait wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10));
 
-        public void WaitClickDropDownMenu()
+        public ChangePasswordPage WaitClickDropDownMenu()
         {
             wait.Until(e => e.FindElement(By.XPath("//tbody/tr")));
             ClickElement(Locators.DropDownButton);
+            return this;
         }
-        public void ClickChangePasswordButton()
+        public ChangePasswordPage ClickChangePasswordButton()
         {
             ClickElement(Locators.ChangePasswordIcon);
+            return this;
         }
 
         public ChangePasswordPage FillCurrentPasswordField(string passwordText)
@@ -42,52 +45,68 @@ namespace What_PageObject.ChangePassword
             return this;
         }
 
-        public void ClickSaveButton()
+        public ChangePasswordPage ClickSaveButton()
         {
             ClickElement(Locators.SaveButton);
+            return this;
 
         }
 
-        public void ClickCancelButton()
+        public ChangePasswordPage ClickCancelButton()
         {
             ClickElement(Locators.CancelButton);
+            return this;
 
         }
 
-        public void ClickConfirmButtonInModalWindow()
+        public ChangePasswordPage ClickConfirmButtonInModalWindow()
         {
-            //
+            
             ClickElement(Locators.ConfirmButtonInModalWindow);
+            return this;
 
         }
 
-        public void ClickCancelButtonInModalWindow()
+        public ChangePasswordPage ClickCancelButtonInModalWindow()
         {
             ClickElement(Locators.CancelButtonInModalWindow);
+            return this;
 
         }
 
-        public void Logout()
+        public ChangePasswordPage Logout()
         {
             ClickElement(Locators.DropDownButton);
             ClickElement(Locators.TopDropdownLogoutButton);
+            return this;
+        }
+
+        public ChangePasswordPage VerifyCompleteChangesPassword()
+        {
+            Assert.AreEqual("http://localhost:8080/mentors", Driver.Current.Url);
+            return this;
+
         }
 
 
-        public string FlashMassage()
+        public ChangePasswordPage VerifyFlashMassage()
         {
             wait.Until(e => e.FindElement(By.XPath("//tbody/tr")));
-            return Driver.Current.FindElement(By.XPath("//*[@id='root']/div[1]/div")).Text;
+            Assert.AreEqual((""),Driver.Current.FindElement(By.XPath("//*[@id='root']/div[1]/div")).Text);
+            return this;
          }
 
-        public void Waiter()
+        public ChangePasswordPage Waiter()
         {
             wait.Until(e => e.FindElement(By.XPath("//tbody/tr")));
+            return this;
+
             
         }
-        public void WaiterLogin()
+        public ChangePasswordPage WaiterLogin()
         {
             wait.Until(e => e.FindElement(By.XPath("//*[@id='email']")));
+            return this;
 
         }
 

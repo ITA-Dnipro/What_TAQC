@@ -1,10 +1,14 @@
-﻿using What_Common.Resources;
+﻿using OpenQA.Selenium;
+//using ResetPassword.Locators;
+using What_PageObject;
+using What_Common.Resources;
 using What_PageObject;
 
 namespace ResetPassword
 {
     public class ResetPasswordPage : BasePage
     {
+      
         public ResetPasswordPage FillEmail(string email)
         {
             FillField(Locators.ResetPassword.emailAddressField, email);

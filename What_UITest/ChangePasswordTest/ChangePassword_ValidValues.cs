@@ -7,50 +7,48 @@ namespace What_UITest.ChangePasswordTests
 {
     public class ChangePassword_ValidValues : BaseTest
     {
-        private const string PasswordNew = "765Rt##asd4";
-        private const string PasswordOld = "765Rt##asd";
-        private ChangePasswordPage page;
-        private SignInPageObject login;
+        private const string PasswordOld = "765Rt##asd4";
+        private const string PasswordNew = "765Rt##asd";
+
+        SignInPage login;
+
+
+
+        ChangePasswordPage page;
 
         [SetUp]
 
 
         public void Setup()
         {
-            login = new SignInPageObject(Driver.Current);
+            
+           
+
+            login = new SignInPage(Driver.Current);
             page = new ChangePasswordPage();
+
         }
+
+
 
         [Test]
         public void ChangePasswordAsSecretary()
         {
-            login.LogIn("Adrian@secretar.com", PasswordOld, null);
-            page.WaitClickDropDownMenu();
-            page.ClickChangePasswordButton();
-            page.FillCurrentPasswordField(PasswordOld)
+            login.LogIn("Adrian@secretar.com", PasswordOld, "http://localhost:8080/");
+            page.WaitClickDropDownMenu()
+                 .ClickChangePasswordButton()
+                 .FillCurrentPasswordField(PasswordOld)
                  .FillNewPasswordField(PasswordNew)
                  .FillConfirmNewPasswordField(PasswordNew)
-                 .ClickSaveButton();
-
-
-            page.ClickConfirmButtonInModalWindow();
-            page.FlashMassage();
-
-
-
-            page.Logout();
-
-
-
-            page.WaiterLogin();
-
-            login.LogIn("Adrian@secretar.com", PasswordNew, null);
-
-
-            page.Waiter();
-            Assert.AreEqual("http://localhost:8080/mentors", Driver.Current.Url);
-
-            page.Logout();
+                 .ClickSaveButton()
+                 .ClickConfirmButtonInModalWindow()
+                 .VerifyFlashMassage()
+                 .Logout();
+               page.WaiterLogin();
+               login.LogIn("Adrian@secretar.com", PasswordNew, "http://localhost:8080/");
+               page.Waiter()
+               .VerifyCompleteChangesPassword()
+               .Logout();
 
 
         }
@@ -61,7 +59,7 @@ namespace What_UITest.ChangePasswordTests
         {
 
 
-            ChangePasswordBack();
+            ChangePasswordBack();//найти ему своем место
 
 
         }
@@ -69,16 +67,14 @@ namespace What_UITest.ChangePasswordTests
         private void ChangePasswordBack()
         {
             login.LogIn("Adrian@secretar.com", PasswordNew, null);
-            page.WaitClickDropDownMenu();
-            page.ClickChangePasswordButton();
-            page.FillCurrentPasswordField(PasswordNew)
-                 .FillNewPasswordField(PasswordOld)
-                 .FillConfirmNewPasswordField(PasswordOld)
-                 .ClickSaveButton();
-
-
-            page.ClickConfirmButtonInModalWindow();
-            page.FlashMassage();
+            page.WaitClickDropDownMenu()
+             .ClickChangePasswordButton()
+             .FillCurrentPasswordField(PasswordNew)
+             .FillNewPasswordField(PasswordOld)
+             .FillConfirmNewPasswordField(PasswordOld)
+             .ClickSaveButton()
+             .ClickConfirmButtonInModalWindow()
+             .VerifyFlashMassage();
 
         }
 
