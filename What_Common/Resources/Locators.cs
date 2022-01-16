@@ -124,5 +124,24 @@ namespace What_Common.Resources
             public static By UnassignedUserEmail(int row) => By.XPath($"//tbody/tr[{row}]/td[3]");
             public static By NavigateToPage(int page) => By.XPath($"//ul[2]/li[{page}]");
         }
+
+        public static class SignIn
+        {
+            public static readonly By SignInButton = By.XPath("//*[@class='btn button__default___3hOmG button__button___24ZfP auth__form-button___3KEpa']");
+            public static readonly By EmailField = By.XPath("//*[@id='email']");
+            public static readonly By PasswordField = By.XPath("//*[@id='password']");
+            public static readonly By RegistrationButton = By.XPath("//*[contains(text(),'Registration')]");
+            public static readonly By ForgotPasswordButton = By.XPath("//*[contains(text(),'Forgot Password?')]");
+        }
+
+        public static class Students
+        {
+            public static readonly By UploadStudent = By.XPath("//*[contains(text(),'Upload student')]");
+            public static readonly By AddStudentButton = By.XPath("//*[contains(text(),'Add a student')]");
+            public static readonly By DisabledStudents = By.XPath("//*[contains(text(),'Disabled students')]");
+            public static readonly By SortByName = By.XPath("//*[contains(text(),'Name')]");
+            public static readonly By SortBySurname = By.XPath("//*[contains(text(),'Surname')]");
+            public static readonly By SortByEmail = By.XPath("//*[contains(text(),'Email')]");
+        }
     }
 }
