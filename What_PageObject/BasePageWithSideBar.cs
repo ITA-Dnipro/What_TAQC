@@ -1,7 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using What_Common.Resources;
 using What_PageObject.Secretaries;
+using What_PageObject.SchedulesPage;
+using What_PageObject.UnassignedUsersPage;
 
 namespace What_PageObject
 {
@@ -17,6 +19,8 @@ namespace What_PageObject
             //[typeof(CoursesPage)] = "Courses",
             //[typeof(SchedulePage)] = "Schedule",
             //[typeof(UnassignedUserPage)] = "Assignment",
+            [typeof(SchedulePage)] = "Schedule",
+            [typeof(UnassignedUserPage)] = "Assignment",
         };
 
         public T SidebarNavigateTo<T>() where T : BasePage

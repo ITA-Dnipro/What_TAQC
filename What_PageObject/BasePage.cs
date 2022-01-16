@@ -1,6 +1,7 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
+
 using What_Common.DriverManager;
 
 namespace What_PageObject
@@ -31,6 +32,7 @@ namespace What_PageObject
         protected T GetPageInstance<T>() where T : BasePage
         {
             T foundPage = null;
+          
             foundPage = (T)Activator.CreateInstance(typeof(T));
 
             return foundPage;

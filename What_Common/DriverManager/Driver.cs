@@ -11,12 +11,13 @@ namespace What_Common.DriverManager
     public class Driver
     {
         public const string url = "http://localhost:8080/";
+     
         public Driver()
         {
 
         }
-
         private static IWebDriver driver;
+
 
         public static IWebDriver Current
         {

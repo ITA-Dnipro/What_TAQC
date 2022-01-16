@@ -9,6 +9,7 @@ namespace What_Common.Resources
     public class Resources
     {
         public const string WhatUrl = "http://localhost:8080/";
+      
         public static class ForgotPassword
         {
             public const string modalWindowText = "Please check your email and follow the link to reset your password.";

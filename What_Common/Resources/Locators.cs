@@ -8,6 +8,7 @@ namespace What_Common.Resources
         {
             public static By ClickToNavbarMenu(string page) => By.XPath($"//span[contains(.,'{page}')]");
         }
+
         public static class SignIn
         {
             public static readonly By SignInButton = By.XPath("//*[@class='btn button__default___3hOmG button__button___24ZfP auth__form-button___3KEpa']");
@@ -24,6 +25,7 @@ namespace What_Common.Resources
             public const string registrationButtonExpectedResult = "//*[@class='btn button__default___3hOmG button__button___24ZfP btn btn-block btn-info']";
             public const string forgotPasswordButtonExpectedResult = "//*[contains(text(),'Forgot your password?')]";
         }
+      
         public static class ResetPassword
         {
             public static By emailAddressField = By.XPath("//input[@id='email']");
@@ -82,6 +84,7 @@ namespace What_Common.Resources
             public static By ASSIGNMENTS_PAGE_LINK = By.XPath("//a[@data-id=\"7\"]");
             public static By HOMEWORK_PAGE_LINK = By.XPath("//a[@data-id=\"8\"]");
         }
+      
         public static class ListOfSecretaryPage
         {
             public static By
@@ -129,7 +132,7 @@ namespace What_Common.Resources
                 resetButton = By.XPath("//button[text()='Reset']"),
                 saveButton = By.XPath("//button[text()='Save']");
         }
-
+      
         public static class ListOfCoursesPage
         {
             public static By PREV_PAGE_BTN = By.XPath("//button[text()=\"<\"]");
