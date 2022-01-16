@@ -13,7 +13,6 @@ namespace What_UITest
 {
     public class VerifyThatPasswordResetRequestCanWasSend : BaseTest.BaseTest
     {
-        const string tempEmail = "thomas.roberts@example.com";
 
         [SetUp]
         public void Setup()
@@ -25,7 +24,7 @@ namespace What_UITest
         [TestCase(Resources.ForgotPassword.modalWindowText)]
         public void VerifyThatPasswordResetRequestCanWasSend_ValidValues(string expected)
         {
-            LoginDetails admin = Controller.GetUser("admin");
+            LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
             ForgotPasswordPage forgotPassword = new ForgotPasswordPage(Driver.Current);
             forgotPassword.ClickForgotPasswordLink()
                 .FillEmailField(admin.Email)
