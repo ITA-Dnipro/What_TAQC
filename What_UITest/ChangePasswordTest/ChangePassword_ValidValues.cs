@@ -32,7 +32,7 @@ namespace What_UITest.ChangePasswordTests
         [Test]
         public void ChangePasswordAsSecretary()
         {
-            login.LogIn("Adrian@secretar.com", PasswordOld, null);
+            login.LogIn("Adrian@secretar.com", PasswordOld, "http://localhost:8080/");
             page.WaitClickDropDownMenu()
                  .ClickChangePasswordButton()
                  .FillCurrentPasswordField(PasswordOld)
@@ -43,7 +43,7 @@ namespace What_UITest.ChangePasswordTests
                  .VerifyFlashMassage()
                  .Logout();
                page.WaiterLogin();
-               login.LogIn("Adrian@secretar.com", PasswordNew, null);
+               login.LogIn("Adrian@secretar.com", PasswordNew, "http://localhost:8080/");
                page.Waiter()
                .VerifyCompleteChangesPassword()
                .Logout();
