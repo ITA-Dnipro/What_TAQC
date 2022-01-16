@@ -1,34 +1,31 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using What_Common.DriverManager;
+using What_Common.Resources;
 using What_PageObject.RegistrationPage;
 
 namespace What_UITest.RegistrationTest
 {
-    internal class RegistrationTestInvalid : BaseTest.BaseTest
+    internal class RegistrationTestInvalid : BaseTest
     {
+        private RegistrationPage registrationPage;
+        [SetUp]
         public void Setup()
         {
-            basePage.ClickElement(Locators.Registration);
-
+            registrationPage = new RegistrationPage()
+                  .ClickRegistrationButton(Locators.RegistrationPage.Registration);
         }
 
         [Test]
         public void UnnasignedUserCantRegister()
         {
-            registrationPage.EnterFirstName(Resources.empty)
-            .EnterLastName(Resources.empty)
-            .EnterEmailAdress(Resources.empty)
-            .EnterPassword(Resources.empty)
-            .EnterConfirmPassword(Resources.empty);
-            basePage.ClickElement(Locators.ButtonSignUp);
-            var IslModalWindow = "";
-            Assert.AreEqual(Resources.ErrorFieldName, IslModalWindow);
+            registrationPage.FillFirstName(Resources.empty)
+            .FillLastName(Resources.empty)
+            .VerifyErrorMassage(Resources.ErrorFieldName)
+            .FillEmailAdress(Resources.empty)
+            .VerifyErrorMassage(Resources.ErrorFieldName)
+            .FillPassword(Resources.empty)
+            .VerifyErrorMassage(Resources.ErrorFieldName)
+            .FillConfirmPassword(Resources.empty)
+            .VerifyErrorMassage(Resources.ErrorFieldName);
         }
     }
 }

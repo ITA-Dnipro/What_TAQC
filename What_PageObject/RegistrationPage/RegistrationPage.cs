@@ -1,41 +1,93 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using What_Common.DriverManager;
+using What_Common.Resources;
 
 namespace What_PageObject.RegistrationPage
 {
-    public class RegistrationPage : BasePage.BasePage
+    public class RegistrationPage : BasePage
     {
         public RegistrationPage()
         {
         }
 
-        public RegistrationPage EnterFirstName(string FirstName)
+        public RegistrationPage FillFirstName(string firstName)
         {
-            EnterField(Locators.FieldFirstName, FirstName);
+            EnterField(Locators.RegistrationPage.FirstNameField, firstName);
             return this;
         }
-        public RegistrationPage EnterLastName(string LastName)
+        public RegistrationPage FillLastName(string lastName)
         {
-            EnterField(Locators.FieldLastName, LastName);
+            EnterField(Locators.RegistrationPage.LastNameField, lastName);
             return this;
         }
-        public RegistrationPage EnterEmailAdress(string Email)
+        public RegistrationPage FillEmailAdress(string email)
         {
-            EnterField(Locators.FieldEmailAdress, Email);
+            EnterField(Locators.RegistrationPage.EmailAdressField, email);
             return this;
         }
-        public RegistrationPage EnterPassword(string Password)
+        public RegistrationPage FillPassword(string password)
         {
-            EnterField(Locators.FieldPassword, Password);
+            EnterField(Locators.RegistrationPage.PasswordField, password);
             return this;
         }
-        public RegistrationPage EnterConfirmPassword(string Password)
+        public RegistrationPage FillConfirmPassword(string password)
         {
-            EnterField(Locators.FieldConfirmPassword, Password);
+            EnterField(Locators.RegistrationPage.ConfirmPasswordField, password);
             return this;
         }
+        public RegistrationPage VerifyFirstNameFilled(string expected)
+        {
+            string actual = Driver.Current.FindElement(Locators.RegistrationPage.FirstNameField).GetAttribute("value");
+            Assert.AreEqual(expected, actual);
+            return this;
+        }
+        public RegistrationPage VerifyLastNameFilled(string expected)
+        {
+            string actual = Driver.Current.FindElement(Locators.RegistrationPage.LastNameField).GetAttribute("value");
+            Assert.AreEqual(expected, actual);
+            return this;
+        }
+        public RegistrationPage VerifyEmailAdressFilled(string expected)
+        {
+            string actual = Driver.Current.FindElement(Locators.RegistrationPage.EmailAdressField).GetAttribute("value");
+            Assert.AreEqual(expected, actual);
+            return this;
+        }
+        public RegistrationPage VerifyPasswordFilled(string expected)
+        {
+            string actual = Driver.Current.FindElement(Locators.RegistrationPage.PasswordField).GetAttribute("value");
+            Assert.AreEqual(expected, actual);
+            return this;
+        }
+        public RegistrationPage VerifyConfirmPasswordFilled(string expected)
+        {
+            string actual = Driver.Current.FindElement(Locators.RegistrationPage.ConfirmPasswordField).GetAttribute("value");
+            Assert.AreEqual(expected, actual);
+            return this;
+        }
+        public RegistrationPage VerifyErrorMassage(string expectedMassage)
+        {
+            string actualMassage = Driver.Current.FindElement(Locators.RegistrationPage.ErrorField).Text;
+            Assert.AreEqual(expectedMassage, actualMassage);
+            return this;
+        }
+        public RegistrationPage ClickSignUpButton(By signUpButton)
+        {
+            ClickElement(signUpButton);
+            return this;
+        }
+        public RegistrationPage ClickRegistrationButton(By registrationButton)
+        {
+            ClickElement(registrationButton);
+            return this;
+        }
+        public RegistrationPage VerifyRegistration()
+        {
+            var window = wait.Until(e => e.FindElement(Locators.RegistrationPage.NamePageRegistration));
+            var IslModalWindow = window.Displayed;
+            Assert.IsTrue(IslModalWindow);
+            return this;
+        }               
     }
 }

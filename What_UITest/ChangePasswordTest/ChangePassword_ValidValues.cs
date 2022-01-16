@@ -1,96 +1,83 @@
-﻿using NUnit.Framework;
-using NUnit.Framework.Interfaces;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
-using System.IO;
-using System.Reflection;
-using System.Threading;
-using What_PageObject.ChangePassword;
-using What_UITest.ChangePasswordTests;
+﻿//using NUnit.Framework;
+//using What_Common.DriverManager;
+//using What_PageObject.ChangePassword;
+//using What_PageObject.SignInPage;
 
-namespace What_UITest
-{
-    public class ChangePassword_ValidValues
-    {
-        private const string PasswordNew = "765Rt##asd4";
-        private const string PasswordOld = "765Rt##asd";
-        Login login;
+//namespace What_UITest.ChangePasswordTests
+//{
+//    public class ChangePassword_ValidValues : BaseTest
+//    {
+//        private const string PasswordOld = "765Rt##asd4";
+//        private const string PasswordNew = "765Rt##asd";
 
-        IWebDriver driver;
-
-        ChangePasswordPage page;
-
-        [SetUp]
+//        SignInPage login;
 
 
-        public void Setup()
-        {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
+
+//        ChangePasswordPage page;
+
+//        [SetUp]
 
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Navigate().GoToUrl("http://localhost:8080/");
+//        public void Setup()
+//        {
+            
+           
 
-            login = new Login(driver);
-            page = new ChangePasswordPage(driver);
+//            login = new SignInPage(Driver.Current);
+//            page = new ChangePasswordPage();
 
-
-        }
-
-
-        public void LoginAsSecretary(string email, string password)
-        {
-            login.FillEmail(email);
-            login.FillPassword(password);
-            login.ClickLoginButton();
-        }
-
-        [Test]
-        public void ChangePasswordAsSecretary()
-        {
-            LoginAsSecretary("Adrian@secretar.com", PasswordNew);
-            page.ClickDropDownMenu();
-            page.ClickChangePasswordButton();
-            page.FillCurrentPasswordField(PasswordOld)
-                 .FillNewPasswordField(PasswordNew)
-                 .FillConfirmNewPasswordField(PasswordNew)
-                 .ClickSaveButton();
-
-            Thread.Sleep(1000);
-            page.ClickConfirmButtonInModalWindow();
-
-            Thread.Sleep(1000);
-
-            //page.Logout();
+//        }
 
 
-            Thread.Sleep(1000);
 
-            LoginAsSecretary("Adrian@secretar.com", PasswordNew);
+//        [Test]
+//        public void ChangePasswordAsSecretary()
+//        {
+//            login.LogIn("Adrian@secretar.com", PasswordOld, "http://localhost:8080/");
+//            page.WaitClickDropDownMenu()
+//                 .ClickChangePasswordButton()
+//                 .FillCurrentPasswordField(PasswordOld)
+//                 .FillNewPasswordField(PasswordNew)
+//                 .FillConfirmNewPasswordField(PasswordNew)
+//                 .ClickSaveButton()
+//                 .ClickConfirmButtonInModalWindow()
+//                 .VerifyFlashMassage()
+//                 .Logout();
+//               page.WaiterLogin();
+//               login.LogIn("Adrian@secretar.com", PasswordNew, "http://localhost:8080/");
+//               page.Waiter()
+//               .VerifyCompleteChangesPassword()
+//               .Logout();
 
-            Assert.AreEqual("http://localhost:8080/mentors", driver.Url);
+
+//        }
+
+//        [TearDown]
+
+//        public void Aftertest()
+//        {
 
 
-        }
+//            ChangePasswordBack();//найти ему своем место
 
-        [TearDown]
 
-        public void Aftertest()
-        {
-            if (TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Failure))
-            {
-                string fileName = $"{TestContext.CurrentContext.Test.Name}";
-                FileInfo screenshotPath = new FileInfo($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\screenshot\\{fileName}.png");
-                Directory.CreateDirectory(screenshotPath.DirectoryName);
+//        }
 
-                ITakesScreenshot takeScreenshot = (ITakesScreenshot)driver;
-                Screenshot screenshot = takeScreenshot.GetScreenshot();
-                screenshot.SaveAsFile(screenshotPath.FullName, ScreenshotImageFormat.Png);
-            }
+//        private void ChangePasswordBack()
+//        {
+//            login.LogIn("Adrian@secretar.com", PasswordNew, null);
+//            page.WaitClickDropDownMenu()
+//             .ClickChangePasswordButton()
+//             .FillCurrentPasswordField(PasswordNew)
+//             .FillNewPasswordField(PasswordOld)
+//             .FillConfirmNewPasswordField(PasswordOld)
+//             .ClickSaveButton()
+//             .ClickConfirmButtonInModalWindow()
+//             .VerifyFlashMassage();
 
-            driver?.Quit();
-        }
-    }
-}
+//        }
+
+
+//    }
+//}

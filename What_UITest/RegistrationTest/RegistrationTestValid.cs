@@ -2,32 +2,37 @@
 using OpenQA.Selenium.Support.UI;
 using System;
 using What_Common.DriverManager;
-using What_PageObject.BasePage;
+using What_Common.Resources;
+using What_PageObject;
 using What_PageObject.RegistrationPage;
 
 namespace What_UITest.RegistrationTest
 {
-    internal class RegistrationTestValid : BaseTest.BaseTest
+    internal class RegistrationTestValid : BaseTest
     {
+        private RegistrationPage registrationPage;
+        [SetUp]
         public void Setup()
         {
-            basePage.ClickElement(Locators.Registration);
-            
+            registrationPage = new RegistrationPage()
+                 .ClickRegistrationButton(Locators.RegistrationPage.Registration);
         }
 
         [Test]
         public void UnnasignedUserCanRegister()
         {
-            registrationPage.EnterFirstName(Resources.firstName)
-            .EnterLastName(Resources.lastName)
-            .EnterEmailAdress(Resources.Email)
-            .EnterPassword(Resources.Password)
-            .EnterConfirmPassword(Resources.Password);
-            basePage.ClickElement(Locators.ButtonSignUp);
-            var wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10))
-                        .Until(driver => driver.FindElement(Locators.NameModalWindowPageRegistration));
-            var IslModalWindow = wait.Displayed;
-            Assert.IsTrue(IslModalWindow);
+            registrationPage.FillFirstName(Resources.firstName)
+            .VerifyFirstNameFilled(Resources.firstName)
+            .FillLastName(Resources.lastName)
+            .VerifyLastNameFilled(Resources.lastName)
+            .FillEmailAdress(Resources.Email)
+            .VerifyEmailAdressFilled(Resources.Email)
+            .FillPassword(Resources.Password)
+            .VerifyPasswordFilled(Resources.Password)
+            .FillConfirmPassword(Resources.Password)
+            .VerifyConfirmPasswordFilled(Resources.Password)
+            .ClickSignUpButton(Locators.RegistrationPage.SignUpButton)
+            .VerifyRegistration();
         }
 
     }

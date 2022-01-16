@@ -5,27 +5,20 @@ using System;
 using System.IO;
 using System.Reflection;
 using What_Common.DriverManager;
-using What_Common.Resources;
-using What_PageObject.BasePage;
-using What_PageObject.RegistrationPage;
-using Resources = What_Common.Resources.Resources;
 
-namespace What_UITest.BaseTest
-
+namespace What_UITest
 {
-    internal class BaseTest
+    public class BaseTest
     {
-        protected BasePage basePage;
-        protected RegistrationPage registrationPage;
         [SetUp]
         public void Setup()
         {
+            Driver.Current = null;
             Driver.Current.Manage().Window.Maximize();
             Driver.Current.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            Driver.Current.Navigate().GoToUrl(Resources.url);
-            registrationPage = new RegistrationPage();
-            basePage = new BasePage();
+            Driver.Current.Navigate().GoToUrl("http://localhost:8080");
         }
+
         [TearDown]
         public void AfterTest()
         {
@@ -44,10 +37,3 @@ namespace What_UITest.BaseTest
         }
     }
 }
-
-
-    
-
-
-
-    
