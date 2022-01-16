@@ -105,31 +105,33 @@ namespace What_PageObject.Course
         /// <summary>
         /// Redirect you to edit Course Page
         /// </summary>
+        /// <param name="courseName">Name of course</param>
         /// <returns>Edit Course Page</returns>
-        public EditCourse ClickEditButton()
+        public EditCoursePage ClickEditButton(string courseName)
         {
             ClickElement(Locators.ListOfCoursesPage.EditCourseElement);
-            return new EditCourse(driver);
+            return new EditCoursePage(driver, courseName);
         }
 
         /// <summary>
         /// Redirect you to details Course Page
         /// </summary>
+        /// <param name="courseName">Name of course</param>
         /// <returns>Course Details Page</returns>
-        public CourseDetails ClickDetailsButton()
+        public CourseDetailsPage ClickDetailsButton(string courseName)
         {
             ClickElement(Locators.ListOfCoursesPage.CourseDetailsInRowElement);
-            return new CourseDetails(driver);
+            return new CourseDetailsPage(driver, courseName);
         }
 
         /// <summary>
         /// Redirect you to AddCourse page
         /// </summary>
         /// <returns>Add Course Page</returns>
-        public AddCourse ClickAddCourseButton()
+        public AddCoursePage ClickAddCourseButton()
         {
             ClickElement(Locators.ListOfCoursesPage.AddCourseButton);
-            return new AddCourse(driver);
+            return new AddCoursePage(driver);
         }
 
         //public void MouseHover()
