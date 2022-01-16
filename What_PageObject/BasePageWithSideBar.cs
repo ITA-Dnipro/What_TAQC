@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using What_Common.Resources;
+using What_PageObject.Secretaries;
+
+namespace What_PageObject
+{
+    public class BasePageWithSideBar : BasePage
+    {
+        private readonly Dictionary<Type, string> sidebarLabels = new Dictionary<Type, string>()
+        {
+            //[typeof(StudentsPage)] = "Students",
+            //[typeof(MentorsPage)] = "Mentors",
+            [typeof(SecretariesPage)] = "Secretaries",
+            //[typeof(LessonsPage)] = "Lessons",
+            //[typeof(GroupsPage.GroupsPage)] = "Groups",
+            //[typeof(CoursesPage)] = "Courses",
+            //[typeof(SchedulePage)] = "Schedule",
+            //[typeof(UnassignedUserPage)] = "Assignment",
+        };
+
+        public T SidebarNavigateTo<T>() where T : BasePage
+        {
+            ClickElement(Locators.CommonLocator.ClickToNavbarMenu(sidebarLabels[typeof(T)]));
+            var nextPage = GetPageInstance<T>();
+
+            return nextPage;
+        }
+    }
+}

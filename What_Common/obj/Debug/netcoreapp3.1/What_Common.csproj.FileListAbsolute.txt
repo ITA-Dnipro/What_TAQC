@@ -1,0 +1,16 @@
+Z:\Work\What_TAQC\What_Common\bin\Debug\netcoreapp3.1\What_Common.exe
+Z:\Work\What_TAQC\What_Common\bin\Debug\netcoreapp3.1\What_Common.deps.json
+Z:\Work\What_TAQC\What_Common\bin\Debug\netcoreapp3.1\What_Common.runtimeconfig.json
+Z:\Work\What_TAQC\What_Common\bin\Debug\netcoreapp3.1\What_Common.runtimeconfig.dev.json
+Z:\Work\What_TAQC\What_Common\bin\Debug\netcoreapp3.1\What_Common.dll
+Z:\Work\What_TAQC\What_Common\bin\Debug\netcoreapp3.1\What_Common.pdb
+Z:\Work\What_TAQC\What_Common\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+Z:\Work\What_TAQC\What_Common\bin\Debug\netcoreapp3.1\WebDriver.Support.dll
+Z:\Work\What_TAQC\What_Common\bin\Debug\netcoreapp3.1\WebDriver.dll
+Z:\Work\What_TAQC\What_Common\obj\Debug\netcoreapp3.1\What_Common.GeneratedMSBuildEditorConfig.editorconfig
+Z:\Work\What_TAQC\What_Common\obj\Debug\netcoreapp3.1\What_Common.AssemblyInfoInputs.cache
+Z:\Work\What_TAQC\What_Common\obj\Debug\netcoreapp3.1\What_Common.AssemblyInfo.cs
+Z:\Work\What_TAQC\What_Common\obj\Debug\netcoreapp3.1\What_Common.csproj.CoreCompileInputs.cache
+Z:\Work\What_TAQC\What_Common\obj\Debug\netcoreapp3.1\What_Common.dll
+Z:\Work\What_TAQC\What_Common\obj\Debug\netcoreapp3.1\What_Common.pdb
+Z:\Work\What_TAQC\What_Common\obj\Debug\netcoreapp3.1\What_Common.genruntimeconfig.cache
