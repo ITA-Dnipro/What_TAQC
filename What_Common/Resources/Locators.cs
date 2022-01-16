@@ -8,6 +8,22 @@ namespace What_Common.Resources
         {
             public static By ClickToNavbarMenu(string page) => By.XPath($"//span[contains(.,'{page}')]");
         }
+        public static class SignIn
+        {
+            public static readonly By SignInButton = By.XPath("//*[@class='btn button__default___3hOmG button__button___24ZfP auth__form-button___3KEpa']");
+            public static readonly By EmailField = By.XPath("//*[@id='email']");
+            public static readonly By PasswordField = By.XPath("//*[@id='password']");
+
+            public const string RegistrationButton = "//*[contains(text(),'Registration')]";
+            public const string ForgotPasswordButton = "//*[contains(text(),'Forgot Password?')]";
+
+            public const string logInAsAdminExpectedResult = "//*[contains(text(),'Add a student')]";
+            public const string logInAsSecretaryExpectedResult = "//*[contains(text(),'Add a mentor')]";
+            public const string logInAsMentorExpectedResult = "//*[contains(text(),'Add a lesson')]";
+            public const string logInAsStudentExpectedResult = "//*[@class='custom-control-label list-of-courses__custom-control-label___3hlig']";
+            public const string registrationButtonExpectedResult = "//*[@class='btn button__default___3hOmG button__button___24ZfP btn btn-block btn-info']";
+            public const string forgotPasswordButtonExpectedResult = "//*[contains(text(),'Forgot your password?')]";
+        }
         public static class ResetPassword
         {
             public static By emailAddressField = By.XPath("//input[@id='email']");
@@ -20,6 +36,20 @@ namespace What_Common.Resources
             public static By confirmButtonError = By.XPath("//button[text()='Confirm']/../following-sibling::div[contains(@class,'text-danger')]");
             public static By backButton = By.XPath("//button[text()='Back']");
             public static By xButton = By.XPath("//span[@aria-hidden='true']");
+        }
+
+        public static class ForgotPassword
+        {
+            public static By
+                forgotPasswordLabel = By.XPath("//*[contains(text(),'Forgot your password?')]"),
+                emailAddressField = By.XPath("//input[@id='email']"),
+                emailAddressError = By.XPath("//*[@class='text-danger mt-2']"),
+                sendButton = By.XPath("//button[text()='Send']"),
+                sendButtonError = By.XPath("//*[@class='text-center text-danger mt-2']"),
+                backButton = By.XPath("//button[text()='Back']"),
+                xButton = By.XPath("//span[@aria-hidden='true']"),
+                forgotPasswordLink = By.XPath("//*[contains(text(),'Forgot Password?')]"),
+                modalWindowText = By.XPath("//*[@class='modal-window__modal-body___3v1gd modal-body']");
         }
 
         public static class MyProfilePage
@@ -51,6 +81,53 @@ namespace What_Common.Resources
             public static By SCHEDULES_PAGE_LINK = By.XPath("//a[@data-id=\"6\"]");
             public static By ASSIGNMENTS_PAGE_LINK = By.XPath("//a[@data-id=\"7\"]");
             public static By HOMEWORK_PAGE_LINK = By.XPath("//a[@data-id=\"8\"]");
+        }
+        public static class ListOfSecretaryPage
+        {
+            public static By
+                cardsButton = By.XPath("//div[@class='btn-group']/child::button/following-sibling::button"),
+                //tableButton = By.XPath("//*[@id=\"root\"]/div/div/div[2]/div[1]/div/div[1]/div/button[1]"),
+                searchField = By.XPath("//input[@placeholder=\"Secretary`s name\"]"),
+                paginationArrowLeftInTop = By.XPath("//button[text()=\"<\"]"),
+                paginationArrowRightInTop = By.XPath("//button[text()=\">\"]"),
+                paginationArrowLeftInBottom = By.XPath("//button[text()=\"<\"]"),
+                paginationArrowRightInBottom = By.XPath("//button[text()=\">\"]"),
+                rowsSelected = By.XPath("//div[@class='btn-group']/child::button/preceding-sibling::button"),
+                disabledCheckbox = By.XPath("//input[@type=\"checkbox\"]"),
+                addButton = By.XPath("//span[text()=\"Add a secretary\"]/.."),
+                sortByName = By.XPath("//span[@data-sorting-param=\"name\"]"),
+                sortBySurname = By.XPath("//span[@data-sorting-param=\"surname\"]"),
+                sortByEmail = By.XPath("//span[@data-sorting-param=\"email\"]"),
+                detailsButtonTable = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[text()=\"john.williams@example.com\"]"),
+                detailsButtonCards = By.XPath("//div[text()=\"john.williams@example.com\"]/following-sibling::button"),
+                editButtonInCards = By.XPath("//div[text()=\"john.williams@example.com\"]/following-sibling::button/following-sibling::div"),
+                editButtonInTable = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[@class=\"text-center\"]");
+                //secretaryNotFoundError = By.XPath("//*[@id=\"root\"]/div/div/div[2]/div[1]/table/tbody/tr/td"),
+                //elementsInTable = By.XPath("//tr[@class = 'list-of-lessons__table-row___16_kJ
+        }
+        public static class SecretaryDetails
+        {
+            public static By
+                detailsTab = By.XPath("//a[text()=\"Secretary's details\"]"),
+                editDetailsTab = By.XPath("//a[text()='Edit secretary']"),
+                arrowBackButton = By.XPath("//a[contains(@class, 'align-items-center') and @href='/secretaries']");
+                //firstNameLink = By.XPath("//input[@placeholder='First Name:']"),
+                //lastNameLink = By.XPath("//input[@placeholder='Last Name:']"),
+                //emailLink = By.XPath("//input[@placeholder='Email:']");
+        }
+
+        public static class EditSecretaryDetails
+        {
+            public static By
+                detailsTab = By.XPath("//a[text()=\"Secretary's details\"]"),
+                editDetailsTab = By.XPath("//a[text()='Edit secretary']"),
+                arrowBackButton = By.XPath("//a[contains(@class, 'align-items-center') and @href='/secretaries']"),
+                firstNameField = By.XPath("//input[@placeholder='First Name']"),
+                lastNameField = By.XPath("//input[@placeholder='Last Name']"),
+                emailField = By.XPath("//input[@placeholder='Email']"),
+                layOffButton = By.XPath("//button[text()='Lay off']"),
+                resetButton = By.XPath("//button[text()='Reset']"),
+                saveButton = By.XPath("//button[text()='Save']");
         }
 
         public static class ListOfCoursesPage
@@ -123,25 +200,6 @@ namespace What_Common.Resources
             public static By UnassignedUserLastName(int row) => By.XPath($"//tbody/tr[{row}]/td[2]");
             public static By UnassignedUserEmail(int row) => By.XPath($"//tbody/tr[{row}]/td[3]");
             public static By NavigateToPage(int page) => By.XPath($"//ul[2]/li[{page}]");
-        }
-
-        public static class SignIn
-        {
-            public static readonly By SignInButton = By.XPath("//*[@class='btn button__default___3hOmG button__button___24ZfP auth__form-button___3KEpa']");
-            public static readonly By EmailField = By.XPath("//*[@id='email']");
-            public static readonly By PasswordField = By.XPath("//*[@id='password']");
-            public static readonly By RegistrationButton = By.XPath("//*[contains(text(),'Registration')]");
-            public static readonly By ForgotPasswordButton = By.XPath("//*[contains(text(),'Forgot Password?')]");
-        }
-
-        public static class Students
-        {
-            public static readonly By UploadStudent = By.XPath("//*[contains(text(),'Upload student')]");
-            public static readonly By AddStudentButton = By.XPath("//*[contains(text(),'Add a student')]");
-            public static readonly By DisabledStudents = By.XPath("//*[contains(text(),'Disabled students')]");
-            public static readonly By SortByName = By.XPath("//*[contains(text(),'Name')]");
-            public static readonly By SortBySurname = By.XPath("//*[contains(text(),'Surname')]");
-            public static readonly By SortByEmail = By.XPath("//*[contains(text(),'Email')]");
         }
     }
 }
