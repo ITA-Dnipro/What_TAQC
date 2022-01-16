@@ -6,7 +6,6 @@ namespace What_PageObject
 {
     public abstract class BasePage
     {
-        protected Header header = new Header();
         protected WebDriverWait wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10));
         List<BasePage> pages = new List<BasePage>();
 
