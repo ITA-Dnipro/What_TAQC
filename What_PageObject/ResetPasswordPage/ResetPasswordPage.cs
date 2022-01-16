@@ -1,39 +1,37 @@
 ﻿using OpenQA.Selenium;
-using PageObject;
-using ResetPassword.Locators;
-
+//using ResetPassword.Locators;
+using What_PageObject;
+using What_Common.Resources;
+using What_PageObject;
 
 namespace ResetPassword
 {
     public class ResetPasswordPage : BasePage
     {
-        public ResetPasswordPage(IWebDriver driver) : base(driver)
-        {
-        }
-
+      
         public ResetPasswordPage FillEmail(string email)
         {
-            FillField(ResetPasswordLocator.emailAddressField, email);
+            FillField(Locators.ResetPassword.emailAddressField, email);
             return this;
         }
         public ResetPasswordPage FillNewPassword(string password)
         {
-            FillField(ResetPasswordLocator.newPasswordField, password);
+            FillField(Locators.ResetPassword.newPasswordField, password);
             return this;
         }
         public ResetPasswordPage FillConfirmPassword(string password)
         {
-            FillField(ResetPasswordLocator.confirmPasswordField, password);
+            FillField(Locators.ResetPassword.confirmPasswordField, password);
             return this;
         }
         public ResetPasswordPage ClickConfirmButton()
         {
-            ClickItem(ResetPasswordLocator.confirmButton);
+            ClickElement(Locators.ResetPassword.confirmButton);
             return this;
         }
         public void ClickBackButton()
         {
-            ClickItem(ResetPasswordLocator.backButton);
+            ClickElement(Locators.ResetPassword.backButton);
         }
     }
 }

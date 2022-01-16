@@ -1,12 +1,12 @@
 ﻿using OpenQA.Selenium;
 using What_Common.DriverManager;
-using WHAT_PageObject.Schedules;
+using What_Common.Resources;
 
-namespace What_PageObject.Schedules
+namespace What_PageObject.SchedulesPage
 {
     public static class ScheduleHelper
     {
-        static SchedulePage schedule = new SchedulePage();
+        private static SchedulePage schedule = new SchedulePage();
 
         public static DateTime ClickArrowRandomize()
         {
@@ -57,22 +57,22 @@ namespace What_PageObject.Schedules
 
         public static string ActualFirstDayOfWeek()
         {
-            return GetDateText(Locators.DateText).Split('-')[0].Trim();
+            return GetDateText(Locators.Schedule.DateText).Split('-')[0].Trim();
         }
 
         public static string ActualLastDayOfWeek()
         {
-            return GetDateText(Locators.DateText).Split('-')[1].Trim();
+            return GetDateText(Locators.Schedule.DateText).Split('-')[1].Trim();
         }
 
         public static string ActualFirstDayOfWeekFromTable()
         {
-            return GetDateText(Locators.StartTableDateCsspath);
+            return GetDateText(Locators.Schedule.StartTableDateCsspath);
         }
 
         public static string ActualLastDayOfWeekFromTable()
         {
-            return GetDateText(Locators.EndTableDateCsspath);
+            return GetDateText(Locators.Schedule.EndTableDateCsspath);
         }
 
         public static string ExpectedFirstDayOfWeek(DateTime date)
