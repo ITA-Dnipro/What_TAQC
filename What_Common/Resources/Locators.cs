@@ -7,6 +7,10 @@ namespace What_Common.Resources
         public static class CommonLocator
         {
             public static By ClickToNavbarMenu(string page) => By.XPath($"//span[contains(.,'{page}')]");
+            public static By DropdownNameElement = By.XPath("//span[contains(@class, \"header__header__dropdown-icon___1CTJ8\")]");
+            public static By MyProfile = By.XPath("//a[text()=\"My profile\"]");
+            public static By ChangePassword = By.XPath("//a[text()=\"Change password\"]");
+            public static By LogOut = By.XPath("//a[text()=\"Log Out\"]");
         }
         public static class ResetPassword
         {
@@ -113,18 +117,21 @@ namespace What_Common.Resources
             public static By BottomRightArrowButton = By.XPath("//*[@class='row justify-content-between align-items-center mb-3 unassigned-list__paginate___2mqJX']//*[text()='>']");
             public static By SearchInputField = By.XPath("//input[@type='text']");
             public static By DropDownRowButton = By.XPath("//select[@id='change-visible-people']");
-            public static By ClickToNavbarMenuListOfUnassignedButton = By.XPath("//span[contains(.,'Assignment')]");
-            public static By FirstPagePagination = By.XPath("//ul[2]/li");
+            public static By FirstPagePagination = By.XPath("//ul[2]/li[1]");
             public static By LastPagePagination = By.XPath("//ul[2]/li[last()]");
-            public static By SortedByName = By.XPath("//th[1]/span");
-            public static By SortedBySurname = By.XPath("//th[2]/span");
-            public static By SortedByEmail = By.XPath("//th[3]/span");
+            public static By SortedByName = By.XPath("//span[text()='Name']");
+            public static By SortedBySurname = By.XPath("//span[text()='Surname']");
+            public static By SortedByEmail = By.XPath("//span[text()='Email']");
             public static By TableData = By.XPath("//tbody/tr");
+            public static By FirstNameTableData = By.XPath("//tbody/tr/td[1]");
+            public static By LastNameTableData = By.XPath("//tbody/tr/td[2]");
+            public static By EmailTableData = By.XPath("//tbody/tr/td[3]");
 
             public static By UnassignedUserFirstName(int row) => By.XPath($"//tbody/tr[{row}]/td[1]");
             public static By UnassignedUserLastName(int row) => By.XPath($"//tbody/tr[{row}]/td[2]");
             public static By UnassignedUserEmail(int row) => By.XPath($"//tbody/tr[{row}]/td[3]");
-            public static By NavigateToPage(int page) => By.XPath($"//ul[2]/li[{page}]");
+            public static By ChooseRoleAtCurrentRow(int row, int role) => By.XPath($"//tbody/tr[{row}]//option[{role}]");
+            public static By ClickToAddRoleButton(int row) => By.XPath($"//tbody/tr[{row}]//button");
         }
 
         public static class SignIn

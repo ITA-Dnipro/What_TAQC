@@ -6,7 +6,9 @@ namespace What_PageObject
 {
     public abstract class BasePage
     {
+        protected Header header = new Header();
         protected WebDriverWait wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10));
+        List<BasePage> pages = new List<BasePage>();
 
         public void ClickElement(By locator)
         {
@@ -30,7 +32,18 @@ namespace What_PageObject
         protected T GetPageInstance<T>() where T : BasePage
         {
             T? foundPage = null;
-            foundPage = (T)Activator.CreateInstance(typeof(T));
+            foreach (BasePage page in pages)
+            {
+                if (page is T)
+                {
+                    foundPage = (T)page;
+                    break;
+                }
+            }
+            if (foundPage == null)
+            {
+                foundPage = (T)Activator.CreateInstance(typeof(T));
+            }
 
             return foundPage;
         }
