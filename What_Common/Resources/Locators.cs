@@ -73,6 +73,7 @@ namespace What_Common.Resources
 
         public static class CourseDetails
         {
+            public static By CourseName = By.XPath("//div[@class='container']/descendant::div[@class='row']/child::div[@class='col-12 col-md-6']/span");
             public static By CourseDetailsTab = By.XPath("//a[text()=\"Course details\"]");
             public static By EditCourseDetailsTab = By.XPath("//a[text()='Edit course details']");
             public static By ArrowBackLink = By.XPath("//a[contains(@class, 'align-items-center') and @href='/courses']");
