@@ -2,15 +2,11 @@
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using What_Common.DriverManager;
 
-namespace What_UITest.BaseTest
+namespace What_UITest
 {
     public class BaseTest
     {
@@ -20,9 +16,9 @@ namespace What_UITest.BaseTest
             //Driver.Current = null;
             Driver.Current.Manage().Window.Maximize();
             Driver.Current.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            Driver.Current.Navigate().GoToUrl("http://localhost:8080/");
+            Driver.Current.Navigate().GoToUrl("http://localhost:8080");
         }
-        
+
         [TearDown]
         public void AfterTest()
         {

@@ -13,7 +13,7 @@ namespace What_PageObject
             //[typeof(MentorsPage)] = "Mentors",
             //[typeof(SecretariesPage)] = "Secretaries",
             //[typeof(LessonsPage)] = "Lessons",
-            //[typeof(GroupsPage.GroupsPage)] = "Groups",
+            [typeof(GroupsPage.GroupsPage)] = "Groups",
             [typeof(CoursesPage)] = "Courses",
             [typeof(SchedulePage)] = "Schedule",
             [typeof(UnassignedUserPage)] = "Assignment",
