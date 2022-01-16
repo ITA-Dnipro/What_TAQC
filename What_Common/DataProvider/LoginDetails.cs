@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace What_PageObject.DataProvider
+namespace What_Common.DataProvider
 {
     public class LoginDetails
     {
