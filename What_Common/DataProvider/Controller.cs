@@ -12,6 +12,13 @@ namespace What_Common.DataProvider
 {
     public class Controller
     {
+        public enum UserRole
+        {
+            Admin,
+            Secretary,
+            Mentor,
+            Student
+        }
         private static LoginDetails[] DeserializeObject()
         {
             LoginDetails[] users = JsonConvert.DeserializeObject<LoginDetails[]>(File.ReadAllText("user.json")); // What_TAQC/What_Common/Resources/user.json
@@ -36,24 +43,24 @@ namespace What_Common.DataProvider
             }
             return users;
         }
-        public static LoginDetails GetUser(string role)
+        public static LoginDetails GetUser(UserRole userRole)
         {
             LoginDetails[] users = DecoddingObject(DeserializeObject());
             foreach (var user in users)
             {
-                if (user.Role == "1" && role == "student")
+                if (user.Role == "1" && userRole == UserRole.Student)
                 {
                     return user;
                 }
-                if (user.Role == "2" && role == "mentor")
+                if (user.Role == "2" && userRole == UserRole.Mentor)
                 {
                     return user;
                 }
-                if (user.Role == "4" && role == "admin")
+                if (user.Role == "4" && userRole == UserRole.Admin)
                 {
                     return user;
                 }
-                if (user.Role == "8" && role == "secretary")
+                if (user.Role == "8" && userRole == UserRole.Secretary)
                 {
                     return user;
                 }
