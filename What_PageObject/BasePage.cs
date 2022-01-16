@@ -11,7 +11,6 @@ namespace What_PageObject
         public void ClickElement(By locator)
         {
             Driver.Current.FindElement(locator).Click();
-            
         }
 
         public void FillField(By locator, string text)
@@ -25,12 +24,12 @@ namespace What_PageObject
         public T WaitUntilElementLoads<T>(By locator) where T : BasePage
         {
             wait.Until(e => e.FindElement(locator));
-            return GetPageInstance<T>(Driver.Current);
+            return GetPageInstance<T>();
         }
 
-        protected T GetPageInstance<T>(params object[] args) where T : BasePage
+        protected T GetPageInstance<T>() where T : BasePage
         {
-            T foundPage = null;
+            T? foundPage = null;
             foundPage = (T)Activator.CreateInstance(typeof(T));
 
             return foundPage;

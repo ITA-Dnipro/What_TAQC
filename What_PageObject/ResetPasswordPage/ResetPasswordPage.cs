@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using ResetPassword.Locators;
+//using ResetPassword.Locators;
 using What_PageObject;
 using What_Common.Resources;
 using What_PageObject;

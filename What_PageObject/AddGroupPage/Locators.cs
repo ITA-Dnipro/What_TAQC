@@ -10,7 +10,7 @@ namespace What_PageObject.AddGroupPage
     internal class Locators
     {
         private By groupNameField = By.CssSelector("input[name='name']");
-        private By selectCourseField = By.CssSelector("select[name='courseId']");
+        private By selectCourseDropdownField = By.CssSelector("select[name='courseId']");
         private By startDateField = By.CssSelector("input[name='startDate']");
         private By finishDateField = By.CssSelector("input[name='finishDate']");
         private By mentorsField = By.CssSelector("input[name='mentors']");
