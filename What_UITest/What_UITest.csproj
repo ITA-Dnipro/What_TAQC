@@ -21,8 +21,4 @@
     <ProjectReference Include="..\What_PageObject\What_PageObject.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="StudentsTests\" />
-  </ItemGroup>
-
 </Project>
