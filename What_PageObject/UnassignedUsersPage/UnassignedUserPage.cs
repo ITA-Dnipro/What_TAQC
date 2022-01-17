@@ -1,270 +1,270 @@
-﻿//using NUnit.Framework;
-//using OpenQA.Selenium;
-//using OpenQA.Selenium.Support.UI;
-//using What_Common.DriverManager;
-//using What_Common.Resources;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using What_Common.DriverManager;
+using What_Common.Resources;
 
-//namespace What_PageObject.UnassignedUsersPage
-//{
-//    public class UnassignedUserPage : BasePageWithSideBar
-//    {
-//        private WebDriverWait wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10));
+namespace What_PageObject.UnassignedUsersPage
+{
+    public class UnassignedUserPage : BasePageWithSideBar
+    {
+        private WebDriverWait wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10));
 
-//        public UnassignedUserPage ClickNextTopButton()
-//        {
-//            ClickElement(Locators.UnassignedUser.TopRightArrowButton);
+        public UnassignedUserPage ClickNextTopButton()
+        {
+            ClickElement(Locators.UnassignedUser.TopRightArrowButton);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage ClickPrevTopButton()
-//        {
-//            ClickElement(Locators.UnassignedUser.TopLeftArrowButton);
+        public UnassignedUserPage ClickPrevTopButton()
+        {
+            ClickElement(Locators.UnassignedUser.TopLeftArrowButton);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage ClickNextBottomButton()
-//        {
-//            ClickElement(Locators.UnassignedUser.BottomRightArrowButton);
+        public UnassignedUserPage ClickNextBottomButton()
+        {
+            ClickElement(Locators.UnassignedUser.BottomRightArrowButton);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage ClickPrevBottomButton()
-//        {
-//            ClickElement(Locators.UnassignedUser.BottomLeftArrowButton);
+        public UnassignedUserPage ClickPrevBottomButton()
+        {
+            ClickElement(Locators.UnassignedUser.BottomLeftArrowButton);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage ClickSearchField()
-//        {
-//            ClickElement(Locators.UnassignedUser.SearchInputField);
+        public UnassignedUserPage ClickSearchField()
+        {
+            ClickElement(Locators.UnassignedUser.SearchInputField);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage FillSearchField(string text)
-//        {
-//            FillField(Locators.UnassignedUser.SearchInputField, text);
+        public UnassignedUserPage FillSearchField(string text)
+        {
+            FillField(Locators.UnassignedUser.SearchInputField, text);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage ClickSortByName()
-//        {
-//            ClickElement(Locators.UnassignedUser.SortedByName);
+        public UnassignedUserPage ClickSortByName()
+        {
+            ClickElement(Locators.UnassignedUser.SortedByName);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage ClickSortBySurname()
-//        {
-//            ClickElement(Locators.UnassignedUser.SortedBySurname);
+        public UnassignedUserPage ClickSortBySurname()
+        {
+            ClickElement(Locators.UnassignedUser.SortedBySurname);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage ClickSortByEmail()
-//        {
-//            ClickElement(Locators.UnassignedUser.SortedByEmail);
+        public UnassignedUserPage ClickSortByEmail()
+        {
+            ClickElement(Locators.UnassignedUser.SortedByEmail);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage ClickFirstPagination()
-//        {
-//            ClickElement(Locators.UnassignedUser.FirstPagePagination);
+        public UnassignedUserPage ClickFirstPagination()
+        {
+            ClickElement(Locators.UnassignedUser.FirstPagePagination);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage ClickLastPagination()
-//        {
-//            ClickElement(Locators.UnassignedUser.LastPagePagination);
+        public UnassignedUserPage ClickLastPagination()
+        {
+            ClickElement(Locators.UnassignedUser.LastPagePagination);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage ClickAddRoleButton(int row)
-//        {
-//            ClickElement(Locators.UnassignedUser.ClickToAddRoleButton(row));
+        public UnassignedUserPage ClickAddRoleButton(int row)
+        {
+            ClickElement(Locators.UnassignedUser.ClickToAddRoleButton(row));
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage SetRoleToCurrentUser(int row, int role)
-//        {
-//            ClickElement(Locators.UnassignedUser.ChooseRoleAtCurrentRow(row, role));
+        public UnassignedUserPage SetRoleToCurrentUser(int row, int role)
+        {
+            ClickElement(Locators.UnassignedUser.ChooseRoleAtCurrentRow(row, role));
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public int GetPageCount()
-//        {
-//            return Convert.ToInt32(GetTextValue(Locators.UnassignedUser.LastPagePagination));
-//        }
+        public int GetPageCount()
+        {
+            return Convert.ToInt32(GetTextValue(Locators.UnassignedUser.LastPagePagination));
+        }
 
-//        public int GetCurretnPageTableData()
-//        {
-//            var list = Driver.Current.FindElements(Locators.UnassignedUser.TableData);
+        public int GetCurretnPageTableData()
+        {
+            var list = Driver.Current.FindElements(Locators.UnassignedUser.TableData);
 
-//            return list.Count;
-//        }
+            return list.Count;
+        }
 
 
-//        public UnassignedUserPage WaitClickLastPagination()
-//        {
-//            wait.Until(e => e.FindElement(Locators.UnassignedUser.TableData));
+        public UnassignedUserPage WaitClickLastPagination()
+        {
+            wait.Until(e => e.FindElement(Locators.UnassignedUser.TableData));
 
-//            ClickElement(Locators.UnassignedUser.LastPagePagination);
+            ClickElement(Locators.UnassignedUser.LastPagePagination);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public List<string> GetFirstNameFromTableData()
-//        {
-//            List<string> data = new List<string>();
+        public List<string> GetFirstNameFromTableData()
+        {
+            List<string> data = new List<string>();
 
-//            var firstNameList = Driver.Current.FindElements(Locators.UnassignedUser.FirstNameTableData);
+            var firstNameList = Driver.Current.FindElements(Locators.UnassignedUser.FirstNameTableData);
 
-//            foreach (var item in firstNameList)
-//            {
-//                data.Add(item.Text);
-//            }
+            foreach (var item in firstNameList)
+            {
+                data.Add(item.Text);
+            }
 
-//            return data;
-//        }
+            return data;
+        }
 
-//        public List<string> GetLastNameFromTableData()
-//        {
-//            List<string> data = new List<string>();
+        public List<string> GetLastNameFromTableData()
+        {
+            List<string> data = new List<string>();
 
-//            var firstNameList = Driver.Current.FindElements(Locators.UnassignedUser.LastNameTableData);
+            var firstNameList = Driver.Current.FindElements(Locators.UnassignedUser.LastNameTableData);
 
-//            foreach (var item in firstNameList)
-//            {
-//                data.Add(item.Text);
-//            }
+            foreach (var item in firstNameList)
+            {
+                data.Add(item.Text);
+            }
 
-//            return data;
-//        }
+            return data;
+        }
 
-//        public List<string> GetEmailFromTableData()
-//        {
-//            List<string> data = new List<string>();
+        public List<string> GetEmailFromTableData()
+        {
+            List<string> data = new List<string>();
 
-//            var firstNameList = Driver.Current.FindElements(Locators.UnassignedUser.EmailTableData);
+            var firstNameList = Driver.Current.FindElements(Locators.UnassignedUser.EmailTableData);
 
-//            foreach (var item in firstNameList)
-//            {
-//                data.Add(item.Text);
-//            }
+            foreach (var item in firstNameList)
+            {
+                data.Add(item.Text);
+            }
 
-//            return data;
-//        }
+            return data;
+        }
 
-//        public UnassignedUserPage VerifySortingByFirstNameByAsc()
-//        {
-//            List<string> dataSortedByTable = GetFirstNameFromTableData();
-//            List<string> dataSortedByTest = new List<string>(dataSortedByTable);
+        public UnassignedUserPage VerifySortingByFirstNameByAsc()
+        {
+            List<string> dataSortedByTable = GetFirstNameFromTableData();
+            List<string> dataSortedByTest = new List<string>(dataSortedByTable);
 
-//            dataSortedByTest.OrderBy(x => x);
+            dataSortedByTest.OrderBy(x => x);
 
-//            CollectionAssert.AreEqual(dataSortedByTest, dataSortedByTable);
+            CollectionAssert.AreEqual(dataSortedByTest, dataSortedByTable);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage VerifySortingByLastNameByAsc()
-//        {
-//            List<string> dataSortedByTable = GetLastNameFromTableData();
-//            List<string> dataSortedByTest = new List<string>(dataSortedByTable);
+        public UnassignedUserPage VerifySortingByLastNameByAsc()
+        {
+            List<string> dataSortedByTable = GetLastNameFromTableData();
+            List<string> dataSortedByTest = new List<string>(dataSortedByTable);
 
-//            dataSortedByTest.OrderBy(x => x);
+            dataSortedByTest.OrderBy(x => x);
 
-//            CollectionAssert.AreEqual(dataSortedByTest, dataSortedByTable);
+            CollectionAssert.AreEqual(dataSortedByTest, dataSortedByTable);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage VerifySortingByEmailByAsc()
-//        {
-//            List<string> dataSortedByTable = GetEmailFromTableData();
-//            List<string> dataSortedByTest = new List<string>(dataSortedByTable);
+        public UnassignedUserPage VerifySortingByEmailByAsc()
+        {
+            List<string> dataSortedByTable = GetEmailFromTableData();
+            List<string> dataSortedByTest = new List<string>(dataSortedByTable);
 
-//            dataSortedByTest.OrderBy(x => x);
+            dataSortedByTest.OrderBy(x => x);
 
-//            CollectionAssert.AreEqual(dataSortedByTest, dataSortedByTable);
+            CollectionAssert.AreEqual(dataSortedByTest, dataSortedByTable);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage VerifySortingByFirstNameByDesc()
-//        {
-//            List<string> dataSortedByTable = GetFirstNameFromTableData();
-//            List<string> dataSortedByTest = new List<string>(dataSortedByTable);
+        public UnassignedUserPage VerifySortingByFirstNameByDesc()
+        {
+            List<string> dataSortedByTable = GetFirstNameFromTableData();
+            List<string> dataSortedByTest = new List<string>(dataSortedByTable);
 
-//            dataSortedByTest.OrderByDescending(x => x);
+            dataSortedByTest.OrderByDescending(x => x);
 
-//            CollectionAssert.AreEqual(dataSortedByTest, dataSortedByTable);
+            CollectionAssert.AreEqual(dataSortedByTest, dataSortedByTable);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage VerifySortingByLastNameByDesc()
-//        {
-//            List<string> dataSortedByTable = GetLastNameFromTableData();
-//            List<string> dataSortedByTest = new List<string>(dataSortedByTable);
+        public UnassignedUserPage VerifySortingByLastNameByDesc()
+        {
+            List<string> dataSortedByTable = GetLastNameFromTableData();
+            List<string> dataSortedByTest = new List<string>(dataSortedByTable);
 
-//            dataSortedByTest.OrderByDescending(x => x);
+            dataSortedByTest.OrderByDescending(x => x);
 
-//            CollectionAssert.AreEqual(dataSortedByTest, dataSortedByTable);
+            CollectionAssert.AreEqual(dataSortedByTest, dataSortedByTable);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage VerifySortingByEmailByDesc()
-//        {
-//            List<string> dataSortedByTable = GetEmailFromTableData();
-//            List<string> dataSortedByTest = new List<string>(dataSortedByTable);
+        public UnassignedUserPage VerifySortingByEmailByDesc()
+        {
+            List<string> dataSortedByTable = GetEmailFromTableData();
+            List<string> dataSortedByTest = new List<string>(dataSortedByTable);
 
-//            dataSortedByTest.OrderByDescending(x => x);
+            dataSortedByTest.OrderByDescending(x => x);
 
-//            CollectionAssert.AreEqual(dataSortedByTest, dataSortedByTable);
+            CollectionAssert.AreEqual(dataSortedByTest, dataSortedByTable);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public UnassignedUserPage VerifyMessageAddRole()
-//        {
-//            var verify = GetTextValue(Locators.UnassignedUser.VerifyMessage);
-//            var actual = "The user has been successfully assigned as a mentor";
+        public UnassignedUserPage VerifyMessageAddRole()
+        {
+            var verify = GetTextValue(Locators.UnassignedUser.VerifyMessage);
+            var actual = "The user has been successfully assigned as a mentor";
 
-//            Assert.AreEqual(actual, verify);
+            Assert.AreEqual(actual, verify);
 
-//            return this;
-//        }
+            return this;
+        }
 
-//        public string GetUnassignedUserFirstNameByRow(int row)
-//        {
-//            return GetTextValue(Locators.UnassignedUser.UnassignedUserFirstName(row));
-//        }
+        public string GetUnassignedUserFirstNameByRow(int row)
+        {
+            return GetTextValue(Locators.UnassignedUser.UnassignedUserFirstName(row));
+        }
 
-//        public string GetUnassignedUserLastNameByRow(int row)
-//        {
-//            return GetTextValue(Locators.UnassignedUser.UnassignedUserLastName(row));
-//        }
+        public string GetUnassignedUserLastNameByRow(int row)
+        {
+            return GetTextValue(Locators.UnassignedUser.UnassignedUserLastName(row));
+        }
 
-//        public string GetUnassignedUserEmailByRow(int row)
-//        {
-//            return GetTextValue(Locators.UnassignedUser.UnassignedUserEmail(row));
-//        }
+        public string GetUnassignedUserEmailByRow(int row)
+        {
+            return GetTextValue(Locators.UnassignedUser.UnassignedUserEmail(row));
+        }
 
-//        public string GetTextValue(By locator)
-//        {
-//            return Driver.Current.FindElement(locator).Text;
-//        }
-//    }
-//}
+        public string GetTextValue(By locator)
+        {
+            return Driver.Current.FindElement(locator).Text;
+        }
+    }
+}

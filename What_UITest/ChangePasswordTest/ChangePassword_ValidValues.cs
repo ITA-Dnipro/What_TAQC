@@ -1,83 +1,83 @@
-﻿//using NUnit.Framework;
-//using What_Common.DriverManager;
-//using What_PageObject.ChangePassword;
-//using What_PageObject.SignInPage;
+﻿using NUnit.Framework;
+using What_Common.DriverManager;
+using What_PageObject.ChangePassword;
+using What_PageObject.SignInPage;
 
-//namespace What_UITest.ChangePasswordTests
-//{
-//    public class ChangePassword_ValidValues : BaseTest
-//    {
-//        private const string PasswordOld = "765Rt##asd4";
-//        private const string PasswordNew = "765Rt##asd";
+namespace What_UITest.ChangePasswordTests
+{
+    public class ChangePassword_ValidValues : BaseTest
+    {
+        private const string PasswordOld = "765Rt##asd4";
+        private const string PasswordNew = "765Rt##asd";
 
-//        SignInPage login;
-
-
-
-//        ChangePasswordPage page;
-
-//        [SetUp]
-
-
-//        public void Setup()
-//        {
-            
-           
-
-//            login = new SignInPage(Driver.Current);
-//            page = new ChangePasswordPage();
-
-//        }
+        SignInPage login;
 
 
 
-//        [Test]
-//        public void ChangePasswordAsSecretary()
-//        {
-//            login.LogIn("Adrian@secretar.com", PasswordOld, "http://localhost:8080/");
-//            page.WaitClickDropDownMenu()
-//                 .ClickChangePasswordButton()
-//                 .FillCurrentPasswordField(PasswordOld)
-//                 .FillNewPasswordField(PasswordNew)
-//                 .FillConfirmNewPasswordField(PasswordNew)
-//                 .ClickSaveButton()
-//                 .ClickConfirmButtonInModalWindow()
-//                 .VerifyFlashMassage()
-//                 .Logout();
-//               page.WaiterLogin();
-//               login.LogIn("Adrian@secretar.com", PasswordNew, "http://localhost:8080/");
-//               page.Waiter()
-//               .VerifyCompleteChangesPassword()
-//               .Logout();
+        ChangePasswordPage page;
+
+        [SetUp]
 
 
-//        }
-
-//        [TearDown]
-
-//        public void Aftertest()
-//        {
+        public void Setup()
+        {
 
 
-//            ChangePasswordBack();//найти ему своем место
+
+            login = new SignInPage(Driver.Current);
+            page = new ChangePasswordPage();
+
+        }
 
 
-//        }
 
-//        private void ChangePasswordBack()
-//        {
-//            login.LogIn("Adrian@secretar.com", PasswordNew, null);
-//            page.WaitClickDropDownMenu()
-//             .ClickChangePasswordButton()
-//             .FillCurrentPasswordField(PasswordNew)
-//             .FillNewPasswordField(PasswordOld)
-//             .FillConfirmNewPasswordField(PasswordOld)
-//             .ClickSaveButton()
-//             .ClickConfirmButtonInModalWindow()
-//             .VerifyFlashMassage();
+        [Test]
+        public void ChangePasswordAsSecretary()
+        {
+            login.LogIn("Adrian@secretar.com", PasswordOld, "http://localhost:8080/");
+            page.WaitClickDropDownMenu()
+                 .ClickChangePasswordButton()
+                 .FillCurrentPasswordField(PasswordOld)
+                 .FillNewPasswordField(PasswordNew)
+                 .FillConfirmNewPasswordField(PasswordNew)
+                 .ClickSaveButton()
+                 .ClickConfirmButtonInModalWindow()
+                 .VerifyFlashMassage()
+                 .Logout();
+            page.WaiterLogin();
+            login.LogIn("Adrian@secretar.com", PasswordNew, "http://localhost:8080/");
+            page.Waiter()
+            .VerifyCompleteChangesPassword()
+            .Logout();
 
-//        }
+
+        }
+
+        [TearDown]
+
+        public void Aftertest()
+        {
 
 
-//    }
-//}
+            ChangePasswordBack();//найти ему своем место
+
+
+        }
+
+        private void ChangePasswordBack()
+        {
+            login.LogIn("Adrian@secretar.com", PasswordNew, null);
+            page.WaitClickDropDownMenu()
+             .ClickChangePasswordButton()
+             .FillCurrentPasswordField(PasswordNew)
+             .FillNewPasswordField(PasswordOld)
+             .FillConfirmNewPasswordField(PasswordOld)
+             .ClickSaveButton()
+             .ClickConfirmButtonInModalWindow()
+             .VerifyFlashMassage();
+
+        }
+
+
+    }
+}
