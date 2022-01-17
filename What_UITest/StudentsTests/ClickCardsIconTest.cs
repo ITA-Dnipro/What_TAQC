@@ -22,9 +22,9 @@ namespace What_UITest.StudentsTests
         public void Setup()
         {
             baseT.Setup();
-            signInPage = new SignInPage(Driver.Current);
+            signInPage = new SignInPage();
             studentPage = new StudentsPage();
-            signInPage.LogIn("james.smith@example.com", "Nj_PJ7K9", "http://localhost:8080/");
+            signInPage.LogIn("james.smith@example.com", "Nj_PJ7K9");
         }
 
         [Test]

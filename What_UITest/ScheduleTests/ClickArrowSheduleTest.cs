@@ -8,16 +8,16 @@ namespace What_UITest.ScheduleTests
 {
     public class ClickArrowSheduleTest : BaseTest
     {
-        private SignInPageObject signInPage;
+        private SignInPage signInPage;
         private SchedulePage schedule;
         private DateTime date;
 
         [SetUp]
         public void Setup()
         {
-            signInPage = new SignInPageObject(Driver.Current);
+            signInPage = new SignInPage();
             schedule = new SchedulePage();
-            signInPage.LogIn("john.williams@example.com", "9mw6AJB_", "http://localhost:8080/");
+            signInPage.LogIn("john.williams@example.com", "9mw6AJB_");
         }
 
         [Test]
