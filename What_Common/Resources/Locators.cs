@@ -145,12 +145,15 @@ namespace What_Common.Resources
 
         public static class Students
         {
+            public static readonly By CardsIcon = By.XPath("//*[href='/assets/svg/Card.svg#Card']");
+            public static readonly By ListIcon = By.XPath("//*[href ='/assets/svg/List.svg#List']");
             public static readonly By UploadStudent = By.XPath("//*[contains(text(),'Upload student')]");
             public static readonly By AddStudentButton = By.XPath("//*[contains(text(),'Add a student')]");
             public static readonly By DisabledStudents = By.XPath("//*[contains(text(),'Disabled students')]");
             public static readonly By SortByName = By.XPath("//*[contains(text(),'Name')]");
             public static readonly By SortBySurname = By.XPath("//*[contains(text(),'Surname')]");
             public static readonly By SortByEmail = By.XPath("//*[contains(text(),'Email')]");
+            public static readonly By DetailsButton = By.XPath("//*[@class='btn button__default___3hOmG button__button___24ZfP blocks__btnDetails___2XJNp']");
         }
     }
 }
