@@ -17,7 +17,7 @@ namespace What_UITest
         [SetUp]
         public void Setup()
         {
-            
+
         }
 
         [Test(Description = "")]

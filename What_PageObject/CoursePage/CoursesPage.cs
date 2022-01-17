@@ -82,7 +82,7 @@ namespace What_PageObject.Course
             ClickElement(Locators.ListOfCoursesPage.NextButtonPage);
             return this;
         }
-        
+
         /// <summary>
         /// Inputs text to search field
         /// </summary>

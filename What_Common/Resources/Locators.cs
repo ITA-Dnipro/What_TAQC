@@ -207,7 +207,20 @@ namespace What_Common.Resources
             public static readonly By RegistrationButton = By.XPath("//*[contains(text(),'Registration')]");
             public static readonly By ForgotPasswordButton = By.XPath("//*[contains(text(),'Forgot Password?')]");
         }
-
+        public static class RegistrationPage
+        {
+            public static By FirstNameField = By.XPath("//*[@id=\"firstName\"]");
+            public static By LastNameField = By.XPath("//*[@id=\"lastName\"]");
+            public static By EmailAdressField = By.XPath("//*[@id=\"email\"]");
+            public static By PasswordField = By.XPath("//*[@id=\"password\"]");
+            public static By ConfirmPasswordField = By.XPath("//*[@id=\"confirm-password\"]");
+            public static By SignUpButton = By.XPath("//button[text()='Sign up']");
+            public static By Registration = By.XPath("//*[contains(text(),'Registration')]");
+            public static By NamePageRegistration = By.XPath("//*[@class='modal-content']");
+            public static By BackButton = By.XPath("//button[text()='Back']");
+            public static By ErrorField = By.XPath("//*[contains(text(),'This field is required')]");
+            
+        }
         public static class Students
         {
             public static readonly By CardsIcon = By.XPath("//*[href='/assets/svg/Card.svg#Card']");
