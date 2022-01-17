@@ -153,7 +153,9 @@ namespace What_Common.Resources
             public static readonly By SortByName = By.XPath("//*[contains(text(),'Name')]");
             public static readonly By SortBySurname = By.XPath("//*[contains(text(),'Surname')]");
             public static readonly By SortByEmail = By.XPath("//*[contains(text(),'Email')]");
-            public static readonly By DetailsButton = By.XPath("//*[@class='btn button__default___3hOmG button__button___24ZfP blocks__btnDetails___2XJNp']");
+            public static readonly By ListElement = By.XPath("//tbody/tr");
+            public static readonly By DetailsButton = By.XPath("//div[@class='container d-flex flex-wrap']/child::div[1]/descendant::button");
+            public static readonly By ListTable = By.XPath("//div[@class='col-12 card shadow p-3 mb-5 bg-white ml-2 mr-2']");
         }
     }
 }
