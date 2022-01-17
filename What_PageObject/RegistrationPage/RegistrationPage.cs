@@ -13,27 +13,27 @@ namespace What_PageObject.RegistrationPage
 
         public RegistrationPage FillFirstName(string firstName)
         {
-            EnterField(Locators.RegistrationPage.FirstNameField, firstName);
+            FillField(Locators.RegistrationPage.FirstNameField, firstName);
             return this;
         }
         public RegistrationPage FillLastName(string lastName)
         {
-            EnterField(Locators.RegistrationPage.LastNameField, lastName);
+            FillField(Locators.RegistrationPage.LastNameField, lastName);
             return this;
         }
         public RegistrationPage FillEmailAdress(string email)
         {
-            EnterField(Locators.RegistrationPage.EmailAdressField, email);
+            FillField(Locators.RegistrationPage.EmailAdressField, email);
             return this;
         }
         public RegistrationPage FillPassword(string password)
         {
-            EnterField(Locators.RegistrationPage.PasswordField, password);
+            FillField(Locators.RegistrationPage.PasswordField, password);
             return this;
         }
         public RegistrationPage FillConfirmPassword(string password)
         {
-            EnterField(Locators.RegistrationPage.ConfirmPasswordField, password);
+            FillField(Locators.RegistrationPage.ConfirmPasswordField, password);
             return this;
         }
         public RegistrationPage VerifyFirstNameFilled(string expected)

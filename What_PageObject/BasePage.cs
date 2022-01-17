@@ -14,7 +14,7 @@ namespace What_PageObject
             Driver.Current.FindElement(locator).Click();
         }
 
-        public void EnterField(By locator, string text)
+        public void FillField(By locator, string text)
         {
             var field = Driver.Current.FindElement(locator);
             field.SendKeys(Keys.Control + "a");
