@@ -63,11 +63,14 @@ namespace What_Common.Resources
             public static By DisabledCoursesCheckbox = By.XPath("//input[@type=\"checkbox\"]");
             public static By AddCourseButton = By.XPath("//span[text()=\"Add a course\"]/..");
             public static By SortByTitleElement = By.XPath("//span[@data-sorting-param=\"name\"]");
-            public static By CourseTable = By.XPath("//table");
+            public static By CourseTableInRow = By.XPath("//table");
+            public static By CourseTableInCards = By.XPath("//div[@class='container d-flex flex-wrap']");
+            //TODO remake locator below
             public static By CourseDetailsInRowElement = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[text()=\"Soft Skills for Lecturers\"]");
             public static By EditCourseElement = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[@class=\"text-center\"]");
-            public static By DetailsInCardViewButton = By.XPath("//div[text()=\"Soft Skills for Lecturers\"]/following-sibling::button");
             public static By EditInCardViewButton = By.XPath("//div[text()=\"Soft Skills for Lecturers\"]/following-sibling::button/following-sibling::div"); //???
+            
+            public static By DetailsInCardViewButton(int id) => By.XPath($"//div[@class='container d-flex flex-wrap']/child::div[{id}]/descendant::button");
 
         }
 
