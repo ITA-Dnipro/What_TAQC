@@ -2,11 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using What_Common.Resources;
 using What_PageObject.MyProfile;
 
@@ -18,8 +13,6 @@ namespace What_PageObject.Course
         private IWebDriver driver;
 
         private Waiter waiter;
-
-        private readonly string expectedUrl = "http://localhost:8080/courses";
 
         public CoursesPage(IWebDriver driver)
         {
@@ -34,7 +27,7 @@ namespace What_PageObject.Course
         public MyProfilePage ClickMyProfileIcon()
         {
             ClickElement(Locators.NavBar.IconLink);
-            waiter.wait.Until(ExpectedConditions.UrlMatches("http://localhost:8080/my-profile"));
+            waiter.wait.Until(ExpectedConditions.UrlMatches(Resources.WhatMyProfileUrl));
             return new MyProfilePage(driver);
         }
 
@@ -133,7 +126,7 @@ namespace What_PageObject.Course
         public CourseDetailsPage ClickDetailsButtonFromCards(string courseName)
         {
             ClickElement(Locators.ListOfCoursesPage.DetailsInCardViewButton(1));
-            waiter.wait.Until(ExpectedConditions.UrlMatches("http://localhost:8080/courses/1"));
+            waiter.wait.Until(ExpectedConditions.UrlMatches(Resources.WhatCoursesDetailsUrl));
             return new CourseDetailsPage(driver, courseName);
         }
 
@@ -147,17 +140,42 @@ namespace What_PageObject.Course
             return new AddCoursePage(driver);
         }
 
-        public CoursesPage VerifyThatCourseTableAsRowsDisplayed()
+        ///// <summary>
+        ///// Call test that verify is table displayed as rows
+        ///// </summary>
+        ///// <returns>Course Page</returns>
+        //public CoursesPage VerifyThatCourseTableAsRowsDisplayed()
+        //{
+        //    ClickCoursesPage().WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInRow);
+        //    Assert.AreEqual(Resources.WhatCoursesUrl, driver.Url);
+        //    return this;
+        //}
+
+        ///// <summary>
+        ///// Call test that verify is table displayed as cards
+        ///// </summary>
+        ///// <returns>Course Page</returns>
+        //public CoursesPage VerifyThatCourseTableAsCardsDisplayed()
+        //{
+        //    ClickCoursesPage().WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInRow).ClickCardCourseView();
+        //    Assert.AreEqual(Resources.WhatCoursesUrl, driver.Url);
+        //    return this;
+        //}
+
+        /// <summary>
+        /// Called test that verify is page course displayed correctly 
+        /// </summary>
+        /// <returns>Course Page</returns>
+        public CoursesPage VerifyThatCoursePageDisplayed()
         {
             ClickCoursesPage().WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInRow);
-            Assert.AreEqual(expectedUrl, driver.Url);
-            return this;
-        }
-
-        public CoursesPage VerifyThatCourseTableAsCardsDisplayed()
-        {
-            ClickCoursesPage().WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInRow).ClickCardCourseView();
-            Assert.AreEqual(expectedUrl, driver.Url);
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(Resources.WhatCoursesUrl, driver.Url);
+                ClickCardCourseView().WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInCards);
+                Assert.AreEqual(Resources.WhatCoursesUrl, driver.Url);
+            });
+           
             return this;
         }
 
