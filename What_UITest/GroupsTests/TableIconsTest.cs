@@ -15,7 +15,7 @@ namespace What_UITest.GroupsTests
 
     public class TableIconsTest : BaseTest
     {
-        SignInPageObject login;
+        SignInPage login;
         GroupsPage groupsPage;
 
         [SetUp]
@@ -24,7 +24,7 @@ namespace What_UITest.GroupsTests
         public void Setup()
         {
 
-            login = new SignInPageObject(Driver.Current);
+            login = new SignInPage();
             groupsPage = new GroupsPage();
 
 
@@ -32,7 +32,7 @@ namespace What_UITest.GroupsTests
         [Test]
         public void IconsTableEqual()
         {
-            login.LogIn("Bernard@secretar.com", "765Rt##asd", "http://localhost:8080/");
+            login.LogIn("Bernard@secretar.com", "765Rt##asd");
 
 
             groupsPage.SidebarNavigateTo<GroupsPage>()

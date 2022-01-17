@@ -85,7 +85,7 @@ namespace ResetPassword
         }
         private void LooseFocusFromInput()
         {
-            ClickElement(Locators.ResetPassword.pageLabel);
+            //ClickElement(Locators.ResetPassword.pageLabel);
         }
         public void VerifyRedirectToAuthPage()
         {

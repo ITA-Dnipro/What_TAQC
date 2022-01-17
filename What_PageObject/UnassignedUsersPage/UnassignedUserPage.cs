@@ -237,15 +237,15 @@ namespace What_PageObject.UnassignedUsersPage
             return this;
         }
 
-        public UnassignedUserPage VerifyMessageAddRole()
-        {
-            var verify = GetTextValue(Locators.UnassignedUser.VerifyMessage);
-            var actual = "The user has been successfully assigned as a mentor";
+        //public UnassignedUserPage VerifyMessageAddRole()
+        //{
+        //    var verify = GetTextValue(Locators.UnassignedUser.VerifyMessage);
+        //    var actual = "The user has been successfully assigned as a mentor";
 
-            Assert.AreEqual(actual, verify);
+        //    Assert.AreEqual(actual, verify);
 
-            return this;
-        }
+        //    return this;
+        //}
 
         public string GetUnassignedUserFirstNameByRow(int row)
         {

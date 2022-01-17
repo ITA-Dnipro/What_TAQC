@@ -38,10 +38,10 @@ namespace What_PageObject.ForgotPassword
             ClickElement(Locators.ForgotPassword.xButton);
             return this;
         }
-        public SignInPageObject ClickBackButton()
+        public SignInPage.SignInPage ClickBackButton()
         {
             ClickElement(Locators.ForgotPassword.backButton);
-            return new SignInPageObject(Driver.Current);
+            return new SignInPage.SignInPage();
         }
         public string GetTextValue(By locator)
         {
