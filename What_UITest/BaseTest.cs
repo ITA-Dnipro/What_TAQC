@@ -8,7 +8,7 @@ using What_Common.DriverManager;
 
 namespace What_UITest
 {
-    public abstract class BaseTest
+    public class BaseTest
     {
         [SetUp]
         public void Setup()

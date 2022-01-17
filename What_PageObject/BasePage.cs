@@ -4,7 +4,7 @@ using What_Common.DriverManager;
 
 namespace What_PageObject
 {
-    public class BasePage
+    public abstract class BasePage
     {
         protected WebDriverWait wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10));
         List<BasePage> pages = new List<BasePage>();
