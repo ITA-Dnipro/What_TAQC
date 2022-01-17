@@ -9,10 +9,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using What_Common.DriverManager;
 using What_PageObject.SignInPage;
+using What_PageObject.StudentsPage;
+using What_Common.Resources;
 
 namespace What_UITest.SignInTests
 {
-    public class LogInTestValid
+    public class LogInTestValid : BaseTest
     {
         string email = "james.smith@example.com";
         string password = "Nj_PJ7K9";
@@ -21,22 +23,21 @@ namespace What_UITest.SignInTests
         public void Setup()
         {
 
-            Driver.Current.Manage().Window.Maximize();
-            Driver.Current.Navigate().GoToUrl("http://localhost:8080/auth");
         }
 
         [Test]
         public void LogInValid()
         {
-            var SignInPage = new SignInPage(Driver.Current);
+            var SignInPage = new SignInPage();
             SignInPage.IsAtPage();
-            SignInPage.EnterEmail("EMAIL");
-            SignInPage.EnterPassword("PASS");
-            SignInPage.ClickSignInButton("http://localhost:8080/students");
+            SignInPage.EnterEmail("james.smith@example.com");
+            SignInPage.EnterPassword("Nj_PJ7K9");
+            SignInPage.ClickSignInButton();
+
+            SignInPage.WaitUntilElementLoads<StudentsPage>(Locators.Students.ListTable);
 
             string actual = Driver.Current.Url;
             string expected = "http://localhost:8080/students";
-            //By expected = By.XPath("//*[contains(text(),'Add a student')]");
 
             Assert.AreEqual(actual, expected);
         }

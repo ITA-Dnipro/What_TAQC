@@ -207,12 +207,17 @@ namespace What_Common.Resources
 
         public static class Students
         {
+            public static readonly By CardsIcon = By.XPath("//*[href='/assets/svg/Card.svg#Card']");
+            public static readonly By ListIcon = By.XPath("//*[href ='/assets/svg/List.svg#List']");
             public static readonly By UploadStudent = By.XPath("//*[contains(text(),'Upload student')]");
             public static readonly By AddStudentButton = By.XPath("//*[contains(text(),'Add a student')]");
             public static readonly By DisabledStudents = By.XPath("//*[contains(text(),'Disabled students')]");
             public static readonly By SortByName = By.XPath("//*[contains(text(),'Name')]");
             public static readonly By SortBySurname = By.XPath("//*[contains(text(),'Surname')]");
             public static readonly By SortByEmail = By.XPath("//*[contains(text(),'Email')]");
+            public static readonly By ListElement = By.XPath("//tbody/tr");
+            public static readonly By DetailsButton = By.XPath("//div[@class='container d-flex flex-wrap']/child::div[1]/descendant::button");
+            public static readonly By ListTable = By.XPath("//div[@class='col-12 card shadow p-3 mb-5 bg-white ml-2 mr-2']");
         }
     }
 }
