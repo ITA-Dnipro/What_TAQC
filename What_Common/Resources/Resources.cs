@@ -16,5 +16,21 @@ namespace What_Common.Resources
         public const string lastName = "Qwerty";
         public const string Email = "Qwe4r29@gma.com";
         public const string Password = "Sergey1900+";
+        public const string WhatUrl = "http://localhost:8080/";
+	public const string WhatResetPasswordUrl = @"http://localhost:8080/reset-password";
+        public const string WhatStudentsUrl = @"http://localhost:8080/students";
+        public static class ForgotPassword
+        {
+            public const string modalWindowText = "Please check your email and follow the link to reset your password.";
+            public const string invalidEmailError = "Invalid email address";
+            public const string emptyEmailError = "This field is required";
+            public const string invalidEmail = "com@com";
+            public const string doesntExistEmail = "lastname@gmail.com";
+
+            public static string DoesntExistEmailError(string email)
+            {
+                return $"Account with email {email} does not exist!";
+            }
+        }
     }
 }
