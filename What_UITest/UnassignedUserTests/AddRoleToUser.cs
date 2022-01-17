@@ -9,16 +9,16 @@ namespace What_UITest.UnassignedUserTests
 {
     public class AddRoleToUser : BaseTest
     {
-        private SignInPageObject signInPage;
+        private SignInPage signInPage;
         private UnassignedUserPage unassignedUser;
         private Random rnd = new Random();
 
         [SetUp]
         public void Setup()
         {
-            signInPage = new SignInPageObject(Driver.Current);
+            signInPage = new SignInPage();
             unassignedUser = new UnassignedUserPage();
-            signInPage.LogIn("james.smith@example.com", "Nj_PJ7K9", "http://localhost:8080/");
+            signInPage.LogIn("james.smith@example.com", "Nj_PJ7K9");
         }
 
         [Test]

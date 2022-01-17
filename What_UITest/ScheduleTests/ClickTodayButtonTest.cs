@@ -8,16 +8,16 @@ namespace What_UITest.ScheduleTests
 {
     public class ClickTodayButtonTest : BaseTest
     {
-        private SignInPageObject signInPage;
+        private SignInPage signInPage;
         private SchedulePage schedule;
         private DateTime date;
 
         [SetUp]
         public void Setup()
         {
-            signInPage = new SignInPageObject(Driver.Current);
+            signInPage = new SignInPage();
             schedule = new SchedulePage();
-            signInPage.LogIn("james.smith@example.com", "Nj_PJ7K9", "http://localhost:8080/");
+            signInPage.LogIn("james.smith@example.com", "Nj_PJ7K9");
         }
 
         [Test]

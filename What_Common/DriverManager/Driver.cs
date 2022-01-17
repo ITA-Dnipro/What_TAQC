@@ -28,7 +28,7 @@ namespace What_Common.DriverManager
 
         public static void GoToUrl()
         {
-            Current.Navigate().GoToUrl("http://localhost:8080/");
+            Current.Navigate().GoToUrl("http://localhost:8080/auth");
         }
 
         public static void MaximizeWindow()
