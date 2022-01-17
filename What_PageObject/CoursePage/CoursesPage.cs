@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
@@ -17,6 +18,8 @@ namespace What_PageObject.Course
         private IWebDriver driver;
 
         private Waiter waiter;
+
+        private readonly string expectedUrl = "http://localhost:8080/courses";
 
         public CoursesPage(IWebDriver driver)
         {
@@ -42,7 +45,7 @@ namespace What_PageObject.Course
         public CoursesPage ClickRowCourseView()
         {
             ClickElement(Locators.ListOfCoursesPage.CourseDetailsInRowElement);
-            waiter.wait.Until(ExpectedConditions.UrlMatches("http://localhost:8080/courses/1"));
+            WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInRow);
             return this;
         }
 
@@ -53,9 +56,7 @@ namespace What_PageObject.Course
         public CoursesPage ClickCardCourseView()
         {
             ClickElement(Locators.ListOfCoursesPage.ViewCardsButton);
-            waiter.wait.Until(ExpectedConditions.ElementExists(Locators.ListOfCoursesPage.DetailsInCardViewButton));
-            ClickElement(Locators.ListOfCoursesPage.DetailsInCardViewButton);
-            waiter.wait.Until(ExpectedConditions.UrlMatches("http://localhost:8080/courses/1"));
+            WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInCards);
             return this;
         }
 
@@ -97,7 +98,7 @@ namespace What_PageObject.Course
         public CoursesPage SearchByName(string text)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            wait.Until(e => e.FindElements(Locators.ListOfCoursesPage.CourseTable));
+            wait.Until(e => e.FindElements(Locators.ListOfCoursesPage.CourseTableInRow));
             FillField(Locators.ListOfCoursesPage.SearchField, text);
             return this;
         }
@@ -114,13 +115,25 @@ namespace What_PageObject.Course
         }
 
         /// <summary>
-        /// Redirect you to details Course Page
+        /// Redirect you to details Course Page from row view
         /// </summary>
         /// <param name="courseName">Name of course</param>
         /// <returns>Course Details Page</returns>
-        public CourseDetailsPage ClickDetailsButton(string courseName)
+        public CourseDetailsPage ClickDetailsButtonFromRow(string courseName)
         {
             ClickElement(Locators.ListOfCoursesPage.CourseDetailsInRowElement);
+            return new CourseDetailsPage(driver, courseName);
+        }
+
+        /// <summary>
+        /// Redirect you to details Course Page from cards view
+        /// </summary>
+        /// <param name="courseName">Name of course</param>
+        /// <returns>Course Details Page</returns>
+        public CourseDetailsPage ClickDetailsButtonFromCards(string courseName)
+        {
+            ClickElement(Locators.ListOfCoursesPage.DetailsInCardViewButton(1));
+            waiter.wait.Until(ExpectedConditions.UrlMatches("http://localhost:8080/courses/1"));
             return new CourseDetailsPage(driver, courseName);
         }
 
@@ -132,6 +145,20 @@ namespace What_PageObject.Course
         {
             ClickElement(Locators.ListOfCoursesPage.AddCourseButton);
             return new AddCoursePage(driver);
+        }
+
+        public CoursesPage VerifyThatCourseTableAsRowsDisplayed()
+        {
+            ClickCoursesPage().WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInRow);
+            Assert.AreEqual(expectedUrl, driver.Url);
+            return this;
+        }
+
+        public CoursesPage VerifyThatCourseTableAsCardsDisplayed()
+        {
+            ClickCoursesPage().WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInRow).ClickCardCourseView();
+            Assert.AreEqual(expectedUrl, driver.Url);
+            return this;
         }
 
         //public void MouseHover()
