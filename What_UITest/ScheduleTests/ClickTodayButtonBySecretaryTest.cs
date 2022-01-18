@@ -1,27 +1,29 @@
 ﻿using NUnit.Framework;
 using System;
-using What_Common.DriverManager;
+using What_Common.DataProvider;
 using What_PageObject.SchedulesPage;
 using What_PageObject.SignInPage;
 
 namespace What_UITest.ScheduleTests
 {
-    public class ClickTodayButtonTest : BaseTest
+    public class ClickTodayButtonByAdminTest : BaseTest
     {
-        private SignInPageObject signInPage;
+        private SignInPage signInPage;
         private SchedulePage schedule;
+        private LoginDetails user;
+
         private DateTime date;
 
         [SetUp]
         public void Setup()
         {
-            signInPage = new SignInPageObject(Driver.Current);
+            signInPage = new SignInPage();
             schedule = new SchedulePage();
-            signInPage.LogIn("james.smith@example.com", "Nj_PJ7K9", "http://localhost:8080/");
+            user = Controller.GetUser(Controller.UserRole.Secretary);
+            signInPage.LogIn(user.Email, user.Password);
         }
 
         [Test]
-        //[Repeat(5)]
         public void TodayButtonTest()
         {
             schedule.ClickNavbarMenuSheduleButton()

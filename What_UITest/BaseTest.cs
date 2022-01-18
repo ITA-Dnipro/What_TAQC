@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using NLog;
+using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using System;
@@ -10,18 +11,27 @@ namespace What_UITest
 {
     public class BaseTest
     {
+        Logger log = LogManager.GetCurrentClassLogger();
+
         [SetUp]
         public void Setup()
         {
-            //Driver.Current = null;
+            Driver.Current = null;
             Driver.Current.Manage().Window.Maximize();
             Driver.Current.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Driver.Current.Navigate().GoToUrl("http://localhost:8080");
+            log.Info("Start Test");
         }
 
         [TearDown]
         public void AfterTest()
         {
+            var context = TestContext.CurrentContext;
+            var testName = context.Test.FullName;
+
+            log.Info($"{testName} - {context.Result.Outcome.Status}");
+
+
             if (TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Failure))
             {
                 string fileName = $"{TestContext.CurrentContext.Test.Name}";

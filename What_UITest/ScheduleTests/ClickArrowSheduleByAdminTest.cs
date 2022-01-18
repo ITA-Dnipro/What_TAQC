@@ -1,29 +1,31 @@
 ﻿using NUnit.Framework;
 using System;
-using What_Common.DriverManager;
+using What_Common.DataProvider;
 using What_PageObject.SchedulesPage;
 using What_PageObject.SignInPage;
 
 namespace What_UITest.ScheduleTests
 {
-    public class ClickArrowSheduleTest : BaseTest
+    public class ClickArrowSheduleByAdminTest : BaseTest
     {
-        private SignInPageObject signInPage;
+        private SignInPage signInPage;
         private SchedulePage schedule;
+        private LoginDetails user;
         private DateTime date;
 
         [SetUp]
         public void Setup()
         {
-            signInPage = new SignInPageObject(Driver.Current);
+            signInPage = new SignInPage();
             schedule = new SchedulePage();
-            signInPage.LogIn("john.williams@example.com", "9mw6AJB_", "http://localhost:8080/");
+            user = Controller.GetUser(Controller.UserRole.Admin);
         }
 
         [Test]
-        //[Repeat(5)]
         public void ArrowSheduleTest()
         {
+            signInPage.LogIn(user.Email, user.Password);
+
             schedule.ClickNavbarMenuSheduleButton()
                     .ClickArrowRandomize(out date)
                     .VerifyDateStartAtMonday(date)

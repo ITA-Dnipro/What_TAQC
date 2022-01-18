@@ -173,10 +173,10 @@ namespace What_Common.Resources
 
         public static class UnassignedUser
         {
-            public static By TopLeftArrowButton = By.XPath("//*[@class='row justify-content-between align-items-center mb-3']//*[text()='<']");
-            public static By TopRightArrowButton = By.XPath("//*[@class='row justify-content-between align-items-center mb-3']//*[text()='>']");
-            public static By BottomLeftArrowButton = By.XPath("//*[@class='row justify-content-between align-items-center mb-3 unassigned-list__paginate___2mqJX']//*[text()='<']");
-            public static By BottomRightArrowButton = By.XPath("//*[@class='row justify-content-between align-items-center mb-3 unassigned-list__paginate___2mqJX']//*[text()='>']");
+            public static By TopLeftArrowButton = By.XPath("//button[text()=\"<\"]");
+            public static By TopRightArrowButton = By.XPath("//button[text()=\">\"]");
+            public static By BottomLeftArrowButton = By.XPath("//button[text()=\"<\"]");
+            public static By BottomRightArrowButton = By.XPath("//button[text()=\">\"]");
             public static By SearchInputField = By.XPath("//input[@type='text']");
             public static By DropDownRowButton = By.XPath("//select[@id='change-visible-people']");
             public static By FirstPagePagination = By.XPath("//ul[2]/li[1]");
@@ -189,6 +189,8 @@ namespace What_Common.Resources
             public static By LastNameTableData = By.XPath("//tbody/tr/td[2]");
             public static By EmailTableData = By.XPath("//tbody/tr/td[3]");
 
+            public static By ClickPagination(int row) => By.XPath($"//button[text()='{row}']");
+            public static By UnassignedUserRowData(int row) => By.XPath($"//tbody/tr[{row}]/td");
             public static By UnassignedUserFirstName(int row) => By.XPath($"//tbody/tr[{row}]/td[1]");
             public static By UnassignedUserLastName(int row) => By.XPath($"//tbody/tr[{row}]/td[2]");
             public static By UnassignedUserEmail(int row) => By.XPath($"//tbody/tr[{row}]/td[3]");
@@ -203,6 +205,21 @@ namespace What_Common.Resources
             public static readonly By PasswordField = By.XPath("//*[@id='password']");
             public static readonly By RegistrationButton = By.XPath("//*[contains(text(),'Registration')]");
             public static readonly By ForgotPasswordButton = By.XPath("//*[contains(text(),'Forgot Password?')]");
+        }
+
+        public static class RegistrationPage
+        {
+            public static By FirstNameField = By.XPath("//*[@id=\"firstName\"]");
+            public static By LastNameField = By.XPath("//*[@id=\"lastName\"]");
+            public static By EmailAdressField = By.XPath("//*[@id=\"email\"]");
+            public static By PasswordField = By.XPath("//*[@id=\"password\"]");
+            public static By ConfirmPasswordField = By.XPath("//*[@id=\"confirm-password\"]");
+            public static By SignUpButton = By.XPath("//button[text()='Sign up']");
+            public static By Registration = By.XPath("//*[contains(text(),'Registration')]");
+            public static By NamePageRegistration = By.XPath("//*[@class='modal-content']");
+            public static By BackButton = By.XPath("//button[text()='Back']");
+            public static By ErrorField = By.XPath("//*[contains(text(),'This field is required')]");
+
         }
 
         public static class Students
