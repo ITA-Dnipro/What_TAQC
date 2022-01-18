@@ -36,9 +36,18 @@ namespace What_Common.Resources
                 return $"Account with email {email} does not exist!";
             }
         }
+        public static class ChangePassword
+        {
+            public const string passwordOld = "765Rt##asd4";
+            public const string passwordNew = "765Rt##asd";
+            public const string secretarEmail = "Adrian@secretar.com";
+            public const string password = "765Rt##asd";
+            public const string secretaryEmail = "Bernard@secretar.com";
+            public const string secretaryPassword = "765Rt##asd";
 
-        #region SignIn_Students
-        public static readonly string AuthPageUrl = "http://localhost:8080/auth";
+        }
+            #region SignIn_Students
+            public static readonly string AuthPageUrl = "http://localhost:8080/auth";
         public static readonly string StudentsPageUrl = "http://localhost:8080/students";
         public static readonly string MentorsPageUrl = "http://localhost:8080/mentors";
         public static readonly string LessonsPageUrl = "http://localhost:8080/lessons";
