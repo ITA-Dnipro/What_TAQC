@@ -14,18 +14,18 @@ namespace What_UITest.ChangePasswordTests
 
 
 
-        ChangePasswordPage page;
+        ChangePasswordPage passwordPage;
 
         [SetUp]
 
 
         public void Setup()
         {
-            
-           
+
+
 
             login = new SignInPage(Driver.Current);
-            page = new ChangePasswordPage();
+            passwordPage = new ChangePasswordPage();
 
         }
 
@@ -35,49 +35,42 @@ namespace What_UITest.ChangePasswordTests
         public void ChangePasswordAsSecretary()
         {
             login.LogIn("Adrian@secretar.com", PasswordOld, "http://localhost:8080/");
-            page.WaitClickDropDownMenu()
+            passwordPage.WaitClickDropDownMenu()
                  .ClickChangePasswordButton()
                  .FillCurrentPasswordField(PasswordOld)
                  .FillNewPasswordField(PasswordNew)
                  .FillConfirmNewPasswordField(PasswordNew)
                  .ClickSaveButton()
                  .ClickConfirmButtonInModalWindow()
-                 .VerifyFlashMassage()
-                 .Logout();
-               page.WaiterLogin();
-               login.LogIn("Adrian@secretar.com", PasswordNew, "http://localhost:8080/");
-               page.Waiter()
-               .VerifyCompleteChangesPassword()
-               .Logout();
+                 .Logout()
+                 .WaiterLogin();
+            login.LogIn("Adrian@secretar.com", PasswordNew, "http://localhost:8080/");
+            passwordPage.Waiter()
+            .VerifyCompleteChangesPassword()
+            .Logout();
 
 
         }
 
         [TearDown]
 
-        public void Aftertest()
+        public void ChangePasswordBack()
         {
-
-
-            ChangePasswordBack();//найти ему своем место
-
-
-        }
-
-        private void ChangePasswordBack()
-        {
-            login.LogIn("Adrian@secretar.com", PasswordNew, null);
-            page.WaitClickDropDownMenu()
+            login.LogIn("Adrian@secretar.com", PasswordNew, "http://localhost:8080/");
+            passwordPage.WaitClickDropDownMenu()
              .ClickChangePasswordButton()
              .FillCurrentPasswordField(PasswordNew)
              .FillNewPasswordField(PasswordOld)
              .FillConfirmNewPasswordField(PasswordOld)
              .ClickSaveButton()
              .ClickConfirmButtonInModalWindow()
-             .VerifyFlashMassage();
+             .Waiter();
+            
 
         }
-
-
     }
 }
+
+        
+
+

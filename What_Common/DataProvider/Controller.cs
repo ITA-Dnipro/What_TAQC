@@ -1,23 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
+using What_PageObject.DataProvider;
 
-namespace What_PageObject.DataProvider
+namespace What_Common.DataProvider
 {
     public class Controller
     {
-        public static LoginDetails[] DeserializeObject()
+        public enum UserRole
         {
-            LoginDetails[] users = JsonConvert.DeserializeObject<LoginDetails[]>(File.ReadAllText("user.json")); // What_TAQC/What_Common/Resources/user.json
+            Admin,
+            Secretary,
+            Mentor,
+            Student
+        }
+        private static LoginDetails[] DeserializeObject()
+        {
+            LoginDetails[] users = JsonConvert.DeserializeObject<LoginDetails[]>(File.ReadAllText("What_TAQC/What_Common/Resources/user.json")); // What_TAQC/What_Common/Resources/user.json
             return users;
         }
-        public static string DecoddingString(string data)
+        private static string DecoddingString(string data)
         {
             string decodding = null;
             for (int i = 0; i < data.Length; i++)
@@ -26,7 +33,7 @@ namespace What_PageObject.DataProvider
             }
             return decodding;
         }
-        public static LoginDetails[] DecoddingObject(LoginDetails[] users)
+        private static LoginDetails[] DecoddingObject(LoginDetails[] users)
         {
             foreach (var user in users)
             {
@@ -35,6 +42,30 @@ namespace What_PageObject.DataProvider
                 user.Role = DecoddingString(user.Role);
             }
             return users;
+        }
+        public static LoginDetails GetUser(UserRole userRole)
+        {
+            LoginDetails[] users = DecoddingObject(DeserializeObject());
+            foreach (var user in users)
+            {
+                if (user.Role == "1" && userRole == UserRole.Student)
+                {
+                    return user;
+                }
+                if (user.Role == "2" && userRole == UserRole.Mentor)
+                {
+                    return user;
+                }
+                if (user.Role == "4" && userRole == UserRole.Admin)
+                {
+                    return user;
+                }
+                if (user.Role == "8" && userRole == UserRole.Secretary)
+                {
+                    return user;
+                }
+            }
+            return null;
         }
     }
 }
