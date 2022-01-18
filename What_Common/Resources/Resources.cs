@@ -18,6 +18,7 @@ namespace What_Common.Resources
         public const string WhatUrl = "http://localhost:8080/";
 	    public const string WhatResetPasswordUrl = @"http://localhost:8080/reset-password";
         public const string WhatStudentsUrl = @"http://localhost:8080/students";
+        public const string WhatSecretariesUrl = @"http://localhost:8080/secretaries";
         public const string WhatCoursesUrl = @"http://localhost:8080/courses";
         public const string WhatCoursesDetailsUrl = @"http://localhost:8080/courses/1";
         public const string WhatAddNewCourseUrl = @"http://localhost:8080/courses/add";

@@ -29,7 +29,7 @@ namespace What_Common.Resources
 
         public static class ForgotPassword
         {
-            public static By
+            public static readonly By
                 forgotPasswordLabel = By.XPath("//*[contains(text(),'Forgot your password?')]"),
                 emailAddressField = By.XPath("//input[@id='email']"),
                 emailAddressError = By.XPath("//*[@class='text-danger mt-2']"),
@@ -71,12 +71,12 @@ namespace What_Common.Resources
             public static By AssignmentPageLink = By.XPath("//a[@data-id=\"7\"]");
             public static By HomeworkPageLink = By.XPath("//a[@data-id=\"8\"]");
         }
-        public static class ListOfSecretaryPage
+        public static class SecretaryPage
         {
-            public static By
+            public static readonly By
+                tableButton = By.CssSelector("[href ='/assets/svg/List.svg#List']"),
                 cardsButton = By.XPath("//div[@class='btn-group']/child::button/following-sibling::button"),
-                //tableButton = By.XPath("//*[@id=\"root\"]/div/div/div[2]/div[1]/div/div[1]/div/button[1]"),
-                searchField = By.XPath("//input[@placeholder=\"Secretary`s name\"]"),
+                searchField = By.XPath("//input[@placeholder=\"Secretary's name\"]"),
                 paginationArrowLeftInTop = By.XPath("//button[text()=\"<\"]"),
                 paginationArrowRightInTop = By.XPath("//button[text()=\">\"]"),
                 paginationArrowLeftInBottom = By.XPath("//button[text()=\"<\"]"),
@@ -90,13 +90,18 @@ namespace What_Common.Resources
                 detailsButtonTable = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[text()=\"john.williams@example.com\"]"),
                 detailsButtonCards = By.XPath("//div[text()=\"john.williams@example.com\"]/following-sibling::button"),
                 editButtonInCards = By.XPath("//div[text()=\"john.williams@example.com\"]/following-sibling::button/following-sibling::div"),
-                editButtonInTable = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[@class=\"text-center\"]");
-                //secretaryNotFoundError = By.XPath("//*[@id=\"root\"]/div/div/div[2]/div[1]/table/tbody/tr/td"),
-                //elementsInTable = By.XPath("//tr[@class = 'list-of-lessons__table-row___16_kJ
+                editButtonInTable = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[@class=\"text-center\"]"),
+                tableData = By.XPath("//tbody/tr"),
+                cardData = By.XPath("//*[@id='root']/div/div/div[2]/div[1]/div[2]");
+
+            public static By CurrentCardData(int cardNumber) => By.XPath($"//*[@id='root']//div[3]/div[{cardNumber}]");
+            public static By CurrentTableData(int tableNumber) => By.XPath($"//tbody/tr[{tableNumber}]/td");
+            public static By CurrentTableNameData(int tableNumber) => By.XPath($"//tbody/tr[{tableNumber}]/td[1]");
         }
+
         public static class SecretaryDetails
         {
-            public static By
+            public static readonly By
                 detailsTab = By.XPath("//a[text()=\"Secretary's details\"]"),
                 editDetailsTab = By.XPath("//a[text()='Edit secretary']"),
                 arrowBackButton = By.XPath("//a[contains(@class, 'align-items-center') and @href='/secretaries']");
@@ -107,7 +112,7 @@ namespace What_Common.Resources
 
         public static class EditSecretaryDetails
         {
-            public static By
+            public static readonly By
                 detailsTab = By.XPath("//a[text()=\"Secretary's details\"]"),
                 editDetailsTab = By.XPath("//a[text()='Edit secretary']"),
                 arrowBackButton = By.XPath("//a[contains(@class, 'align-items-center') and @href='/secretaries']"),

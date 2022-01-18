@@ -1,8 +1,11 @@
-﻿using What_Common.Resources;
+﻿using System;
+using System.Collections.Generic;
+using What_Common.Resources;
 using What_PageObject.Course;
 using What_PageObject.SchedulesPage;
 using What_PageObject.Secretaries;
 using What_PageObject.UnassignedUsersPage;
+using What_PageObject.Secretaries;
 
 namespace What_PageObject
 {
