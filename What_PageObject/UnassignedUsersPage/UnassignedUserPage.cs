@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using What_Common.DriverManager;
 using What_Common.Resources;
 
@@ -8,8 +7,6 @@ namespace What_PageObject.UnassignedUsersPage
 {
     public class UnassignedUserPage : BasePageWithSideBar
     {
-        private WebDriverWait wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10));
-
         public UnassignedUserPage ClickNextTopButton()
         {
             ClickElement(Locators.UnassignedUser.TopRightArrowButton);
@@ -34,6 +31,13 @@ namespace What_PageObject.UnassignedUsersPage
         public UnassignedUserPage ClickPrevBottomButton()
         {
             ClickElement(Locators.UnassignedUser.BottomLeftArrowButton);
+
+            return this;
+        }
+
+        public UnassignedUserPage ClickPageButton(int row)
+        {
+            ClickElement(Locators.UnassignedUser.ClickPagination(row));
 
             return this;
         }
@@ -106,13 +110,26 @@ namespace What_PageObject.UnassignedUsersPage
             return Convert.ToInt32(GetTextValue(Locators.UnassignedUser.LastPagePagination));
         }
 
-        public int GetCurretnPageTableData()
+        public int GetCurretnPageTableDataCount()
         {
             var list = Driver.Current.FindElements(Locators.UnassignedUser.TableData);
 
             return list.Count;
         }
 
+        public List<string> GetCurretnPageTableData()
+        {
+            List<string> data = new List<string>();
+
+            var firstNameList = Driver.Current.FindElements(Locators.UnassignedUser.TableData);
+
+            foreach (var item in firstNameList)
+            {
+                data.Add(item.Text);
+            }
+
+            return data;
+        }
 
         public UnassignedUserPage WaitClickLastPagination()
         {
@@ -163,6 +180,17 @@ namespace What_PageObject.UnassignedUsersPage
             }
 
             return data;
+        }
+
+        public UnassignedUserPage GetUserFromRow(int row, out string user)
+        {
+            user = GetUnassignedUserFirstNameByRow(row)
+                 + " "
+                 + GetUnassignedUserLastNameByRow(row)
+                 + " "
+                 + GetUnassignedUserEmailByRow(row);
+
+            return this;
         }
 
         public UnassignedUserPage VerifySortingByFirstNameByAsc()
@@ -237,15 +265,22 @@ namespace What_PageObject.UnassignedUsersPage
             return this;
         }
 
-        //public UnassignedUserPage VerifyMessageAddRole()
-        //{
-        //    var verify = GetTextValue(Locators.UnassignedUser.VerifyMessage);
-        //    var actual = "The user has been successfully assigned as a mentor";
+        public UnassignedUserPage VerifyUserExistInTable(string user)
+        {
+            for (int i = 1; i <= GetPageCount(); i++)
+            {
+                ClickPageButton(i);
+                var data = GetCurretnPageTableData();
 
-        //    Assert.AreEqual(actual, verify);
+                if (data.Contains(user))
+                {
+                    Assert.Pass();
+                }
+            }
 
-        //    return this;
-        //}
+            Assert.Fail();
+            return this;
+        }
 
         public string GetUnassignedUserFirstNameByRow(int row)
         {
