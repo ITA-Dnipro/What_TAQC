@@ -1,4 +1,5 @@
-﻿using What_Common.Resources;
+﻿using OpenQA.Selenium;
+using What_Common.Resources;
 using What_PageObject.Course;
 using What_PageObject.SchedulesPage;
 using What_PageObject.Secretaries;
@@ -25,6 +26,13 @@ namespace What_PageObject
             ClickElement(Locators.CommonLocator.ClickToNavbarMenu(sidebarLabels[typeof(T)]));
             var nextPage = GetPageInstance<T>();
 
+            return nextPage;
+        }
+
+        public T SidebarNavigateTo<T>(IWebDriver driver) where T : BasePage
+        {
+            ClickElement(Locators.CommonLocator.ClickToNavbarMenu(sidebarLabels[typeof(T)]));
+            var nextPage = (T)Activator.CreateInstance(typeof(T), driver);
             return nextPage;
         }
     }

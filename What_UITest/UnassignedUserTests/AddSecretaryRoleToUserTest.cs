@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using What_Common.DataProvider;
+using What_Common.DriverManager;
 using What_Common.Resources;
 using What_PageObject.Secretaries;
 using What_PageObject.SignInPage;
@@ -38,7 +39,7 @@ namespace What_UITest.UnassignedUserTests
                           .GetUserFromRow(row, out user)
                           .SetRoleToCurrentUser(row, (int)ChooseRole.secretary)
                           .ClickAddRoleButton(row)
-                          .SidebarNavigateTo<SecretariesPage>()
+                          .SidebarNavigateTo<SecretariesPage>(Driver.Current)
                           .WaitUntilElementLoads<UnassignedUserPage>(Locators.UnassignedUser.TableData)
                           .VerifyUserExistInTable(user);
         }
