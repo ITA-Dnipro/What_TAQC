@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using What_Common.DriverManager;
+using What_Common.Resources;
 using What_PageObject.ChangePassword;
 using What_PageObject.SignInPage;
 
@@ -7,8 +8,7 @@ namespace What_UITest.ChangePasswordTests
 {
     public class ChangePassword_ValidValues : BaseTest
     {
-        private const string PasswordOld = "765Rt##asd4";
-        private const string PasswordNew = "765Rt##asd";
+        
 
         SignInPage login;
 
@@ -24,7 +24,7 @@ namespace What_UITest.ChangePasswordTests
 
 
 
-            login = new SignInPage(Driver.Current);
+            login = new SignInPage();
             passwordPage = new ChangePasswordPage();
 
         }
@@ -34,17 +34,17 @@ namespace What_UITest.ChangePasswordTests
         [Test]
         public void ChangePasswordAsSecretary()
         {
-            login.LogIn("Adrian@secretar.com", PasswordOld, "http://localhost:8080/");
+            login.LogIn(Resources.ChangePassword.secretarEmail, Resources.ChangePassword.passwordOld);
             passwordPage.WaitClickDropDownMenu()
                  .ClickChangePasswordButton()
-                 .FillCurrentPasswordField(PasswordOld)
-                 .FillNewPasswordField(PasswordNew)
-                 .FillConfirmNewPasswordField(PasswordNew)
+                 .FillCurrentPasswordField(Resources.ChangePassword.passwordOld)
+                 .FillNewPasswordField(Resources.ChangePassword.passwordNew)
+                 .FillConfirmNewPasswordField(Resources.ChangePassword.passwordNew)
                  .ClickSaveButton()
                  .ClickConfirmButtonInModalWindow()
                  .Logout()
                  .WaiterLogin();
-            login.LogIn("Adrian@secretar.com", PasswordNew, "http://localhost:8080/");
+            login.LogIn(Resources.ChangePassword.secretarEmail, Resources.ChangePassword.passwordNew);
             passwordPage.Waiter()
             .VerifyCompleteChangesPassword()
             .Logout();
@@ -56,12 +56,12 @@ namespace What_UITest.ChangePasswordTests
 
         public void ChangePasswordBack()
         {
-            login.LogIn("Adrian@secretar.com", PasswordNew, "http://localhost:8080/");
+            login.LogIn(Resources.ChangePassword.secretarEmail, Resources.ChangePassword.passwordNew);
             passwordPage.WaitClickDropDownMenu()
              .ClickChangePasswordButton()
-             .FillCurrentPasswordField(PasswordNew)
-             .FillNewPasswordField(PasswordOld)
-             .FillConfirmNewPasswordField(PasswordOld)
+             .FillCurrentPasswordField(Resources.ChangePassword.passwordNew)
+             .FillNewPasswordField(Resources.ChangePassword.passwordOld)
+             .FillConfirmNewPasswordField(Resources.ChangePassword.passwordOld)
              .ClickSaveButton()
              .ClickConfirmButtonInModalWindow()
              .Waiter();

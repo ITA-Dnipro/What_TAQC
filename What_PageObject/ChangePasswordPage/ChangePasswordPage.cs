@@ -140,7 +140,7 @@ namespace What_PageObject.ChangePassword
             wait.Until(e => e.FindElement(Locators.GroupsPage.TableData));
             return this;
 
-            
+
         }
         public ChangePasswordPage WaiterLogin()
         {
@@ -149,7 +149,7 @@ namespace What_PageObject.ChangePassword
 
         }
 
-        
+
 
 
 

@@ -12,7 +12,7 @@ using What_PageObject.SignInPage;
 
 namespace What_UITest.GroupsTests
 {
-    
+
 
     public class TableIconsTest : BaseTest
     {
@@ -25,7 +25,7 @@ namespace What_UITest.GroupsTests
         public void Setup()
         {
 
-            login = new SignInPage(Driver.Current);
+            login = new SignInPage();
             groupsPage = new GroupsPage();
 
 
@@ -33,7 +33,7 @@ namespace What_UITest.GroupsTests
         [Test]
         public void IconsTableEqual()
         {
-            login.LogIn("Bernard@secretar.com", "765Rt##asd", "http://localhost:8080/");//прикрутить норм логин
+            login.LogIn(Resources.ChangePassword.secretaryEmail, Resources.ChangePassword.secretaryPassword);//прикрутить норм логин
 
 
             groupsPage.SidebarNavigateTo<GroupsPage>()

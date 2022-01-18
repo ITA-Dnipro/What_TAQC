@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using What_Common.DriverManager;
+using What_Common.Resources;
 using What_PageObject.ChangePassword;
 using What_PageObject.SignInPage;
 
@@ -15,8 +16,7 @@ namespace What_UITest.ChangePasswordTest
         SignInPage login;
         ChangePasswordPage passwordPage;
 
-        private const string PasswordOld = "765Rt##asd4";
-        private const string PasswordNew = "765Rt##asd";
+        
 
         [SetUp]
 
@@ -26,8 +26,9 @@ namespace What_UITest.ChangePasswordTest
 
 
 
-            login = new SignInPage(Driver.Current);
+            login = new SignInPage();
             passwordPage = new ChangePasswordPage();
+
 
         }
 
@@ -37,15 +38,15 @@ namespace What_UITest.ChangePasswordTest
 
         public void ChangePasswordAsSecretary()
         {
-            login.LogIn("Adrian@secretar.com", PasswordOld, "http://localhost:8080/");
+            login.LogIn(Resources.ChangePassword.secretarEmail, Resources.ChangePassword.passwordOld);
             passwordPage.WaitClickDropDownMenu()
                  .ClickChangePasswordButton()
                  .ClickCurrentPasswordField()
                  .ClickNewPasswordField()
                  .VerifyCurrentPassThisFieldRequired()
-                 .FillCurrentPasswordField(PasswordOld)
+                 .FillCurrentPasswordField(Resources.ChangePassword.passwordOld)
                  .VerifyNewPassThisFieldRequired()
-                 .FillNewPasswordField(PasswordNew)
+                 .FillNewPasswordField(Resources.ChangePassword.passwordNew)
                  .ClickConfirmNewPasswordField()
                  .ClickNewPasswordField()
                  .VerifyConfirmNewPassThisFieldRequired();

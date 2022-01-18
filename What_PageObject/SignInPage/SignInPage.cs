@@ -1,71 +1,147 @@
-﻿using NUnit.Framework;
+﻿using What_Common.Resources;
+using What_Common.DriverManager;
+using NUnit.Framework;
 using OpenQA.Selenium;
-using SeleniumExtras.WaitHelpers;
-using What_Common.Resources;
-
 
 namespace What_PageObject.SignInPage
 {
     public class SignInPage : BasePage
     {
-        private IWebDriver driver;
-        private Waiter waiter;
+        private const int forceSleepTime = 500;
 
-        public SignInPage(IWebDriver driver)
+        public void IsAtPage()
         {
-            this.driver = driver;
-            waiter = new Waiter(driver);
+            Assert.AreEqual(Driver.Current.Url, Resources.AuthPageUrl);
         }
 
-        public bool IsAtPage()
+        public bool IfElementExists(By element)
         {
-            if (driver.Url.Equals("http://localhost:8080/auth"))
-            {
-                return true;
-            }
-            return false;
+            return Driver.Current.FindElements(element).Count() > 0;
         }
 
         #region LogIn
         public SignInPage EnterEmail(string email)
         {
-            driver.FindElement(Locators.SignIn.EmailField).SendKeys(email);
+            FillField(Locators.SignIn.EmailField, email);
             return this;
-
         }
 
         public SignInPage EnterPassword(string password)
         {
-            driver.FindElement(Locators.SignIn.PasswordField).SendKeys(password);
+            FillField(Locators.SignIn.PasswordField, password);
             return this;
         }
 
-        public SignInPage ClickSignInButton(string url)
+        public SignInPage ClickSignInButton()
         {
-            driver.FindElement(Locators.SignIn.SignInButton).Click();
-            waiter.wait.Until(ExpectedConditions.UrlMatches(url));
+            ClickElement(Locators.SignIn.SignInButton);
             return this;
         }
 
-        public SignInPage LogIn(string email, string password, string url)
+        public SignInPage LogIn(string email, string password)
         {
             EnterEmail(email);
             EnterPassword(password);
-            return ClickSignInButton(url);
+            return ClickSignInButton();
         }
         #endregion
 
+        #region LogInVerify
+        public SignInPage VerifyLogInAsAdmin()
+        {
+            WaitUntilElementLoads<StudentsPage.StudentsPage>(Locators.Students.ListTable);
+            string expectedURL = Resources.StudentsPageUrl;
+            string actualURL = Driver.Current.Url;
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(expectedURL, actualURL);
+                Assert.IsTrue(IfElementExists(Locators.Students.AddStudentButton));
+            });
+            return this;
+        }
+
+        public SignInPage VerifyLogInAsSecretary()
+        {
+            WaitUntilElementLoads<SignInPage>(Locators.SignIn.MentorsPageAddMentor);
+            string expectedURL = Resources.MentorsPageUrl;
+            string actualURL = Driver.Current.Url;
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(expectedURL, actualURL);
+                Assert.IsTrue(IfElementExists(Locators.SignIn.NameElement));
+            });
+            return this;
+        }
+
+        public SignInPage VerifyLogInAsMentor()
+        {
+            WaitUntilElementLoads<SignInPage>(Locators.SignIn.LessonsPageAddLesson);
+            string expectedURL = Resources.LessonsPageUrl;
+            string actualURL = Driver.Current.Url;
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(expectedURL, actualURL);
+                Assert.IsTrue(IfElementExists(Locators.SignIn.LessonsPageLessonDate));
+            });
+            return this;
+        }
+
+        public SignInPage VerifyLogInAsStudent()
+        {
+            WaitUntilElementLoads<SignInPage>(Locators.SignIn.CoursesPageDisabledCourses);
+            string expectedURL = Resources.CoursesPageUrl;
+            string actualURL = Driver.Current.Url;
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(expectedURL, actualURL);
+                Assert.IsTrue(IfElementExists(Locators.SignIn.CoursesPageTitle));
+            });
+            return this;
+        }
+
+        #endregion
+
+        #region Registration
         public SignInPage ClickRegistrationButton()
         {
-            driver.FindElement(Locators.SignIn.RegistrationButton).Click();
+            ClickElement(Locators.SignIn.RegistrationButton);
             return this;
         }
+        public SignInPage VerifyRegistrationButton()
+        {
+            Thread.Sleep(forceSleepTime);
+            WaitUntilElementLoads<SignInPage>(Locators.SignIn.RegistrationPageSignUpElement);
+            string expectedURL = Resources.RegistrationUrl;
+            string actualURL = Driver.Current.Url;
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(expectedURL, actualURL);
+                Assert.IsTrue(IfElementExists(Locators.SignIn.RegistrationFirstName));
+            });
+            return this;
+        }
+        #endregion
 
+        #region ForgotPassword
         public SignInPage ClickForgotPasswordButton()
         {
-
-            driver.FindElement(Locators.SignIn.ForgotPasswordButton).Click();
+            ClickElement(Locators.SignIn.ForgotPasswordButton);
             return this;
         }
+        public SignInPage VerifyForgotPasswordButton()
+        {
+            Thread.Sleep(forceSleepTime);
+            WaitUntilElementLoads<SignInPage>(Locators.SignIn.ForgotPasswordPageTitle);
+            string expectedURL = Resources.ForgotPasswordUrl;
+            string actualURL = Driver.Current.Url;
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(expectedURL, actualURL);
+                Assert.IsTrue(IfElementExists(Locators.SignIn.ForgotPasswordPageEmailText));
+            });
+            return this;
+        }
+        #endregion
+
     }
 }
