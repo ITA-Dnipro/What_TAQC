@@ -141,6 +141,16 @@ namespace What_Common.Resources
             public static readonly By PasswordField = By.XPath("//*[@id='password']");
             public static readonly By RegistrationButton = By.XPath("//*[contains(text(),'Registration')]");
             public static readonly By ForgotPasswordButton = By.XPath("//*[contains(text(),'Forgot Password?')]");
+            public static readonly By ForgotPasswordPageTitle = By.XPath("//*[contains(text(), 'Forgot your password?')]");
+            public static readonly By ForgotPasswordPageEmailText = By.XPath("//*[contains(text(), 'Email address')]");
+            public static readonly By CoursesPageDisabledCourses = By.XPath("//*[contains(text(), 'Disabled Courses')]");
+            public static readonly By CoursesPageTitle = By.XPath("//*[contains(text(), 'Title')]");
+            public static readonly By LessonsPageAddLesson = By.XPath("//*[contains(text(), 'Add a lesson')]");
+            public static readonly By LessonsPageLessonDate = By.XPath("//*[contains(text(), 'lessonDate')]");
+            public static readonly By MentorsPageAddMentor = By.XPath("//*[contains(text(), 'Add a mentor')]");
+            public static readonly By NameElement = By.XPath("//*[contains(text(), 'Name')]");
+            public static readonly By RegistrationPageSignUpElement = By.XPath("//*[contains(text(), 'Sign up to WHAT')]");
+            public static readonly By RegistrationFirstName = By.XPath("//*[contains(text(), 'First Name')]");
         }
 
         public static class Students
@@ -156,6 +166,8 @@ namespace What_Common.Resources
             public static readonly By ListElement = By.XPath("//tbody/tr");
             public static readonly By DetailsButton = By.XPath("//div[@class='container d-flex flex-wrap']/child::div[1]/descendant::button");
             public static readonly By ListTable = By.XPath("//div[@class='col-12 card shadow p-3 mb-5 bg-white ml-2 mr-2']");
+            public static readonly By UnassignedUsersTitle = By.XPath("//*[contains(text(),'Unassigned Users')]");
+            public static readonly By UnassignedUsersName = By.XPath("//*[contains(text(),'Name')]");
         }
     }
 }
