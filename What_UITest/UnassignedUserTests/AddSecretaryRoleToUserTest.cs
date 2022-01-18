@@ -39,7 +39,7 @@ namespace What_UITest.UnassignedUserTests
                           .GetUserFromRow(row, out user)
                           .SetRoleToCurrentUser(row, (int)ChooseRole.secretary)
                           .ClickAddRoleButton(row)
-                          .SidebarNavigateTo<SecretariesPage>(Driver.Current)
+                          .SidebarNavigateTo<SecretariesPage>()
                           .WaitUntilElementLoads<UnassignedUserPage>(Locators.UnassignedUser.TableData)
                           .VerifyUserExistInTable(user);
         }

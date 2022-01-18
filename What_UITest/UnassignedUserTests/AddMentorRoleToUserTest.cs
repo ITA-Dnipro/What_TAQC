@@ -28,6 +28,7 @@ namespace What_UITest.UnassignedUserTests
         }
 
         [Test]
+        [Test(Description = "DP220TAQC-108")]
         public void ChooseRoleTest()
         {
             int row = rnd.Next(1, unassignedUser.GetCurretnPageTableDataCount() + 1);

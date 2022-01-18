@@ -8,7 +8,7 @@ using What_Common.Resources;
 
 namespace What_PageObject.Secretaries
 {
-    public class SecretariesPage : BasePageWithSideBar
+    public class SecretariesPage : BasePage
     {
         protected IWebDriver driver;
         public SecretariesPage(IWebDriver driver)

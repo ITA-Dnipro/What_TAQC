@@ -28,12 +28,5 @@ namespace What_PageObject
 
             return nextPage;
         }
-
-        public T SidebarNavigateTo<T>(IWebDriver driver) where T : BasePage
-        {
-            ClickElement(Locators.CommonLocator.ClickToNavbarMenu(sidebarLabels[typeof(T)]));
-            var nextPage = (T)Activator.CreateInstance(typeof(T), driver);
-            return nextPage;
-        }
     }
 }
