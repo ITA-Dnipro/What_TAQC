@@ -176,10 +176,10 @@ namespace What_Common.Resources
 
         public static class UnassignedUser
         {
-            public static By TopLeftArrowButton = By.XPath("//*[@class='row justify-content-between align-items-center mb-3']//*[text()='<']");
-            public static By TopRightArrowButton = By.XPath("//*[@class='row justify-content-between align-items-center mb-3']//*[text()='>']");
-            public static By BottomLeftArrowButton = By.XPath("//*[@class='row justify-content-between align-items-center mb-3 unassigned-list__paginate___2mqJX']//*[text()='<']");
-            public static By BottomRightArrowButton = By.XPath("//*[@class='row justify-content-between align-items-center mb-3 unassigned-list__paginate___2mqJX']//*[text()='>']");
+            public static By TopLeftArrowButton = By.XPath("//button[text()=\"<\"]");
+            public static By TopRightArrowButton = By.XPath("//button[text()=\">\"]");
+            public static By BottomLeftArrowButton = By.XPath("//button[text()=\"<\"]");
+            public static By BottomRightArrowButton = By.XPath("//button[text()=\">\"]");
             public static By SearchInputField = By.XPath("//input[@type='text']");
             public static By DropDownRowButton = By.XPath("//select[@id='change-visible-people']");
             public static By FirstPagePagination = By.XPath("//ul[2]/li[1]");
@@ -192,6 +192,8 @@ namespace What_Common.Resources
             public static By LastNameTableData = By.XPath("//tbody/tr/td[2]");
             public static By EmailTableData = By.XPath("//tbody/tr/td[3]");
 
+            public static By ClickPagination(int row) => By.XPath($"//button[text()='{row}']");
+            public static By UnassignedUserRowData(int row) => By.XPath($"//tbody/tr[{row}]/td");
             public static By UnassignedUserFirstName(int row) => By.XPath($"//tbody/tr[{row}]/td[1]");
             public static By UnassignedUserLastName(int row) => By.XPath($"//tbody/tr[{row}]/td[2]");
             public static By UnassignedUserEmail(int row) => By.XPath($"//tbody/tr[{row}]/td[3]");
@@ -231,6 +233,7 @@ namespace What_Common.Resources
             public static By ErrorField = By.XPath("//*[contains(text(),'This field is required')]");
             
         }
+
         public static class Students
         {
             public static readonly By CardsIcon = By.XPath("//*[href='/assets/svg/Card.svg#Card']");

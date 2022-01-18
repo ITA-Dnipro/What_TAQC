@@ -1,8 +1,6 @@
-﻿using System;
+﻿using OpenQA.Selenium;
 using What_Common.DriverManager;
 using What_Common.Resources;
-using OpenQA.Selenium;
-using What_PageObject.SignInPage;
 
 namespace What_PageObject.ForgotPassword
 {
