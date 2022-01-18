@@ -16,6 +16,7 @@ namespace What_UITest.UnassignedUserTests
         private LoginDetails user;
         private UnassignedUserHelper helper = new UnassignedUserHelper();
         private Random rnd = new Random();
+        string userData;
 
         [SetUp]
         public void Setup()
@@ -31,16 +32,15 @@ namespace What_UITest.UnassignedUserTests
         public void ChooseRoleTest()
         {
             int row = rnd.Next(1, unassignedUser.GetCurretnPageTableDataCount() + 1);
-            string user;
 
             unassignedUser.SidebarNavigateTo<UnassignedUserPage>()
                           .WaitUntilElementLoads<UnassignedUserPage>(Locators.UnassignedUser.TableData)
-                          .GetUserFromRow(row, out user)
+                          .GetUserFromRow(row, out userData)
                           .SetRoleToCurrentUser(row, (int)ChooseRole.mentor)
                           .ClickAddRoleButton(row)
                           .SidebarNavigateTo<SecretariesPage>()
                           .WaitUntilElementLoads<UnassignedUserPage>(Locators.UnassignedUser.TableData)
-                          .VerifyUserExistInTable(user);
+                          .VerifyUserExistInTable(userData);
         }
     }
 }

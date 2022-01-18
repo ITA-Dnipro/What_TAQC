@@ -11,10 +11,7 @@ namespace What_PageObject.Secretaries
     public class SecretariesPage : BasePage
     {
         protected IWebDriver driver;
-        public SecretariesPage(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
+        
         public SecretariesPage ClickNextTopButton()
         {
             ClickElement(Locators.ListOfSecretaryPage.paginationArrowRightInTop);
