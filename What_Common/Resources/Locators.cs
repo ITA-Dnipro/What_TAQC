@@ -105,9 +105,6 @@ namespace What_Common.Resources
                 detailsTab = By.XPath("//a[text()=\"Secretary's details\"]"),
                 editDetailsTab = By.XPath("//a[text()='Edit secretary']"),
                 arrowBackButton = By.XPath("//a[contains(@class, 'align-items-center') and @href='/secretaries']");
-                //firstNameLink = By.XPath("//input[@placeholder='First Name:']"),
-                //lastNameLink = By.XPath("//input[@placeholder='Last Name:']"),
-                //emailLink = By.XPath("//input[@placeholder='Email:']");
         }
 
         public static class EditSecretaryDetails
