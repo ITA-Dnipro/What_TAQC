@@ -1,7 +1,9 @@
 ﻿using What_Common.Resources;
 using What_Common.DriverManager;
+using What_PageObject.Course;
 using OpenQA.Selenium;
 using NUnit.Framework;
+using SeleniumExtras.WaitHelpers;
 
 namespace What_PageObject.StudentsPage
 {

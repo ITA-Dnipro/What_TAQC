@@ -21,10 +21,10 @@ namespace What_UITest.ChangePasswordTests
 
         public void Setup()
         {
-            
-           
 
-            login = new SignInPage(Driver.Current);
+
+
+            login = new SignInPage();
             page = new ChangePasswordPage();
 
         }
@@ -34,7 +34,7 @@ namespace What_UITest.ChangePasswordTests
         [Test]
         public void ChangePasswordAsSecretary()
         {
-            login.LogIn("Adrian@secretar.com", PasswordOld, "http://localhost:8080/");
+            login.LogIn("Adrian@secretar.com", PasswordOld);
             page.WaitClickDropDownMenu()
                  .ClickChangePasswordButton()
                  .FillCurrentPasswordField(PasswordOld)
@@ -44,8 +44,9 @@ namespace What_UITest.ChangePasswordTests
                  .ClickConfirmButtonInModalWindow()
                  .VerifyFlashMassage()
                  .Logout();
+
                page.WaiterLogin();
-               login.LogIn("Adrian@secretar.com", PasswordNew, "http://localhost:8080/");
+               login.LogIn("Adrian@secretar.com", PasswordNew);
                page.Waiter()
                .VerifyCompleteChangesPassword()
                .Logout();
@@ -66,7 +67,7 @@ namespace What_UITest.ChangePasswordTests
 
         private void ChangePasswordBack()
         {
-            login.LogIn("Adrian@secretar.com", PasswordNew, null);
+            login.LogIn("Adrian@secretar.com", PasswordNew);
             page.WaitClickDropDownMenu()
              .ClickChangePasswordButton()
              .FillCurrentPasswordField(PasswordNew)

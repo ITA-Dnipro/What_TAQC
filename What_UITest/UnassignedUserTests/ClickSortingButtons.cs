@@ -7,15 +7,15 @@ namespace What_UITest.UnassignedUserTests
 {
     public class ClickSortingButtons : BaseTest
     {
-        private SignInPageObject signInPage;
+        private SignInPage signInPage;
         private UnassignedUserPage unassignedUser;
 
         [SetUp]
         public void Setup()
         {
-            signInPage = new SignInPageObject(Driver.Current);
+            signInPage = new SignInPage();
             unassignedUser = new UnassignedUserPage();
-            signInPage.LogIn("james.smith@example.com", "Nj_PJ7K9", "http://localhost:8080/");
+            signInPage.LogIn("james.smith@example.com", "Nj_PJ7K9");
         }
 
         [Test]

@@ -11,13 +11,13 @@ using What_Common.DriverManager;
 
 namespace What_UITest
 {
-    public class VerifyThatPasswordResetRequestCanWasSend : BaseTest.BaseTest
+    public class VerifyThatPasswordResetRequestCanWasSend : BaseTest
     {
 
         [SetUp]
         public void Setup()
         {
-            
+
         }
 
         [Test(Description = "")]

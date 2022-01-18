@@ -21,12 +21,12 @@ namespace What_PageObject
             return new Header();
         }
 
-        public SignInPageObject Logout()
+        public SignInPage.SignInPage Logout()
         {
             ClickElement(What_Common.Resources.Locators.CommonLocator.DropdownNameElement);
             ClickElement(What_Common.Resources.Locators.CommonLocator.MyProfile);
 
-            return new SignInPageObject(Driver.Current);
+            return new SignInPage.SignInPage();
         }
     }
 }

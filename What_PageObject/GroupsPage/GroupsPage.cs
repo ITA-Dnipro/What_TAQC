@@ -32,7 +32,7 @@ namespace What_PageObject.GroupsPage
         public GroupsPage GetTableData()
         {
             //List<string> data = new List<string>();
-            TableData = new List<string>(); 
+            TableData = new List<string>();
 
             var tableData = Driver.Current.FindElements(Locators.TableData);
 
@@ -57,7 +57,7 @@ namespace What_PageObject.GroupsPage
                 string cardNameData = cardName.Replace(Environment.NewLine, "").Replace(":", "");
                 data.Add(cardNameData);
             }
-            
+
 
             // (?<=(\\r\\n))(.*?)(?=(:))
             return data;
