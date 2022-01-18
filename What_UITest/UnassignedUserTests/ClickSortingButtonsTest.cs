@@ -1,21 +1,23 @@
 using NUnit.Framework;
-using What_Common.DriverManager;
+using What_Common.DataProvider;
 using What_PageObject.SignInPage;
 using What_PageObject.UnassignedUsersPage;
 
 namespace What_UITest.UnassignedUserTests
 {
-    public class ClickSortingButtons : BaseTest
+    public class ClickSortingButtonsTest : BaseTest
     {
         private SignInPage signInPage;
         private UnassignedUserPage unassignedUser;
+        private LoginDetails user;
 
         [SetUp]
         public void Setup()
         {
             signInPage = new SignInPage();
             unassignedUser = new UnassignedUserPage();
-            signInPage.LogIn("james.smith@example.com", "Nj_PJ7K9");
+            user = Controller.GetUser(Controller.UserRole.Admin);
+            signInPage.LogIn(user.Email, user.Password);
         }
 
         [Test]
@@ -36,12 +38,6 @@ namespace What_UITest.UnassignedUserTests
                           .VerifySortingByEmailByAsc()
                           .ClickSortByEmail()
                           .VerifySortingByEmailByDesc();
-        }
-
-        [TearDown]
-        public void AfterTest()
-        {
-
         }
     }
 }
