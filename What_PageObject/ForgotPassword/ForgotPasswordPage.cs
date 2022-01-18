@@ -3,16 +3,12 @@ using What_Common.DriverManager;
 using What_Common.Resources;
 using OpenQA.Selenium;
 using What_PageObject.SignInPage;
+using NUnit.Framework;
 
 namespace What_PageObject.ForgotPassword
 {
     public class ForgotPasswordPage : BasePage
     {
-        IWebDriver driver;
-        public ForgotPasswordPage(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
         public ForgotPasswordPage ClickForgotPasswordLink()
         {
             ClickElement(Locators.ForgotPassword.forgotPasswordLink);
@@ -46,6 +42,13 @@ namespace What_PageObject.ForgotPassword
         public string GetTextValue(By locator)
         {
             return Driver.Current.FindElement(locator).Text;
+        }
+        public ForgotPasswordPage VerifyTextValueInModalWindow()
+        {
+            string expexted = Resources.ForgotPassword.modalWindowText;
+            string acrual = GetTextValue(Locators.ForgotPassword.modalWindowText);
+            Assert.AreEqual(expexted, acrual);
+            return this;
         }
     }
 }
