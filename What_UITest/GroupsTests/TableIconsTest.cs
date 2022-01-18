@@ -11,7 +11,7 @@ using What_PageObject.SignInPage;
 
 namespace What_UITest.GroupsTests
 {
-    
+
 
     public class TableIconsTest : BaseTest
     {

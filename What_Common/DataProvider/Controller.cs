@@ -20,10 +20,10 @@ namespace What_Common.DataProvider
             Mentor,
             Student
         }
+
         private static LoginDetails[] DeserializeObject()
         {
             LoginDetails[] users = JsonConvert.DeserializeObject<LoginDetails[]>(File.ReadAllText(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Resources/user.json"));
-
             return users;
         }
         private static string DecoddingString(string data)

@@ -21,8 +21,8 @@ namespace What_UITest.ChangePasswordTests
 
         public void Setup()
         {
-            
-           
+
+
 
             login = new SignInPage();
             page = new ChangePasswordPage();
@@ -44,6 +44,7 @@ namespace What_UITest.ChangePasswordTests
                  .ClickConfirmButtonInModalWindow()
                  .VerifyFlashMassage()
                  .Logout();
+
                page.WaiterLogin();
                login.LogIn("Adrian@secretar.com", PasswordNew);
                page.Waiter()

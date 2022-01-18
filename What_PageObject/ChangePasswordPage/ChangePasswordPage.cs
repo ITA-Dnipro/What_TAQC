@@ -61,7 +61,7 @@ namespace What_PageObject.ChangePassword
 
         public ChangePasswordPage ClickConfirmButtonInModalWindow()
         {
-            
+
             ClickElement(Locators.ConfirmButtonInModalWindow);
             return this;
 
@@ -92,16 +92,16 @@ namespace What_PageObject.ChangePassword
         public ChangePasswordPage VerifyFlashMassage()
         {
             wait.Until(e => e.FindElement(By.XPath("//tbody/tr")));
-            Assert.AreEqual((""),Driver.Current.FindElement(By.XPath("//*[@id='root']/div[1]/div")).Text);
+            Assert.AreEqual((""), Driver.Current.FindElement(By.XPath("//*[@id='root']/div[1]/div")).Text);
             return this;
-         }
+        }
 
         public ChangePasswordPage Waiter()
         {
             wait.Until(e => e.FindElement(By.XPath("//tbody/tr")));
             return this;
 
-            
+
         }
         public ChangePasswordPage WaiterLogin()
         {
@@ -110,7 +110,7 @@ namespace What_PageObject.ChangePassword
 
         }
 
-        
+
 
 
 

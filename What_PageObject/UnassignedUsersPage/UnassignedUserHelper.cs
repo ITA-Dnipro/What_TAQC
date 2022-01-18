@@ -4,6 +4,13 @@ namespace What_PageObject.UnassignedUsersPage
 {
     public class UnassignedUserHelper
     {
+        public enum ChooseRole
+        {
+            student = 2,
+            mentor,
+            secretary,
+        }
+
         RegistrationPage.RegistrationPage registration = new RegistrationPage.RegistrationPage();
         private Random rnd = new Random();
 

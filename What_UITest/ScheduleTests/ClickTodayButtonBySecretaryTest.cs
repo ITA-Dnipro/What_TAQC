@@ -6,7 +6,7 @@ using What_PageObject.SignInPage;
 
 namespace What_UITest.ScheduleTests
 {
-    public class ClickTodayButtonByAdminTest : BaseTest
+    public class ClickTodayButtonBySecretaryTest : BaseTest
     {
         private SignInPage signInPage;
         private SchedulePage schedule;

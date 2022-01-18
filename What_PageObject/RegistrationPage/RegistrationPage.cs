@@ -7,6 +7,10 @@ namespace What_PageObject.RegistrationPage
 {
     public class RegistrationPage : BasePage
     {
+        public RegistrationPage()
+        {
+        }
+
         public RegistrationPage FillFirstName(string firstName)
         {
             FillField(Locators.RegistrationPage.FirstNameField, firstName);
@@ -84,6 +88,6 @@ namespace What_PageObject.RegistrationPage
             var IslModalWindow = window.Displayed;
             Assert.IsTrue(IslModalWindow);
             return this;
-        }
+        }               
     }
 }
