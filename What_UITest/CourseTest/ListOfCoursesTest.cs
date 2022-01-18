@@ -42,7 +42,7 @@ namespace What_UITest.CourseTest
                 WaitUntilElementLoads<StudentsPage>(Locators.Students.ListTable).
                 ClickCoursesPage().
                 VerifyThatCoursePageDisplayed();
-            
+             
         }
 
     }
