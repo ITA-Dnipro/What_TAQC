@@ -21,7 +21,7 @@ namespace What_UITest.ScheduleTests
             user = Controller.GetUser(Controller.UserRole.Admin);
         }
 
-        [Test]
+        [Test(Description = "DP220TAQC-193")]
         public void ArrowSheduleTest()
         {
             signInPage.LogIn(user.Email, user.Password);

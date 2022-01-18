@@ -21,7 +21,6 @@ namespace What_UITest.UnassignedUserTests
         }
 
         [Test]
-        //[Repeat(5)]
         public void SortingTest()
         {
             unassignedUser.SidebarNavigateTo<UnassignedUserPage>()

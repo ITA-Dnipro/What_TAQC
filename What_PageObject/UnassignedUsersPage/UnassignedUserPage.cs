@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using What_Common.DriverManager;
 using What_Common.Resources;
 
@@ -7,6 +8,7 @@ namespace What_PageObject.UnassignedUsersPage
 {
     public class UnassignedUserPage : BasePageWithSideBar
     {
+        protected WebDriverWait wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10));
         public UnassignedUserPage ClickNextTopButton()
         {
             ClickElement(Locators.UnassignedUser.TopRightArrowButton);
@@ -94,7 +96,8 @@ namespace What_PageObject.UnassignedUsersPage
         public UnassignedUserPage ClickAddRoleButton(int row)
         {
             ClickElement(Locators.UnassignedUser.ClickToAddRoleButton(row));
-
+            wait.Until(e => e.FindElement(Locators.UnassignedUser.TableData));
+            Thread.Sleep(100);
             return this;
         }
 
@@ -112,6 +115,7 @@ namespace What_PageObject.UnassignedUsersPage
 
         public int GetCurretnPageTableDataCount()
         {
+            wait.Until(e => e.FindElement(Locators.UnassignedUser.TableData));
             var list = Driver.Current.FindElements(Locators.UnassignedUser.TableData);
 
             return list.Count;
@@ -120,6 +124,8 @@ namespace What_PageObject.UnassignedUsersPage
         public List<string> GetCurretnPageTableData()
         {
             List<string> data = new List<string>();
+
+            wait.Until(e => e.FindElement(Locators.UnassignedUser.TableData));
 
             var firstNameList = Driver.Current.FindElements(Locators.UnassignedUser.TableData);
 
@@ -267,14 +273,17 @@ namespace What_PageObject.UnassignedUsersPage
 
         public UnassignedUserPage VerifyUserExistInTable(string user)
         {
-            for (int i = 1; i <= GetPageCount(); i++)
+            for (int i = GetPageCount(); i >= 1; i--)
             {
                 ClickPageButton(i);
+
+                wait.Until(e => e.FindElement(Locators.UnassignedUser.TableData));
                 var data = GetCurretnPageTableData();
 
                 if (data.Contains(user))
                 {
                     Assert.Pass();
+                    return this;
                 }
             }
 

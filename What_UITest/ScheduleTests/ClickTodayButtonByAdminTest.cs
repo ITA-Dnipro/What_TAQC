@@ -23,7 +23,7 @@ namespace What_UITest.ScheduleTests
             signInPage.LogIn(user.Email, user.Password);
         }
 
-        [Test]
+        [Test(Description = "DP220TAQC-194")]
         public void TodayButtonTest()
         {
             schedule.ClickNavbarMenuSheduleButton()

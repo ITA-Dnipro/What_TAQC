@@ -1,7 +1,9 @@
-﻿using System;
+using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using What_Common.Resources;
 using What_PageObject.Course;
+using What_PageObject.Lessons;
 using What_PageObject.SchedulesPage;
 using What_PageObject.Secretaries;
 using What_PageObject.UnassignedUsersPage;
@@ -13,10 +15,10 @@ namespace What_PageObject
     {
         private readonly Dictionary<Type, string> sidebarLabels = new Dictionary<Type, string>()
         {
-            //[typeof(StudentsPage)] = "Students",
+            [typeof(StudentsPage.StudentsPage)] = "Students",
             //[typeof(MentorsPage)] = "Mentors",
             [typeof(SecretariesPage)] = "Secretaries",
-            //[typeof(LessonsPage)] = "Lessons",
+            [typeof(LessonsPage)] = "Lessons",
             [typeof(GroupsPage.GroupsPage)] = "Groups",
             [typeof(CoursesPage)] = "Courses",
             [typeof(SchedulePage)] = "Schedule",
