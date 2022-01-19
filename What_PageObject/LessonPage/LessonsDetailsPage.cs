@@ -4,7 +4,7 @@ using What_Common.Resources;
 
 namespace What_PageObject.Lessons
 {
-    public class LessonsDetailsPage :BasePageWithSideBar
+    public class LessonsDetailsPage : BasePageWithSideBar
     {
         public LessonsDetailsPage VerifyAll((string lessonsTheme, string lessonsDate, string lessonsTime) expected)
         {

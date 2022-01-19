@@ -55,7 +55,9 @@ namespace What_PageObject.Course
         public CoursesPage ArrowClick()
         {
             ClickElement(Locators.EditCourseDetails.ArrowBackLink);
-            return new CoursesPage(driver);
+            return new CoursesPage();
         }
+
+        
     }
 }

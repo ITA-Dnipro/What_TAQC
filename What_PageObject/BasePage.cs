@@ -1,6 +1,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using What_Common.DriverManager;
+using What_Common.Resources;
 
 namespace What_PageObject
 {
@@ -20,6 +21,12 @@ namespace What_PageObject
             field.SendKeys(Keys.Control + "a");
             field.SendKeys(Keys.Delete);
             field.SendKeys(text);
+        }
+
+        public void Logout()
+        {
+            Driver.Current.FindElement(Locators.NavBar.DropDownNameElement).Click();
+            Driver.Current.FindElement(Locators.NavBar.LogOutLink).Click();
         }
 
         public T WaitUntilElementLoads<T>(By locator) where T : BasePage

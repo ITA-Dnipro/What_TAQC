@@ -40,7 +40,7 @@ namespace What_PageObject.Lessons
                 selectedRow.lessonsTime = "";
             }
 
-            return new LessonsDetailsPage(); ;
+            return new LessonsDetailsPage();
         }
         public LessonsDetailsPage ClickOnLesson(string name)
         {
