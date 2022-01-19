@@ -13,10 +13,13 @@ namespace What_UITest
         [SetUp]
         public void Setup()
         {
-            //Driver.Current = null;
-            Driver.Current.Manage().Window.Maximize();
-            Driver.Current.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            Driver.Current.Navigate().GoToUrl("http://localhost:8080");
+            Driver.Current = null;
+            Driver.MaximizeWindow();
+            Driver.ImplicitWait();
+            Driver.GoToUrl();
+            //Driver.Current.Manage().Window.Maximize();
+            //Driver.Current.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            //Driver.Current.Navigate().GoToUrl("http://localhost:8080");
         }
 
         [TearDown]
