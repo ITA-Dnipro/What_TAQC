@@ -238,6 +238,17 @@ namespace What_Common.Resources
             public static By ErrorField = By.XPath("//*[contains(text(),'This field is required')]");
             
         }
+      
+        public static class Mentors
+        {
+            public static By MentorsButtonOnSideBar = By.XPath("//*[contains(text(),'Mentors')]");
+            public static By MentorPage = By.XPath("//*[@class='col-6']");
+            public static By TableMentors = By.XPath("//*[@class='table__table-body___bYZbU']");
+            public static By EditMentorButton = By.XPath("//*[contains(text(),'Edit a mentor')]");
+            public static By AddMentorButton = By.XPath("//*[contains(text(),'Add a mentor')]");
+            public static By MentorDetailsField = By.XPath("//*[contains(text(),'Mentor Details')]");
+            public static By MentorEditingField = By.XPath("//*[contains(text(),'Mentor Editing')]");
+        }
 
         public static class Students
         {
