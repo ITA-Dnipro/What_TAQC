@@ -136,6 +136,9 @@ namespace What_Common.Resources
             public static By SortByTitleElement = By.XPath("//span[@data-sorting-param=\"name\"]");
             public static By CourseTableInRow = By.XPath("//table");
             public static By CourseTableInCards = By.XPath("//div[@class='container d-flex flex-wrap']");
+            public static By AllCoursesInRows = By.XPath("//tbody/child::tr/td[1]");
+            public static By FlashMessageSuccess = By.XPath("//div[@class='fade alert alert-success alert-dismissible show']");
+
 
             public static By EditInRowsCourseElement(int id) => By.XPath($"//tbody/child::tr[{id}]/child::td/following-sibling::td");
 
@@ -166,6 +169,13 @@ namespace What_Common.Resources
             public static By ModalDisableButton = By.XPath("//button[text()='Disable']");
             public static By ResetButton = By.XPath("//button[text()='Reset']");
             public static By Save_button = By.XPath("//button[text()='Save']");
+        }
+
+        public static class AddCourse
+        {
+            public static By CourseNameField = By.XPath("//input");
+            public static By CancelButton = By.XPath("//a[text()='Cancel']");
+            public static By SaveButton = By.XPath("//button[text()='Save']");
         }
 
         public static class Schedule
