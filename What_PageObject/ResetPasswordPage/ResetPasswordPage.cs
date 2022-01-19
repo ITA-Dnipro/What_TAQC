@@ -85,11 +85,11 @@ namespace ResetPassword
         }
         private void LooseFocusFromInput()
         {
-            //ClickElement(Locators.ResetPassword.pageLabel);
+            ClickElement(Locators.ResetPassword.pageLabel);
         }
         public void VerifyRedirectToAuthPage()
         {
-            string expectedUrl = "http://localhost:8080/auth"; 
+            string expectedUrl = Resources.WhatUrl + "auth"; 
             Assert.AreEqual(expectedUrl, Driver.Current.Url);
         }
     }

@@ -9,7 +9,7 @@ using What_PageObject.LessonPage.Models;
 
 namespace What_UITest.Lessons
 {
-    public class EditLessonAsAdmin_valid : BaseTest
+    public class EditLessonAsMentor_valid : BaseTest
     {
         string newLessonTheme = "Agile 101";
         string existingLessonTheme = "Java 101";
@@ -22,18 +22,18 @@ namespace What_UITest.Lessons
         [SetUp]
         public void Setup()
         {
-            LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
+            LoginDetails mentor = Controller.GetUser(Controller.UserRole.Mentor);
             Driver.GoToUrl();
             SignInPage signIn = new SignInPage(Driver.Current);
-            signIn.EnterEmail(admin.Email);
-            signIn.EnterPassword(admin.Password);
+            signIn.EnterEmail(mentor.Email);
+            signIn.EnterPassword(mentor.Password);
             signIn.ClickSignInButton(Resources.WhatStudentsUrl);
             lessonsPage = new BasePageWithSideBar().SidebarNavigateTo<LessonsPage>();
 
         }
 
         [Test(Description = "DP220TAQC-190")]
-        public void AdminCanEditLessons()
+        public void MentorCanEditLessons()
         {
 
             lessonsPage

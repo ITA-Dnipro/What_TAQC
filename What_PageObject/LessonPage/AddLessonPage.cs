@@ -15,6 +15,12 @@ namespace What_PageObject.Lessons
             LooseFocusFromInput();
             return this;
         }
+        public AddLessonPage VerifyLessonTheme(string expected)
+        {
+            string actual = Driver.Current.FindElement(Locators.AddLesson.LessonThemeField).GetAttribute("value");
+            Assert.AreEqual(expected, actual);
+            return this;
+        }
         public AddLessonPage FillGroupName(string groupName)
         {
             FillField(Locators.AddLesson.GroupNameField, groupName);
@@ -32,41 +38,50 @@ namespace What_PageObject.Lessons
             }
             return this;
         }
-        public AddLessonPage FillLessonDate(string lessonDate)
+        public AddLessonPage VerifyGroupName()
         {
-            Driver.Current.FindElement(Locators.AddLesson.LessonsDate).SendKeys(lessonDate);
-
+            var actual = Driver.Current.FindElements(Locators.AddLesson.GroupNameFormGroup);
+            int expectedNumberOfElements = 2;
+            Assert.AreEqual(expectedNumberOfElements, actual.Count);
             return this;
         }
-        public AddLessonPage FillLessonDate()
-
+  
+        public AddLessonPage FillLessonDate(out string generatedDate)
         {
-            string currentTime = DateTime.Now.AddHours(-1).ToString("ddMMyyyyHHmm");
+            DateTime generatedDateTime = RandomDay();
+            string currentTime = generatedDateTime.ToString("ddMMyyyyHHmm");
+            generatedDate = generatedDateTime.ToString("yyyy-MM-ddTHH:mm");
 
             Driver.Current.FindElement(Locators.AddLesson.LessonsDate).SendKeys(currentTime);
 
             return this;
         }
+        public AddLessonPage VerifyLessonDate(string expectedDate)
+        {
+            string actual = Driver.Current.FindElement(Locators.AddLesson.LessonsDate).GetAttribute("value");
+            Assert.AreEqual(actual, expectedDate);
+            return this;
+        }
+       
         public AddLessonPage FillMentorEmail(string email)
         {
             FillField(Locators.AddLesson.MentorEmailField, email);
             LooseFocusFromInput();
             return this;
         }
-        public AddLessonPage FillMentorEmail()
+       
+        public AddLessonPage VerifyMentorEmail()
         {
-            listOfMentorsEmails.AddRange(Driver.Current.FindElements(Locators.AddLesson.Mentors));
-            if (listOfMentorsEmails.Count > 0)
-            {
-                Random rand = new Random();
-                int randomEmailFromList = rand.Next(0, listOfMentorsEmails.Count);
-                FillMentorEmail(listOfMentorsEmails[randomEmailFromList].GetAttribute("value"));
-            }
+            var actual = Driver.Current.FindElements(Locators.AddLesson.MentorEmailNameFormGroup);
+            int expectedNumberOfElements = 2;
+            Assert.AreEqual(expectedNumberOfElements, actual.Count);
             return this;
         }
-        public AddLessonPage ClickClassRegisterButton()
+        public AddLessonPage VerifyClassJournal()
         {
-            ClickElement(Locators.AddLesson.ClassRegisterButton);
+            var journal = Driver.Current.FindElement(Locators.AddLesson.ClassJournalTable);
+
+            Assert.IsTrue(journal.Displayed);
             return this;
         }
         public AddLessonPage VerifyLessonsThemeError(string expected)
@@ -87,14 +102,38 @@ namespace What_PageObject.Lessons
             Assert.AreEqual(expected, actual);
             return this;
         }
+        public AddLessonPage FillMentorEmail()
+        {
+            listOfMentorsEmails.AddRange(Driver.Current.FindElements(Locators.AddLesson.Mentors));
+            if (listOfMentorsEmails.Count > 0)
+            {
+                Random rand = new Random();
+                int randomEmailFromList = rand.Next(0, listOfMentorsEmails.Count);
+                FillMentorEmail(listOfMentorsEmails[randomEmailFromList].GetAttribute("value"));
+            }
+            return this;
+        }
+        public AddLessonPage ClickClassRegisterButton()
+        {
+            ClickElement(Locators.AddLesson.ClassRegisterButton);
+            return this;
+        }
         public LessonsPage ClickSaveButton()
         {
             ClickElement(Locators.AddLesson.SaveButton);
             return new LessonsPage();
         }
+       
         private void LooseFocusFromInput()
         {
             ClickElement(Locators.AddLesson.AddLessonLabel);
+        }
+        private DateTime RandomDay()
+        {
+            Random gen = new Random();
+            DateTime start = new DateTime(2022, 1, 1);
+            double range = (DateTime.Today - start).TotalHours;
+            return start.AddHours(gen.Next((int)range));
         }
     }
 }
