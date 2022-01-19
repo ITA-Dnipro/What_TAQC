@@ -1,9 +1,6 @@
-using System;
 using NUnit.Framework;
-using What_Common.Resources;
 using What_Common.DataProvider;
-using What_Common.DriverManager;
-using What_PageObject.Secretaries;
+using What_PageObject.SecretariesPage;
 using What_PageObject.SignInPage;
 
 namespace What_UITest
@@ -20,20 +17,30 @@ namespace What_UITest
             secretary = Controller.GetUser(Controller.UserRole.Secretary);
         }
 
-        [Test(Description = "")]
+        [Test(Description = "DP220TAQC-73")]
         public void VerifyCardsTableIcon_AsAdmin()
         {
             new SignInPage().LogIn(admin.Email, admin.Password);
             new SecretariesPage()
                 .SidebarNavigateTo<SecretariesPage>()
                 .WaitTableData()
+                .GetTableData()
+                .ClickCardsButton()
+                .GetCardsData()
                 .CompareCardsDataWithTableData();
         }
 
-        [TearDown]
-        public void TearDown()
+        [Test(Description = "DP220TAQC-73")]
+        public void VerifyCardsTableIcon_AsSecretary()
         {
-            Driver.Current.Close();
+            new SignInPage().LogIn(secretary.Email, secretary.Password);
+            new SecretariesPage()
+                .SidebarNavigateTo<SecretariesPage>()
+                .WaitTableData()
+                .GetTableData()
+                .ClickCardsButton()
+                .GetCardsData()
+                .CompareCardsDataWithTableData();
         }
     }
 }
