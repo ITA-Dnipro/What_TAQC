@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
-using What_Common.DriverManager;
 using What_Common.Resources;
 
 namespace What_PageObject.Course
