@@ -80,7 +80,7 @@ namespace What_PageObject.Course
             ClickElement(Locators.ListOfCoursesPage.NextButtonPage);
             return this;
         }
-        
+
         /// <summary>
         /// Inputs text to search field
         /// </summary>
@@ -103,7 +103,7 @@ namespace What_PageObject.Course
         {
             string courseName = Driver.Current.FindElement(Locators.ListOfCoursesPage.EditInRowsCourseElement(id)).Text;
             ClickElement(Locators.ListOfCoursesPage.EditInRowsCourseElement(id));
-            return new EditCoursePage(Driver.Current, courseName);
+            return new EditCoursePage(Driver.Current, courseName, id);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace What_PageObject.Course
         {
             string courseName = Driver.Current.FindElement(Locators.ListOfCoursesPage.EditInRowsCourseElement(id)).Text;
             ClickElement(Locators.ListOfCoursesPage.EditInRowsCourseElement(id));
-            return new EditCoursePage(Driver.Current, courseName);
+            return new EditCoursePage(Driver.Current, courseName, id);
         }
 
         /// <summary>

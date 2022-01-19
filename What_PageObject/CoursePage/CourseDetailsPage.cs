@@ -28,7 +28,7 @@ namespace What_PageObject.Course
         {
             ClickElement(Locators.CourseDetails.EditCourseDetailsTab);
             waiter.wait.Until(ExpectedConditions.UrlMatches(Resources.WhatCoursesDetailsUrl));
-            return new EditCoursePage(driver, courseName);
+            return new EditCoursePage(driver, courseName, courseId);
         }
 
         //public CourseDetails ClickCourseDetailsTab()

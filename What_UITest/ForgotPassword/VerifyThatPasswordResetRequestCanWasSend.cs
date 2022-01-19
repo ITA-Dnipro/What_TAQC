@@ -1,9 +1,4 @@
-using System;
-using System.Threading;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using What_PageObject.ForgotPassword;
 using What_Common.Resources;
 using What_Common.DataProvider;
@@ -13,58 +8,57 @@ namespace What_UITest
 {
     public class VerifyThatPasswordResetRequestCanWasSend : BaseTest
     {
-
         [SetUp]
         public void Setup()
         {
-            
+
         }
 
-        [Test(Description = "")]
+        [Test(Description = "DP220TAQC-41")]
         [TestCase(Resources.ForgotPassword.modalWindowText)]
         public void VerifyThatPasswordResetRequestCanWasSend_ValidValues(string expected)
         {
-            LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
-            ForgotPasswordPage forgotPassword = new ForgotPasswordPage(Driver.Current);
-            forgotPassword.ClickForgotPasswordLink()
-                .FillEmailField(admin.Email)
+            LoginDetails user = Controller.GetUser(Controller.UserRole.Student);
+            new ForgotPasswordPage()
+                .ClickForgotPasswordLink()
+                .FillEmailField(user.Email)
                 .ClickSendButton();
-            Assert.AreEqual(expected, forgotPassword.GetTextValue(Locators.ForgotPassword.modalWindowText));
+            Assert.AreEqual(expected, new ForgotPasswordPage().GetTextValue(Locators.ForgotPassword.modalWindowText));
         }
 
-        [Test(Description = "")]
+        [Test(Description = "DP220TAQC-60")]
         [TestCase(Resources.ForgotPassword.invalidEmail, Resources.ForgotPassword.invalidEmailError)]
         public void VerifyThatPasswordResetRequestCanWasSend_InvalidValuesEmail(string email, string expected)
         {
-            ForgotPasswordPage forgotPassword = new ForgotPasswordPage(Driver.Current);
-            forgotPassword.ClickForgotPasswordLink()
+            new ForgotPasswordPage()
+                .ClickForgotPasswordLink()
                 .FillEmailField(email)
                 .ClickForgotPasswordLabel()
                 .ClickSendButton();
-            Assert.AreEqual(expected, forgotPassword.GetTextValue(Locators.ForgotPassword.emailAddressError));
+            Assert.AreEqual(expected, new ForgotPasswordPage().GetTextValue(Locators.ForgotPassword.emailAddressError));
         }
 
-        [Test(Description = "")]
+        [Test(Description = "DP220TAQC-60")]
         [TestCase(Resources.ForgotPassword.invalidEmail, Resources.ForgotPassword.emptyEmailError)]
         public void VerifyThatPasswordResetRequestCanWasSend_EmptyValuesEmail(string email, string expected)
         {
-            ForgotPasswordPage forgotPassword = new ForgotPasswordPage(Driver.Current);
-            forgotPassword.ClickForgotPasswordLink()
+            new ForgotPasswordPage()
+                .ClickForgotPasswordLink()
                 .FillEmailField("")
                 .ClickForgotPasswordLabel()
                 .ClickSendButton();
-            Assert.AreEqual(expected, forgotPassword.GetTextValue(Locators.ForgotPassword.emailAddressError));
+            Assert.AreEqual(expected, new ForgotPasswordPage().GetTextValue(Locators.ForgotPassword.emailAddressError));
         }
 
-        [Test(Description = "")]
+        [Test(Description = "DP220TAQC-60")]
         [TestCase(Resources.ForgotPassword.doesntExistEmail)]
         public void VerifyThatPasswordResetRequestCanWasSend_DoesntExistValues(string email)
         {
-            ForgotPasswordPage forgotPassword = new ForgotPasswordPage(Driver.Current);
-            forgotPassword.ClickForgotPasswordLink()
+            new ForgotPasswordPage()
+                .ClickForgotPasswordLink()
                 .FillEmailField(email)
                 .ClickSendButton();
-            Assert.AreEqual(Resources.ForgotPassword.DoesntExistEmailError(Resources.ForgotPassword.doesntExistEmail), forgotPassword.GetTextValue(Locators.ForgotPassword.sendButtonError));
+            Assert.AreEqual(Resources.ForgotPassword.DoesntExistEmailError(Resources.ForgotPassword.doesntExistEmail), new ForgotPasswordPage().GetTextValue(Locators.ForgotPassword.sendButtonError));
         }
 
         [TearDown]

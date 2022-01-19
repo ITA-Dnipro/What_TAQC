@@ -11,11 +11,14 @@ namespace What_PageObject.Course
 
         private string courseName;
 
-        public EditCoursePage(IWebDriver driver, string courseName)
+        private int courseId;
+
+        public EditCoursePage(IWebDriver driver, string courseName, int courseId)
         {
             this.driver = driver;
             this.waiter = new Waiter(driver);
             this.courseName = courseName;
+            this.courseId = courseId;
         }
 
         public EditCoursePage FillTextBox(string text)
@@ -25,7 +28,7 @@ namespace What_PageObject.Course
                 courseName = text;
                 FillField(Locators.EditCourseDetails.CourseNameField, courseName);
             }
-            return new EditCoursePage(driver, courseName);
+            return new EditCoursePage(driver, courseName, courseId);
         }
 
         public EditCoursePage SaveButtonClick()
@@ -49,7 +52,7 @@ namespace What_PageObject.Course
         public CourseDetailsPage ClickCourseDetailsTab()
         {
             ClickElement(Locators.EditCourseDetails.CourseDetailsTab);
-            return new CourseDetailsPage(driver, courseName);
+            return new CourseDetailsPage(driver, courseName, courseId);
         }
 
         public CoursesPage ArrowClick()

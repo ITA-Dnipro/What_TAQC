@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using What_Common.DriverManager;
+using What_Common.Resources;
 using What_PageObject.ChangePassword;
 using What_PageObject.SignInPage;
 
@@ -7,25 +8,24 @@ namespace What_UITest.ChangePasswordTests
 {
     public class ChangePassword_ValidValues : BaseTest
     {
-        private const string PasswordOld = "765Rt##asd4";
-        private const string PasswordNew = "765Rt##asd";
+        
 
         SignInPage login;
 
 
 
-        ChangePasswordPage page;
+        ChangePasswordPage passwordPage;
 
         [SetUp]
 
 
         public void Setup()
         {
-            
-           
+
+
 
             login = new SignInPage();
-            page = new ChangePasswordPage();
+            passwordPage = new ChangePasswordPage();
 
         }
 
@@ -34,50 +34,43 @@ namespace What_UITest.ChangePasswordTests
         [Test]
         public void ChangePasswordAsSecretary()
         {
-            login.LogIn("Adrian@secretar.com", PasswordOld);
-            page.WaitClickDropDownMenu()
+            login.LogIn(Resources.ChangePassword.secretarEmail, Resources.ChangePassword.passwordOld);
+            passwordPage.WaitClickDropDownMenu()
                  .ClickChangePasswordButton()
-                 .FillCurrentPasswordField(PasswordOld)
-                 .FillNewPasswordField(PasswordNew)
-                 .FillConfirmNewPasswordField(PasswordNew)
+                 .FillCurrentPasswordField(Resources.ChangePassword.passwordOld)
+                 .FillNewPasswordField(Resources.ChangePassword.passwordNew)
+                 .FillConfirmNewPasswordField(Resources.ChangePassword.passwordNew)
                  .ClickSaveButton()
                  .ClickConfirmButtonInModalWindow()
-                 .VerifyFlashMassage()
-                 .Logout();
-               page.WaiterLogin();
-               login.LogIn("Adrian@secretar.com", PasswordNew);
-               page.Waiter()
-               .VerifyCompleteChangesPassword()
-               .Logout();
+                 .Logout()
+                 .WaiterLogin();
+            login.LogIn(Resources.ChangePassword.secretarEmail, Resources.ChangePassword.passwordNew);
+            passwordPage.Waiter()
+            .VerifyCompleteChangesPassword()
+            .Logout();
 
 
         }
 
         [TearDown]
 
-        public void Aftertest()
+        public void ChangePasswordBack()
         {
-
-
-            ChangePasswordBack();//найти ему своем место
-
-
-        }
-
-        private void ChangePasswordBack()
-        {
-            login.LogIn("Adrian@secretar.com", PasswordNew);
-            page.WaitClickDropDownMenu()
+            login.LogIn(Resources.ChangePassword.secretarEmail, Resources.ChangePassword.passwordNew);
+            passwordPage.WaitClickDropDownMenu()
              .ClickChangePasswordButton()
-             .FillCurrentPasswordField(PasswordNew)
-             .FillNewPasswordField(PasswordOld)
-             .FillConfirmNewPasswordField(PasswordOld)
+             .FillCurrentPasswordField(Resources.ChangePassword.passwordNew)
+             .FillNewPasswordField(Resources.ChangePassword.passwordOld)
+             .FillConfirmNewPasswordField(Resources.ChangePassword.passwordOld)
              .ClickSaveButton()
              .ClickConfirmButtonInModalWindow()
-             .VerifyFlashMassage();
+             .Waiter();
+            
 
         }
-
-
     }
 }
+
+        
+
+
