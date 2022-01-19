@@ -1,13 +1,7 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using What_Common.DriverManager;
+using What_Common.Resources;
 
 namespace What_PageObject.GroupsPage
 {
@@ -15,26 +9,22 @@ namespace What_PageObject.GroupsPage
     {
         public GroupsPage TableIconSwitchButton()
         {
-            ClickElement(Locators.tableButton);
+            ClickElement(Locators.GroupsPage.tableButton);
             return this;
-
         }
-        private List<string> CardsData;
-        private List<string> TableData;
+
+        private List<string> CardsData = new List<string>();
+        private List<string> TableData = new List<string>();
 
         public GroupsPage CardsIconSwitchButton()
         {
-            ClickElement(Locators.cardsButton);
+            ClickElement(Locators.GroupsPage.cardsButton);
             return this;
-
         }
 
         public GroupsPage GetTableData()
         {
-            //List<string> data = new List<string>();
-            TableData = new List<string>();
-
-            var tableData = Driver.Current.FindElements(Locators.TableData);
+            var tableData = Driver.Current.FindElements(Locators.GroupsPage.TableData);
 
             foreach (var item in tableData)
             {
@@ -44,34 +34,49 @@ namespace What_PageObject.GroupsPage
             return this;
         }
 
-        public List<string> GetCardsData()
+        public GroupsPage GetCardsData()
         {
             Regex regex = new Regex("(?<=(\\r\\n))(.*?)(?=(:))");
-            List<string> data = new List<string>();
-
-            var cardsData = Driver.Current.FindElements(Locators.AllCardData);
+            var cardsData = Driver.Current.FindElements(Locators.GroupsPage.AllCardData);
 
             foreach (var item in cardsData)
             {
                 string cardName = regex.Replace(item.Text, "");
                 string cardNameData = cardName.Replace(Environment.NewLine, "").Replace(":", "");
-                data.Add(cardNameData);
+                CardsData.Add(cardNameData);
             }
-
-
-            // (?<=(\\r\\n))(.*?)(?=(:))
-            return data;
+            return this;
         }
 
         public GroupsPage VerifyCardsTableData()
 
         {
-            var temp = GetCardsData();
-            CollectionAssert.AreEqual(TableData, temp);
+            CollectionAssert.AreEqual(TableData, CardsData);
             return this;
 
         }
 
+
+        public string GetNameFromTable(int number)
+        {
+            return Driver.Current.FindElement(Locators.GroupsPage.CurrentTableData(number)).Text;
+        }
+
+        public GroupsPage FillSearchField(string text)
+        {
+            FillField(Locators.GroupsPage.searchField, text);
+            return this;
+        }
+
+        public GroupsPage VerifySearch()
+            
+        {
+            int number = new Random().Next(1, Driver.Current.FindElements(Locators.GroupsPage.tableButton).Count + 1);
+        string expected = GetNameFromTable(number);
+        FillSearchField(GetNameFromTable(number));
+            Assert.AreEqual(expected, GetNameFromTable(1));
+            return this;
+}
 
     }
 }

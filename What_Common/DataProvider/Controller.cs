@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Newtonsoft.Json;
 
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace What_Common.DataProvider
 {
@@ -19,6 +18,7 @@ namespace What_Common.DataProvider
             Mentor,
             Student
         }
+
         private static LoginDetails[] DeserializeObject()
         {
             LoginDetails[] users = JsonConvert.DeserializeObject<LoginDetails[]>(File.ReadAllText(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Resources/user.json"));
