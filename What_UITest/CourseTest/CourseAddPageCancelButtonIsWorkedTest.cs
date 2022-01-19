@@ -8,7 +8,7 @@ using What_Common.DriverManager;
 
 namespace What_UITest.CourseTest
 {
-    public class CoursesDetailsTestAsSecretary : BaseTest
+    public class CourseAddPageCancelButtonIsWorkedTest : BaseTest
     {
         SignInPage signInPage;
 
@@ -17,24 +17,18 @@ namespace What_UITest.CourseTest
         [SetUp]
         public void Setup()
         {
-            LoginDetails secretary = Controller.GetUser(Controller.UserRole.Secretary);
+            LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
             signInPage = new SignInPage();
-            signInPage.LogIn(secretary.Email, secretary.Password);
+            signInPage.LogIn(admin.Email, admin.Password);
             coursesPage = new BasePageWithSideBar().SidebarNavigateTo<CoursesPage>();
-            //string f = Driver.Current.FindElement(Locators.ListOfCoursesPage.DisabledCoursesCheckbox).GetAttribute("disabled");
-
         }
 
         [Test]
-        [TestCase(1)]
-        public void IsDisplayingCoursePage(int courseId)
+        public void VerifyThatCourseAddToTable()
         {
             coursesPage.
                 WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInRow).
-                ClickDetailsButtonFromRow(1).
-                VerifyThatDetailsViewCorrectly();
-            //VerifyThatDetailsViewCorrectly(expectedResult, 1);
-
+                VerifyThatCancelButtonWorked();
         }
 
         [TearDown]
@@ -42,6 +36,5 @@ namespace What_UITest.CourseTest
         {
             Driver.Current.Quit();
         }
-
     }
 }

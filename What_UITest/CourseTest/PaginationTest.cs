@@ -32,5 +32,11 @@ namespace What_UITest.CourseTest
         //        //VerifyThatPaginationWork(expectedResult, 1);
 
         //}
+
+        [TearDown]
+        public void TearDown()
+        {
+            Driver.Current.Quit();
+        }
     }
 }

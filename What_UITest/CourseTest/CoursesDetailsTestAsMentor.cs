@@ -14,7 +14,6 @@ namespace What_UITest.CourseTest
 
         CoursesPage coursesPage;
 
-        CourseDetailsPage courseDetailsPage;
 
         [SetUp]
         public void Setup()
@@ -37,6 +36,12 @@ namespace What_UITest.CourseTest
                 VerifyThatDetailsViewCorrectly();
             //VerifyThatDetailsViewCorrectly(expectedResult, 1);
 
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            Driver.Current.Quit();
         }
 
     }
