@@ -56,5 +56,9 @@ namespace What_Common.Resources
         public static readonly string RegistrationUrl = "http://localhost:8080/registration";
         public static readonly string ForgotPasswordUrl = "http://localhost:8080/forgot-password";
         #endregion
+	public static string ValidResetPasswordData = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Utils/Data/validResetPassword.json";
+        public static string InvalidResetPasswordData = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Utils/Data/invalidResetPassword.json";
+        public static string InvalidAddLessonData = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Utils/Data/invalidAddLesson.json";
     }
+    
 }
