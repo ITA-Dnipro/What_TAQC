@@ -10,11 +10,7 @@ namespace What_Common.Resources
     {
         public const string url = "http://localhost:8080/auth";
         public const string empty = "";
-        public const string ErrorFieldName = "This field is required";
-        public const string firstName = "Qwerty";
-        public const string lastName = "Qwerty";
-        public const string Email = "Qwe4r29@gma.com";
-        public const string Password = "Sergey1900+";
+
         public const string WhatUrl = "http://localhost:8080/";
 	    public const string WhatResetPasswordUrl = @"http://localhost:8080/reset-password";
         public const string WhatStudentsUrl = @"http://localhost:8080/students";
@@ -23,7 +19,8 @@ namespace What_Common.Resources
         public const string WhatCoursesDetailsUrl = @"http://localhost:8080/courses/1";
         public const string WhatAddNewCourseUrl = @"http://localhost:8080/courses/add";
         public const string WhatMyProfileUrl = @"http://localhost:8080/my-profile";
-        public static class ForgotPassword
+        
+		public static class ForgotPassword
         {
             public const string modalWindowText = "Please check your email and follow the link to reset your password.";
             public const string invalidEmailError = "Invalid email address";
@@ -45,6 +42,15 @@ namespace What_Common.Resources
             public const string secretaryEmail = "Bernard@secretar.com";
             public const string secretaryPassword = "765Rt##asd";
 
+        }
+		public static class Secretary
+        {
+            public const string empty = "";
+            public const string space = " ";
+            public const string doublespace = "  ";
+            public const string details = "Details";
+            public const string invalidName = "http://";
+            public const string searchNotFound = "Secretary is not found";
         }
             #region SignIn_Students
             public static readonly string AuthPageUrl = "http://localhost:8080/auth";

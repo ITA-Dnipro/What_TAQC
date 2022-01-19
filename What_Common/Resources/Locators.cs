@@ -77,6 +77,7 @@ namespace What_Common.Resources
                 tableButton = By.CssSelector("[href ='/assets/svg/List.svg#List']"),
                 cardsButton = By.XPath("//div[@class='btn-group']/child::button/following-sibling::button"),
                 searchField = By.XPath("//input[@placeholder=\"Secretary's name\"]"),
+                searchNotFound = By.XPath("//tbody/tr/td"),
                 paginationArrowLeftInTop = By.XPath("//button[text()=\"<\"]"),
                 paginationArrowRightInTop = By.XPath("//button[text()=\">\"]"),
                 paginationArrowLeftInBottom = By.XPath("//button[text()=\"<\"]"),
@@ -84,16 +85,14 @@ namespace What_Common.Resources
                 rowsSelected = By.XPath("//div[@class='btn-group']/child::button/preceding-sibling::button"),
                 disabledCheckbox = By.XPath("//input[@type=\"checkbox\"]"),
                 addButton = By.XPath("//span[text()=\"Add a secretary\"]/.."),
-                sortByName = By.XPath("//span[@data-sorting-param=\"name\"]"),
-                sortBySurname = By.XPath("//span[@data-sorting-param=\"surname\"]"),
-                sortByEmail = By.XPath("//span[@data-sorting-param=\"email\"]"),
-                detailsButtonTable = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[text()=\"john.williams@example.com\"]"),
-                detailsButtonCards = By.XPath("//div[text()=\"john.williams@example.com\"]/following-sibling::button"),
-                editButtonInCards = By.XPath("//div[text()=\"john.williams@example.com\"]/following-sibling::button/following-sibling::div"),
-                editButtonInTable = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[@class=\"text-center\"]"),
+                sortByName = By.XPath("//span[text()='Name']"),
+                sortBySurname = By.XPath("//span[text()='Surname']"),
+                sortByEmail = By.XPath("//span[text()='Email']"),
                 tableData = By.XPath("//tbody/tr"),
-                cardData = By.XPath("//*[@id='root']/div/div/div[2]/div[1]/div[2]");
-
+                cardData = By.XPath("//*[@class='container d-flex flex-wrap']"),
+                FirstNameTableData = By.XPath("//tbody/tr/td[1]"),
+                LastNameTableData = By.XPath("//tbody/tr/td[2]"),
+                EmailTableData = By.XPath("//tbody/tr/td[3]");
             public static By CurrentCardData(int cardNumber) => By.XPath($"//*[@id='root']//div[3]/div[{cardNumber}]");
             public static By CurrentTableData(int tableNumber) => By.XPath($"//tbody/tr[{tableNumber}]/td");
             public static By CurrentTableNameData(int tableNumber) => By.XPath($"//tbody/tr[{tableNumber}]/td[1]");
