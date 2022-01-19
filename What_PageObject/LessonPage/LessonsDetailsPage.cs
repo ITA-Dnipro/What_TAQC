@@ -1,12 +1,13 @@
 ﻿using NUnit.Framework;
 using What_Common.DriverManager;
 using What_Common.Resources;
+using What_PageObject.LessonPage.Models;
 
 namespace What_PageObject.Lessons
 {
     public class LessonsDetailsPage : BasePageWithSideBar
     {
-        public LessonsDetailsPage VerifyAll((string lessonsTheme, string lessonsDate, string lessonsTime) expected)
+        public LessonsDetailsPage VerifyAllFields(LessonRow expected)
         {
             string actualTheme = Driver.Current.FindElement(Locators.LessonDetails.LessonsTheme).Text;
             string actualDate = Driver.Current.FindElement(Locators.LessonDetails.LessonsDate).Text;
@@ -14,15 +15,13 @@ namespace What_PageObject.Lessons
 
             Assert.Multiple(() =>
             {
-                Assert.AreEqual(expected.lessonsTheme, actualTheme);
-                Assert.AreEqual(expected.lessonsDate, actualDate);
-                Assert.AreEqual(expected.lessonsTime, actualTime);
+                Assert.AreEqual(expected.ThemeName, actualTheme);
+                Assert.AreEqual(expected.LessonDate, actualDate);
+                Assert.AreEqual(expected.LessonTime, actualTime);
             });
             return this;
         }
-        
-       
-        public LessonsDetailsPage GetAllData(out LessonsDetailsModel lessonsDetailsModel)
+        public LessonsDetailsPage SaveAllDataFromLessonDetails(out LessonsDetailsModel lessonsDetailsModel)
         {
             lessonsDetailsModel = new LessonsDetailsModel();
             lessonsDetailsModel.LessonTheme = Driver.Current.FindElement(Locators.LessonDetails.LessonsTheme).Text;
@@ -33,16 +32,15 @@ namespace What_PageObject.Lessons
             lessonsDetailsModel.StudentsNames = new List<string>(Driver.Current.FindElements(Locators.LessonDetails.AllStudentsName).Select(x => x.Text));
             return new LessonsDetailsPage();
         }
-        public void VerifyPageEdited(LessonsDetailsModel expected, LessonsDetailsModel actual)
+        public LessonsDetailsPage VerifyPageEdited(LessonEditDetails expected, LessonsDetailsModel actual)
         {
             Assert.Multiple(() =>
             {
-                Assert.AreEqual(expected.GroupName , actual.GroupName);
-                Assert.AreEqual(expected.MentorName, actual.MentorName);
-                Assert.AreEqual(expected.LessonDate, actual.LessonDate);
-                Assert.AreEqual(expected.LessonTime, actual.LessonTime);
-                CollectionAssert.AreEqual(expected.StudentsNames, actual.StudentsNames);
+                Assert.AreEqual(expected.LessonTheme , actual.LessonTheme);
+                Assert.AreEqual(expected.GroupName, actual.GroupName);
+               // CollectionAssert.AreEqual(expected.Students, actual.StudentsNames);
             });
+            return this;
         }
         public LessonsPage ClickCancelButton()
         {

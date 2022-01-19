@@ -4,7 +4,6 @@ using What_Common.DriverManager;
 using What_PageObject.Lessons;
 using Locators = What_Common.Resources.Locators;
 using What_Common.Resources;
-using What_PageObject.SignInPage;
 using What_Common.DataProvider;
 using What_PageObject;
 using What_Common.Utils;
@@ -30,9 +29,9 @@ namespace What_UITest.Lessons
         }
         [Test]
         [TestCaseSource(nameof(GetInvalidAddLessons))]
-        public void InvalidAddLessons(AddLessonModel invalid)
+        public void AdminCantCreateLessonWithInvalidData(AddLessonModel invalid)
         {
-            new LessonsPage()
+            lessonsPage
                 .WaitUntilElementLoads<LessonsPage>(Locators.Lessons.AddLessonButton)
                 .ClickAddLessonButton()
                 .WaitUntilElementLoads<AddLessonPage>(Locators.AddLesson.MainForm)
@@ -45,7 +44,7 @@ namespace What_UITest.Lessons
         }
         private static IEnumerable<AddLessonModel> GetInvalidAddLessons()
         {
-            return Helpers.ReadJson<AddLessonModel>(@"d:\Data\invalidAddLesson.json");
+            return JsonHelper.ReadJson<AddLessonModel>(Resources.InvalidAddLessonData);
         }
     }
 }
