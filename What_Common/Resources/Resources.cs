@@ -60,5 +60,5 @@ namespace What_Common.Resources
         public static string InvalidResetPasswordData = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Utils/Data/invalidResetPassword.json";
         public static string InvalidAddLessonData = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Utils/Data/invalidAddLesson.json";
     }
-    }
+    
 }

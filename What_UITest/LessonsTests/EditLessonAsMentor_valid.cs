@@ -1,11 +1,10 @@
 ﻿using NUnit.Framework;
 using What_Common.DriverManager;
 using What_PageObject.Lessons;
-using What_Common.Resources;
-using What_PageObject.SignIn;
 using What_Common.DataProvider;
 using What_PageObject;
 using What_PageObject.LessonPage.Models;
+using What_PageObject.SignInPage;
 
 namespace What_UITest.Lessons
 {
@@ -24,10 +23,10 @@ namespace What_UITest.Lessons
         {
             LoginDetails mentor = Controller.GetUser(Controller.UserRole.Mentor);
             Driver.GoToUrl();
-            SignInPage signIn = new SignInPage(Driver.Current);
+            SignInPage signIn = new SignInPage();
             signIn.EnterEmail(mentor.Email);
             signIn.EnterPassword(mentor.Password);
-            signIn.ClickSignInButton(Resources.WhatStudentsUrl);
+            signIn.ClickSignInButton();
             lessonsPage = new BasePageWithSideBar().SidebarNavigateTo<LessonsPage>();
 
         }
