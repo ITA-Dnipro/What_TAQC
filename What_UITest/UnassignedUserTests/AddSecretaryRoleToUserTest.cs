@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using What_Common.DataProvider;
+using What_Common.DriverManager;
 using What_Common.Resources;
 using What_PageObject.Secretaries;
 using What_PageObject.SignInPage;
@@ -27,7 +28,7 @@ namespace What_UITest.UnassignedUserTests
             signInPage.LogIn(user.Email, user.Password);
         }
 
-        [Test]
+        [Test(Description = "DP220TAQC-50")]
         public void ChooseRoleTest()
         {
             int row = rnd.Next(1, unassignedUser.GetCurretnPageTableDataCount() + 1);

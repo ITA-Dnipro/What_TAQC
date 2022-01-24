@@ -16,7 +16,7 @@ namespace What_UITest.ResetPassword
             Driver.Current.Navigate().GoToUrl(Resources.WhatResetPasswordUrl);
         }
 
-        [Test]
+        [Test(Description = "DP220TAQC-39")]
         [TestCaseSource(nameof(GetValidResetPassword))]
         public void EnterValidNewPasswordClickModalAndRedirectedToAuth(ResetPasswordModel valid)
         {
@@ -36,7 +36,7 @@ namespace What_UITest.ResetPassword
         }
         private static IEnumerable<ResetPasswordModel> GetValidResetPassword()
         {
-            return Helpers.ReadJson<ResetPasswordModel>(@"d:\Data\validResetPassword.json");
+            return JsonHelper.ReadJson<ResetPasswordModel>(Resources.ValidResetPasswordData);
         }
     }
 }

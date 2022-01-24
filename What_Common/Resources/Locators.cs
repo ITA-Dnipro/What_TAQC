@@ -23,13 +23,14 @@ namespace What_Common.Resources
             public static By confirmPasswordError = By.XPath("//input[@id='confirmNewPassword']/following-sibling::div[contains(@class,'text-danger')]");
             public static By confirmButton = By.XPath("//button[text()='Confirm']");
             public static By confirmButtonError = By.XPath("//button[text()='Confirm']/../following-sibling::div[contains(@class,'text-danger')]");
+            public static By pageLabel = By.XPath("//h3[normalize-space()='Reset password']");
             public static By backButton = By.XPath("//button[text()='Back']");
             public static By xButton = By.XPath("//span[@aria-hidden='true']");
         }
 
         public static class ForgotPassword
         {
-            public static By
+            public static readonly By
                 forgotPasswordLabel = By.XPath("//*[contains(text(),'Forgot your password?')]"),
                 emailAddressField = By.XPath("//input[@id='email']"),
                 emailAddressError = By.XPath("//*[@class='text-danger mt-2']"),
@@ -71,12 +72,12 @@ namespace What_Common.Resources
             public static By AssignmentPageLink = By.XPath("//a[@data-id=\"7\"]");
             public static By HomeworkPageLink = By.XPath("//a[@data-id=\"8\"]");
         }
-        public static class ListOfSecretaryPage
+        public static class SecretaryPage
         {
-            public static By
+            public static readonly By
+                tableButton = By.CssSelector("[href ='/assets/svg/List.svg#List']"),
                 cardsButton = By.XPath("//div[@class='btn-group']/child::button/following-sibling::button"),
-                //tableButton = By.XPath("//*[@id=\"root\"]/div/div/div[2]/div[1]/div/div[1]/div/button[1]"),
-                searchField = By.XPath("//input[@placeholder=\"Secretary`s name\"]"),
+                searchField = By.XPath("//input[@placeholder=\"Secretary's name\"]"),
                 paginationArrowLeftInTop = By.XPath("//button[text()=\"<\"]"),
                 paginationArrowRightInTop = By.XPath("//button[text()=\">\"]"),
                 paginationArrowLeftInBottom = By.XPath("//button[text()=\"<\"]"),
@@ -90,13 +91,18 @@ namespace What_Common.Resources
                 detailsButtonTable = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[text()=\"john.williams@example.com\"]"),
                 detailsButtonCards = By.XPath("//div[text()=\"john.williams@example.com\"]/following-sibling::button"),
                 editButtonInCards = By.XPath("//div[text()=\"john.williams@example.com\"]/following-sibling::button/following-sibling::div"),
-                editButtonInTable = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[@class=\"text-center\"]");
-                //secretaryNotFoundError = By.XPath("//*[@id=\"root\"]/div/div/div[2]/div[1]/table/tbody/tr/td"),
-                //elementsInTable = By.XPath("//tr[@class = 'list-of-lessons__table-row___16_kJ
+                editButtonInTable = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[@class=\"text-center\"]"),
+                tableData = By.XPath("//tbody/tr"),
+                cardData = By.XPath("//*[@id='root']/div/div/div[2]/div[1]/div[2]");
+
+            public static By CurrentCardData(int cardNumber) => By.XPath($"//*[@id='root']//div[3]/div[{cardNumber}]");
+            public static By CurrentTableData(int tableNumber) => By.XPath($"//tbody/tr[{tableNumber}]/td");
+            public static By CurrentTableNameData(int tableNumber) => By.XPath($"//tbody/tr[{tableNumber}]/td[1]");
         }
+
         public static class SecretaryDetails
         {
-            public static By
+            public static readonly By
                 detailsTab = By.XPath("//a[text()=\"Secretary's details\"]"),
                 editDetailsTab = By.XPath("//a[text()='Edit secretary']"),
                 arrowBackButton = By.XPath("//a[contains(@class, 'align-items-center') and @href='/secretaries']");
@@ -107,7 +113,7 @@ namespace What_Common.Resources
 
         public static class EditSecretaryDetails
         {
-            public static By
+            public static readonly By
                 detailsTab = By.XPath("//a[text()=\"Secretary's details\"]"),
                 editDetailsTab = By.XPath("//a[text()='Edit secretary']"),
                 arrowBackButton = By.XPath("//a[contains(@class, 'align-items-center') and @href='/secretaries']"),
@@ -233,6 +239,17 @@ namespace What_Common.Resources
             public static By ErrorField = By.XPath("//*[contains(text(),'This field is required')]");
             
         }
+      
+        public static class Mentors
+        {
+            public static By MentorsButtonOnSideBar = By.XPath("//*[contains(text(),'Mentors')]");
+            public static By MentorPage = By.XPath("//*[@class='col-6']");
+            public static By TableMentors = By.XPath("//*[@class='table__table-body___bYZbU']");
+            public static By EditMentorButton = By.XPath("//*[contains(text(),'Edit a mentor')]");
+            public static By AddMentorButton = By.XPath("//*[contains(text(),'Add a mentor')]");
+            public static By MentorDetailsField = By.XPath("//*[contains(text(),'Mentor Details')]");
+            public static By MentorEditingField = By.XPath("//*[contains(text(),'Mentor Editing')]");
+        }
 
         public static class Students
         {
@@ -255,6 +272,7 @@ namespace What_Common.Resources
             public static By AddLessonButton = By.XPath("//button[contains(.,'Add a lesson')]");
             public static By AddThemeButton = By.CssSelector(".btn-warning");
             public static By FilterButton = By.XPath("//button[contains(.,'Filter')]");
+            public static By LessonsEditedFlashMessage = By.XPath("//div[@role='alert']");
             public static By SearchInput = By.CssSelector(".search__searchInput___34nMl");
             public static By ListViewButton = By.XPath("//button[@class='btn btn-secondary']//*[contains(@href, 'List')]");
             public static By CardViewButton = By.XPath("//button[@class='btn btn-secondary']//*[contains(@href, 'Card')]");
@@ -266,13 +284,16 @@ namespace What_Common.Resources
             public static By PageTitle = By.XPath("//h2[text()='Lessons']");
             public static By StartDatePicker = By.XPath("//input[@id='startDate']");
             public static By FinishDatePicker = By.XPath("//input[@id='finishDate']");
-            public static By AlertFlashMessage = By.XPath("//div[@role = 'alert']");
+            public static By LessonsAddedFlashMessage = By.XPath("//div[@role ='alert']");
             public static By RowsOnTable = By.XPath("//select[@id='change-visible-people']");
             public static By MaxRowsOnTable = By.XPath("//option[normalize-space()='99']");
             public static By LessonsThemas = By.XPath("//tbody/tr/td[1]");
-            public static By EditIcon(int row) => By.XPath($"//tbody/tr[{row}]/td[4]");
-            public static By ClickOnLessons(string name) => By.XPath($"//td[normalize-space()='{name}']");
-            public static By ClickOnEditLesson(string name) => By.XPath($"//td[normalize-space()='{name}']/following-sibling::td[contains(@class,'text-center')]");
+            public static By TableRows = By.XPath("//tbody/tr");
+            public static By EditIconByRow(int row) => By.XPath($"//tbody/tr[{row}]/td[4]");
+            public static By LessonInTableByName(string name) => By.XPath($"//td[normalize-space()='{name}']");
+            public static By LessonInTableByNameAndColumn(string name, int column) => By.XPath($"//td[normalize-space()='{name}']/../td[{column}]");
+            public static By ClickOnLessonsByPosition(int row, int column) => By.XPath($"//tbody/tr[{row}]//td[{column}]");
+            public static By EditLessonByName(string name) => By.XPath($"//td[normalize-space()='{name}']/following-sibling::td[contains(@class,'text-center')]");
         }
 	public static class AddLesson
         {
@@ -290,7 +311,12 @@ namespace What_Common.Resources
             public static By SaveButton = By.XPath("//button[@id='submit']");
             public static By Groups = By.XPath("//datalist[@id='group-list']/option");
             public static By Mentors = By.XPath("//datalist[@id='mentor-list']/option");
-
+            public static By GroupNameFormGroup = By.XPath("//input[@id='inputGroupName']/../../*");
+            public static By MentorEmailNameFormGroup = By.XPath("//input[@id='mentorEmail']/../../*");
+            public static By ClassJournalTable = By.XPath("//tbody/tr");
+            public static By ClassJournalStudents = By.XPath("//tbody/tr/td/p[contains(@class,'add-lesson__link___300sL')]");
+            public static By ClassJournalMarks = By.XPath("//tbody/tr/td[2]/input");
+            public static By ClassJournalPresence = By.XPath("//tbody/tr/td[3]/input");
         }
 	public static class LessonDetails
         {
@@ -303,11 +329,13 @@ namespace What_Common.Resources
             public static By AllStudentsName = By.XPath("//tbody/tr/td[1]");
             public static By CancelButton = By.XPath("//button[normalize-space()='Cancel']");
         }
-	 public static class EditLesson
+	public static class EditLesson
         {
             public static By GroupNameField = By.XPath("//input[@id='inputGroupName']");
             public static By LessonThemeField = By.XPath("//input[@id='inputLessonTheme']");
             public static By SaveButton = By.XPath("//button[contains(@data-testid,'submitBtn')]");
+            public static By LessonsDateTime = By.XPath("//input[@id='choose-date/time']");
+            public static By ClassJournalTable = By.XPath("//tbody/tr");
         }
 
         public static class ChangePassword

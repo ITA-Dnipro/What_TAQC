@@ -18,6 +18,7 @@ namespace What_Common.Resources
         public const string WhatUrl = "http://localhost:8080/";
 	    public const string WhatResetPasswordUrl = @"http://localhost:8080/reset-password";
         public const string WhatStudentsUrl = @"http://localhost:8080/students";
+        public const string WhatSecretariesUrl = @"http://localhost:8080/secretaries";
         public const string WhatCoursesUrl = @"http://localhost:8080/courses";
         public const string WhatCoursesDetailsUrl = @"http://localhost:8080/courses/1";
         public const string WhatAddNewCourseUrl = @"http://localhost:8080/courses/add";
@@ -58,6 +59,10 @@ namespace What_Common.Resources
         public static readonly string UnassignedUsersUrl = "http://localhost:8080/unassigned";
         public static readonly string RegistrationUrl = "http://localhost:8080/registration";
         public static readonly string ForgotPasswordUrl = "http://localhost:8080/forgot-password";
-        #endregion 
+        #endregion
+	public static string ValidResetPasswordData = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Utils/Data/validResetPassword.json";
+        public static string InvalidResetPasswordData = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Utils/Data/invalidResetPassword.json";
+        public static string InvalidAddLessonData = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Utils/Data/invalidAddLesson.json";
     }
+    
 }
