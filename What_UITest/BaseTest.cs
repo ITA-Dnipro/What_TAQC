@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using What_Common.DriverManager;
+using What_Common.Resources;
 
 namespace What_UITest
 {
@@ -19,7 +20,7 @@ namespace What_UITest
             Driver.Current = null;
             Driver.Current.Manage().Window.Maximize();
             Driver.Current.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            Driver.Current.Navigate().GoToUrl("http://localhost:8080");
+            Driver.Current.Navigate().GoToUrl(Resources.WhatUrl);
             log.Info("Start Test");
         }
 

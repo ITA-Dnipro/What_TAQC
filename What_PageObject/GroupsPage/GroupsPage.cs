@@ -49,13 +49,10 @@ namespace What_PageObject.GroupsPage
         }
 
         public GroupsPage VerifyCardsTableData()
-
         {
             CollectionAssert.AreEqual(TableData, CardsData);
             return this;
-
         }
-
 
         public string GetNameFromTable(int number)
         {
@@ -69,14 +66,13 @@ namespace What_PageObject.GroupsPage
         }
 
         public GroupsPage VerifySearch()
-            
         {
             int number = new Random().Next(1, Driver.Current.FindElements(Locators.GroupsPage.tableButton).Count + 1);
-        string expected = GetNameFromTable(number);
-        FillSearchField(GetNameFromTable(number));
+            string expected = GetNameFromTable(number);
+            FillSearchField(GetNameFromTable(number));
             Assert.AreEqual(expected, GetNameFromTable(1));
             return this;
-}
+        }
 
     }
 }
