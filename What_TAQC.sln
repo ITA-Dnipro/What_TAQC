@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "What_PageObject", "What_Pag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "What_UITest", "What_UITest\What_UITest.csproj", "{AA77A16F-E693-4627-8C9D-91EAF4FA98D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "What_APITest", "What_APITest\What_APITest.csproj", "{E2F15331-6C33-4449-BD4E-FEC396CA11A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AA77A16F-E693-4627-8C9D-91EAF4FA98D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA77A16F-E693-4627-8C9D-91EAF4FA98D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA77A16F-E693-4627-8C9D-91EAF4FA98D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F15331-6C33-4449-BD4E-FEC396CA11A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F15331-6C33-4449-BD4E-FEC396CA11A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F15331-6C33-4449-BD4E-FEC396CA11A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F15331-6C33-4449-BD4E-FEC396CA11A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

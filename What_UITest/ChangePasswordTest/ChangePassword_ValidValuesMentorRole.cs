@@ -6,35 +6,26 @@ using What_PageObject.SignInPage;
 
 namespace What_UITest.ChangePasswordTests
 {
-    public class ChangePassword_ValidValues : BaseTest
+    public class ChangePasswordValidValuesAsMentorRole : BaseTest
     {
         
 
         SignInPage login;
-
-
-
         ChangePasswordPage passwordPage;
 
         [SetUp]
 
-
         public void Setup()
         {
-
-
-
             login = new SignInPage();
             passwordPage = new ChangePasswordPage();
-
         }
 
 
-
-        [Test]
-        public void ChangePasswordAsSecretary()
+        [Test (Description = "DP220TAQC-44")]
+        public void ChangePasswordAsSudent()
         {
-            login.LogIn(Resources.ChangePassword.secretarEmail, Resources.ChangePassword.passwordOld);
+            login.LogIn(Resources.ChangePassword.mentorEmail, Resources.ChangePassword.passwordOld);
             passwordPage.WaitClickDropDownMenu()
                  .ClickChangePasswordButton()
                  .FillCurrentPasswordField(Resources.ChangePassword.passwordOld)
@@ -44,9 +35,9 @@ namespace What_UITest.ChangePasswordTests
                  .ClickConfirmButtonInModalWindow()
                  .Logout()
                  .WaiterLogin();
-            login.LogIn(Resources.ChangePassword.secretarEmail, Resources.ChangePassword.passwordNew);
+            login.LogIn(Resources.ChangePassword.mentorEmail, Resources.ChangePassword.passwordNew);
             passwordPage.Waiter()
-            .VerifyCompleteChangesPassword()
+            .VerifyCompleteChangesPassword(Resources.LessonsPageUrl)
             .Logout();
 
 
@@ -56,7 +47,7 @@ namespace What_UITest.ChangePasswordTests
 
         public void ChangePasswordBack()
         {
-            login.LogIn(Resources.ChangePassword.secretarEmail, Resources.ChangePassword.passwordNew);
+            login.LogIn(Resources.ChangePassword.mentorEmail, Resources.ChangePassword.passwordNew);
             passwordPage.WaitClickDropDownMenu()
              .ClickChangePasswordButton()
              .FillCurrentPasswordField(Resources.ChangePassword.passwordNew)

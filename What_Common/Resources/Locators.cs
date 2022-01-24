@@ -312,31 +312,19 @@ namespace What_Common.Resources
 
         public static class ChangePassword
         {
-            public static By DropDownButton = By.XPath("//*[@id='root']/nav/div/div[2]/div[2]/span");
-            
-
-            public static By ChangePasswordIcon = By.XPath("//*[@id='root']/nav/div/div[2]/ul/li[2]/a"); //уточнить нейминг кнопки в тк
-
             public static By EmailAdressField = By.XPath("//*[@id='email']");
             public static By CurrentPasswordField = By.XPath("//*[@id='currentPassword']");
             public static By NewPasswordField = By.XPath("//*[@id='newPassword']");
             public static By ConfirmNewPasswordField = By.XPath("//*[@id='confirmNewPassword']");
-
             public static By SaveButton = By.XPath("//*[text()='Save']");
             public static By CancelButton = By.XPath("//*[text()='Cancel']");
-
-            public static By ConfirmButtonInModalWindow = By.XPath("/html/body/div[3]/div/div/div[3]/button[2]");
-            public static By CancelButtonInModalWindow = By.XPath("/html/body/div[3]/div/div/div[3]/button[1]");
-
-
+            public static By ConfirmButtonInModalWindow = By.XPath("//button[text()='Confirm']");
+            public static By CancelButtonInModalWindow = By.XPath("//button[text()='Cancel']");
             public static By TopDropdownMenuButton = By.XPath("//*[@class='header__header__dropdown-icon___1CTJ8']");
             public static By TopDropdownLogoutButton = By.XPath("//*[@class='header__header__dropdown-list-show___2kO4i']//*[text()='Log Out']");
-            
             public static By ThisFieldRequiredCurrentPass = By.XPath("//*[@id='currentPassword']/following-sibling::*");
             public static By ThisFieldRequiredNewPass = By.XPath("//*[@id='newPassword']/following-sibling::*");
             public static By ThisFieldRequiredConfirmNewPass = By.XPath("//*[@id='confirmNewPassword']/following-sibling::*");
-
-
         }
 
         public static class GroupsPage
@@ -346,8 +334,6 @@ namespace What_Common.Resources
             public static By tableButton = By.CssSelector("[href ='/assets/svg/List.svg#List']");
             public static By cardsButton = By.XPath("//div[@class='btn-group']/child::button/following-sibling::button");
             public static By addGroupButton = By.CssSelector("button[span]");
-            public static By uploadsGroupButton = By.XPath("//*[@id='root']/div/div/div[2]/div[1]/div[1]/div[5]/button[1]");
-            public static By filterButton = By.XPath("//*[@id='root']/div/div/div[2]/div[1]/div[2]/div/form/div[3]/button");
             public static By rowsSelectButton = By.CssSelector("#change-visible-people");
             public static By startDateForm = By.CssSelector("input[name='startDate']");
             public static By finishDateForm = By.CssSelector("input[name='finishDate']");
@@ -358,23 +344,17 @@ namespace What_Common.Resources
             public static By listOfGroupsCalendar = By.CssSelector("[name='group_date']");
             public static By CurrentTableData(int numberFromTable) => By.XPath($"//tbody/tr[{numberFromTable}]/td[1]");
 
-
             public static By TableData = By.XPath("//tbody/tr");
 
             public static By searchField = By.XPath("//input[@placeholder=\"Group's name\"]");
-
-
-
             public static By GroupName(int row) => By.XPath($"//tbody/tr[{row}]/td[1]");
             public static By QuantityOfStudents(int row) => By.XPath($"//tbody/tr[{row}]/td[2]");
             public static By DateOfStart(int row) => By.XPath($"//tbody/tr[{row}]/td[3]");
-
             public static By DateOfFinish(int row) => By.XPath($"//tbody/tr[{row}]/td[4]");
             public static By NavigateToPage(int page) => By.XPath($"//ul[2]/li[{page}]");
-
             public static By CurrentCardData(int cardNumber) => By.XPath($"//*[@id='root']//div[3]/div[{cardNumber}]");
 
-            public static By AllCardData = By.XPath("//*[@id='root']/div/div/div[2]/div[1]/div[3]/div");
+            public static By AllCardData = By.XPath("*//div[@class='container d-flex flex-wrap']/div");
 
 
 

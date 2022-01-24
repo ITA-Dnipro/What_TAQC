@@ -16,25 +16,15 @@ namespace What_UITest.ChangePasswordTest
         SignInPage login;
         ChangePasswordPage passwordPage;
 
-        
-
         [SetUp]
-
-
         public void Setup()
         {
-
-
-
             login = new SignInPage();
             passwordPage = new ChangePasswordPage();
-
-
         }
 
 
-
-        [Test]
+        [Test(Description = "DP220TAQC-77")]
 
         public void ChangePasswordAsSecretary()
         {
@@ -50,12 +40,6 @@ namespace What_UITest.ChangePasswordTest
                  .ClickConfirmNewPasswordField()
                  .ClickNewPasswordField()
                  .VerifyConfirmNewPassThisFieldRequired();
-
-
-                 
-                 
-
-
         }
 
     }
