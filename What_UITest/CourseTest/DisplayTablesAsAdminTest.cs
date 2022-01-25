@@ -4,7 +4,6 @@ using What_PageObject.Course;
 using What_Common.Resources;
 using What_Common.DataProvider;
 using What_PageObject;
-using What_Common.DriverManager;
 
 namespace What_UITest.CourseTest
 {
@@ -21,11 +20,11 @@ namespace What_UITest.CourseTest
             signInPage = new SignInPage();
             signInPage.LogIn(admin.Email, admin.Password);
             coursesPage = new BasePageWithSideBar().SidebarNavigateTo<CoursesPage>();
-            //string f = Driver.Current.FindElement(Locators.ListOfCoursesPage.DisabledCoursesCheckbox).GetAttribute("disabled");
+           
 
         }
 
-        [Test]
+        
         [TestCase("Soft Skills for Lecturers")]
         public void IsDisplayingCoursePage(string expectedResult)
         {
@@ -33,12 +32,6 @@ namespace What_UITest.CourseTest
                 WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInRow).
                 VerifyThatCoursePageDisplayed(expectedResult, 1);
             
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            Driver.Current.Quit();
         }
 
     }

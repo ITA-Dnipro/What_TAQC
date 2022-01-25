@@ -4,7 +4,6 @@ using What_PageObject.Course;
 using What_Common.Resources;
 using What_Common.DataProvider;
 using What_PageObject;
-using What_Common.DriverManager;
 
 namespace What_UITest.CourseTest
 {
@@ -29,12 +28,6 @@ namespace What_UITest.CourseTest
             coursesPage.
                 WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInRow).
                 VerifyThatCancelButtonWorked();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            Driver.Current.Quit();
         }
     }
 }

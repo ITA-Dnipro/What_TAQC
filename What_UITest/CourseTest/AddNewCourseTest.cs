@@ -4,7 +4,6 @@ using What_PageObject.Course;
 using What_Common.Resources;
 using What_Common.DataProvider;
 using What_PageObject;
-using What_Common.DriverManager;
 
 namespace What_UITest.CourseTest
 {
@@ -23,19 +22,13 @@ namespace What_UITest.CourseTest
             coursesPage = new BasePageWithSideBar().SidebarNavigateTo<CoursesPage>();
         }
 
-        [Test]
+        
         [TestCase("mycourse5")]
         public void VerifyThatCourseAddToTable(string courseName)
         {
             coursesPage.
                 WaitUntilElementLoads<CoursesPage>(Locators.ListOfCoursesPage.CourseTableInRow).
                 VerifyThatNewCourseCreate(courseName);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            Driver.Current.Quit();
         }
     }
 }

@@ -33,10 +33,6 @@ namespace What_UITest.CourseTest
 
         //}
 
-        [TearDown]
-        public void TearDown()
-        {
-            Driver.Current.Quit();
-        }
+       
     }
 }

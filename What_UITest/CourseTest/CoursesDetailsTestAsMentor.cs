@@ -4,7 +4,6 @@ using What_PageObject.Course;
 using What_Common.Resources;
 using What_Common.DataProvider;
 using What_PageObject;
-using What_Common.DriverManager;
 
 namespace What_UITest.CourseTest
 {
@@ -26,7 +25,7 @@ namespace What_UITest.CourseTest
 
         }
 
-        [Test]
+        
         [TestCase(1)]
         public void IsDisplayingCoursePage(int courseId)
         {
@@ -38,11 +37,6 @@ namespace What_UITest.CourseTest
 
         }
 
-        [TearDown]
-        public void TearDown()
-        {
-            Driver.Current.Quit();
-        }
 
     }
 }

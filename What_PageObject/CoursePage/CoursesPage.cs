@@ -15,7 +15,6 @@ namespace What_PageObject.Course
 
         public CoursesPage()
         {
-            
             this.waiter = new Waiter(Driver.Current);
         }
 

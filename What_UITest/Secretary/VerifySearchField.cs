@@ -6,19 +6,19 @@
 //using What_PageObject.Secretaries;
 //using What_PageObject.SignInPage;
 
-namespace What_UITest.Secretaries
-{
-    public class VerifySearchField : BaseTest
-    {
-        LoginDetails admin;
-        LoginDetails secretary;       
+//namespace What_UITest.Secretaries
+//{
+//    public class VerifySearchField : BaseTest
+//    {
+//        LoginDetails admin;
+//        LoginDetails secretary;       
 
-        [SetUp]
-        public void StartUp()
-        {
-            admin = Controller.GetUser(Controller.UserRole.Admin);
-            secretary = Controller.GetUser(Controller.UserRole.Secretary);
-        }
+//        [SetUp]
+//        public void StartUp()
+//        {
+//            admin = Controller.GetUser(Controller.UserRole.Admin);
+//            secretary = Controller.GetUser(Controller.UserRole.Secretary);
+//        }
 
 //        [Test(Description = "DP220TAQC-102")]
 //        public void VerifySearchField_AsAdmin_ValidValues()
