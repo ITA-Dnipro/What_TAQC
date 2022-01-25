@@ -15,7 +15,7 @@ namespace What_UITest.UnassignedUserTests
         private LoginDetails user;
         private UnassignedUserHelper helper = new UnassignedUserHelper();
         private Random rnd = new Random();
-        string userData;
+        private string userData;
 
         [SetUp]
         public void Setup()

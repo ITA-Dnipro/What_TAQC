@@ -28,7 +28,6 @@ namespace What_PageObject.UnassignedUsersPage
 
         public void GenerateNewUser()
         {
-
             var name = GetRandomString(rnd.Next(2, 30), Alpha);
             var surname = GetRandomString(rnd.Next(2, 30), Alpha);
             var email = GetRandomString(rnd.Next(3, 10), Alpha)

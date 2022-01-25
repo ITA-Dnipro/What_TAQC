@@ -33,20 +33,6 @@ namespace What_PageObject.SchedulesPage
             return this;
         }
 
-        public SchedulePage ClickNavbarMenuSheduleButton()
-        {
-            ClickElement(Locators.Schedule.ClickToNavbarMenuSheduleButton);
-
-            return this;
-        }
-
-        public SchedulePage InputDateField()
-        {
-            ClickElement(Locators.Schedule.InputDateField);
-
-            return this;
-        }
-
         public SchedulePage ClickArrowRandomize(out DateTime date)
         {
             date = ScheduleHelper.ClickArrowRandomize();
@@ -54,7 +40,7 @@ namespace What_PageObject.SchedulesPage
             return this;
         }
 
-        public SchedulePage VerifyDateStartAtMonday(DateTime date)
+        public SchedulePage VerifyDateStartAtMondayFromTable(DateTime date)
         {
             string expected = ScheduleHelper.ExpectedFirstDayOfWeek(date);
             string actual = ScheduleHelper.ActualFirstDayOfWeek();
@@ -63,7 +49,7 @@ namespace What_PageObject.SchedulesPage
             return this;
         }
 
-        public SchedulePage VerifyDateEndAtSunday(DateTime date)
+        public SchedulePage VerifyDateEndAtSundayFromTable(DateTime date)
         {
             string expected = ScheduleHelper.ExpectedLastDayOfWeek(date);
             string actual = ScheduleHelper.ActualLastDayOfWeek();
