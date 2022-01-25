@@ -18,13 +18,14 @@ namespace What_PageObject.ChangePassword
 
         public ChangePasswordPage WaitClickDropDownMenu()
         {
-            wait.Until(e => e.FindElement(Locators.GroupsPage.TableData));
-            ClickElement(Locators.ChangePassword.DropDownButton);
+            wait.Until(e => e.FindElement(Locators.CommonLocator.DropdownNameElement));
+            ClickElement(Locators.CommonLocator.DropdownNameElement);
             return this;
         }
+
         public ChangePasswordPage ClickChangePasswordButton()
         {
-            ClickElement(Locators.ChangePassword.ChangePasswordIcon);
+            ClickElement(Locators.CommonLocator.ChangePassword);
             return this;
         }
 
@@ -95,41 +96,42 @@ namespace What_PageObject.ChangePassword
 
         public ChangePasswordPage Logout()
         {
-            ClickElement(Locators.ChangePassword.DropDownButton);
+            wait.Until(e => e.FindElement(Locators.CommonLocator.DropdownNameElement));
+            ClickElement(Locators.CommonLocator.DropdownNameElement);
             ClickElement(Locators.ChangePassword.TopDropdownLogoutButton);
             return this;
         }
 
-        public ChangePasswordPage VerifyCompleteChangesPassword()
+        public ChangePasswordPage VerifyCompleteChangesPassword(string url)
         {
-            Assert.AreEqual("http://localhost:8080/mentors", Driver.Current.Url);
+            Assert.AreEqual(url, Driver.Current.Url);
             return this;
 
         }
 
-        public ChangePasswordPage VerifyCurrentPassThisFieldRequired()//доработать
+        public ChangePasswordPage VerifyCurrentPassThisFieldRequired()
         {
-            string actual = "This field is required";
+            
             string expected = Driver.Current.FindElement(Locators.ChangePassword.ThisFieldRequiredCurrentPass).Text; 
-            Assert.AreEqual(actual,expected);
+            Assert.AreEqual(Resources.ChangePassword.actualFieldRequried, expected);
             return this;
 
         }
 
-        public ChangePasswordPage VerifyNewPassThisFieldRequired()//доработать
+        public ChangePasswordPage VerifyNewPassThisFieldRequired()
         {
-            string actual = "This field is required";
+            
             string expected = Driver.Current.FindElement(Locators.ChangePassword.ThisFieldRequiredNewPass).Text;
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(Resources.ChangePassword.actualFieldRequried, expected);
             return this;
 
         }
 
-        public ChangePasswordPage VerifyConfirmNewPassThisFieldRequired()//доработать
+        public ChangePasswordPage VerifyConfirmNewPassThisFieldRequired()
         {
-            string actual = "This field is required";
+           
             string expected = Driver.Current.FindElement(Locators.ChangePassword.ThisFieldRequiredConfirmNewPass).Text;
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(Resources.ChangePassword.actualFieldRequried, expected);
             return this;
 
         }
@@ -137,16 +139,13 @@ namespace What_PageObject.ChangePassword
 
         public ChangePasswordPage Waiter()
         {
-            wait.Until(e => e.FindElement(Locators.GroupsPage.TableData));
+            wait.Until(e => e.FindElement(Locators.CommonLocator.DropdownNameElement));
             return this;
-
-
         }
         public ChangePasswordPage WaiterLogin()
         {
             wait.Until(e => e.FindElement(Locators.ChangePassword.EmailAdressField));
             return this;
-
         }
 
 
