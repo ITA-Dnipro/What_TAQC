@@ -24,7 +24,7 @@ namespace What_UITest.MyProfileTests
             coursesPage = new CoursesPage();
         }
 
-        [TestCase("Thomas", "Roberts", "thomas.roberts@example.com")
+        [TestCase("Thomas", "Roberts", "thomas.roberts@example.com")]
         public void VerifyIsUserInfoCorrect(string expectedName, string expectedLastName, string expectedEmail)
         {
             coursesPage.
