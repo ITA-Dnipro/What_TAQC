@@ -3,7 +3,7 @@ using What_Common.DataProvider;
 using What_PageObject.SecretariesPage;
 using What_PageObject.SignInPage;
 
-namespace What_UITest
+namespace What_UITest.Secretaries
 {
     public class VerifyCardsTableIcon: BaseTest
     {
@@ -11,7 +11,7 @@ namespace What_UITest
         LoginDetails secretary;       
 
         [SetUp]
-        public void Setup()
+        public void StartUp()
         {
             admin = Controller.GetUser(Controller.UserRole.Admin);
             secretary = Controller.GetUser(Controller.UserRole.Secretary);

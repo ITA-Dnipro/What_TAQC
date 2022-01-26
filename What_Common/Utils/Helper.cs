@@ -2,7 +2,7 @@
 
 namespace What_Common.Utils
 {
-    public class Helpers
+    public class JsonHelper
     {
         public static void CreateJson<T>(List<T> list, string path, string fileName)
         {
