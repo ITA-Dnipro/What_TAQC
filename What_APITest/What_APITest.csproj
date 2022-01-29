@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,18 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NLog" Version="4.7.13" />
     <PackageReference Include="NLog.Config" Version="4.7.13" />
     <PackageReference Include="NUnit" Version="3.13.2" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
+    <PackageReference Include="NUnit.Allure" Version="1.2.1.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
     <PackageReference Include="coverlet.collector" Version="3.1.0" />
+    <PackageReference Include="RestSharp" Version="107.1.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="API_Tests\" />
-    <Folder Include="Entities\Accounts\" />
     <Folder Include="Entities\Courses\" />
     <Folder Include="Entities\Errors\" />
     <Folder Include="Entities\Lessons\" />
@@ -27,7 +27,10 @@
     <Folder Include="Entities\Groups\" />
     <Folder Include="Entities\Students\" />
     <Folder Include="Entities\Secretaries\" />
-    <Folder Include="Entities\Shedule\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\What_Common\What_Common.csproj" />
   </ItemGroup>
 
 </Project>
