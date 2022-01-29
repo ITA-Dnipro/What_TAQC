@@ -18,7 +18,7 @@ namespace What_UITest.RegistrationTest
                  .ClickRegistrationButton(Locators.RegistrationPage.Registration);
         }
 
-        [Test]
+        [Test(Description = "DP220TAQC-37")]
         public void UnnasignedUserCanRegister()
         {
             registrationPage.FillFirstName(Resources.firstName)

@@ -31,7 +31,7 @@ namespace What_UITest.GroupsTests
             user = Controller.GetUser(Controller.UserRole.Admin);
 
         }
-        [Test]
+        [Test (Description = "DP220TAQC-198")]
         public void IconsTableEqual()
         {
             login.LogIn(user.Email,user.Password);

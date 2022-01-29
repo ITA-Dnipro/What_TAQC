@@ -6,7 +6,7 @@ using What_Common.DriverManager;
 using What_PageObject.Secretaries;
 using What_PageObject.SignInPage;
 
-namespace What_UITest.Secretary
+namespace What_UITest.Secretaries
 {
     public class VerifySearchField : BaseTest
     {
@@ -14,7 +14,7 @@ namespace What_UITest.Secretary
         LoginDetails secretary;       
 
         [SetUp]
-        public void Setup()
+        public void StartUp()
         {
             admin = Controller.GetUser(Controller.UserRole.Admin);
             secretary = Controller.GetUser(Controller.UserRole.Secretary);

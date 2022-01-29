@@ -42,9 +42,13 @@ namespace What_Common.Resources
             public const string passwordOld = "765Rt##asd4";
             public const string passwordNew = "765Rt##asd";
             public const string secretarEmail = "Adrian@secretar.com";
-            public const string password = "765Rt##asd";
+            public const string mentorEmail = "MentorWhat@gmail.com";
+            
+
+
             public const string secretaryEmail = "Bernard@secretar.com";
             public const string secretaryPassword = "765Rt##asd";
+            public const string actualFieldRequried = "This field is required";
 
         }
             #region SignIn_Students
@@ -57,6 +61,9 @@ namespace What_Common.Resources
         public static readonly string RegistrationUrl = "http://localhost:8080/registration";
         public static readonly string ForgotPasswordUrl = "http://localhost:8080/forgot-password";
         #endregion
-
+	public static string ValidResetPasswordData = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Utils/Data/validResetPassword.json";
+        public static string InvalidResetPasswordData = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Utils/Data/invalidResetPassword.json";
+        public static string InvalidAddLessonData = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "/What_Common/Utils/Data/invalidAddLesson.json";
     }
+    
 }

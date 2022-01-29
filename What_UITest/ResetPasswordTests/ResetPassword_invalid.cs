@@ -30,7 +30,7 @@ namespace What_UITest.ResetPassword
         }
         private static IEnumerable<ResetPasswordModel> GetInvalidResetPassword()
         {
-            return Helpers.ReadJson<ResetPasswordModel>(@"d:\Data\invalidResetPassword.json");
+            return JsonHelper.ReadJson<ResetPasswordModel>(Resources.InvalidResetPasswordData);
         }
     }
 }
