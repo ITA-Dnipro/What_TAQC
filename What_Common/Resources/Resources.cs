@@ -10,7 +10,7 @@ namespace What_Common.Resources
     {
         public const string url = "http://localhost:8080/auth";
         public const string empty = "";
-
+      
         public const string WhatUrl = "http://localhost:8080/";
 	    public const string WhatResetPasswordUrl = @"http://localhost:8080/reset-password";
         public const string WhatStudentsUrl = @"http://localhost:8080/students";
