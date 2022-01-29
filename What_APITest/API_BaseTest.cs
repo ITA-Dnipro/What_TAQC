@@ -14,7 +14,7 @@ namespace What_APITest
         {
             var context = TestContext.CurrentContext;
             var testName = context.Test.FullName;
-            log.Info($"{testName} start ...");
+            log.Info($"{testName} start");
         }
 
         [TearDown]
@@ -32,7 +32,7 @@ namespace What_APITest
             }
 
             log.Info($"{testName} {context.Result.Outcome.Status}" +
-                $"{Environment.NewLine}----------------------------------------------------------");
+                $"{Environment.NewLine}" + new string('-', 80));
         }
     }
 }
