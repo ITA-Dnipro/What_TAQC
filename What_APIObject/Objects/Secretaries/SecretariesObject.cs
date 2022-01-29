@@ -1,0 +1,93 @@
+﻿using System.Net;
+using What_APIObject;
+using NUnit.Framework;
+using Newtonsoft.Json;
+using What_APIObject.Entities.Accounts;
+using What_APIObject.Entities.Secretaries;
+using What_Common.Utils;
+
+namespace What_APITest.Objects.Secretaries
+{
+    public class SecretariesObject
+    {
+        WHATClient client;
+        private Uri uri;
+        private HttpStatusCode statusCode;
+        AccountUser accountUser;
+
+        public SecretariesObject(User user)
+        {
+             client = new WHATClient(user);
+        }
+
+        public SecretariesObject GetAllSecretaries()
+        {
+            uri = new Uri($"/api/v2/secretaries", UriKind.Relative);
+            var response = client.Get(uri, out statusCode);
+            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            return this;
+        }
+
+        public SecretariesObject VerifyExistSecretary()
+        {
+            uri = new Uri($"/api/v2/secretaries", UriKind.Relative);
+            var response = client.Get(uri, out statusCode);
+            var secretaryList = JsonConvert.DeserializeObject<List<SecretariesModel>>(response);
+            var secretary = secretaryList.Find(s => s.Id == accountUser.Id);
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(HttpStatusCode.OK, statusCode);
+                Assert.AreEqual(secretary.Id, accountUser.Id);
+                Assert.AreEqual(secretary.FirstName, accountUser.FirstName);
+                Assert.AreEqual(secretary.LastName, accountUser.LastName);
+                Assert.AreEqual(secretary.Email, accountUser.Email);
+            });
+            return this;
+        }
+
+        public RegisterUser CreateUser()
+        {
+            RegisterUser user = new RegisterUser();
+            user.FirstName = StringGenerator.GenerateString(20);
+            user.LastName = StringGenerator.GenerateString(20);
+            user.Email = StringGenerator.GenerateEmailString;
+            user.Password = StringGenerator.GenerateString(10) + "!1";
+            user.ConfirmPassword = user.Password;
+            return user;
+        }
+
+        public SecretariesObject RegistrationNewUser()
+        {
+            uri = new Uri($"/api/v2/accounts/reg", UriKind.Relative);
+            var response = client.Post<RegisterUser, AccountUser>(uri, CreateUser(), out statusCode);
+            accountUser = response;
+            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            return this;
+        }
+
+        public SecretariesObject CreateNewSecretary()
+        {
+            uri = new Uri($"/api/v2/secretaries/{accountUser.Id}", UriKind.Relative);
+            var response = client.Post<AccountUser>(uri, out statusCode);
+            accountUser = response;
+            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            return this;
+        }
+
+        public SecretariesObject DisableSecretary()
+        {
+            uri = new Uri($"/api/v2/secretaries/{accountUser.Id}", UriKind.Relative);
+            var response = client.Delete(uri, out statusCode);
+            Assert.IsTrue(response.Contains("true"));
+            return this;
+        }
+
+        public SecretariesObject VerifyDisableSecretary()
+        {
+            uri = new Uri($"/api/v2/secretaries/{accountUser.Id}", UriKind.Relative);
+            var response = client.Delete(uri, out statusCode);
+            Assert.IsTrue(response.Contains("true"));
+            return this;
+        }
+    }
+}

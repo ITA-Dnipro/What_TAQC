@@ -1,12 +1,12 @@
-﻿using API.Models;
-using RestSharp;
+﻿using RestSharp;
 using RestSharp.Authenticators;
+using System;
 using System.Net;
+using What_APIObject.Entities.Accounts;
+using What_APITest.Entities;
 
-namespace API
+namespace What_APIObject
 {
-    
-
     public class WHATClient : IDisposable 
     { 
         readonly RestClient client;
@@ -38,6 +38,15 @@ namespace API
             statusCode = response.StatusCode;
 
             return response.IsSuccessful ? response.Data! : default!;
+        }
+
+        public string Get(Uri uri, out HttpStatusCode statusCode)
+        {
+            var req = new RestRequest(uri, Method.Get);
+            req.AddOrUpdateHeader("authorization", token);
+            var response = client.ExecuteAsync(req).GetAwaiter().GetResult();
+            statusCode = response.StatusCode;
+            return response.IsSuccessful ? response.Content! : default!;
         }
 
 
@@ -85,16 +94,27 @@ namespace API
             return response.IsSuccessful ? response.Data! : default!;
         }
 
-        public TParametr Delete<TParametr>(Uri uri, out HttpStatusCode statusCode) 
+        public TParametr Delete<TParametr>(Uri uri, out HttpStatusCode statusCode)
             where TParametr : class
         {
             var req = new RestRequest(uri, Method.Delete);
             req.AddOrUpdateHeader("authorization", token);
-            var response =  client.ExecuteAsync<TParametr>(req).GetAwaiter().GetResult();
+            var response = client.ExecuteAsync<TParametr>(req).GetAwaiter().GetResult();
 
             statusCode = response.StatusCode;
 
             return response.IsSuccessful ? response.Data! : default!;
+        }
+
+        public string Delete(Uri uri, out HttpStatusCode statusCode)
+        {
+            var req = new RestRequest(uri, Method.Delete);
+            req.AddOrUpdateHeader("authorization", token);
+            var response = client.ExecuteAsync(req).GetAwaiter().GetResult();
+
+            statusCode = response.StatusCode;
+
+            return response.IsSuccessful ? response.Content! : default!;
         }
 
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace API.Models
+namespace What_APIObject.Entities.Lessons
 {
     public class LessonIsDone
     {

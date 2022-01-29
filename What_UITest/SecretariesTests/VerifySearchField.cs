@@ -6,7 +6,7 @@ using What_PageObject.SignInPage;
 
 namespace What_UITest
 {
-    public class VerifySearchField : BaseTest
+    public class VerifySearchFieldSecretariesPage : BaseTest
     {
         LoginDetails admin;
         LoginDetails secretary;       

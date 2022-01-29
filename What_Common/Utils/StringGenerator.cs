@@ -6,6 +6,8 @@ namespace What_Common.Utils
     {
         static int offset = 97;
         static int range = 25;
+        public static string GenerateEmailString { get; set; } = $"{Guid.NewGuid():N}@gmail.com";
+
         public static string GenerateString(int lenght)
         {
             StringBuilder stringBuilder = new StringBuilder();

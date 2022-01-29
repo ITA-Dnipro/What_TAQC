@@ -5,13 +5,10 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace API.Models
+namespace What_APIObject.Entities.Groups
 {
-    public class GroupDto
+    public class GroupPostDto
     {
-       
-        [JsonPropertyName("id")]
-        public int Id { get; set; }
 
         [JsonPropertyName("courseId")]
         public int CourseId { get; set; }

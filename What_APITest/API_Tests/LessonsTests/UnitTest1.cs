@@ -1,7 +1,8 @@
-using API;
-using API.Models;
 using NUnit.Framework;
 using System;
+using What_APIObject.Entities.Accounts;
+using What_APIObject.Entities.Lessons;
+using What_APITest.Objects.Lessons;
 
 namespace APITests
 {

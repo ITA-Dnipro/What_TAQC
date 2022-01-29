@@ -5,10 +5,13 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace API.Models
+namespace What_APIObject.Entities.Secretaries
 {
-    public class RegisterUserDto
+    public class SecretariesModel
     {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+
         [JsonPropertyName("email")]
         public string Email { get; set; }
 
@@ -18,10 +21,7 @@ namespace API.Models
         [JsonPropertyName("lastName")]
         public string LastName { get; set; }
 
-        [JsonPropertyName("password")]
-        public string Password { get; set; }
-
-        [JsonPropertyName("confirmPassword")]
-        public string ConfirmPassword { get; set; }
+        [JsonPropertyName("avatarUrl")]
+        public string AvatarUrl { get; set; }
     }
 }

@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System;
 using What_Common.DataProvider;
 using What_Common.Resources;
-using What_PageObject.Secretaries;
+using What_PageObject.SecretariesPage;
 using What_PageObject.SignInPage;
 using What_PageObject.UnassignedUsersPage;
 using static What_PageObject.UnassignedUsersPage.UnassignedUserHelper;
