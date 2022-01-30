@@ -48,10 +48,10 @@ namespace What_APITest.Objects.Secretaries
         public RegisterUser CreateUser()
         {
             RegisterUser user = new RegisterUser();
-            user.FirstName = StringGenerator.GenerateString(20);
-            user.LastName = StringGenerator.GenerateString(20);
-            user.Email = StringGenerator.GenerateEmailString;
-            user.Password = StringGenerator.GenerateString(10) + "!1";
+            user.FirstName = StringGenerator.GenerateString(new Random().Next(2, 30));
+            user.LastName = StringGenerator.GenerateString(new Random().Next(2, 30));
+            user.Email = StringGenerator.GenerateEmail;
+            user.Password = StringGenerator.GeneratePassoword(new Random().Next(8, 16));
             user.ConfirmPassword = user.Password;
             return user;
         }

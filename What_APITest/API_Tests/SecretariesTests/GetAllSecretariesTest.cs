@@ -4,6 +4,7 @@ using What_Common.DataProvider;
 using What_APIObject;
 using What_APITest.Objects.Secretaries;
 using What_APIObject.Entities.Accounts;
+using What_Common.Utils;
 
 namespace What_APITest.API_Tests.SecretariesTests
 {
