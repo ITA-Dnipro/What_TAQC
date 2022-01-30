@@ -17,7 +17,6 @@ namespace What_UITest
         [SetUp]
         public void Setup()
         {
-            Driver.Current = null;
             Driver.Current.Manage().Window.Maximize();
             Driver.Current.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Driver.Current.Navigate().GoToUrl(Resources.WhatUrl);
@@ -31,7 +30,6 @@ namespace What_UITest
             var testName = context.Test.FullName;
 
             log.Info($"{testName} - {context.Result.Outcome.Status}");
-
 
             if (TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Failure))
             {

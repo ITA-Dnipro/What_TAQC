@@ -20,7 +20,6 @@ namespace What_UITest.ScheduleTests
             schedule = new SchedulePage();
             user = Controller.GetUser(Controller.UserRole.Admin);
             signInPage.LogIn(user.Email, user.Password);
-
         }
 
         [Test(Description = "DP220TAQC-193")]

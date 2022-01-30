@@ -8,7 +8,7 @@ namespace What_PageObject
     {
         protected WebDriverWait wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10));
         List<BasePage> pages = new List<BasePage>();
-
+       
         public void ClickElement(By locator)
         {
             Driver.Current.FindElement(locator).Click();

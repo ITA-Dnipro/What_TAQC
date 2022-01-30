@@ -37,13 +37,5 @@ namespace What_APITest.API_Tests.UnassignedUsers
                  .VerifyGetAllUnassignedUser()
                  .VerifyUsersCreate(newUser);
         }
-
-        [Test]
-        public void GetAllUnassignedTests()
-        {
-            users.CreateUserInSystem(newUser)
-                 .VerifyGetAllUnassignedUser()
-                 .VerifyUsersCreate(newUser);
-        }
     }
 }

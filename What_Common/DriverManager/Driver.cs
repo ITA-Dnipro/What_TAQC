@@ -6,10 +6,7 @@ namespace What_Common.DriverManager
     public class Driver
     {
         const string url = "http://localhost:8080/";
-        public Driver()
-        {
-
-        }
+        public Driver() { }
 
         private static IWebDriver? driver;
 
@@ -23,7 +20,6 @@ namespace What_Common.DriverManager
                 }
                 return driver;
             }
-            set { driver = value; }
         }
 
         public static void GoToUrl()
@@ -35,6 +31,5 @@ namespace What_Common.DriverManager
         {
             Current.Manage().Window.Maximize();
         }
-
     }
 }
