@@ -18,8 +18,7 @@ namespace What_APITest.Entities.Mentors
         [JsonProperty ("firstName")]
         public string Password { get; set; }    
 
-        [JsonProperty ("lastName")]
-        
+        [JsonProperty ("lastName")]        
         public string LastName { get; set; }    
     }
 }
