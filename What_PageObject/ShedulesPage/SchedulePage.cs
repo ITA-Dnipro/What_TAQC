@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using What_Common.Resources;
 
 namespace What_PageObject.SchedulesPage

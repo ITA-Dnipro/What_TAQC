@@ -23,7 +23,6 @@
     <Folder Include="Entities\Courses\" />
     <Folder Include="Entities\Errors\" />
     <Folder Include="Entities\Lessons\" />
-    <Folder Include="Entities\Mentors\" />
     <Folder Include="Entities\Groups\" />
     <Folder Include="Entities\Students\" />
     <Folder Include="Entities\Secretaries\" />

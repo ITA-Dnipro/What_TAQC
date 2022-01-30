@@ -27,11 +27,13 @@ namespace What_PageObject.RegistrationPage
             FillField(Locators.RegistrationPage.PasswordField, password);
             return this;
         }
+
         public RegistrationPage FillConfirmPassword(string password)
         {
             FillField(Locators.RegistrationPage.ConfirmPasswordField, password);
             return this;
         }
+
         public RegistrationPage VerifyFirstNameFilled(string expected)
         {
             string actual = Driver.Current.FindElement(Locators.RegistrationPage.FirstNameField).GetAttribute("value");
