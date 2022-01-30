@@ -78,7 +78,6 @@ namespace What_APITest.Objects.Secretaries
         {
             uri = new Uri($"/api/v2/secretaries/{accountUser.Id}", UriKind.Relative);
             var response = client.Delete(uri, out statusCode);
-            Assert.IsTrue(response.Contains("true"));
             return this;
         }
 

@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,8 +32,6 @@
   <ItemGroup>
     <ProjectReference Include="..\What_APIObject\What_APIObject.csproj" />
     <ProjectReference Include="..\What_Common\What_Common.csproj" />
-
-    <Folder Include="API_Tests\" />
     <Folder Include="Entities\Accounts\" />
     <Folder Include="Entities\Courses\" />
     <Folder Include="Entities\Errors\" />
