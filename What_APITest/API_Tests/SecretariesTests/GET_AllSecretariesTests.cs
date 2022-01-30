@@ -38,6 +38,7 @@ namespace What_APITest.API_Tests.SecretariesTests
         public void After()
         {
             secretariesObject.DisableSecretary();
+            secretariesObject.client.Dispose();
         }
     }
 }

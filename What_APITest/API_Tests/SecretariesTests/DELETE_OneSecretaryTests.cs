@@ -33,5 +33,11 @@ namespace What_APITest.API_Tests.SecretariesTests
                 .CreateNewSecretary()
                 .VerifyDisableSecretary();
         }
+
+        [TearDown]
+        public void After()
+        {
+            secretariesObject.client.Dispose();
+        }
     }
 }
