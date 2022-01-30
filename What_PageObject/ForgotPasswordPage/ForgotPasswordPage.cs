@@ -1,10 +1,9 @@
-using OpenQA.Selenium;
 using What_Common.DriverManager;
 using What_Common.Resources;
-using What_PageObject.SignInPage;
+using OpenQA.Selenium;
 using NUnit.Framework;
 
-namespace What_PageObject.ForgotPassword
+namespace What_PageObject.ForgotPasswordPage
 {
     public class ForgotPasswordPage : BasePage
     {
@@ -44,9 +43,7 @@ namespace What_PageObject.ForgotPassword
         }
         public ForgotPasswordPage VerifyTextValueInModalWindow()
         {
-            string expexted = Resources.ForgotPassword.modalWindowText;
-            string acrual = GetTextValue(Locators.ForgotPassword.modalWindowText);
-            Assert.AreEqual(expexted, acrual);
+            Assert.AreEqual(Resources.ForgotPassword.modalWindowText, GetTextValue(Locators.ForgotPassword.modalWindowText));
             return this;
         }
     }

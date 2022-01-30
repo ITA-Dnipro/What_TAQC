@@ -1,14 +1,11 @@
-using System;
 using NUnit.Framework;
-using What_Common.Resources;
 using What_Common.DataProvider;
-using What_Common.DriverManager;
-using What_PageObject.Secretaries;
+using What_PageObject.SecretariesPage;
 using What_PageObject.SignInPage;
 
 namespace What_UITest.Secretaries
 {
-    public class VerifySearchField : BaseTest
+    public class VerifyCardsTableIcon: BaseTest
     {
         LoginDetails admin;
         LoginDetails secretary;       
@@ -20,30 +17,30 @@ namespace What_UITest.Secretaries
             secretary = Controller.GetUser(Controller.UserRole.Secretary);
         }
 
-        [Test(Description = "DP220TAQC-102")]
-        public void VerifySearchField_AsAdmin_ValidValues()
+        [Test(Description = "DP220TAQC-73")]
+        public void VerifyCardsTableIcon_AsAdmin()
         {
             new SignInPage().LogIn(admin.Email, admin.Password);
             new SecretariesPage()
                 .SidebarNavigateTo<SecretariesPage>()
                 .WaitTableData()
-                .CompareSearchDatWithFirstDataFromTable();
+                .GetTableData()
+                .ClickCardsButton()
+                .GetCardsData()
+                .CompareCardsDataWithTableData();
         }
 
-        [Test(Description = "DP220TAQC-102")]
-        public void VerifySearchField_AsSecretary_ValidValues()
+        [Test(Description = "DP220TAQC-73")]
+        public void VerifyCardsTableIcon_AsSecretary()
         {
             new SignInPage().LogIn(secretary.Email, secretary.Password);
             new SecretariesPage()
                 .SidebarNavigateTo<SecretariesPage>()
                 .WaitTableData()
-                .CompareSearchDatWithFirstDataFromTable();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            Driver.Current.Close();
+                .GetTableData()
+                .ClickCardsButton()
+                .GetCardsData()
+                .CompareCardsDataWithTableData();
         }
     }
 }
