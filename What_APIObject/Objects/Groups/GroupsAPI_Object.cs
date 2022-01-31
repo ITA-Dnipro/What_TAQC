@@ -18,14 +18,7 @@ namespace What_APITest.API_Object
             client = new WHATClient(user);
         }
 
-        //public GroupsAPI_Object CreateUserInSystem(RegistredUser newUser)
-        //{
-        //    uri = new Uri($"/api/v2/accounts/reg", UriKind.Relative);
-        //    var response = client.POST<RegistredUser, AccountUser>(uri, newUser, out statusCode);
-
-        //    return this;
-        //}
-
+        
         public GroupsAPI_Object VerifyGetAllStudentsGroups(DateModel date)
         {
             uri = new Uri($"/api/v2/student_groups", UriKind.Relative);

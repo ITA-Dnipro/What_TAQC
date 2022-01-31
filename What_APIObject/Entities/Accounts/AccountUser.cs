@@ -27,5 +27,7 @@ namespace What_APIObject.Entities.Accounts
 
         [JsonPropertyName("isActive")]
         public bool IsActive { get; set; }
+
+       
     }
 }
