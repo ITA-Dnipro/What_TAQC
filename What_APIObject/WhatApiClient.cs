@@ -49,6 +49,20 @@ namespace What_APIObject
             return response.IsSuccessful ? response.Content! : default!;
         }
 
+        public string Get<TParametr, TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode)
+           where TResponse : class
+           where TParametr : class
+        {
+            var req = new RestRequest(uri, Method.Get);
+            req.AddOrUpdateHeader("authorization", token);
+            req.AddJsonBody<TParametr>(body);
+            var response = client.ExecuteAsync<TResponse>(req).GetAwaiter().GetResult();
+
+            statusCode = response.StatusCode;
+
+            return response.IsSuccessful ? response.Content! : default!;
+        }
+
 
         public TResponse Post<TParametr,TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode) 
             where TParametr : class 
