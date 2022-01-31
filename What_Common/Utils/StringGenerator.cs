@@ -4,7 +4,10 @@ namespace What_Common.Utils
 {
     public static class StringGenerator
     {
-        public static string GenerateEmail { get; set; } = $"{Guid.NewGuid():N}@gmail.com";
+        public static string GenerateEmail()
+        {
+            return $"{Guid.NewGuid():N}@gmail.com";
+        }
 
         public static string GenerateString(int lenght)
         {
@@ -13,7 +16,7 @@ namespace What_Common.Utils
             char letter;
             for (int i = 0; i < lenght; i++)
             {
-                letter = (char)random.Next(97, 122);
+                letter = (char)random.Next(97, 123);
                 if (i == 0)
                 {
                     letter = char.ToUpper(letter);
@@ -23,14 +26,14 @@ namespace What_Common.Utils
             return stringBuilder.ToString();
         }
 
-        public static string GeneratePassoword(int lenght)
+        public static string GeneratePassword(int lenght)
         {
             StringBuilder stringBuilder = new StringBuilder();
             Random random = new Random();
             char letter;
             for (int i = 0; i < lenght-2; i++)
             {
-                letter = (char)random.Next(97, 122);
+                letter = (char)random.Next(97, 123);
                 if (i == 0)
                 {
                     letter = char.ToUpper(letter);
