@@ -9,36 +9,35 @@ using NUnit.Allure.Core;
 using NUnit.Allure.Attributes;
 using Allure.Commons;
 using What_Common.Resources;
+using System.Net;
+
+// pass
+// admin
 
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
-    public class GetAllSecretary : BaseTest
+    public class POST_CreateSecretary_Success : BaseTest
     {
         SecretariesObject secretariesObject;
 
         [Test(Description = "SecretariesTests")]
-        [TestCase(Controller.UserRole.Admin)]
-        //[TestCase(Controller.UserRole.Secretary)]
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
-        [AllureSubSuite("GET")]
-        public void VerifyGetAllSecretaries(Controller.UserRole role)
+        [AllureSubSuite("POST")]
+        public void VerifyCreateSecretary_Success()
         {
-            LoginDetails user = Controller.GetUser(role);
-            secretariesObject = new SecretariesObject(new User { Email = user.Email, Password = user.Password, Role = role.ToString().ToLower() });
-            secretariesObject
-                .RegistrationNewUser()
-                .CreateNewSecretary()
-                .GetAllSecretaries();
+            LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
+            secretariesObject = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
+            secretariesObject.RegistrationNewUser();
+            secretariesObject.VerifyCreateNewSecretary(HttpStatusCode.OK);
         }
 
         [TearDown]
         public void After()
         {
             secretariesObject.DisableSecretary();
-            secretariesObject.client.Dispose();
         }
     }
 }
