@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System;
 using What_Common.DataProvider;
 using What_APIObject;
-using What_APITest.Objects.Secretaries;
+using What_APIObject.Objects.Secretaries;
 using What_APIObject.Entities.Accounts;
 using What_Common.Utils;
 using NUnit.Allure.Core;

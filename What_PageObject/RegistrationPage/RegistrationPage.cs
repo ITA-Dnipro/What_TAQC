@@ -7,10 +7,6 @@ namespace What_PageObject.RegistrationPage
 {
     public class RegistrationPage : BasePage
     {
-        public RegistrationPage()
-        {
-        }
-
         public RegistrationPage FillFirstName(string firstName)
         {
             FillField(Locators.RegistrationPage.FirstNameField, firstName);

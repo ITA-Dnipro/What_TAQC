@@ -60,11 +60,10 @@ namespace What_APIObject.Objects.Secretaries
         public SecretariesObject VerifyGetAllSecretaries(HttpStatusCode expectedStatusCode)
         {
             uri = new Uri(Endpoints.Secretaries.secretaries, UriKind.Relative);
-            var response = client.Get(uri, out statusCode);
+            var response = client.Get<List<SecretariesModel>>(uri, out statusCode);
             if (expectedStatusCode == HttpStatusCode.OK)
             {
-                var secretaryList = JsonConvert.DeserializeObject<List<SecretariesModel>>(response);
-                var secretary = secretaryList.Find(s => s.Id == accountUser.Id);
+                var secretary = response.Find(s => s.Id == accountUser.Id);
                 Assert.Multiple(() =>
                 {
                     Assert.AreEqual(HttpStatusCode.OK, statusCode);
@@ -84,11 +83,10 @@ namespace What_APIObject.Objects.Secretaries
         public SecretariesObject VerifyGetActiveSecretaries(HttpStatusCode expectedStatusCode)
         {
             uri = new Uri(Endpoints.Secretaries.secretariesActive, UriKind.Relative);
-            var response = client.Get(uri, out statusCode);
+            var response = client.Get<List<SecretariesModel>>(uri, out statusCode);
             if (expectedStatusCode == HttpStatusCode.OK)
             {
-                var secretaryList = JsonConvert.DeserializeObject<List<SecretariesModel>>(response);
-                var secretary = secretaryList.Find(s => s.Id == accountUser.Id);
+                var secretary = response.Find(s => s.Id == accountUser.Id);
                 Assert.Multiple(() =>
                 {
                     Assert.AreEqual(HttpStatusCode.OK, statusCode);
