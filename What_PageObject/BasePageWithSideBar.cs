@@ -2,8 +2,9 @@ using What_Common.Resources;
 using What_PageObject.Course;
 using What_PageObject.Lessons;
 using What_PageObject.SchedulesPage;
-using What_PageObject.Secretaries;
+using What_PageObject.SecretariesPage;
 using What_PageObject.UnassignedUsersPage;
+using What_PageObject.MentorsPage;
 
 namespace What_PageObject
 {
@@ -12,7 +13,8 @@ namespace What_PageObject
         private readonly Dictionary<Type, string> sidebarLabels = new Dictionary<Type, string>()
         {
             [typeof(StudentsPage.StudentsPage)] = "Students",
-            [typeof(SecretariesPage)] = "Secretaries",
+            [typeof(MentorsPage.MentorsPage)] = "Mentors",
+            [typeof(SecretariesPage.SecretariesPage)] = "Secretaries",
             [typeof(LessonsPage)] = "Lessons",
             [typeof(GroupsPage.GroupsPage)] = "Groups",
             [typeof(CoursesPage)] = "Courses",

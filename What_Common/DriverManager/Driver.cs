@@ -20,6 +20,7 @@ namespace What_Common.DriverManager
                 }
                 return driver;
             }
+            set { driver = value; }
         }
 
         public static void GoToUrl()
