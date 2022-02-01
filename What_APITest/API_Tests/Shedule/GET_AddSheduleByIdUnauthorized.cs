@@ -5,7 +5,7 @@ using What_Common.DataProvider;
 
 namespace What_APITest.API_Tests.Shedule
 {
-    public class POST_AddSheduleForbiden : BaseTest
+    public class GET_AddSheduleByIdUnauthorized : BaseTest
     {
         private LoginDetails user;
         private GetAllShedule shedule;
@@ -16,15 +16,14 @@ namespace What_APITest.API_Tests.Shedule
             user = Controller.GetUser(Controller.UserRole.Mentor);
             var role = Controller.UserRole.Mentor.ToString().ToLower();
 
-            shedule = new GetAllShedule(new User { Email = user.Email, Password = user.Password, Role = role });
+            shedule = new GetAllShedule(null);
         }
 
         [Test]
-        public void PostSheduleTest()
+        public void SheduleTest()
         {
             shedule.GenerateDataForShedule()
-                   .CreateNewShedule()
-                   .VerifyShedulesForbiden();
+                   .VerifyShedulesUnauthorized();
         }
     }
 }

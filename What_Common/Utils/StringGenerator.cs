@@ -16,7 +16,7 @@ namespace What_Common.Utils
             char letter;
             for (int i = 0; i < lenght; i++)
             {
-                letter = (char)random.Next(97, 122);
+                letter = (char)random.Next(97, 123);
                 if (i == 0)
                 {
                     letter = char.ToUpper(letter);
@@ -33,7 +33,7 @@ namespace What_Common.Utils
             char letter;
             for (int i = 0; i < lenght-2; i++)
             {
-                letter = (char)random.Next(97, 122);
+                letter = (char)random.Next(97, 123);
                 if (i == 0)
                 {
                     letter = char.ToUpper(letter);

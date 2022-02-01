@@ -3,6 +3,7 @@ using System.Net;
 using What_APIObject;
 using What_APIObject.Entities.Accounts;
 using What_APITest.Entities.Accounts;
+using What_Common.Resources;
 using What_Common.Utils;
 
 namespace What_APITest.API_Object.UnassignedUsers
@@ -38,7 +39,7 @@ namespace What_APITest.API_Object.UnassignedUsers
 
         public GetAllUnassignedUsers CreateUserInSystem()
         {
-            uri = new Uri($"/api/v2/accounts/reg", UriKind.Relative);
+            uri = new Uri(Endpoints.Accounts.accountsReg, UriKind.Relative);
             var response = client.Post<RegisterUser, AccountUser>(uri, newUser, out statusCode);
             user = response;
 
@@ -47,7 +48,7 @@ namespace What_APITest.API_Object.UnassignedUsers
 
         public GetAllUnassignedUsers VerifyUsersCreate()
         {
-            uri = new Uri($"/api/v2/accounts/NotAssigned", UriKind.Relative);
+            uri = new Uri(Endpoints.Accounts.accountsNotAssigned, UriKind.Relative);
             var response = client.Get<List<AccountNotAssigned>>(uri, out statusCode);
             var createdUnassigned = response.Find(u => u.Id == user.Id);
 
@@ -65,7 +66,7 @@ namespace What_APITest.API_Object.UnassignedUsers
 
         public GetAllUnassignedUsers VerifyUserForbiden()
         {
-            uri = new Uri($"/api/v2/accounts/NotAssigned", UriKind.Relative);
+            uri = new Uri(Endpoints.Accounts.accountsNotAssigned, UriKind.Relative);
             var response = client.Get<List<AccountNotAssigned>>(uri, out statusCode);
             Assert.AreEqual(HttpStatusCode.Forbidden, statusCode);
 
@@ -74,7 +75,7 @@ namespace What_APITest.API_Object.UnassignedUsers
 
         public GetAllUnassignedUsers VerifyUserUnauthorized()
         {
-            uri = new Uri($"/api/v2/accounts/NotAssigned", UriKind.Relative);
+            uri = new Uri(Endpoints.Accounts.accountsNotAssigned, UriKind.Relative);
             var response = client.Get<List<AccountNotAssigned>>(uri, out statusCode);
             Assert.AreEqual(HttpStatusCode.Unauthorized, statusCode);
 

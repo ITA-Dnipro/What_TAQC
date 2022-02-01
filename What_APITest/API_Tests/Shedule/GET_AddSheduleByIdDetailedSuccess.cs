@@ -3,9 +3,10 @@ using What_APIObject.API_Object.Shedule;
 using What_APIObject.Entities.Accounts;
 using What_Common.DataProvider;
 
+
 namespace What_APITest.API_Tests.Shedule
 {
-    public class POST_POST_AddSheduleByIdForbiden : BaseTest
+    public class GET_AddSheduleByIdDetailedSuccess : BaseTest
     {
         private LoginDetails user;
         private GetAllShedule shedule;
@@ -16,14 +17,15 @@ namespace What_APITest.API_Tests.Shedule
             user = Controller.GetUser(Controller.UserRole.Admin);
             var role = Controller.UserRole.Admin.ToString().ToLower();
 
-            shedule = new GetAllShedule(new User { Email = "william.davies@example.com", Password = "Mm_l201R", Role = "mentor" });
+            shedule = new GetAllShedule(new User { Email = user.Email, Password = user.Password, Role = role });
         }
 
         [Test]
         public void SheduleTest()
         {
             shedule.GenerateDataForShedule()
-                   .VerifyShedulesCreateByIdForbiden();
+                   .CreateNewShedule()
+                   .VerifyShedulesCreateByIdDetailed();
         }
     }
 }

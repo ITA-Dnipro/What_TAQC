@@ -13,9 +13,9 @@ namespace What_APITest.API_Tests.UnassignedUsers
         [SetUp]
         public void Setup()
         {
-            user = Controller.GetUser(Controller.UserRole.Admin);
-            var role = Controller.UserRole.Admin.ToString().ToLower();
-            users = new GetAllUnassignedUsers(new User { Email = "william.davies@example.com", Password = "Mm_l201R", Role = "mentor" });
+            user = Controller.GetUser(Controller.UserRole.Mentor);
+            var role = Controller.UserRole.Mentor.ToString().ToLower();
+            users = new GetAllUnassignedUsers(new User { Email = user.Email, Password = user.Password, Role = role });
         }
 
         [Test]

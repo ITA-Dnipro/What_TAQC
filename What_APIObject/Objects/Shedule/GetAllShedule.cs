@@ -2,6 +2,7 @@
 using System.Net;
 using What_APIObject.Entities.Accounts;
 using What_APIObject.Entities.Shedule;
+using What_Common.Resources;
 
 namespace What_APIObject.API_Object.Shedule
 {
@@ -80,7 +81,7 @@ namespace What_APIObject.API_Object.Shedule
 
         public GetAllShedule CreateNewShedule()
         {
-            uri = new Uri($"/api/v2/schedules", UriKind.Relative);
+            uri = new Uri(Endpoints.Schedules.schedules, UriKind.Relative);
             var response = client.Post<AddShedulesModel.Root, AllShedulesModel>(uri, newShedule, out statusCode);
             sheduleModel = response;
 
@@ -89,8 +90,9 @@ namespace What_APIObject.API_Object.Shedule
 
         public GetAllShedule VerifyShedulesBadRequest()
         {
-            uri = new Uri($"/api/v2/schedules", UriKind.Relative);
+            uri = new Uri(Endpoints.Schedules.schedules, UriKind.Relative);
             var response = client.Post<AddShedulesModel.Root, AllShedulesModel>(uri, newShedule, out statusCode);
+
             Assert.AreEqual(HttpStatusCode.BadRequest, statusCode);
 
             return this;
@@ -98,8 +100,9 @@ namespace What_APIObject.API_Object.Shedule
 
         public GetAllShedule VerifyShedulesForbiden()
         {
-            uri = new Uri($"/api/v2/schedules", UriKind.Relative);
+            uri = new Uri(Endpoints.Schedules.schedules, UriKind.Relative);
             var response = client.Post<AddShedulesModel.Root, AllShedulesModel>(uri, newShedule, out statusCode);
+
             Assert.AreEqual(HttpStatusCode.Forbidden, statusCode);
 
             return this;
@@ -107,7 +110,7 @@ namespace What_APIObject.API_Object.Shedule
 
         public GetAllShedule VerifyShedulesCreate()
         {
-            uri = new Uri($"/api/v2/schedules/event-occurrences", UriKind.Relative);
+            uri = new Uri(Endpoints.Schedules.schedulesEventsOccurrences, UriKind.Relative);
             var response = client.Get<List<AllShedulesModel>>(uri, out statusCode);
             var createdShedule = response.Find(i => i.Id == sheduleModel.Id);
 
@@ -121,9 +124,19 @@ namespace What_APIObject.API_Object.Shedule
             return this;
         }
 
+        public GetAllShedule VerifyShedulesUnauthorized()
+        {
+            uri = new Uri(Endpoints.Schedules.schedulesEventsOccurrences, UriKind.Relative);
+            var response = client.Get<List<AllShedulesModel>>(uri, out statusCode);
+
+            Assert.AreEqual(HttpStatusCode.Unauthorized, statusCode);
+
+            return this;
+        }
+
         public GetAllShedule VerifyShedulesCreateById()
         {
-            uri = new Uri($"/api/v2/schedules/{sheduleModel.Id}", UriKind.Relative);
+            uri = new Uri(Endpoints.Schedules.SchedulesById(sheduleModel.Id), UriKind.Relative);
             var response = client.Get<AllShedulesModel>(uri, out statusCode);
 
             Assert.Multiple(() =>
@@ -136,10 +149,26 @@ namespace What_APIObject.API_Object.Shedule
             return this;
         }
 
+        public GetAllShedule VerifyShedulesCreateByIdDetailed()
+        {
+            uri = new Uri(Endpoints.Schedules.SchedulesDetailed(sheduleModel.Id), UriKind.Relative);
+            var response = client.Get<AddShedulesModel>(uri, out statusCode);
+
+            Assert.Multiple(() =>
+            {
+                //Assert.AreEqual(response.StudentGroupId, newShedule.Context.GroupID);
+                //Assert.AreEqual(response.EventStart.ToString("yyyy-MM-dd HH:mm"), newShedule.Range.StartDate.AddHours(-2).ToString("yyyy-MM-dd HH:mm"));
+                //Assert.AreEqual(response.EventFinish.ToString("yyyy-MM-dd HH:mm"), newShedule.Range.FinishDate.AddHours(-2).ToString("yyyy-MM-dd HH:mm"));
+            });
+
+            return this;
+        }
+
         public GetAllShedule VerifyShedulesCreateByIdForbiden()
         {
-            uri = new Uri($"/api/v2/schedules/", UriKind.Relative);
+            uri = new Uri(Endpoints.Schedules.schedulesEventsOccurrences, UriKind.Relative);
             var response = client.Get<AllShedulesModel>(uri, out statusCode);
+
             Assert.AreEqual(HttpStatusCode.Forbidden, statusCode);
 
             return this;
@@ -147,7 +176,7 @@ namespace What_APIObject.API_Object.Shedule
 
         public GetAllShedule DeleteShedule()
         {
-            uri = new Uri($"/api/v2/schedules/{sheduleModel.Id}", UriKind.Relative);
+            uri = new Uri(Endpoints.Schedules.SchedulesEventsOccurrences(sheduleModel.Id), UriKind.Relative);
             var response = client.Delete<AllShedulesModel>(uri, out statusCode);
 
             return this;
