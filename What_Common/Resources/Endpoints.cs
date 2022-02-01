@@ -1,7 +1,8 @@
 ﻿namespace What_Common.Resources
 {
-    class Endpoints
+    public class Endpoints
     {
+        public static readonly string authorization = "authorization";
         public static class Accounts
         {
             public static readonly string
