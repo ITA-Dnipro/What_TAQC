@@ -18,7 +18,7 @@ namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
-    public class GET_GetAllSecretaries_Forbidden : BaseTest
+    public class GET_GetActiveSecretaries_Forbidden : BaseTest
     {
         SecretariesObject secretariesObject;
 
@@ -35,11 +35,11 @@ namespace What_APITest.API_Tests.SecretariesTests
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
         [AllureSubSuite("GET")]
-        public void VerifyGetAllSecretaries_Forbidden()
+        public void VerifyGetActiveSecretaries_Forbidden()
         {
             LoginDetails student = Controller.GetUser(Controller.UserRole.Student);
             SecretariesObject secretariesObjectAsStudent = new SecretariesObject(new User { Email = student.Email, Password = student.Password, Role = Controller.UserRole.Student.ToString().ToLower() });
-            secretariesObjectAsStudent.VerifyGetAllSecretaries(HttpStatusCode.Forbidden);
+            secretariesObjectAsStudent.VerifyGetActiveSecretaries(HttpStatusCode.Forbidden);
         }
 
         [TearDown]

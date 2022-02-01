@@ -35,7 +35,7 @@ namespace What_APITest.API_Tests.SecretariesTests
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
         [AllureSubSuite("GET")]
-        public void VerifyGetAllSecretaries_Success()
+        public void VerifyGetActiveSecretaries_Success()
         {
             secretariesObject.VerifyGetActiveSecretaries(HttpStatusCode.OK);
         }
