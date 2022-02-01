@@ -7,7 +7,7 @@ using What_APIObject.Entities.Secretaries;
 using What_Common.Utils;
 using What_Common.Resources;
 
-namespace What_APITest.Objects.Secretaries
+namespace What_APIObject.Objects.Secretaries
 {
     public class SecretariesObject
     {
