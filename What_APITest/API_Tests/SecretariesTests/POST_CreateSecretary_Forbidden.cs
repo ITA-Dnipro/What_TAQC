@@ -17,21 +17,26 @@ namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
-    public class POST_CreateSecretary_Success : BaseTest
+    public class POST_CreateSecretary_Forbidden : BaseTest
     {
         SecretariesObject secretariesObjectAsAdmin;
         AccountUser secretaryAccount;
 
         [Test(Description = "SecretariesTests")]
+        [TestCase(Controller.UserRole.Secretary)]
+        [TestCase(Controller.UserRole.Student)]
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
         [AllureSubSuite("POST")]
-        public void VerifyCreateSecretary_Success()
+        public void VerifyCreateSecretary_Forbidden(Controller.UserRole userRole)
         {
             LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
             secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
             secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
-            secretariesObjectAsAdmin.VerifyCreateNewSecretary(secretaryAccount, HttpStatusCode.OK);
+
+            LoginDetails user = Controller.GetUser(userRole);
+            SecretariesObject secretariesObjectAsUser = new SecretariesObject(new User { Email = user.Email, Password = user.Password, Role = userRole.ToString().ToLower() });
+            secretariesObjectAsUser.VerifyCreateNewSecretary(secretaryAccount, HttpStatusCode.Forbidden);
         }
 
         [TearDown]

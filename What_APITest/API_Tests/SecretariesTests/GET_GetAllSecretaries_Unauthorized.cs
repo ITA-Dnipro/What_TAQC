@@ -11,13 +11,26 @@ using Allure.Commons;
 using What_Common.Resources;
 using System.Net;
 
+// pass!
 
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
     public class GET_GetAllSecretaries_Unauthorized : BaseTest
-    { 
+    {
+        SecretariesObject secretariesObjectAsAdmin;
+        AccountUser secretaryAccount;
+
+        [SetUp]
+        public void Before()
+        {
+            LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
+            secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
+            secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
+            secretariesObjectAsAdmin.CreateNewSecretary(out secretaryAccount);
+        }
+
         [Test(Description = "SecretariesTests")]
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
@@ -25,7 +38,13 @@ namespace What_APITest.API_Tests.SecretariesTests
         public void VerifyGetAllSecretaries_Unauthorized()
         {
             SecretariesObject secretariesObject = new SecretariesObject(null);
-            secretariesObject.VerifyGetAllSecretaries(HttpStatusCode.Unauthorized);
+            secretariesObject.VerifyGetAllSecretaries(null, HttpStatusCode.Unauthorized);
+        }
+
+        [TearDown]
+        public void After()
+        {
+            secretariesObjectAsAdmin.DisableSecretary(secretaryAccount);
         }
     }
 }

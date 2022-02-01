@@ -11,36 +11,43 @@ using Allure.Commons;
 using What_Common.Resources;
 using System.Net;
 
+// pass!
+
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
     public class GET_GetActiveSecretaries_Success : BaseTest
     {
-        SecretariesObject secretariesObject;
+        SecretariesObject secretariesObjectAsAdmin;
+        AccountUser secretaryAccount;
 
         [SetUp]
         public void Before()
         {
             LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
-            secretariesObject = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
-            secretariesObject.RegistrationNewUser();
-            secretariesObject.CreateNewSecretary();
+            secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
+            secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
+            secretariesObjectAsAdmin.CreateNewSecretary(out secretaryAccount);
         }
 
         [Test(Description = "SecretariesTests")]
+        [TestCase(Controller.UserRole.Admin)]
+        [TestCase(Controller.UserRole.Secretary)]
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
         [AllureSubSuite("GET")]
-        public void VerifyGetActiveSecretaries_Success()
+        public void VerifyGetActiveSecretaries_Success(Controller.UserRole userRole)
         {
-            secretariesObject.VerifyGetActiveSecretaries(HttpStatusCode.OK);
+            LoginDetails user = Controller.GetUser(userRole);
+            SecretariesObject secretariesObjectAsUser = new SecretariesObject(new User { Email = user.Email, Password = user.Password, Role = userRole.ToString().ToLower() });
+            secretariesObjectAsUser.VerifyGetActiveSecretaries(secretaryAccount, HttpStatusCode.OK);
         }
 
         [TearDown]
         public void After()
         {
-            secretariesObject.DisableSecretary();
+            secretariesObjectAsAdmin.DisableSecretary(secretaryAccount);
         }
     }
 }

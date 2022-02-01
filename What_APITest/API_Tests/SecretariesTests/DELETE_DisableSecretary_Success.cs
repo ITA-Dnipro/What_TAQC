@@ -11,21 +11,24 @@ using Allure.Commons;
 using What_Common.Resources;
 using System.Net;
 
+// pass!
+
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
     public class DELETE_DisableSecretary_Success : BaseTest
     {
-        SecretariesObject secretariesObject;
+        SecretariesObject secretariesObjectAsAdmin;
+        AccountUser secretaryAccount;
 
         [SetUp]
         public void Before()
         {
             LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
-            secretariesObject = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
-            secretariesObject.RegistrationNewUser();
-            secretariesObject.CreateNewSecretary();
+            secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
+            secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
+            secretariesObjectAsAdmin.CreateNewSecretary(out secretaryAccount);
         }
 
         [Test(Description = "SecretariesTests")]
@@ -34,7 +37,7 @@ namespace What_APITest.API_Tests.SecretariesTests
         [AllureSubSuite("DELETE")]
         public void VerifyDisableSecretary_Success()
         {
-            secretariesObject.VerifyDisableSecretary(HttpStatusCode.OK);
+            secretariesObjectAsAdmin.VerifyDisableSecretary(secretaryAccount, HttpStatusCode.OK);
         }
     }
 }

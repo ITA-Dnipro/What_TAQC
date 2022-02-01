@@ -17,37 +17,31 @@ namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
-    public class GET_GetAllSecretaries_Forbidden : BaseTest
+    public class DELETE_DisableSecretary_Forbidden : BaseTest
     {
-        SecretariesObject secretariesObjectAsAdmin;
         AccountUser secretaryAccount;
 
         [SetUp]
         public void Before()
         {
             LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
-            secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
+            SecretariesObject secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
             secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
             secretariesObjectAsAdmin.CreateNewSecretary(out secretaryAccount);
         }
 
         [Test(Description = "SecretariesTests")]
+        [TestCase(Controller.UserRole.Secretary)]
         [TestCase(Controller.UserRole.Student)]
         [TestCase(Controller.UserRole.Mentor)]
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
-        [AllureSubSuite("GET")]
-        public void VerifyGetAllSecretaries_Forbidden(Controller.UserRole userRole)
+        [AllureSubSuite("DELETE")]
+        public void VerifyDisableSecretary_Forbidden(Controller.UserRole userRole)
         {
             LoginDetails user = Controller.GetUser(userRole);
             SecretariesObject secretariesObjectAsUser = new SecretariesObject(new User { Email = user.Email, Password = user.Password, Role = userRole.ToString().ToLower() });
-            secretariesObjectAsUser.VerifyGetAllSecretaries(secretaryAccount, HttpStatusCode.Forbidden);
-        }
-
-        [TearDown]
-        public void After()
-        {
-            secretariesObjectAsAdmin.DisableSecretary(secretaryAccount);
+            secretariesObjectAsUser.VerifyDisableSecretary(secretaryAccount, HttpStatusCode.Forbidden);
         }
     }
 }

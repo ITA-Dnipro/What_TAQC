@@ -17,27 +17,28 @@ namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
-    public class POST_CreateSecretary_Success : BaseTest
+    public class DELETE_DisableSecretary_Unauthorized : BaseTest
     {
         SecretariesObject secretariesObjectAsAdmin;
         AccountUser secretaryAccount;
 
-        [Test(Description = "SecretariesTests")]
-        [AllureTag("APITests")]
-        [AllureSuite("Secretaries")]
-        [AllureSubSuite("POST")]
-        public void VerifyCreateSecretary_Success()
+        [SetUp]
+        public void Before()
         {
             LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
             secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
             secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
-            secretariesObjectAsAdmin.VerifyCreateNewSecretary(secretaryAccount, HttpStatusCode.OK);
+            secretariesObjectAsAdmin.CreateNewSecretary(out secretaryAccount);
         }
 
-        [TearDown]
-        public void After()
+        [Test(Description = "SecretariesTests")]
+        [AllureTag("APITests")]
+        [AllureSuite("Secretaries")]
+        [AllureSubSuite("DELETE")]
+        public void VerifyDisableSecretary_Unauthorized()
         {
-            secretariesObjectAsAdmin.DisableSecretary(secretaryAccount);
+            SecretariesObject secretariesObject = new SecretariesObject(null);
+            secretariesObject.VerifyDisableSecretary(secretaryAccount, HttpStatusCode.Unauthorized);
         }
     }
 }
