@@ -12,8 +12,6 @@ using What_Common.Resources;
 using System.Net;
 using What_APIObject.Entities.Secretaries;
 
-// FINALY
-
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
@@ -22,7 +20,7 @@ namespace What_APITest.API_Tests.SecretariesTests
     {
         SecretariesObject secretariesObjectAsAdmin;
         AccountUser userAccount;
-        SecretariesModel secretaryAccount;
+        SecretariesModel secretariesModel;
 
         [Test(Description = "SecretariesTests")]
         [AllureTag("APITests")]
@@ -33,14 +31,14 @@ namespace What_APITest.API_Tests.SecretariesTests
             LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
             secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
             secretariesObjectAsAdmin.RegistrationNewUser(out userAccount);
-            secretariesObjectAsAdmin.CreateNewSecretary(out secretaryAccount);
-            secretariesObjectAsAdmin.VerifyUpdateSecretary(secretaryAccount, HttpStatusCode.OK);
+            secretariesObjectAsAdmin.CreateNewSecretary(userAccount, out secretariesModel);
+            secretariesObjectAsAdmin.VerifyUpdateSecretary(secretariesModel, HttpStatusCode.OK);
         }
 
         [TearDown]
         public void After()
         {
-            secretariesObjectAsAdmin.DisableSecretary(userAccount);
+            secretariesObjectAsAdmin.DisableSecretary(secretariesModel);
         }
     }
 }

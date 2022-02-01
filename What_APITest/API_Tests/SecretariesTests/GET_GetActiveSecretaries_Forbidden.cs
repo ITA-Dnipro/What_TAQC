@@ -10,17 +10,17 @@ using NUnit.Allure.Attributes;
 using Allure.Commons;
 using What_Common.Resources;
 using System.Net;
-
-// pass!
+using What_APIObject.Entities.Secretaries;
 
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
-    public class GET_GetAllSecretaries_Forbidden : BaseTest
+    public class GET_GetActiveSecretaries_Forbidden : BaseTest
     {
         SecretariesObject secretariesObjectAsAdmin;
         AccountUser secretaryAccount;
+        SecretariesModel secretariesModel;
 
         [SetUp]
         public void Before()
@@ -28,7 +28,7 @@ namespace What_APITest.API_Tests.SecretariesTests
             LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
             secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
             secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
-            secretariesObjectAsAdmin.CreateNewSecretary(out secretaryAccount);
+            secretariesObjectAsAdmin.CreateNewSecretary(secretaryAccount, out secretariesModel);
         }
 
         [Test(Description = "SecretariesTests")]
@@ -37,17 +37,17 @@ namespace What_APITest.API_Tests.SecretariesTests
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
         [AllureSubSuite("GET")]
-        public void VerifyGetAllSecretaries_Forbidden(Controller.UserRole userRole)
+        public void VerifyGetActiveSecretaries_Forbidden(Controller.UserRole userRole)
         {
             LoginDetails user = Controller.GetUser(userRole);
             SecretariesObject secretariesObjectAsUser = new SecretariesObject(new User { Email = user.Email, Password = user.Password, Role = userRole.ToString().ToLower() });
-            secretariesObjectAsUser.VerifyGetAllSecretaries(secretaryAccount, HttpStatusCode.Forbidden);
+            secretariesObjectAsUser.VerifyGetActiveSecretaries(secretariesModel, HttpStatusCode.Forbidden);
         }
 
         [TearDown]
         public void After()
         {
-            secretariesObjectAsAdmin.DisableSecretary(secretaryAccount);
+            secretariesObjectAsAdmin.DisableSecretary(secretariesModel);
         }
     }
 }

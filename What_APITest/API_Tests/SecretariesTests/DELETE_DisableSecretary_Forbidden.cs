@@ -10,8 +10,7 @@ using NUnit.Allure.Attributes;
 using Allure.Commons;
 using What_Common.Resources;
 using System.Net;
-
-// pass!
+using What_APIObject.Entities.Secretaries;
 
 namespace What_APITest.API_Tests.SecretariesTests
 {
@@ -20,6 +19,7 @@ namespace What_APITest.API_Tests.SecretariesTests
     public class DELETE_DisableSecretary_Forbidden : BaseTest
     {
         AccountUser secretaryAccount;
+        SecretariesModel secretariesModel;
 
         [SetUp]
         public void Before()
@@ -27,7 +27,7 @@ namespace What_APITest.API_Tests.SecretariesTests
             LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
             SecretariesObject secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
             secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
-            secretariesObjectAsAdmin.CreateNewSecretary(out secretaryAccount);
+            secretariesObjectAsAdmin.CreateNewSecretary(secretaryAccount, out secretariesModel);
         }
 
         [Test(Description = "SecretariesTests")]
@@ -41,7 +41,7 @@ namespace What_APITest.API_Tests.SecretariesTests
         {
             LoginDetails user = Controller.GetUser(userRole);
             SecretariesObject secretariesObjectAsUser = new SecretariesObject(new User { Email = user.Email, Password = user.Password, Role = userRole.ToString().ToLower() });
-            secretariesObjectAsUser.VerifyDisableSecretary(secretaryAccount, HttpStatusCode.Forbidden);
+            secretariesObjectAsUser.VerifyDisableSecretary(secretariesModel, HttpStatusCode.Forbidden);
         }
     }
 }

@@ -11,8 +11,6 @@ using Allure.Commons;
 using What_Common.Resources;
 using System.Net;
 
-// pass!
-
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
@@ -32,12 +30,6 @@ namespace What_APITest.API_Tests.SecretariesTests
             secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
             secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
             secretariesObjectAsAdmin.VerifyCreateNewSecretary(secretaryAccount, HttpStatusCode.OK);
-        }
-
-        [TearDown]
-        public void After()
-        {
-            secretariesObjectAsAdmin.DisableSecretary(secretaryAccount);
         }
     }
 }

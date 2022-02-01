@@ -42,28 +42,12 @@ namespace What_APIObject.Objects.Secretaries
             return user;
         }
 
-        public AccountUser CreateNewSecretary(out AccountUser user)
-        {
-            uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(accountUser.Id.ToString()), UriKind.Relative);
-            var response = client.Post<AccountUser>(uri, out statusCode);
-            user = response;
-            return user;
-        }
-
-        public SecretariesModel CreateNewSecretary(out SecretariesModel user)
-        {
-            uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(accountUser.Id.ToString()), UriKind.Relative);
-            var response = client.Post<SecretariesModel>(uri, out statusCode);
-            user = response;
-            return user;
-        }
-
-        public AccountUser CreateNewSecretary(AccountUser user)
+        public SecretariesObject CreateNewSecretary(AccountUser user, out SecretariesModel accountSecretary)
         {
             uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(user.Id.ToString()), UriKind.Relative);
-            var response = client.Post<AccountUser>(uri, out statusCode);
-            user = response;
-            return user;
+            var response = client.Post<SecretariesModel>(uri, out statusCode);
+            accountSecretary = response;
+            return this;
         }
 
         public SecretariesModel CreateSecretaryToUpdate()
@@ -77,13 +61,6 @@ namespace What_APIObject.Objects.Secretaries
             return secretary;
         }
 
-        public SecretariesObject DisableSecretary(AccountUser user)
-        {
-            uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(user.Id.ToString()), UriKind.Relative);
-            var response = client.Delete(uri, out statusCode);
-            return this;
-        }
-
         public SecretariesObject DisableSecretary(SecretariesModel user)
         {
             uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(user.Id.ToString()), UriKind.Relative);
@@ -93,7 +70,7 @@ namespace What_APIObject.Objects.Secretaries
 
         #region Verifications
 
-        public SecretariesObject VerifyGetAllSecretaries(AccountUser user, HttpStatusCode expectedStatusCode)
+        public SecretariesObject VerifyGetAllSecretaries(SecretariesModel user, HttpStatusCode expectedStatusCode)
         {
             uri = new Uri(Endpoints.Secretaries.secretaries, UriKind.Relative);
             var response = client.Get<List<SecretariesModel>>(uri, out statusCode);
@@ -116,7 +93,7 @@ namespace What_APIObject.Objects.Secretaries
             return this;
         }
 
-        public SecretariesObject VerifyGetActiveSecretaries(AccountUser user, HttpStatusCode expectedStatusCode)
+        public SecretariesObject VerifyGetActiveSecretaries(SecretariesModel user, HttpStatusCode expectedStatusCode)
         {
             uri = new Uri(Endpoints.Secretaries.secretariesActive, UriKind.Relative);
             var response = client.Get<List<SecretariesModel>>(uri, out statusCode);
@@ -142,7 +119,7 @@ namespace What_APIObject.Objects.Secretaries
         public SecretariesObject VerifyCreateNewSecretary(AccountUser user, HttpStatusCode expectedStatusCode)
         {
             uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(user.Id.ToString()), UriKind.Relative);
-            var response = client.Post<AccountUser>(uri, out statusCode);
+            var response = client.Post<SecretariesModel>(uri, out statusCode);
             if (expectedStatusCode == HttpStatusCode.OK)
             {
                 Assert.Multiple(() =>
@@ -152,6 +129,7 @@ namespace What_APIObject.Objects.Secretaries
                     Assert.AreEqual(response.LastName, user.LastName);
                     Assert.AreEqual(response.Email, user.Email);
                 });
+                DisableSecretary(response);
             }
             else
             {
@@ -160,7 +138,7 @@ namespace What_APIObject.Objects.Secretaries
             return this;
         }
 
-        public SecretariesObject VerifyDisableSecretary(AccountUser user, HttpStatusCode expectedStatusCode)
+        public SecretariesObject VerifyDisableSecretary(SecretariesModel user, HttpStatusCode expectedStatusCode)
         {
             uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(user.Id.ToString()), UriKind.Relative);
             var response = client.Delete(uri, out statusCode);

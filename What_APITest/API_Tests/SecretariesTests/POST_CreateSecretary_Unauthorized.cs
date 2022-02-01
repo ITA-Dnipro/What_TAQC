@@ -7,11 +7,7 @@ using What_APIObject.Entities.Accounts;
 using What_Common.Utils;
 using NUnit.Allure.Core;
 using NUnit.Allure.Attributes;
-using Allure.Commons;
-using What_Common.Resources;
 using System.Net;
-
-// pass!
 
 namespace What_APITest.API_Tests.SecretariesTests
 {

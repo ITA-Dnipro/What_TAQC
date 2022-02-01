@@ -16,28 +16,8 @@ namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
-    public class POST_ForgotPassword : BaseTest
+    public class POST_ForgotPassword_BadRequest : BaseTest
     {
-        [Test(Description = "ForgotPasswordTests")]
-        [AllureTag("APITests")]
-        [AllureSuite("ForgotPassword")]
-        [AllureSubSuite("POST")]
-        public void VerifySendingChangePasswordRequest_Success()
-        {
-            ForgotPasswordObject forgotPasswordObjest = new ForgotPasswordObject(null);
-            forgotPasswordObjest.VerifyForgotPasswordRequest_Success();
-        }
-
-        [Test(Description = "ForgotPasswordTests")]
-        [AllureTag("APITests")]
-        [AllureSuite("ForgotPassword")]
-        [AllureSubSuite("POST")]
-        public void VerifySendingChangePasswordRequest_NotFound()
-        {
-            ForgotPasswordObject forgotPasswordObjest = new ForgotPasswordObject(null);
-            forgotPasswordObjest.VerifyForgotPasswordRequest_NotFound();
-        }
-
         [Test(Description = "ForgotPasswordTests")]
         [AllureTag("APITests")]
         [AllureSuite("ForgotPassword")]

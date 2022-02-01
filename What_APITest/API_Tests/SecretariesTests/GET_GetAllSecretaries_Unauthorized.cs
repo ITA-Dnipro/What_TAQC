@@ -10,8 +10,7 @@ using NUnit.Allure.Attributes;
 using Allure.Commons;
 using What_Common.Resources;
 using System.Net;
-
-// pass!
+using What_APIObject.Entities.Secretaries;
 
 namespace What_APITest.API_Tests.SecretariesTests
 {
@@ -21,6 +20,7 @@ namespace What_APITest.API_Tests.SecretariesTests
     {
         SecretariesObject secretariesObjectAsAdmin;
         AccountUser secretaryAccount;
+        SecretariesModel secretariesModel;
 
         [SetUp]
         public void Before()
@@ -28,7 +28,7 @@ namespace What_APITest.API_Tests.SecretariesTests
             LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
             secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
             secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
-            secretariesObjectAsAdmin.CreateNewSecretary(out secretaryAccount);
+            secretariesObjectAsAdmin.CreateNewSecretary(secretaryAccount, out secretariesModel);
         }
 
         [Test(Description = "SecretariesTests")]
@@ -44,7 +44,7 @@ namespace What_APITest.API_Tests.SecretariesTests
         [TearDown]
         public void After()
         {
-            secretariesObjectAsAdmin.DisableSecretary(secretaryAccount);
+            secretariesObjectAsAdmin.DisableSecretary(secretariesModel);
         }
     }
 }
