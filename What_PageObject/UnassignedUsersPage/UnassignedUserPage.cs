@@ -8,45 +8,11 @@ namespace What_PageObject.UnassignedUsersPage
 {
     public class UnassignedUserPage : BasePageWithSideBar
     {
-        protected WebDriverWait wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(10));
-        public UnassignedUserPage ClickNextTopButton()
-        {
-            ClickElement(Locators.UnassignedUser.TopRightArrowButton);
-
-            return this;
-        }
-
-        public UnassignedUserPage ClickPrevTopButton()
-        {
-            ClickElement(Locators.UnassignedUser.TopLeftArrowButton);
-
-            return this;
-        }
-
-        public UnassignedUserPage ClickNextBottomButton()
-        {
-            ClickElement(Locators.UnassignedUser.BottomRightArrowButton);
-
-            return this;
-        }
-
-        public UnassignedUserPage ClickPrevBottomButton()
-        {
-            ClickElement(Locators.UnassignedUser.BottomLeftArrowButton);
-
-            return this;
-        }
+        protected WebDriverWait wait = new WebDriverWait(Driver.Current, TimeSpan.FromSeconds(4));
 
         public UnassignedUserPage ClickPageButton(int row)
         {
             ClickElement(Locators.UnassignedUser.ClickPagination(row));
-
-            return this;
-        }
-
-        public UnassignedUserPage ClickSearchField()
-        {
-            ClickElement(Locators.UnassignedUser.SearchInputField);
 
             return this;
         }
@@ -75,20 +41,6 @@ namespace What_PageObject.UnassignedUsersPage
         public UnassignedUserPage ClickSortByEmail()
         {
             ClickElement(Locators.UnassignedUser.SortedByEmail);
-
-            return this;
-        }
-
-        public UnassignedUserPage ClickFirstPagination()
-        {
-            ClickElement(Locators.UnassignedUser.FirstPagePagination);
-
-            return this;
-        }
-
-        public UnassignedUserPage ClickLastPagination()
-        {
-            ClickElement(Locators.UnassignedUser.LastPagePagination);
 
             return this;
         }
@@ -287,7 +239,32 @@ namespace What_PageObject.UnassignedUsersPage
                 }
             }
 
-            Assert.Fail();
+            Assert.Fail(Resources.UserNotFound);
+            return this;
+        }
+
+        public string GetNameFromTable(int number)
+        {
+            return Driver.Current.FindElement(Locators.SecretaryPage.CurrentTableNameData(number)).Text;
+        }
+
+        public UnassignedUserPage WaitTableData()
+        {
+            WaitUntilElementLoads<UnassignedUserPage>(Locators.SecretaryPage.tableData);
+            return this;
+        }
+
+        public string GetRandomNameFromTable()
+        {
+            int number = new Random().Next(1, Driver.Current.FindElements(Locators.SecretaryPage.tableButton).Count + 1);
+            return GetNameFromTable(number);
+        }
+
+        public UnassignedUserPage CompareSearchDatWithFirstDataFromTable()
+        {
+            string expected = GetRandomNameFromTable();
+            FillSearchField(expected);
+            Assert.AreEqual(expected, GetNameFromTable(1));
             return this;
         }
 

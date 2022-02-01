@@ -6,7 +6,7 @@ using What_PageObject.SignInPage;
 
 namespace What_UITest.ScheduleTests
 {
-    public class ClickArrowSheduleBySecretaryTest : BaseTest
+    public class ClickArrowSheduleAsAdminTest : BaseTest
     {
         private SignInPage signInPage;
         private SchedulePage schedule;
@@ -18,18 +18,17 @@ namespace What_UITest.ScheduleTests
         {
             signInPage = new SignInPage();
             schedule = new SchedulePage();
-            user = Controller.GetUser(Controller.UserRole.Secretary);
+            user = Controller.GetUser(Controller.UserRole.Admin);
+            signInPage.LogIn(user.Email, user.Password);
         }
 
-        [Test]
+        [Test(Description = "DP220TAQC-193")]
         public void ArrowSheduleTest()
         {
-            signInPage.LogIn(user.Email, user.Password);
-
-            schedule.ClickNavbarMenuSheduleButton()
+            schedule.SidebarNavigateTo<SchedulePage>()
                     .ClickArrowRandomize(out date)
-                    .VerifyDateStartAtMonday(date)
-                    .VerifyDateEndAtSunday(date)
+                    .VerifyDateStartAtMondayFromTable(date)
+                    .VerifyDateEndAtSundayFromTable(date)
                     .VerifyDateFirstDayOfWeek(date)
                     .VerifyDateLastDayOfWeek(date);
         }

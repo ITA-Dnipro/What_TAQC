@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace What_APITest.Entities
+namespace What_APIObject.Entities
 {
     public class TokenResponse
     {
