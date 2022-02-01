@@ -30,14 +30,15 @@ namespace What_APITest.API_Tests.Acounts
         [Test]
         public void ChangingPasswordTest()
             {
-            changePasswordPage
+            changePasswordPage //naming not page!!!
                 .RegistrationNewUser(out user)
                 .CreateNewSecretary();
             changePasswordPage = new ChangePasswordObject(new User { Email = user.Email, Password = user.Password, Role = Controller.UserRole.Secretary.ToString().ToLower() });
-            //changePasswordPage.Login();
-            changePasswordPage.GenerateNewPassword(user);
-                changePasswordPage.ChangePassword(out user2);
+            
+            changePasswordPage.GenerateNewPassword(user)
+                .ChangePassword(out user2);
             changePasswordPage = new ChangePasswordObject(new User { Email = user2.Email, Password = user2.Password, Role = Controller.UserRole.Secretary.ToString().ToLower() });
+            changePasswordPage.VerifyNewPasswordValid(user,user2);
 
         }
     }

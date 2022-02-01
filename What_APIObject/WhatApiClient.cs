@@ -22,6 +22,11 @@ namespace What_APIObject
         }
         public void SetToken(User user)
         {
+            if (user == null)
+            {
+                token = "";
+                return;
+            }
             var request = new RestRequest("api/v2/accounts/auth", Method.Post) { RequestFormat = DataFormat.Json };
             request.AddJsonBody<Authentication>(new Authentication { UserEmail = user.Email, UserPassword = user.Password });
             var response = client.PostAsync<TokenResponse>(request).GetAwaiter().GetResult();

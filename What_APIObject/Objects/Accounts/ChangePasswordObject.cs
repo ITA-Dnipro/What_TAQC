@@ -58,34 +58,47 @@ namespace What_APIObject.Objects.Accounts
             return this;
         }
 
-       
+
         public ChangePasswordObject GenerateNewPassword(RegisterUser user)
         {
             password = StringGenerator.GeneratePassword(10);
-            resetPassword = new ResetPassword {CurrentPassword = user.Password, NewPassword = password, ConfirmNewPassword = password };
+            resetPassword = new ResetPassword { CurrentPassword = user.Password, NewPassword = password, ConfirmNewPassword = password };
             this.user = user;
             //user2 = user;
             return this;
         }
         public ChangePasswordObject ChangePassword(out RegisterUser registerUser)
         {
-
             uri = new Uri($"/api/v2/accounts/password", UriKind.Relative);
-            var response = client.Put<ResetPassword ,AccountUser>(uri,resetPassword,out statusCode);
-            //accountUser = response;
-           // user2.Password = resetPassword.NewPassword;
-            registerUser = user ;
-            //user2.Password = resetPassword.NewPassword;
-            //registerUser.Password = resetPassword.NewPassword;
+            var response = client.Put<ResetPassword, AccountUser>(uri, resetPassword, out statusCode);
+
+            registerUser = new RegisterUser
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Password = resetPassword.NewPassword,
+            };
+
             Assert.AreEqual(HttpStatusCode.OK, statusCode);
             return this;
         }
-        public ChangePasswordObject VerifyNewPasswordValid()
-        {
+            public ChangePasswordObject VerifyNewPasswordValid(RegisterUser user, RegisterUser user2)
+            {
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(user.Email, user2.Email);
+                Assert.AreEqual(user.FirstName, user2.FirstName);
+                Assert.AreEqual(user.LastName, user2.LastName);
+                Assert.AreNotEqual(user.Password, user2.Password);
+
+            });
             return this;
+            } 
+
+
+
         }
-
-
-
     }
-}

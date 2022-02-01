@@ -28,6 +28,25 @@ namespace What_APITest.API_Object
             return this;
         }
 
+        public GroupsAPI_Object VerifyGetAllStudentsGroupsUnauthorized(DateModel date)
+        {
+            uri = new Uri($"/api/v2/student_groups", UriKind.Relative);
+            var response = client.Get<DateModel, GetStudentsGroups>(uri, date, out statusCode);
+            Assert.AreEqual(HttpStatusCode.Unauthorized, statusCode);
+
+            return this;
+        }
+
+        
+            public GroupsAPI_Object VerifyGetAllStudentsGroupsForbidden (DateModel date)
+        {
+            uri = new Uri($"/api/v2/student_groups", UriKind.Relative);
+            var response = client.Get<DateModel, GetStudentsGroups>(uri, date, out statusCode);
+            Assert.AreEqual(HttpStatusCode.Forbidden, statusCode);
+
+            return this;
+        }
+
         public GroupsAPI_Object VerifyGetStudentsGroupsFromDates(PostStudentsGroups postStudentsGroups, out int id) //TODO naming!!
         {
 

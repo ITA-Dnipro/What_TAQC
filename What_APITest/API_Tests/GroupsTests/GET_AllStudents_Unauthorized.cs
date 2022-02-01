@@ -11,17 +11,18 @@ using What_APITest.Entities.Groups;
 using What_Common.DataProvider;
 using What_Common.Utils;
 
+
 namespace What_APITest.API_Tests.GroupsAPI_Tests
 {
 
     [TestFixture(Author = "Ivan", Description = "Examples")]
     [AllureNUnit]
-    internal class GetAllStudents
+    internal class GET_AllStudents_Unauthorized
     {
         LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
         GroupsAPI_Object students;
         DateModel datemodel;
-        
+
         PostStudentsGroups postStudentsGroups;
         PostStudentsGroups putStudentsGroups;
         int id;
@@ -30,8 +31,8 @@ namespace What_APITest.API_Tests.GroupsAPI_Tests
         [SetUp]
         public void Setup()
         {
-            
-            students = new GroupsAPI_Object(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
+
+            students = new GroupsAPI_Object(null);
             datemodel = new DateModel { StartDate = DateTime.Now.AddYears(-3), FinishDate = DateTime.Now };
             postStudentsGroups = new PostStudentsGroups
             {
@@ -39,7 +40,7 @@ namespace What_APITest.API_Tests.GroupsAPI_Tests
                 CourseId = 1,
                 StartDate = DateTime.Now.AddYears(-1),
                 FinishDate = DateTime.Now,
-                StudentIds = new List<int>() { 13},
+                StudentIds = new List<int>() { 13 },
                 MentorIds = new List<int>() { 15 }
 
 
@@ -63,22 +64,9 @@ namespace What_APITest.API_Tests.GroupsAPI_Tests
 
         public void VerifyGroups() //TODO naminggg!!!
         {
-            students.VerifyGetAllStudentsGroups(datemodel)
-                .AddGroup(postStudentsGroups)
-                .VerifyGetStudentsGroupsFromDates(postStudentsGroups, out id);
+            students.VerifyGetAllStudentsGroupsUnauthorized(datemodel);
 
 
         }
-        [Test]
-        public void UpdateGroupInfoById()
-        {
-            students.AddGroup(postStudentsGroups)
-                .VerifyGetStudentsGroupsFromDates(postStudentsGroups, out id)
-                .UpdateGroup(putStudentsGroups)
-                .VerifyUpdateInfo(putStudentsGroups, id);
-
-
-        }
-
     }
 }
