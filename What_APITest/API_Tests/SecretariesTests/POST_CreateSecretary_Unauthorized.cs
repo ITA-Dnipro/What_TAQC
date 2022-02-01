@@ -11,24 +11,20 @@ using Allure.Commons;
 using What_Common.Resources;
 using System.Net;
 
-// ???
-
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
     public class POST_CreateSecretary_Unauthorized : BaseTest
     {
-        SecretariesObject secretariesObject;
-
         [Test(Description = "SecretariesTests")]
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
         [AllureSubSuite("POST")]
         public void VerifyCreateSecretary_Unauthorized()
         {
-            SecretariesObject secretariesObjectAsStudent = new SecretariesObject(null);
-            secretariesObjectAsStudent.VerifyCreateNewSecretary(HttpStatusCode.Unauthorized);
+            SecretariesObject secretariesObject = new SecretariesObject(null);
+            secretariesObject.VerifyCreateNewSecretary(HttpStatusCode.Unauthorized);
         }
     }
 }

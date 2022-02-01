@@ -11,8 +11,6 @@ using Allure.Commons;
 using What_Common.Resources;
 using System.Net;
 
-// pass
-// admin
 
 namespace What_APITest.API_Tests.SecretariesTests
 {

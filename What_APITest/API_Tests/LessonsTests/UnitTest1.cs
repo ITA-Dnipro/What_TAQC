@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System;
 using What_APIObject.Entities.Accounts;
 using What_APIObject.Entities.Lessons;
-using What_APITest.Objects.Lessons;
+using What_APIObject.Objects.Lessons;
 
 namespace APITests
 {
