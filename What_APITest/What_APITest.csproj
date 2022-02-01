@@ -22,7 +22,6 @@
   <ItemGroup>
 
     <Folder Include="API_Tests\CoursesTests\" />
-    <Folder Include="API_Tests\MentorsTests\" />
     <Folder Include="API_Tests\StudentsTests\" />
     <Folder Include="API_Tests\SheduleTests\" />
   </ItemGroup>
@@ -30,16 +29,6 @@
   <ItemGroup>
     <ProjectReference Include="..\What_APIObject\What_APIObject.csproj" />
     <ProjectReference Include="..\What_Common\What_Common.csproj" />
-
-    <Folder Include="API_Tests\" />
-    <Folder Include="Entities\Accounts\" />
-    <Folder Include="Entities\Courses\" />
-    <Folder Include="Entities\Errors\" />
-    <Folder Include="Entities\Lessons\" />
-    <Folder Include="Entities\Groups\" />
-    <Folder Include="Entities\Students\" />
-    <Folder Include="Entities\Secretaries\" />
-    <Folder Include="Entities\Shedule\" />
 
   </ItemGroup>
 
