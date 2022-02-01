@@ -10,6 +10,7 @@ namespace What_Common.Resources
     {
         public const string symbols = "!@#$%^&*()_+-=";
 
+        public const string hosting = "https://charliebackendapihosting.azurewebsites.net";
         public const string url = "http://localhost:8080/auth";
         public const string empty = "";
         public const string ErrorFieldName = "This field is required";

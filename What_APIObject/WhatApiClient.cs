@@ -15,7 +15,7 @@ namespace What_APIObject
 
         public WHATClient(User user)
         {
-            var options = new RestClientOptions("https://charliebackendapihosting.azurewebsites.net");
+            var options = new RestClientOptions(Resources.hosting);
 
             client = new RestClient(options);
 
@@ -23,6 +23,11 @@ namespace What_APIObject
         }
         public void SetToken(User user)
         {
+            if (user == null)
+            {
+                token = "";
+                return;
+            }
             var request = new RestRequest(Endpoints.Accounts.accountsAuth, Method.Post) { RequestFormat = DataFormat.Json };
             request.AddJsonBody<Authentication>(new Authentication { UserEmail = user.Email, UserPassword = user.Password });
             var response = client.PostAsync<TokenResponse>(request).GetAwaiter().GetResult();
@@ -40,16 +45,6 @@ namespace What_APIObject
 
             return response.IsSuccessful ? response.Data! : default!;
         }
-
-        public string Get(Uri uri, out HttpStatusCode statusCode)
-        {
-            var req = new RestRequest(uri, Method.Get);
-            req.AddOrUpdateHeader(Endpoints.authorization, token);
-            var response = client.ExecuteAsync(req).GetAwaiter().GetResult();
-            statusCode = response.StatusCode;
-            return response.IsSuccessful ? response.Content! : default!;
-        }
-
 
         public TResponse Post<TParametr,TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode) 
             where TParametr : class 
