@@ -44,5 +44,13 @@ namespace What_Common.Utils
             stringBuilder.Append((char)random.Next(48, 57));
             return stringBuilder.ToString();
         }
+        
+        public static DateTime RandomDay()
+        {
+            Random gen = new Random();
+            DateTime start = new DateTime(2021, 1, 1);
+            double range = (DateTime.Today - start).TotalDays;
+            return start.AddDays(gen.Next((int)range));
+        }
     }
 }
