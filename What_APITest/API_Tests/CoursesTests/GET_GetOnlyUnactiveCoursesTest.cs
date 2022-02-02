@@ -1,11 +1,6 @@
 ﻿using NUnit.Allure.Attributes;
 using NUnit.Allure.Core;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using What_APIObject.Entities.Accounts;
 using What_APIObject.Objects.Courses;
 using What_Common.DataProvider;
@@ -42,7 +37,7 @@ namespace What_APITest.API_Tests.CoursesTests
             });
             courseObject
                 .RegistrationNewUser()
-                .GetCourses(isActive);
+                .GetCourses(isActive, System.Net.HttpStatusCode.OK);
 
         }
 

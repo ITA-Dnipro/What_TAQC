@@ -13,23 +13,23 @@ using What_Common.DataProvider;
 namespace What_APITest.API_Tests.CoursesTests
 {
     [AllureNUnit]
-    internal class POST_CreateNewCourseValidTest : BaseTest
+    internal class POST_CreateNewCourseForbiddenTest : BaseTest
     {
         CourseObject courseObject;
 
-       [SetUp]
+        [SetUp]
         public void Setup()
         {
-            
+
         }
 
         [AllureTag("APITests")]
         [AllureSuite("Courses")]
         [AllureSubSuite("POST")]
-        [TestCase(Controller.UserRole.Admin, "test118", Description = "Send POST request to swagger and create new course as admin")]
-        [TestCase(Controller.UserRole.Secretary, "s_test118", Description = "Send POST request to swagger and create new course as secretary")]
+        [TestCase(Controller.UserRole.Mentor, "mentor_test114", Description = "Send POST request to swagger and trying to create new course as mentor")]
+        [TestCase(Controller.UserRole.Student, "student_test114", Description = "Send POST request to swagger and trying to create new course as student")]
         [Category("POST request")]
-        public void VerifyIsNewCourseCreateValid(Controller.UserRole role, string courseName)
+        public void VerifyIsNewCourseCreateNotValid(Controller.UserRole role, string courseName)
         {
             LoginDetails user = Controller.GetUser(role);
             courseObject = new CourseObject(new User
@@ -40,14 +40,13 @@ namespace What_APITest.API_Tests.CoursesTests
             });
             courseObject
                 .RegistrationNewUser()
-                .CreateNewCourse(courseName, true);
+                .CreateNewCourse(courseName, false);
 
-        } 
+        }
 
         [TearDown]
         public void After()
         {
-            courseObject.DisableCourse();
             courseObject.client.Dispose();
         }
     }

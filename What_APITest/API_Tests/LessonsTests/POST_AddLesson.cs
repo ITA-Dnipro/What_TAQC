@@ -4,10 +4,11 @@ using NUnit.Allure.Core;
 using NUnit.Framework;
 using System.Collections.Generic;
 using What_APIObject.Entities.Accounts;
+using What_APIObject.Objects.Lessons;
 using What_Common.DataProvider;
 using What_Common.Utils;
 
-namespace APITests
+namespace What_APITest.API_Tests.LessonsTests
 {
     [TestFixture]
     [AllureNUnit]

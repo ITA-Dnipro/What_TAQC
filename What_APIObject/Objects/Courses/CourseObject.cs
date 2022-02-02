@@ -1,14 +1,8 @@
 ﻿using Newtonsoft.Json;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using What_APIObject.Entities.Accounts;
 using What_APIObject.Entities.Courses;
-using What_Common.DataProvider;
 using What_Common.Utils;
 using What_Common.Resources;
 
@@ -36,32 +30,44 @@ namespace What_APIObject.Objects.Courses
         /// </summary>
         /// <param name="isActive">Boolean parametr that check is course active or not. If parametr set as null GET request gives us response with all users</param>
         /// <returns>CourseObject</returns>
-        public CourseObject GetCourses(bool? isActive)
+        public CourseObject GetCourses(bool? isActive, HttpStatusCode expectedCode)
         {
             uri = new Uri(Endpoints.Courses.courses, UriKind.Relative);
             courseGetModel = new CoursesGetModel();
             courseGetModel.IsActive = isActive;
             var response = client.Get(uri, courseGetModel, out statusCode);
-            Assert.AreEqual(HttpStatusCode.OK, statusCode);
-            var courseList = JsonConvert.DeserializeObject<List<CoursesModel>>(response);
-            var courses = courseList.Find(s => s.Id == accountUser.Id);
-            foreach (var item in courseList)
+            Assert.AreEqual(expectedCode, statusCode);
+            if (expectedCode == HttpStatusCode.OK)
             {
-                Assert.Multiple(() =>
+                var courseList = JsonConvert.DeserializeObject<List<CoursesModel>>(response);
+                var courses = courseList.Find(s => s.Id == accountUser.Id);
+                foreach (var item in courseList)
                 {
-                    Assert.IsNotEmpty(item.Id.ToString(), "");
-                    Assert.IsNotEmpty(item.Name, "");
-                    Assert.IsNotEmpty(item.IsActive.ToString(), "");
-                });
+                    Assert.Multiple(() =>
+                    {
+                        Assert.IsNotEmpty(item.Id.ToString(), "");
+                        Assert.IsNotEmpty(item.Name, "");
+                        Assert.IsNotEmpty(item.IsActive.ToString(), "");
+                    });
+                }
             }
             return this;
         }
 
-        public string GetCurrentCourse(int id)
+        public CourseObject GetCoursesUnauthorized(bool? isActive, HttpStatusCode expectedCode)
+        {
+            uri = new Uri(Endpoints.Courses.courses, UriKind.Relative);
+            courseGetModel = new CoursesGetModel();
+            courseGetModel.IsActive = isActive;
+            var response = client.Get(uri, courseGetModel, out statusCode);
+            Assert.AreEqual(expectedCode, statusCode, "User is Unauthorized (401), otherwise test failed");
+            return this;
+        }
+
+        public CoursesModel GetCurrentCourse(int id)
         {
             uri = new Uri(Endpoints.Courses.courses, UriKind.Relative);
             var response = client.Get<List<CoursesModel>>(uri, out statusCode);
-            //var courseList = JsonConvert.DeserializeObject<List<CoursesModel>>(response);
             var course = response.Find(s => s.Id == id);
             Assert.Multiple(() =>
             {
@@ -69,7 +75,7 @@ namespace What_APIObject.Objects.Courses
                 Assert.AreEqual(course.Id, id);
             });
            
-            return course.Name;
+            return course;
         }
 
         /// <summary>
@@ -85,9 +91,9 @@ namespace What_APIObject.Objects.Courses
             coursePostModel.Name = courseName;
             var response = client.Post<CoursesPostModel, CoursesModel>(uri, coursePostModel, out statusCode);
             this.courseModel = response;
-            this.courseId = response.Id;
             if (valid)
             {
+                this.courseId = response.Id;
                 Assert.Multiple(() =>
                 {
                     Assert.AreEqual(HttpStatusCode.OK, statusCode, "Status code must be 200 (OK), otherwise test failed");
@@ -115,7 +121,6 @@ namespace What_APIObject.Objects.Courses
             return this;
         }
 
-        //Temp methods
         public RegisterUser CreateUser()
         {
             RegisterUser user = new RegisterUser();
@@ -138,9 +143,18 @@ namespace What_APIObject.Objects.Courses
 
         public CourseObject DisableCourse()
         {
-            uri = new Uri($"/api/v2/courses/{courseModel.Id}", UriKind.Relative);
+            uri = new Uri(Endpoints.Courses.CourseById(courseModel.Id.ToString()), UriKind.Relative);
             var response = client.Delete(uri, out statusCode);
             Assert.IsTrue(response.Contains("false"), "Course is disabled");
+            return this;
+        }
+
+        public CourseObject EnableCourse(int id)
+        {
+            uri = new Uri(Endpoints.Courses.CourseById(id.ToString()), UriKind.Relative);
+            courseModel = new CoursesModel();
+            var response = client.Patch<CoursesModel, CoursesModel>(uri, courseModel, out statusCode);
+            Assert.IsTrue(response.IsActive, "Course must be enabled (true)");
             return this;
         }
     }

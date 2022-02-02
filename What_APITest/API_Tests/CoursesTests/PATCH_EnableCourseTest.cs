@@ -2,16 +2,17 @@
 using NUnit.Allure.Core;
 using NUnit.Framework;
 using What_APIObject.Entities.Accounts;
+using What_APIObject.Entities.Courses;
 using What_APIObject.Objects.Courses;
 using What_Common.DataProvider;
 
 namespace What_APITest.API_Tests.CoursesTests
 {
     [AllureNUnit]
-    internal class GET_GetAllCoursesTest : BaseTest
+    internal class PATCH_EnableCourseTest : BaseTest
     {
         CourseObject courseObject;
-
+        string oldCourseName;
         [SetUp]
         public void Setup()
         {
@@ -20,13 +21,11 @@ namespace What_APITest.API_Tests.CoursesTests
 
         [AllureTag("APITests")]
         [AllureSuite("Courses")]
-        [AllureSubSuite("GET")]
-        [TestCase(Controller.UserRole.Admin, null, Description = "Send GET request to swagger and trying to get all courses as admin")]
-        [TestCase(Controller.UserRole.Secretary, null, Description = "Send GET request to swagger and trying to get all courses as secretary")]
-        [TestCase(Controller.UserRole.Mentor, null, Description = "Send GET request to swagger and trying to get all courses as mentor")]
-        [TestCase(Controller.UserRole.Student, null, Description = "Send GET request to swagger and trying to get all courses as student")]
-        [Category("GET request")]
-        public void VerifyGetAllCourses(Controller.UserRole role, bool isActive)
+        [AllureSubSuite("PATCH")]
+        [TestCase(Controller.UserRole.Admin, 2, Description = "Send PATCH request to swagger and trying to enable disabled course")]
+        [TestCase(Controller.UserRole.Secretary, 3, Description = "Send PATCH request to swagger and trying to enable disabled course")]
+        [Category("PATCH request")]
+        public void VerifyThatCourseIsUpdate(Controller.UserRole role, CoursesModel model)
         {
             LoginDetails user = Controller.GetUser(role);
             courseObject = new CourseObject(new User
@@ -35,15 +34,19 @@ namespace What_APITest.API_Tests.CoursesTests
                 Password = user.Password,
                 Role = role.ToString().ToLower()
             });
+
+            courseObject.GetCurrentCourse(2);
             courseObject
                 .RegistrationNewUser()
-                .GetCourses(isActive, System.Net.HttpStatusCode.OK);
+                .EnableCourse(id);
 
         }
 
         [TearDown]
         public void After()
         {
+
+            courseObject.DisableCourse();
             courseObject.client.Dispose();
         }
     }
