@@ -136,11 +136,16 @@ namespace What_Common.Resources
             public static By SortByTitleElement = By.XPath("//span[@data-sorting-param=\"name\"]");
             public static By CourseTableInRow = By.XPath("//table");
             public static By CourseTableInCards = By.XPath("//div[@class='container d-flex flex-wrap']");
-            //TODO remake locator below
-            public static By CourseDetailsInRowElement = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[text()=\"Soft Skills for Lecturers\"]");
-            public static By EditCourseElement = By.XPath("//tbody[@class=\"table__table-body___bYZbU\"]/descendant::td[@class=\"text-center\"]");
-            public static By EditInCardViewButton = By.XPath("//div[text()=\"Soft Skills for Lecturers\"]/following-sibling::button/following-sibling::div"); //???
-            
+            public static By AllCoursesInRows = By.XPath("//tbody/child::tr/td[1]");
+            public static By FlashMessageSuccess = By.XPath("//div[@class='fade alert alert-success alert-dismissible show']");
+
+
+            public static By EditInRowsCourseElement(int id) => By.XPath($"//tbody/child::tr[{id}]/child::td/following-sibling::td");
+
+            public static By EditInCardViewButton(int id) => By.XPath($"//div[@class='card'][{id}]/child::div/child::div/following-sibling::div");
+
+            public static By DetailsInRowsViewButton(int id) => By.XPath($"//tbody/child::tr[{id}]");
+
             public static By DetailsInCardViewButton(int id) => By.XPath($"//div[@class='container d-flex flex-wrap']/child::div[{id}]/descendant::button");
 
         }
@@ -164,6 +169,13 @@ namespace What_Common.Resources
             public static By ModalDisableButton = By.XPath("//button[text()='Disable']");
             public static By ResetButton = By.XPath("//button[text()='Reset']");
             public static By Save_button = By.XPath("//button[text()='Save']");
+        }
+
+        public static class AddCourse
+        {
+            public static By CourseNameField = By.XPath("//input");
+            public static By CancelButton = By.XPath("//a[text()='Cancel']");
+            public static By SaveButton = By.XPath("//button[text()='Save']");
         }
 
         public static class Schedule
@@ -265,7 +277,7 @@ namespace What_Common.Resources
             public static readonly By UnassignedUsersTitle = By.XPath("//*[contains(text(),'Unassigned Users')]");
             public static readonly By UnassignedUsersName = By.XPath("//*[contains(text(),'Name')]");
         }
-	public static class Lessons
+        public static class Lessons
         {
             public static By AddLessonButton = By.XPath("//button[contains(.,'Add a lesson')]");
             public static By AddThemeButton = By.CssSelector(".btn-warning");

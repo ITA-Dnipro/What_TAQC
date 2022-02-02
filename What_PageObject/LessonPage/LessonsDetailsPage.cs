@@ -5,7 +5,7 @@ using What_PageObject.LessonPage.Models;
 
 namespace What_PageObject.Lessons
 {
-    public class LessonsDetailsPage :BasePageWithSideBar
+    public class LessonsDetailsPage : BasePageWithSideBar
     {
         public LessonsDetailsPage VerifyAllFields(LessonRow expected)
         {

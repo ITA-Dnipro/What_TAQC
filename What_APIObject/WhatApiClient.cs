@@ -16,7 +16,6 @@ namespace What_APIObject
             var options = new RestClientOptions(Resources.hosting);
 
             client = new RestClient(options);
-
             SetToken(user);
         }
 
@@ -45,8 +44,20 @@ namespace What_APIObject
             return response.IsSuccessful ? response.Data! : default!;
         }
 
-        public TResponse Post<TParametr, TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode)
+        public string Get<TParametr>(Uri uri, TParametr body, out HttpStatusCode statusCode)
             where TParametr : class
+        {
+            var req = new RestRequest(uri, Method.Get);
+            req.AddOrUpdateHeader("authorization", token);
+            req.AddJsonBody<TParametr>(body);
+            var response = client.ExecuteAsync(req).GetAwaiter().GetResult();
+            statusCode = response.StatusCode;
+            return response.IsSuccessful ? response.Content! : default!;
+        }
+
+
+        public TResponse Post<TParametr, TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode) 
+            where TParametr : class 
             where TResponse : class
         {
             var req = new RestRequest(uri, Method.Post);
@@ -66,7 +77,6 @@ namespace What_APIObject
             var req = new RestRequest(uri, Method.Post);
             req.AddOrUpdateHeader(Endpoints.authorization, token);
             var response = client.ExecutePostAsync<TResponse>(req).GetAwaiter().GetResult();
-
             statusCode = response.StatusCode;
             return response.IsSuccessful ? response.Data! : default!;
         }
