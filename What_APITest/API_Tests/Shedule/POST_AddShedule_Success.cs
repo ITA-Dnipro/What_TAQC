@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using What_APIObject.API_Object.Shedule;
 using What_APIObject.Entities.Accounts;
 using What_Common.DataProvider;
@@ -6,7 +8,8 @@ using What_Common.DataProvider;
 
 namespace What_APITest.API_Tests.Shedule
 {
-    public class GET_AddSheduleByIdDetailedSuccess : BaseTest
+    [AllureNUnit]
+    public class POST_AddShedule_Success : BaseTest
     {
         private LoginDetails user;
         private GetAllShedule shedule;
@@ -21,11 +24,20 @@ namespace What_APITest.API_Tests.Shedule
         }
 
         [Test]
-        public void SheduleTest()
+        [AllureTag("APITests")]
+        [AllureSuite("Shedule")]
+        [AllureSubSuite("POST")]
+        public void PostSheduleTest()
         {
             shedule.GenerateDataForShedule()
                    .CreateNewShedule()
-                   .VerifyShedulesCreateByIdDetailed();
+                   .VerifyShedulesCreate();
+        }
+
+        [TearDown]
+        public void AfterTest()
+        {
+            shedule.DeleteShedule();
         }
     }
 }

@@ -1,9 +1,12 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using What_APIObject.API_Object.Shedule;
 
 namespace What_APITest.API_Tests.Shedule
 {
-    public class POST_AddSheduleUnauthorized : BaseTest
+    [AllureNUnit]
+    public class POST_AddShedule_Unauthorized : BaseTest
     {
         private GetAllShedule shedule;
 
@@ -14,6 +17,9 @@ namespace What_APITest.API_Tests.Shedule
         }
 
         [Test]
+        [AllureTag("APITests")]
+        [AllureSuite("Shedule")]
+        [AllureSubSuite("POST")]
         public void SheduleTest()
         {
             shedule.GenerateDataForShedule()

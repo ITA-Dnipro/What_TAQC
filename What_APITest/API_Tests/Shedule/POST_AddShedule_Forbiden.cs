@@ -1,12 +1,14 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using What_APIObject.API_Object.Shedule;
 using What_APIObject.Entities.Accounts;
 using What_Common.DataProvider;
 
-
 namespace What_APITest.API_Tests.Shedule
 {
-    public class POST_AddSheduleSuccess : BaseTest
+    [AllureNUnit]
+    public class POST_AddShedule_Forbiden : BaseTest
     {
         private LoginDetails user;
         private GetAllShedule shedule;
@@ -14,24 +16,21 @@ namespace What_APITest.API_Tests.Shedule
         [SetUp]
         public void Setup()
         {
-            user = Controller.GetUser(Controller.UserRole.Admin);
-            var role = Controller.UserRole.Admin.ToString().ToLower();
+            user = Controller.GetUser(Controller.UserRole.Mentor);
+            var role = Controller.UserRole.Mentor.ToString().ToLower();
 
             shedule = new GetAllShedule(new User { Email = user.Email, Password = user.Password, Role = role });
         }
 
         [Test]
+        [AllureTag("APITests")]
+        [AllureSuite("Shedule")]
+        [AllureSubSuite("POST")]
         public void PostSheduleTest()
         {
             shedule.GenerateDataForShedule()
                    .CreateNewShedule()
-                   .VerifyShedulesCreate();
-        }
-
-        [TearDown]
-        public void AfterTest()
-        {
-            shedule.DeleteShedule();
+                   .VerifyShedulesForbiden();
         }
     }
 }
