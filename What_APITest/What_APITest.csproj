@@ -24,6 +24,7 @@
   <ItemGroup>
 
     <Folder Include="API_Tests\CoursesTests\" />
+    <Folder Include="API_Tests\MentorsTests\" />
     <Folder Include="API_Tests\StudentsTests\" />
     <Folder Include="API_Tests\SheduleTests\" />
   </ItemGroup>

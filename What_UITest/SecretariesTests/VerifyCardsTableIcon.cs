@@ -10,12 +10,12 @@ namespace What_UITest.Secretaries
         LoginDetails admin;
         LoginDetails secretary;       
 
-        [SetUp]
-        public void StartUp()
-        {
-            admin = Controller.GetUser(Controller.UserRole.Admin);
-            secretary = Controller.GetUser(Controller.UserRole.Secretary);
-        }
+//        [SetUp]
+//        public void StartUp()
+//        {
+//            admin = Controller.GetUser(Controller.UserRole.Admin);
+//            secretary = Controller.GetUser(Controller.UserRole.Secretary);
+//        }
 
         [Test(Description = "DP220TAQC-73")]
         public void VerifyCardsTableIcon_AsAdmin()

@@ -32,5 +32,11 @@ namespace What_Common.DriverManager
         {
             Current.Manage().Window.Maximize();
         }
+
+        public static void ImplicitWait()
+        {
+            Current.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+        }
+
     }
 }

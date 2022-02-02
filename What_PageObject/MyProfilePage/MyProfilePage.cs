@@ -8,45 +8,69 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using What_Common.Resources;
+using What_PageObject.ChangePassword;
+using What_Common.DriverManager;
+using NUnit.Framework;
 
 namespace What_PageObject.MyProfile
 {
     public class MyProfilePage : BasePage
     {
 
-        private IWebDriver driver;
-
         private Waiter waiter;
 
-        public MyProfilePage(IWebDriver driver)
+        private string FirstName { get;}
+
+        private string LastName { get;}
+
+        private string EmailAddress { get;}
+
+        public MyProfilePage()
         {
-            this.driver = driver;
-            this.waiter = new Waiter(driver);
+            this.waiter = new Waiter(Driver.Current);
+            FirstName = Driver.Current.FindElement(Locators.MyProfilePage.FirstNameField).Text;
+            LastName = Driver.Current.FindElement(Locators.MyProfilePage.LastNameField).Text;
+            EmailAddress = Driver.Current.FindElement(Locators.MyProfilePage.EmailAddressField).Text;
         }
 
 
         /// <summary>
         /// Click on 'change password' button
         /// </summary>
-        public void ChangePasswordClick()
+        public ChangePasswordPage ChangePasswordClick()
         {
             ClickElement(Locators.MyProfilePage.ChangePasswordButton);
-            waiter.wait.Until(ExpectedConditions.UrlMatches("http://localhost:8080/change-password"));
+            waiter.wait.Until(ExpectedConditions.UrlMatches(Resources.WhatChangePasswordUrl));
+            return new ChangePasswordPage();
         }
 
-        public string GetFirstName()
+
+        /// <summary>
+        /// Verify That name of user and his info in this panel equals
+        /// </summary>
+        /// <param name="expectedName">Expected params</param>
+        /// <returns></returns>
+        public MyProfilePage VerifyThatInfoAboutUserIsCorrect(string expectedName, string expectedLastName, string expectedEmail)
         {
-            return driver.FindElement(Locators.MyProfilePage.FirstNameField).Text;
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(expectedName, FirstName);
+                Assert.AreEqual(expectedLastName, LastName);
+                Assert.AreEqual(expectedEmail, EmailAddress);
+            });
+            
+            return this;
         }
 
-        public string GetLastName()
+        public ChangePasswordPage VerifyThatChangePasswordWorked()
         {
-            return driver.FindElement(Locators.MyProfilePage.LastNameField).Text;
+            ChangePasswordClick();
+            string expected = Resources.WhatChangePasswordUrl;
+            string actual = Driver.Current.Url;
+            Assert.AreEqual(expected, actual);
+            return new ChangePasswordPage();
         }
 
-        public string GetEmailAddress()
-        {
-            return driver.FindElement(Locators.MyProfilePage.EmailAddressField).Text;
-        }
+
     }
 }

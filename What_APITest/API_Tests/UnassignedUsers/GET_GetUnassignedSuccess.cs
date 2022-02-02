@@ -1,10 +1,13 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using What_APIObject.Entities.Accounts;
 using What_APITest.API_Object.UnassignedUsers;
 using What_Common.DataProvider;
 
 namespace What_APITest.API_Tests.UnassignedUsers
 {
+    [AllureNUnit]
     public class GET_GetUnassignedSuccess : BaseTest
     {
         private GetAllUnassignedUsers users;
@@ -19,6 +22,9 @@ namespace What_APITest.API_Tests.UnassignedUsers
         }
 
         [Test]
+        [AllureTag("APITests")]
+        [AllureSuite("UnassignedUsers")]
+        [AllureSubSuite("GET")]
         public void GetAllUnassignedTest()
         {
             users.GenerateNewUser()

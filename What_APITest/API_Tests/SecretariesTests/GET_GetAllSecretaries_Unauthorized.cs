@@ -10,8 +10,7 @@ using NUnit.Allure.Attributes;
 using Allure.Commons;
 using What_Common.Resources;
 using System.Net;
-
-// in process... what get status "Unauthorized"?
+using What_APIObject.Entities.Secretaries;
 
 namespace What_APITest.API_Tests.SecretariesTests
 {
@@ -19,8 +18,18 @@ namespace What_APITest.API_Tests.SecretariesTests
     [TestFixture]
     public class GET_GetAllSecretaries_Unauthorized : BaseTest
     {
-        SecretariesObject secretariesObject;
-        SecretariesObject secretariesObject2;
+        SecretariesObject secretariesObjectAsAdmin;
+        AccountUser secretaryAccount;
+        SecretariesModel secretariesModel;
+
+        [SetUp]
+        public void Before()
+        {
+            LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
+            secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
+            secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
+            secretariesObjectAsAdmin.CreateNewSecretary(secretaryAccount, out secretariesModel);
+        }
 
         [Test(Description = "SecretariesTests")]
         [AllureTag("APITests")]
@@ -28,13 +37,14 @@ namespace What_APITest.API_Tests.SecretariesTests
         [AllureSubSuite("GET")]
         public void VerifyGetAllSecretaries_Unauthorized()
         {
-            //VerifyGetAllSecretaries(HttpStatusCode.Unauthorized);
+            SecretariesObject secretariesObject = new SecretariesObject(null);
+            secretariesObject.VerifyGetAllSecretaries(null, HttpStatusCode.Unauthorized);
         }
 
         [TearDown]
         public void After()
         {
-            secretariesObject.DisableSecretary();
+            secretariesObjectAsAdmin.DisableSecretary(secretariesModel);
         }
     }
 }

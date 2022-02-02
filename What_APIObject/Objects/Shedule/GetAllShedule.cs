@@ -12,7 +12,7 @@ namespace What_APIObject.API_Object.Shedule
         private Uri uri;
         private HttpStatusCode statusCode;
         private AddShedulesModel.Root newShedule;
-        private AllShedulesModel sheduleModel;
+        private AllShedulesWithEventModel sheduleModel;
 
         public GetAllShedule(User user)
         {
@@ -82,7 +82,7 @@ namespace What_APIObject.API_Object.Shedule
         public GetAllShedule CreateNewShedule()
         {
             uri = new Uri(Endpoints.Schedules.schedules, UriKind.Relative);
-            var response = client.Post<AddShedulesModel.Root, AllShedulesModel>(uri, newShedule, out statusCode);
+            var response = client.Post<AddShedulesModel.Root, AllShedulesWithEventModel>(uri, newShedule, out statusCode);
             sheduleModel = response;
 
             return this;
@@ -91,7 +91,7 @@ namespace What_APIObject.API_Object.Shedule
         public GetAllShedule VerifyShedulesBadRequest()
         {
             uri = new Uri(Endpoints.Schedules.schedules, UriKind.Relative);
-            var response = client.Post<AddShedulesModel.Root, AllShedulesModel>(uri, newShedule, out statusCode);
+            var response = client.Post<AddShedulesModel.Root, AllShedulesWithEventModel>(uri, newShedule, out statusCode);
 
             Assert.AreEqual(HttpStatusCode.BadRequest, statusCode);
 
@@ -101,7 +101,7 @@ namespace What_APIObject.API_Object.Shedule
         public GetAllShedule VerifyShedulesForbiden()
         {
             uri = new Uri(Endpoints.Schedules.schedules, UriKind.Relative);
-            var response = client.Post<AddShedulesModel.Root, AllShedulesModel>(uri, newShedule, out statusCode);
+            var response = client.Post<AddShedulesModel.Root, AllShedulesWithEventModel>(uri, newShedule, out statusCode);
 
             Assert.AreEqual(HttpStatusCode.Forbidden, statusCode);
 
@@ -111,7 +111,7 @@ namespace What_APIObject.API_Object.Shedule
         public GetAllShedule VerifyShedulesCreate()
         {
             uri = new Uri(Endpoints.Schedules.schedulesEventsOccurrences, UriKind.Relative);
-            var response = client.Get<List<AllShedulesModel>>(uri, out statusCode);
+            var response = client.Get<List<AllShedulesWithEventModel>>(uri, out statusCode);
             var createdShedule = response.Find(i => i.Id == sheduleModel.Id);
 
             Assert.Multiple(() =>
@@ -127,7 +127,7 @@ namespace What_APIObject.API_Object.Shedule
         public GetAllShedule VerifyShedulesUnauthorized()
         {
             uri = new Uri(Endpoints.Schedules.schedulesEventsOccurrences, UriKind.Relative);
-            var response = client.Get<List<AllShedulesModel>>(uri, out statusCode);
+            var response = client.Get<List<AllShedulesWithEventModel>>(uri, out statusCode);
 
             Assert.AreEqual(HttpStatusCode.Unauthorized, statusCode);
 
@@ -137,7 +137,7 @@ namespace What_APIObject.API_Object.Shedule
         public GetAllShedule VerifyShedulesCreateById()
         {
             uri = new Uri(Endpoints.Schedules.SchedulesById(sheduleModel.Id), UriKind.Relative);
-            var response = client.Get<AllShedulesModel>(uri, out statusCode);
+            var response = client.Get<AllShedulesWithEventModel>(uri, out statusCode);
 
             Assert.Multiple(() =>
             {
@@ -167,7 +167,7 @@ namespace What_APIObject.API_Object.Shedule
         public GetAllShedule VerifyShedulesCreateByIdForbiden()
         {
             uri = new Uri(Endpoints.Schedules.schedulesEventsOccurrences, UriKind.Relative);
-            var response = client.Get<AllShedulesModel>(uri, out statusCode);
+            var response = client.Get<AllShedulesWithEventModel>(uri, out statusCode);
 
             Assert.AreEqual(HttpStatusCode.Forbidden, statusCode);
 
@@ -177,7 +177,7 @@ namespace What_APIObject.API_Object.Shedule
         public GetAllShedule DeleteShedule()
         {
             uri = new Uri(Endpoints.Schedules.SchedulesEventsOccurrences(sheduleModel.Id), UriKind.Relative);
-            var response = client.Delete<AllShedulesModel>(uri, out statusCode);
+            var response = client.Delete<AllShedulesWithEventModel>(uri, out statusCode);
 
             return this;
         }

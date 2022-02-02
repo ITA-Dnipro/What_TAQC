@@ -15,6 +15,7 @@ namespace What_APIObject.Objects.Secretaries
         private Uri uri;
         private HttpStatusCode statusCode;
         AccountUser accountUser;
+        SecretariesModel accountSecretary;
 
         public SecretariesObject(User user)
         {
@@ -32,45 +33,57 @@ namespace What_APIObject.Objects.Secretaries
             return user;
         }
 
-        public SecretariesObject RegistrationNewUser()
+        public AccountUser RegistrationNewUser(out AccountUser user)
         {
             uri = new Uri(Endpoints.Accounts.accountsReg, UriKind.Relative);
             var response = client.Post<RegisterUser, AccountUser>(uri, CreateUser(), out statusCode);
-            accountUser = response;
+            user = response;
+            accountUser = user;
+            return user;
+        }
+
+        public SecretariesObject CreateNewSecretary(AccountUser user, out SecretariesModel accountSecretary)
+        {
+            uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(user.Id.ToString()), UriKind.Relative);
+            var response = client.Post<SecretariesModel>(uri, out statusCode);
+            accountSecretary = response;
             return this;
         }
 
-        public SecretariesObject CreateNewSecretary()
+        public SecretariesModel CreateSecretaryToUpdate()
         {
-            uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(accountUser.Id.ToString()), UriKind.Relative);
-            var response = client.Post<AccountUser>(uri, out statusCode);
-            accountUser = response;
-            return this;
+            SecretariesModel secretary = new SecretariesModel()
+            {
+                FirstName = StringGenerator.GenerateString(new Random().Next(2, 30)),
+                LastName = StringGenerator.GenerateString(new Random().Next(2, 30)),
+                Email = StringGenerator.GenerateEmail()
+            };
+            return secretary;
         }
 
-        public SecretariesObject DisableSecretary()
+        public SecretariesObject DisableSecretary(SecretariesModel user)
         {
-            uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(accountUser.Id.ToString()), UriKind.Relative);
-            var response = client.Delete(uri, out statusCode);
+            uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(user.Id.ToString()), UriKind.Relative);
+            var response = client.Delete<SecretariesModel>(uri, out statusCode);
             return this;
         }
 
         #region Verifications
 
-        public SecretariesObject VerifyGetAllSecretaries(HttpStatusCode expectedStatusCode)
+        public SecretariesObject VerifyGetAllSecretaries(SecretariesModel user, HttpStatusCode expectedStatusCode)
         {
             uri = new Uri(Endpoints.Secretaries.secretaries, UriKind.Relative);
             var response = client.Get<List<SecretariesModel>>(uri, out statusCode);
             if (expectedStatusCode == HttpStatusCode.OK)
             {
-                var secretary = response.Find(s => s.Id == accountUser.Id);
+                var secretary = response.Find(s => s.Id == user.Id);
                 Assert.Multiple(() =>
                 {
                     Assert.AreEqual(HttpStatusCode.OK, statusCode);
-                    Assert.AreEqual(secretary.Id, accountUser.Id);
-                    Assert.AreEqual(secretary.FirstName, accountUser.FirstName);
-                    Assert.AreEqual(secretary.LastName, accountUser.LastName);
-                    Assert.AreEqual(secretary.Email, accountUser.Email);
+                    Assert.AreEqual(secretary.Id, user.Id);
+                    Assert.AreEqual(secretary.FirstName, user.FirstName);
+                    Assert.AreEqual(secretary.LastName, user.LastName);
+                    Assert.AreEqual(secretary.Email, user.Email);
                 });
             }
             else
@@ -80,20 +93,20 @@ namespace What_APIObject.Objects.Secretaries
             return this;
         }
 
-        public SecretariesObject VerifyGetActiveSecretaries(HttpStatusCode expectedStatusCode)
+        public SecretariesObject VerifyGetActiveSecretaries(SecretariesModel user, HttpStatusCode expectedStatusCode)
         {
             uri = new Uri(Endpoints.Secretaries.secretariesActive, UriKind.Relative);
             var response = client.Get<List<SecretariesModel>>(uri, out statusCode);
             if (expectedStatusCode == HttpStatusCode.OK)
             {
-                var secretary = response.Find(s => s.Id == accountUser.Id);
+                var secretary = response.Find(s => s.Id == user.Id);
                 Assert.Multiple(() =>
                 {
                     Assert.AreEqual(HttpStatusCode.OK, statusCode);
-                    Assert.AreEqual(secretary.Id, accountUser.Id);
-                    Assert.AreEqual(secretary.FirstName, accountUser.FirstName);
-                    Assert.AreEqual(secretary.LastName, accountUser.LastName);
-                    Assert.AreEqual(secretary.Email, accountUser.Email);
+                    Assert.AreEqual(secretary.Id, user.Id);
+                    Assert.AreEqual(secretary.FirstName, user.FirstName);
+                    Assert.AreEqual(secretary.LastName, user.LastName);
+                    Assert.AreEqual(secretary.Email, user.Email);
                 });
             }
             else
@@ -103,37 +116,60 @@ namespace What_APIObject.Objects.Secretaries
             return this;
         }
 
-        public SecretariesObject VerifyCreateNewSecretary(HttpStatusCode expectedStatusCode)
+        public SecretariesObject VerifyCreateNewSecretary(AccountUser user, HttpStatusCode expectedStatusCode)
         {
-            uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(accountUser.Id.ToString()), UriKind.Relative);
-            var response = client.Post<AccountUser>(uri, out statusCode);
-            if(expectedStatusCode == HttpStatusCode.OK)
-            {
-                Assert.Multiple(() =>
-                {
-                    Assert.AreEqual(HttpStatusCode.OK, statusCode);
-                    Assert.AreEqual(response.FirstName, accountUser.FirstName);
-                    Assert.AreEqual(response.LastName, accountUser.LastName);
-                    Assert.AreEqual(response.Email, accountUser.Email);
-                });
-            }
-            else
-            {
-                Assert.AreEqual(expectedStatusCode, statusCode);
-            }
-            return this;
-        }
-
-        public SecretariesObject VerifyDisableSecretary(HttpStatusCode expectedStatusCode)
-        {
-            uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(accountUser.Id.ToString()), UriKind.Relative);
-            var response = client.Delete(uri, out statusCode);
+            uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(user.Id.ToString()), UriKind.Relative);
+            var response = client.Post<SecretariesModel>(uri, out statusCode);
             if (expectedStatusCode == HttpStatusCode.OK)
             {
                 Assert.Multiple(() =>
                 {
                     Assert.AreEqual(HttpStatusCode.OK, statusCode);
+                    Assert.AreEqual(response.FirstName, user.FirstName);
+                    Assert.AreEqual(response.LastName, user.LastName);
+                    Assert.AreEqual(response.Email, user.Email);
+                });
+                DisableSecretary(response);
+            }
+            else
+            {
+                Assert.AreEqual(expectedStatusCode, statusCode);
+            }
+            return this;
+        }
+
+        public SecretariesObject VerifyDisableSecretary(SecretariesModel user, HttpStatusCode expectedStatusCode)
+        {
+            uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(user.Id.ToString()), UriKind.Relative);
+            var response = client.Delete(uri, out statusCode);
+            if (expectedStatusCode == HttpStatusCode.OK)
+            {
+                Assert.Multiple(() =>
+                {
+                    Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
                     Assert.IsTrue(response.Contains("true"));
+                });
+            }
+            else
+            {
+                Assert.AreEqual(expectedStatusCode, statusCode);
+            }
+            return this;
+        }
+
+        public SecretariesObject VerifyUpdateSecretary(SecretariesModel user, HttpStatusCode expectedStatusCode)
+        {
+            uri = new Uri(Endpoints.Secretaries.SecretariesById(user.Id.ToString()), UriKind.Relative);
+            var response = client.Put<SecretariesModel, SecretariesModel>(uri, CreateSecretaryToUpdate(), out statusCode);
+            if (expectedStatusCode == HttpStatusCode.OK)
+            {
+                Assert.Multiple(() =>
+                {
+                    Assert.AreEqual(HttpStatusCode.OK, statusCode);
+                    Assert.AreEqual(response.Id, user.Id);
+                    Assert.AreNotEqual(response.FirstName, user.FirstName);
+                    Assert.AreNotEqual(response.LastName, user.LastName);
+                    Assert.AreNotEqual(response.Email, user.Email);
                 });
             }
             else

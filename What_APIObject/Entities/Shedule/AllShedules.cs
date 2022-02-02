@@ -2,7 +2,7 @@
 
 namespace What_APIObject.Entities.Shedule
 {
-    public class ShedulesAll
+    public class AllShedules
     {
         [JsonProperty("id")]
         public int Id { get; set; }
