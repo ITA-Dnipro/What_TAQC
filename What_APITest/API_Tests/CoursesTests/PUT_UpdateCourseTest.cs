@@ -40,6 +40,7 @@ namespace What_APITest.API_Tests.CoursesTests
             });
 
             //oldCourseName = courseObject.GetCurrentCourse(id);
+            courseObject.GetCurrentCourse(13);
             courseObject
                 .RegistrationNewUser()
                 .CreateNewCourse(courseName, true)
