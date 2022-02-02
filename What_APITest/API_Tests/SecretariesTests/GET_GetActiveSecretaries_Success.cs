@@ -1,15 +1,10 @@
-using NUnit.Framework;
-using System;
-using What_Common.DataProvider;
-using What_APIObject;
-using What_APIObject.Objects.Secretaries;
-using What_APIObject.Entities.Accounts;
-using What_Common.Utils;
-using NUnit.Allure.Core;
 using NUnit.Allure.Attributes;
-using Allure.Commons;
-using What_Common.Resources;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using System.Net;
+using What_APIObject.Entities.Accounts;
+using What_APIObject.Objects.Secretaries;
+using What_Common.DataProvider;
 
 // pass
 // admin
@@ -20,7 +15,7 @@ namespace What_APITest.API_Tests.SecretariesTests
     [TestFixture]
     public class GET_GetActiveSecretaries_Success : BaseTest
     {
-        SecretariesObject secretariesObject;
+        private SecretariesObject secretariesObject;
 
         [SetUp]
         public void Before()

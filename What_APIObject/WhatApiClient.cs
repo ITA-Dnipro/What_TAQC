@@ -1,17 +1,15 @@
 ﻿using RestSharp;
-using RestSharp.Authenticators;
-using System;
 using System.Net;
+using What_APIObject.Entities;
 using What_APIObject.Entities.Accounts;
-using What_APITest.Entities;
 using What_Common.Resources;
 
 namespace What_APIObject
 {
-    public class WHATClient : IDisposable 
-    { 
-        readonly RestClient client;
-        string token;
+    public class WHATClient : IDisposable
+    {
+        private readonly RestClient client;
+        private string token;
 
         public WHATClient(User user)
         {
@@ -21,6 +19,7 @@ namespace What_APIObject
 
             SetToken(user);
         }
+
         public void SetToken(User user)
         {
             if (user == null)
@@ -34,30 +33,20 @@ namespace What_APIObject
             token = response!.RoleAndToken.ContainsKey(user.Role) ? response!.RoleAndToken[user.Role] : "";
         }
 
-        public TResponse Get<TResponse>(Uri uri, out HttpStatusCode statusCode) 
+        public TResponse Get<TResponse>(Uri uri, out HttpStatusCode statusCode)
             where TResponse : class
         {
             var req = new RestRequest(uri, Method.Get);
             req.AddOrUpdateHeader(Endpoints.authorization, token);
-            var response =  client.ExecuteAsync<TResponse>(req).GetAwaiter().GetResult();
-            
+            var response = client.ExecuteAsync<TResponse>(req).GetAwaiter().GetResult();
+
             statusCode = response.StatusCode;
 
             return response.IsSuccessful ? response.Data! : default!;
         }
-
-        public string Get(Uri uri, out HttpStatusCode statusCode)
-        {
-            var req = new RestRequest(uri, Method.Get);
-            req.AddOrUpdateHeader(Endpoints.authorization, token);
-            var response = client.ExecuteAsync(req).GetAwaiter().GetResult();
-            statusCode = response.StatusCode;
-            return response.IsSuccessful ? response.Content! : default!;
-        }
-
         public string Get<TParametr, TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode)
-           where TResponse : class
-           where TParametr : class
+          where TResponse : class
+          where TParametr : class
         {
             var req = new RestRequest(uri, Method.Get);
             req.AddOrUpdateHeader("authorization", token);
@@ -69,35 +58,33 @@ namespace What_APIObject
             return response.IsSuccessful ? response.Content! : default!;
         }
 
-
-        public TResponse Post<TParametr,TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode) 
-            where TParametr : class 
+        public TResponse Post<TParametr, TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode)
+            where TParametr : class
             where TResponse : class
         {
             var req = new RestRequest(uri, Method.Post);
             req.AddOrUpdateHeader(Endpoints.authorization, token);
             req.AddJsonBody<TParametr>(body);
 
-            var response =  client.ExecutePostAsync<TResponse>(req).GetAwaiter().GetResult();
-            
+            var response = client.ExecutePostAsync<TResponse>(req).GetAwaiter().GetResult();
+
             statusCode = response.StatusCode;
-            
+
             return response.IsSuccessful ? response.Data! : default!;
         }
-
 
         public TResponse Post<TResponse>(Uri uri, out HttpStatusCode statusCode)
             where TResponse : class
         {
             var req = new RestRequest(uri, Method.Post);
             req.AddOrUpdateHeader(Endpoints.authorization, token);
-            var response =  client.ExecutePostAsync<TResponse>(req).GetAwaiter().GetResult();
-            
+            var response = client.ExecutePostAsync<TResponse>(req).GetAwaiter().GetResult();
+
             statusCode = response.StatusCode;
             return response.IsSuccessful ? response.Data! : default!;
         }
 
-        public TResponse Put<TParametr, TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode) 
+        public TResponse Put<TParametr, TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode)
             where TParametr : class
             where TResponse : class
         {
@@ -106,9 +93,9 @@ namespace What_APIObject
             req.AddJsonBody<TParametr>(body);
 
             var response = client.ExecutePutAsync<TResponse>(req).GetAwaiter().GetResult();
-            
+
             statusCode = response.StatusCode;
-            
+
             return response.IsSuccessful ? response.Data! : default!;
         }
 
@@ -135,8 +122,7 @@ namespace What_APIObject
             return response.IsSuccessful ? response.Content! : default!;
         }
 
-
-        public TResponse Patch<TParametr, TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode) 
+        public TResponse Patch<TParametr, TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode)
             where TParametr : class
             where TResponse : class
         {

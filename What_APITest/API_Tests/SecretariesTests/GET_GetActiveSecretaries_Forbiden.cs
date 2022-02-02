@@ -10,6 +10,7 @@ using NUnit.Allure.Attributes;
 using Allure.Commons;
 using What_Common.Resources;
 using System.Net;
+using What_APIObject.Objects.Secretaries;
 
 // pass
 // student

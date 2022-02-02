@@ -14,7 +14,7 @@ namespace What_PageObject.SchedulesPage
             int y = 2;
 
             var date = DateTime.Now;
-            int number = Convert.ToInt32((uint)Guid.NewGuid().GetHashCode() % 200);
+            int number = Convert.ToInt32((uint)Guid.NewGuid().GetHashCode() % 300);
 
             Random rnd = new Random();
 
@@ -84,10 +84,7 @@ namespace What_PageObject.SchedulesPage
         {
             return date.StartOfWeek(DayOfWeek.Sunday).AddDays(7).ToString("dd/MM");
         }
-    }
 
-    public static class DateTimeExtensions
-    {
         public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek)
         {
             int diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
