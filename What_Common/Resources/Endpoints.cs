@@ -98,8 +98,8 @@
                 mentors = "/api/v2/mentors",
                 mentorsActive = "/api/v2/mentors/active",
                 mentorsLessons = "/api/v2/mentors/lessons";
-            public static string MentorById(string id) => $"/api/v2/mentors/{id}";
-            public static string MentorsByAccountId(string accountId) => $"/api/v2/mentors/{accountId}";
+            public static string MentorById(int id) => $"/api/v2/mentors/{id}";
+            public static string MentorsByAccountId(int accountId) => $"/api/v2/mentors/{accountId}";
             public static string MentorByMentorId(string mentorId) => $"/api/v2/mentors/{mentorId}";
             public static string MentorsGroups(string id) => $"/api/v2/mentors/{id}/groups";
             public static string MentorsCourses(string id) => $"/api/v2/mentors/{id}/courses";
