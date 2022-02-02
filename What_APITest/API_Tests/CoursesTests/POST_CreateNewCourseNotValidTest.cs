@@ -26,8 +26,8 @@ namespace What_APITest.API_Tests.CoursesTests
         [AllureTag("APITests")]
         [AllureSuite("Courses")]
         [AllureSubSuite("POST")]
-        [TestCase(Controller.UserRole.Mentor, "mentor_test113", Description = "Send POST request to swagger and trying to create new course as mentor")]
-        [TestCase(Controller.UserRole.Student, "student_test113", Description = "Send POST request to swagger and trying to create new course as student")]
+        [TestCase(Controller.UserRole.Mentor, "Test_1", Description = "Send POST request to swagger and trying to create new course as mentor")]
+        [TestCase(Controller.UserRole.Student, "Test_2", Description = "Send POST request to swagger and trying to create new course as student")]
         [Category("POST request")]
         public void VerifyIsNewCourseCreateNotValid(Controller.UserRole role, string courseName)
         {
