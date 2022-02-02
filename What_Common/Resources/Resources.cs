@@ -16,7 +16,7 @@ namespace What_Common.Resources
         public const string ErrorFieldName = "This field is required";
         public const string firstName = "Qwerty";
         public const string lastName = "Qwerty";
-        public const string Email = "Qwe4r7279@gma.com";
+        public const string Email = "Qwel9r7279@gma.com";
         public const string Password = "Sergey1900+";
         public const string WhatUrl = "http://localhost:8080/";
         public const string WhatChangePasswordUrl = @"http://localhost:8080/change-password";
