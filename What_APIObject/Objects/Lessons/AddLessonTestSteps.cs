@@ -38,6 +38,7 @@ namespace API
         public AddLessonTestSteps VerifyUpdatedLessonExist(Lesson lesson)
         {
             Assert.AreEqual(lesson.ThemeName, newLessonInSystem.ThemeName, "verify");
+
             return this;
         }
 
@@ -45,7 +46,7 @@ namespace API
         {
             uri = new Uri($"/api/v2/mentors/{mentorId}", UriKind.Relative);
             var response = client.Get<UserInSystem>(uri, out statusCode);
-            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
             return this;
         }
 
@@ -77,6 +78,7 @@ namespace API
         }
         public AddLessonTestSteps VerifyNewlyAddedLessonNotExist()
         {
+
             Assert.AreEqual(HttpStatusCode.Forbidden, statusCode, "VerifyNewlyAddedLessonNotExist From Desscription");
             return this;
         }

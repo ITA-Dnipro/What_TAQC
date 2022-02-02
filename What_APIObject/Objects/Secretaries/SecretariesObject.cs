@@ -146,7 +146,7 @@ namespace What_APIObject.Objects.Secretaries
             {
                 Assert.Multiple(() =>
                 {
-                    Assert.AreEqual(HttpStatusCode.OK, statusCode);
+                    Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
                     Assert.IsTrue(response.Contains("true"));
                 });
             }
