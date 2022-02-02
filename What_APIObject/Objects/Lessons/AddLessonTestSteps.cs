@@ -5,7 +5,7 @@ using System.Net;
 using What_APIObject;
 using API.Models;
 
-namespace API
+namespace What_APIObject.Objects.Lessons
 {
     public class AddLessonTestSteps
     {
