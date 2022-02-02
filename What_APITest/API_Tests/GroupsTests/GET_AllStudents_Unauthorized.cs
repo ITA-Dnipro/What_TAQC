@@ -1,4 +1,5 @@
-﻿using NUnit.Allure.Core;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -61,8 +62,11 @@ namespace What_APITest.API_Tests.GroupsAPI_Tests
         }
 
         [Test]
+        [AllureTag("APITests")]
+        [AllureSuite("Groups")]
+        [AllureSubSuite("GET")]
 
-        public void VerifyGroups() //TODO naminggg!!!
+        public void VerifyGroups_Unauthorized() 
         {
             students.VerifyGetAllStudentsGroupsUnauthorized(datemodel);
 

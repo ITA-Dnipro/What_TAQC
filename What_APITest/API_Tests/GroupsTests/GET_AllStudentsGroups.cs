@@ -1,4 +1,5 @@
-﻿using NUnit.Allure.Core;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -14,16 +15,14 @@ using What_Common.Utils;
 namespace What_APITest.API_Tests.GroupsAPI_Tests
 {
 
-    [TestFixture(Author = "Ivan", Description = "Examples")]
+    [TestFixture]
     [AllureNUnit]
     internal class GET_AllStudentsGroups
     {
         LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
         GroupsAPI_Object students;
         DateModel datemodel;
-
-        PostStudentsGroups postStudentsGroups;
-        PostStudentsGroups putStudentsGroups;
+        PostStudentsGroups postStudentsGroups, putStudentsGroups;
         int id;
 
 
@@ -41,9 +40,6 @@ namespace What_APITest.API_Tests.GroupsAPI_Tests
                 FinishDate = DateTime.Now,
                 StudentIds = new List<int>() { 13 },
                 MentorIds = new List<int>() { 15 }
-
-
-
             };
 
             putStudentsGroups = new PostStudentsGroups
@@ -54,14 +50,15 @@ namespace What_APITest.API_Tests.GroupsAPI_Tests
                 FinishDate = DateTime.Now,
                 StudentIds = new List<int>() { 13 },
                 MentorIds = new List<int>() { 15 }
-
-
             };
         }
 
         [Test]
+        [AllureTag("APITests")]
+        [AllureSuite("Groups")]
+        [AllureSubSuite("GET")]
 
-        public void VerifyGroups() //TODO naminggg!!!
+        public void VerifyGroupsFromDate_Successful()
         {
             students.VerifyGetAllStudentsGroups(datemodel)
                 .AddGroup(postStudentsGroups)

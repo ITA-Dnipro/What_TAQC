@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using What_APIObject.Entities.Accounts;
-using What_APITest.Objects.Secretaries;
+using What_Common.Resources;
 using What_Common.Utils;
 
 namespace What_APIObject.Objects.Accounts
@@ -41,20 +41,22 @@ namespace What_APIObject.Objects.Accounts
 
         public ChangePasswordObject RegistrationNewUser(out RegisterUser registerUser)
         {
-            uri = new Uri($"/api/v2/accounts/reg", UriKind.Relative);
+            
+            uri = new Uri(Endpoints.Accounts.accountsReg, UriKind.Relative);
             var response = client.Post<RegisterUser, AccountUser>(uri, CreateUser(), out statusCode);
             accountUser = response;
             registerUser = user;
-            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
             return this;
         }
 
         public ChangePasswordObject CreateNewSecretary()
         {
-            uri = new Uri($"/api/v2/secretaries/{accountUser.Id}", UriKind.Relative);
+            uri = new Uri(Endpoints.Secretaries.SecretariesByAccountId(accountUser.Id.ToString()), UriKind.Relative);
+
             var response = client.Post<AccountUser>(uri, out statusCode);
             accountUser = response;
-            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
             return this;
         }
 
@@ -64,12 +66,11 @@ namespace What_APIObject.Objects.Accounts
             password = StringGenerator.GeneratePassword(10);
             resetPassword = new ResetPassword { CurrentPassword = user.Password, NewPassword = password, ConfirmNewPassword = password };
             this.user = user;
-            //user2 = user;
             return this;
         }
         public ChangePasswordObject ChangePassword(out RegisterUser registerUser)
         {
-            uri = new Uri($"/api/v2/accounts/password", UriKind.Relative);
+            uri = new Uri(Endpoints.Accounts.accountsPassword, UriKind.Relative);
             var response = client.Put<ResetPassword, AccountUser>(uri, resetPassword, out statusCode);
 
             registerUser = new RegisterUser
@@ -81,10 +82,18 @@ namespace What_APIObject.Objects.Accounts
                 Password = resetPassword.NewPassword,
             };
 
-            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
             return this;
         }
-            public ChangePasswordObject VerifyNewPasswordValid(RegisterUser user, RegisterUser user2)
+        public ChangePasswordObject VerifyChangePasswordUnauthorized()
+        {
+            
+            uri = new Uri(Endpoints.Accounts.accountsPassword, UriKind.Relative);
+            var response = client.Put<ResetPassword, AccountUser>(uri, resetPassword, out statusCode);
+            Assert.AreEqual(HttpStatusCode.Unauthorized, statusCode);
+            return this;
+        }
+        public ChangePasswordObject VerifyNewPasswordValid(RegisterUser user, RegisterUser user2)
             {
 
             Assert.Multiple(() =>

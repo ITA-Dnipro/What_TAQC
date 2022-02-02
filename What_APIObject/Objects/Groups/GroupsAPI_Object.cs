@@ -4,6 +4,7 @@ using System.Net;
 using What_APIObject;
 using What_APIObject.Entities.Accounts;
 using What_APITest.Entities.Groups;
+using What_Common.Resources;
 
 namespace What_APITest.API_Object
 {
@@ -21,16 +22,16 @@ namespace What_APITest.API_Object
         
         public GroupsAPI_Object VerifyGetAllStudentsGroups(DateModel date)
         {
-            uri = new Uri($"/api/v2/student_groups", UriKind.Relative);
+            uri = new Uri(Endpoints.StudentGroups.studentGroups, UriKind.Relative);
             var response = client.Get<DateModel, GetStudentsGroups>(uri, date, out statusCode);
-            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
 
             return this;
         }
 
         public GroupsAPI_Object VerifyGetAllStudentsGroupsUnauthorized(DateModel date)
         {
-            uri = new Uri($"/api/v2/student_groups", UriKind.Relative);
+            uri = new Uri(Endpoints.StudentGroups.studentGroups, UriKind.Relative);
             var response = client.Get<DateModel, GetStudentsGroups>(uri, date, out statusCode);
             Assert.AreEqual(HttpStatusCode.Unauthorized, statusCode);
 
@@ -40,7 +41,7 @@ namespace What_APITest.API_Object
         
             public GroupsAPI_Object VerifyGetAllStudentsGroupsForbidden (DateModel date)
         {
-            uri = new Uri($"/api/v2/student_groups", UriKind.Relative);
+            uri = new Uri(Endpoints.StudentGroups.studentGroups, UriKind.Relative);
             var response = client.Get<DateModel, GetStudentsGroups>(uri, date, out statusCode);
             Assert.AreEqual(HttpStatusCode.Forbidden, statusCode);
 
@@ -51,7 +52,7 @@ namespace What_APITest.API_Object
         {
 
 
-            uri = new Uri($"/api/v2/student_groups", UriKind.Relative);
+            uri = new Uri(Endpoints.StudentGroups.studentGroups, UriKind.Relative);
             var response = client.Get<List<GetStudentsGroups>>(uri, out statusCode);
             var createdGroup = response.Find(u => u.Name == postStudentsGroups.Name);
             id = createdGroup.Id;
@@ -71,7 +72,7 @@ namespace What_APITest.API_Object
         public GroupsAPI_Object AddGroup(PostStudentsGroups postStudents)
         {
 
-            uri = new Uri($"/api/v2/student_groups", UriKind.Relative);
+            uri = new Uri(Endpoints.StudentGroups.studentGroups, UriKind.Relative);
             var response = client.Post<PostStudentsGroups, PostStudentsGroups>(uri, postStudents, out statusCode);
 
             return this;
@@ -80,8 +81,8 @@ namespace What_APITest.API_Object
 
         public GroupsAPI_Object UpdateGroup(PostStudentsGroups postStudents)
         {
-
-            uri = new Uri($"/api/v2/student_groups/{postStudents.Id}", UriKind.Relative);
+            
+            uri = new Uri(Endpoints.StudentGroups.StudentGroupsById(postStudents.Id), UriKind.Relative);
             var response = client.Put<PostStudentsGroups, PostStudentsGroups>(uri, postStudents, out statusCode);
 
             return this;
@@ -92,7 +93,7 @@ namespace What_APITest.API_Object
         {
 
 
-            uri = new Uri($"/api/v2/student_groups", UriKind.Relative);
+            uri = new Uri(Endpoints.StudentGroups.studentGroups, UriKind.Relative);
             var response = client.Get<List<GetStudentsGroups>>(uri, out statusCode);
 
             var createdGroup = response.Find(u => u.Id == id);
@@ -109,22 +110,7 @@ namespace What_APITest.API_Object
 
             return this;
         }
-        //public GroupsAPI_Object VerifyUsersCreate(RegistredUser user)
-        //{
-        //    uri = new Uri($"/api/v2/accounts/NotAssigned", UriKind.Relative);
-        //    var response = client.Get(uri);
-        //    var unassignedList = JsonConvert.DeserializeObject<List<AccountNotAssigned>>(response);
-        //    var createdUnassigned = unassignedList.Find(u => u.Email == user.Email);
-
-        //    Assert.Multiple(() =>
-        //    {
-        //        Assert.AreEqual(createdUnassigned.FirstName, user.FirstName);
-        //        Assert.AreEqual(createdUnassigned.LastName, user.LastName);
-        //        Assert.AreEqual(createdUnassigned.Email, user.Email);
-        //    });
-
-        //    return this;
-        //}
+        
 
 
     }

@@ -1,4 +1,5 @@
-﻿using NUnit.Allure.Core;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ using What_Common.Utils;
 namespace What_APITest.API_Tests.GroupsAPI_Tests
 {
 
-    [TestFixture(Author = "Ivan", Description = "Examples")]
+    [TestFixture]
     [AllureNUnit]
     internal class PUT_StudentsGroupById
     {
@@ -61,6 +62,10 @@ namespace What_APITest.API_Tests.GroupsAPI_Tests
 
         
         [Test]
+        [AllureTag("APITests")]
+        [AllureSuite("Groups")]
+        [AllureSubSuite("PUT")]
+
         public void UpdateGroupInfoById()
         {
             students.AddGroup(postStudentsGroups)

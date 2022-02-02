@@ -2,43 +2,48 @@ using NUnit.Framework;
 using System;
 using What_Common.DataProvider;
 using What_APIObject;
-using What_APITest.Objects.Secretaries;
+using What_APIObject.Objects.Secretaries;
 using What_APIObject.Entities.Accounts;
 using What_Common.Utils;
 using NUnit.Allure.Core;
 using NUnit.Allure.Attributes;
 using Allure.Commons;
 using What_Common.Resources;
+using System.Net;
+
+// pass
+// admin
 
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
-    public class GetAllSecretary : BaseTest
+    public class GET_GetAllSecretaries_Success : BaseTest
     {
         SecretariesObject secretariesObject;
 
+        [SetUp]
+        public void Before()
+        {
+            LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
+            secretariesObject = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
+            secretariesObject.RegistrationNewUser();
+            secretariesObject.CreateNewSecretary();
+        }
+
         [Test(Description = "SecretariesTests")]
-        [TestCase(Controller.UserRole.Admin)]
-        //[TestCase(Controller.UserRole.Secretary)]
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
         [AllureSubSuite("GET")]
-        public void VerifyGetAllSecretaries(Controller.UserRole role)
+        public void VerifyGetAllSecretaries_Success()
         {
-            LoginDetails user = Controller.GetUser(role);
-            secretariesObject = new SecretariesObject(new User { Email = user.Email, Password = user.Password, Role = role.ToString().ToLower() });
-            secretariesObject
-                .RegistrationNewUser()
-                .CreateNewSecretary()
-                .GetAllSecretaries();
+            secretariesObject.VerifyGetAllSecretaries(HttpStatusCode.OK);
         }
 
         [TearDown]
         public void After()
         {
             secretariesObject.DisableSecretary();
-            secretariesObject.client.Dispose();
         }
     }
 }
