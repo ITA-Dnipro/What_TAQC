@@ -26,8 +26,8 @@ namespace What_APITest.API_Tests.CoursesTests
         [AllureTag("APITests")]
         [AllureSuite("Courses")]
         [AllureSubSuite("PUT")]
-        [TestCase(Controller.UserRole.Admin, "SoftServeQATest", "labalabadubdub1", Description = "Send PUT request to swagger and trying to update course")]
-        //[TestCase(Controller.UserRole.Secretary, 13, "labalabadubdub", Description = "Send POST request to swagger and trying to create new course as student")]
+        [TestCase(Controller.UserRole.Admin, "SoftServeQATest", "labalabadubdub2", Description = "Send PUT request to swagger and trying to update course")]
+        [TestCase(Controller.UserRole.Secretary, "SoftServeQATest", "Sec_labalabadubdub2", Description = "Send PUT request to swagger and trying to create new course as student")]
         [Category("PUT request")]
         public void VerifyThatCourseIsUpdate(Controller.UserRole role, string courseName, string newCourseName)
         {
