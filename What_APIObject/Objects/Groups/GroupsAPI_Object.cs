@@ -20,29 +20,30 @@ namespace What_APITest.API_Object
         }
 
         
-        public GroupsAPI_Object VerifyGetAllStudentsGroups(DateModel date)
+        public GroupsAPI_Object VerifyGetAllStudentsGroups()
         {
             uri = new Uri(Endpoints.StudentGroups.studentGroups, UriKind.Relative);
-            var response = client.Get<DateModel, GetStudentsGroups>(uri, date, out statusCode);
+            var response = client.Get<List<GetStudentsGroups>>(uri, out statusCode);
+
             Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
 
             return this;
         }
 
-        public GroupsAPI_Object VerifyGetAllStudentsGroupsUnauthorized(DateModel date)
+        public GroupsAPI_Object VerifyGetAllStudentsGroupsUnauthorized()
         {
             uri = new Uri(Endpoints.StudentGroups.studentGroups, UriKind.Relative);
-            var response = client.Get<DateModel, GetStudentsGroups>(uri, date, out statusCode);
+            var response = client.Get<List<GetStudentsGroups>>(uri, out statusCode);
             Assert.AreEqual(HttpStatusCode.Unauthorized, statusCode);
 
             return this;
         }
 
         
-            public GroupsAPI_Object VerifyGetAllStudentsGroupsForbidden (DateModel date)
+            public GroupsAPI_Object VerifyGetAllStudentsGroupsForbidden ()
         {
             uri = new Uri(Endpoints.StudentGroups.studentGroups, UriKind.Relative);
-            var response = client.Get<DateModel, GetStudentsGroups>(uri, date, out statusCode);
+            var response = client.Get<List<GetStudentsGroups>>(uri, out statusCode);
             Assert.AreEqual(HttpStatusCode.Forbidden, statusCode);
 
             return this;

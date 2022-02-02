@@ -8,7 +8,7 @@ using What_Common.DataProvider;
 namespace What_APITest.API_Tests.Shedule
 {
     [AllureNUnit]
-    public class POST_POST_AddSheduleByIdForbiden : BaseTest
+    public class POST_AddSheduleByIdForbiden : BaseTest
     {
         private LoginDetails user;
         private GetAllShedule shedule;

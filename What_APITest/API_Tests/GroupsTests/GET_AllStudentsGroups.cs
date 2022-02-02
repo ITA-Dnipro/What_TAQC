@@ -60,7 +60,7 @@ namespace What_APITest.API_Tests.GroupsAPI_Tests
 
         public void VerifyGroupsFromDate_Successful()
         {
-            students.VerifyGetAllStudentsGroups(datemodel)
+            students.VerifyGetAllStudentsGroups()
                 .AddGroup(postStudentsGroups)
                 .VerifyGetStudentsGroupsFromDates(postStudentsGroups, out id);
 
