@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using What_Common.DataProvider;
 using What_Common.Resources;
-using What_PageObject.Secretaries;
+using What_PageObject.SecretariesPage;
 using What_PageObject.SignInPage;
 using What_PageObject.UnassignedUsersPage;
 
