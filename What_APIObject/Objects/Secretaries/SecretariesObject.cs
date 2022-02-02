@@ -66,7 +66,7 @@ namespace What_APIObject.Objects.Secretaries
                 var secretary = response.Find(s => s.Id == accountUser.Id);
                 Assert.Multiple(() =>
                 {
-                    Assert.AreEqual(HttpStatusCode.OK, statusCode);
+                    Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
                     Assert.AreEqual(secretary.Id, accountUser.Id);
                     Assert.AreEqual(secretary.FirstName, accountUser.FirstName);
                     Assert.AreEqual(secretary.LastName, accountUser.LastName);
@@ -89,7 +89,7 @@ namespace What_APIObject.Objects.Secretaries
                 var secretary = response.Find(s => s.Id == accountUser.Id);
                 Assert.Multiple(() =>
                 {
-                    Assert.AreEqual(HttpStatusCode.OK, statusCode);
+                    Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
                     Assert.AreEqual(secretary.Id, accountUser.Id);
                     Assert.AreEqual(secretary.FirstName, accountUser.FirstName);
                     Assert.AreEqual(secretary.LastName, accountUser.LastName);
@@ -111,7 +111,7 @@ namespace What_APIObject.Objects.Secretaries
             {
                 Assert.Multiple(() =>
                 {
-                    Assert.AreEqual(HttpStatusCode.OK, statusCode);
+                    Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
                     Assert.AreEqual(response.FirstName, accountUser.FirstName);
                     Assert.AreEqual(response.LastName, accountUser.LastName);
                     Assert.AreEqual(response.Email, accountUser.Email);
@@ -132,7 +132,7 @@ namespace What_APIObject.Objects.Secretaries
             {
                 Assert.Multiple(() =>
                 {
-                    Assert.AreEqual(HttpStatusCode.OK, statusCode);
+                    Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
                     Assert.IsTrue(response.Contains("true"));
                 });
             }

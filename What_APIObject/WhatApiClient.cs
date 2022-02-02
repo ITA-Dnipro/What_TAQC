@@ -27,8 +27,7 @@ namespace What_APIObject
                 token = "";
                 return;
             }
-
-            var request = new RestRequest("api/v2/accounts/auth", Method.Post) { RequestFormat = DataFormat.Json };
+            var request = new RestRequest(Endpoints.Accounts.accountsAuth, Method.Post) { RequestFormat = DataFormat.Json };
             request.AddJsonBody<Authentication>(new Authentication { UserEmail = user.Email, UserPassword = user.Password });
             var response = client.PostAsync<TokenResponse>(request).GetAwaiter().GetResult();
             token = response!.RoleAndToken.ContainsKey(user.Role) ? response!.RoleAndToken[user.Role] : "";
@@ -44,6 +43,19 @@ namespace What_APIObject
             statusCode = response.StatusCode;
 
             return response.IsSuccessful ? response.Data! : default!;
+        }
+        public string Get<TParametr, TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode)
+          where TResponse : class
+          where TParametr : class
+        {
+            var req = new RestRequest(uri, Method.Get);
+            req.AddOrUpdateHeader("authorization", token);
+            req.AddJsonBody<TParametr>(body);
+            var response = client.ExecuteAsync<TResponse>(req).GetAwaiter().GetResult();
+
+            statusCode = response.StatusCode;
+
+            return response.IsSuccessful ? response.Content! : default!;
         }
 
         public TResponse Post<TParametr, TResponse>(Uri uri, TParametr body, out HttpStatusCode statusCode)
