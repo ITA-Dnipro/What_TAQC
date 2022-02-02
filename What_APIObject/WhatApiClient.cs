@@ -127,7 +127,7 @@ namespace What_APIObject
             req.AddOrUpdateHeader(Endpoints.authorization, token);
             req.AddJsonBody<TParametr>(body);
 
-            var response = client.ExecutePutAsync<TResponse>(req).GetAwaiter().GetResult(); ;
+            var response = client.ExecutePutAsync<TResponse>(req).GetAwaiter().GetResult();
 
             statusCode = response.StatusCode;
 

@@ -1,8 +1,6 @@
 ﻿using NUnit.Framework;
-using System;
 using System.Diagnostics;
 using System.Net;
-using What_APIObject;
 using What_APIObject.Entities.Accounts;
 using What_APIObject.Entities.Groups;
 using What_APIObject.Entities.Lessons;
