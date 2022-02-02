@@ -10,6 +10,7 @@ using What_APIObject.Entities.Accounts;
 using What_APIObject.Entities.Courses;
 using What_Common.DataProvider;
 using What_Common.Utils;
+using What_Common.Resources;
 
 namespace What_APIObject.Objects.Courses
 {
@@ -37,7 +38,7 @@ namespace What_APIObject.Objects.Courses
         /// <returns>CourseObject</returns>
         public CourseObject GetCourses(bool? isActive)
         {
-            uri = new Uri($"/api/v2/courses", UriKind.Relative);
+            uri = new Uri(Endpoints.Courses.courses, UriKind.Relative);
             courseGetModel = new CoursesGetModel();
             courseGetModel.IsActive = isActive;
             var response = client.Get(uri, courseGetModel, out statusCode);
@@ -58,11 +59,16 @@ namespace What_APIObject.Objects.Courses
 
         public string GetCurrentCourse(int id)
         {
-            uri = new Uri($"/api/v2/courses", UriKind.Relative);
-            var response = client.Get(uri, out statusCode);
-            var courseList = JsonConvert.DeserializeObject<List<CoursesModel>>(response);
-            var course = courseList.Find(s => s.Id == id);
-            //Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            uri = new Uri(Endpoints.Courses.courses, UriKind.Relative);
+            var response = client.Get<List<CoursesModel>>(uri, out statusCode);
+            //var courseList = JsonConvert.DeserializeObject<List<CoursesModel>>(response);
+            var course = response.Find(s => s.Id == id);
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(HttpStatusCode.OK, statusCode);
+                Assert.AreEqual(course.Id, id);
+            });
+           
             return course.Name;
         }
 
@@ -74,7 +80,7 @@ namespace What_APIObject.Objects.Courses
         /// <returns>CourseObject</returns>
         public CourseObject CreateNewCourse(string courseName, bool valid)
         {
-            uri = new Uri($"/api/v2/courses", UriKind.Relative);
+            uri = new Uri(Endpoints.Courses.courses, UriKind.Relative);
             coursePostModel = new CoursesPostModel();
             coursePostModel.Name = courseName;
             var response = client.Post<CoursesPostModel, CoursesModel>(uri, coursePostModel, out statusCode);
@@ -99,7 +105,7 @@ namespace What_APIObject.Objects.Courses
 
         public CourseObject UpdateCourse(int id, string newCourseName)
         {
-            uri = new Uri($"/api/v2/courses/{id}", UriKind.Relative);
+            uri = new Uri(Endpoints.Courses.CourseById(id.ToString()), UriKind.Relative);
             coursePutModel = new CoursesPutModel();
             coursePutModel.Name = newCourseName;
             var response = client.Put<CoursesPutModel, CoursesModel>(uri, coursePutModel, out statusCode);
