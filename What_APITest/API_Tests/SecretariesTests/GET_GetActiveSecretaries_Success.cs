@@ -7,8 +7,8 @@ using What_APIObject.Entities.Accounts;
 using What_Common.Utils;
 using NUnit.Allure.Core;
 using NUnit.Allure.Attributes;
-using Allure.Commons;
-using What_Common.Resources;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using System.Net;
 using What_APIObject.Entities.Secretaries;
 

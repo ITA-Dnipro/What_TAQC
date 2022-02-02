@@ -5,7 +5,6 @@ using What_Common.Resources;
 using What_PageObject.SecretariesPage;
 using What_PageObject.SignInPage;
 using What_PageObject.UnassignedUsersPage;
-using static What_PageObject.UnassignedUsersPage.UnassignedUserHelper;
 
 namespace What_UITest.UnassignedUserTests
 {
@@ -16,6 +15,7 @@ namespace What_UITest.UnassignedUserTests
         private LoginDetails user;
         private UnassignedUserHelper helper = new UnassignedUserHelper();
         private Random rnd = new Random();
+        private string userData;
 
         [SetUp]
         public void Setup()
@@ -31,16 +31,15 @@ namespace What_UITest.UnassignedUserTests
         public void ChooseRoleTest()
         {
             int row = rnd.Next(1, unassignedUser.GetCurretnPageTableDataCount() + 1);
-            string user;
 
             unassignedUser.SidebarNavigateTo<UnassignedUserPage>()
                           .WaitUntilElementLoads<UnassignedUserPage>(Locators.UnassignedUser.TableData)
-                          .GetUserFromRow(row, out user)
-                          .SetRoleToCurrentUser(row, (int)ChooseRole.mentor)
+                          .GetUserFromRow(row, out userData)
+                          .SetRoleToCurrentUser(row, (int)UnassignedUserHelper.ChooseRole.mentor)
                           .ClickAddRoleButton(row)
                           .SidebarNavigateTo<SecretariesPage>()
                           .WaitUntilElementLoads<UnassignedUserPage>(Locators.UnassignedUser.TableData)
-                          .VerifyUserExistInTable(user);
+                          .VerifyUserExistInTable(userData);
         }
     }
 }

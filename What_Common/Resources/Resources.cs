@@ -27,6 +27,7 @@ namespace What_Common.Resources
         public const string WhatAddNewCourseUrl = @"http://localhost:8080/courses/add";
         public const string WhatMyProfileUrl = @"http://localhost:8080/my-profile";
         public const string WhatForgotPasswordUrl = @"http://localhost:8080/forgot-password";
+        public const string UserNotFound = "User not found";
 
         public static class ForgotPassword
         {

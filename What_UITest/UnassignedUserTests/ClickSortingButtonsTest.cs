@@ -7,9 +7,9 @@ namespace What_UITest.UnassignedUserTests
 {
     public class ClickSortingButtonsTest : BaseTest
     {
-        private SignInPage signInPage;
-        private UnassignedUserPage unassignedUser;
-        private LoginDetails user;
+        private SignInPage? signInPage;
+        private UnassignedUserPage? unassignedUser;
+        private LoginDetails? user;
 
         [SetUp]
         public void Setup()
