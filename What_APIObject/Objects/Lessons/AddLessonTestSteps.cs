@@ -1,134 +1,60 @@
-﻿using NUnit.Framework;
-using System;
+﻿using What_APIObject.Entities.Accounts;
+using NUnit.Framework;
 using System.Diagnostics;
 using System.Net;
 using What_APIObject;
-using What_APIObject.Entities.Accounts;
-using What_APIObject.Entities.Groups;
-using What_APIObject.Entities.Lessons;
+using API.Models;
 
-namespace What_APIObject.Objects.Lessons
+namespace API
 {
     public class AddLessonTestSteps
     {
-        WHATClient client;
+        public WHATClient client;
         Uri uri;
         HttpStatusCode statusCode;
-
-
-        public UserInSystem newMentorInSystem;
-        public UserInSystem newStudent1InSystem;
-        public UserInSystem newStudent2InSystem;
-
-        public RegisterUserDto newMentor;
-        public RegisterUserDto newStudent1;
-        public RegisterUserDto newStudent2;
-
-        public GroupDto newGroupInSystem;
 
         public Lesson newLessonInSystem;
 
         public AddLessonTestSteps(User user)
         {
             client = new WHATClient(user);
-
-
-            newMentor = new RegisterUserDto
-            {
-                FirstName = "Firstn",
-                LastName = "Lastn",
-                Email = "qwerpp15@gmail.com",
-                Password = "Qwerty_123",
-                ConfirmPassword = "Qwerty_123"
-            };
-            newStudent1 = new RegisterUserDto
-            {
-                FirstName = "Firsts",
-                LastName = "Lasts",
-                Email = "qwerpps15@gmail.com",
-                Password = "Qwerty_123",
-                ConfirmPassword = "Qwerty_123"
-            };
-            newStudent2 = new RegisterUserDto
-            {
-                FirstName = "Firstns",
-                LastName = "Lastns",
-                Email = "qwerppss15@gmail.com",
-                Password = "Qwerty_123",
-                ConfirmPassword = "Qwerty_123"
-            };
-            newMentorInSystem = CreateMentorInSystem(newMentor);
-            newStudent1InSystem = CreateStudentInSystem(newStudent1);
-            newStudent2InSystem = CreateStudentInSystem(newStudent2);
-
-            newGroupInSystem = CreateNewGroupInSystem("GroupTests2");
-
-        }
-        UserInSystem CreateMentorInSystem(RegisterUserDto newUser)
-        {
-            uri = new Uri($"/api/v2/accounts/reg", UriKind.Relative);
-            var response = client.Post<RegisterUserDto, AccountUser>(uri, newUser, out statusCode);
-
-            Debug.WriteLine($"On CreateUserInSystem - Register User code = {statusCode}");
-
-            uri = new Uri($"/api/v2/mentors/{response.Id}", UriKind.Relative);
-            var resp = client.Post<UserInSystem>(uri, out statusCode);
-
-            Debug.WriteLine($"On CreateUserInSystem - Asign role code = {statusCode}");
-
-            return resp;
-        }
-        UserInSystem CreateStudentInSystem(RegisterUserDto newUser)
-        {
-            uri = new Uri($"/api/v2/accounts/reg", UriKind.Relative);
-            var response = client.Post<RegisterUserDto, AccountUser>(uri, newUser, out statusCode);
-
-            Debug.WriteLine($"On CreateStudentInSystem - Register User code = {statusCode}");
-
-            uri = new Uri($"/api/v2/students/{response.Id}", UriKind.Relative);
-            var resp = client.Post<UserInSystem>(uri, out statusCode);
-
-            Debug.WriteLine($"On CreateStudentInSystem - Asign role code = {statusCode}");
-
-            return resp;
         }
 
-        GroupDto CreateNewGroupInSystem(string groupName)
+        public AddLessonTestSteps VerifyGroupExist(int groupId)
         {
-            DateTime dateStart = new DateTime(2022, 1 , 1 ,12 , 15 , 30 , 300);
-            DateTime dateEnd = new DateTime(2022, 1, 10, 10, 15, 30, 300);
-
-            GroupPostDto group = new GroupPostDto
-            {
-                MentorIds = new int[] { newMentorInSystem.Id },
-                Name = groupName,
-                CourseId = 1,
-                StudentIds = new int[] { newStudent1InSystem.Id, newStudent2InSystem.Id },
-                StartDate = "2020-01-25",
-                FinishDate = "2022-01-26"
-            };
-
-            uri = new Uri($"/api/v2/student_groups", UriKind.Relative);
-            var response = client.Post<GroupPostDto, GroupDto>(uri, group, out statusCode);
-
-            Debug.WriteLine($"On CreateNewGroupInSystem - code = {statusCode}");
-
-            return response;
-
+            uri = new Uri($"/api/v2/student_groups/{groupId}", UriKind.Relative);
+            var response = client.Get<GroupInSystem>(uri, out statusCode);
+            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            return this;
         }
-       
-        public AddLessonTestSteps VerifyGroupExist()
+        public AddLessonTestSteps UpdateLesson(int lessonId, Lesson updatedLesson)
         {
-            uri = new Uri($"/api/v2/student_groups/{newGroupInSystem.Id}", UriKind.Relative);
-            var response = client.Get<GroupDto>(uri, out statusCode);
+            uri = new Uri($"/api/v2/lessons/{lessonId}", UriKind.Relative);
+            var response = client.Put<Lesson, Lesson>(uri, updatedLesson, out statusCode);
+            newLessonInSystem = response;
+
+            return this;
+        }
+        public AddLessonTestSteps VerifyUpdatedLessonExist(Lesson lesson)
+        {
+            Assert.AreEqual(lesson.ThemeName, newLessonInSystem.ThemeName, "verify");
+
+            return this;
+        }
+
+        public AddLessonTestSteps VerifyMentorExist(int mentorId)
+        {
+            uri = new Uri($"/api/v2/mentors/{mentorId}", UriKind.Relative);
+            var response = client.Get<UserInSystem>(uri, out statusCode);
             Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
             return this;
         }
-        public AddLessonTestSteps VerifyMentorExist()
+
+        public AddLessonTestSteps VerifyLessonExist(int lessonId)
         {
-            uri = new Uri($"/api/v2/mentors/{newMentorInSystem.Id}", UriKind.Relative);
-            var response = client.Get<UserInSystem>(uri, out statusCode);
-            Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
+            uri = new Uri($"/api/v2/lessons/{lessonId}", UriKind.Relative);
+            var response = client.Get<Lesson>(uri, out statusCode);
+            Assert.AreEqual(HttpStatusCode.OK, statusCode, message: $"User with role ");
             return this;
         }
 
@@ -141,20 +67,38 @@ namespace What_APIObject.Objects.Lessons
 
             return this;
         }
+        public AddLessonTestSteps TryToAddNewLessonWithoutRight(Lesson newLesson)
+        {
+            uri = new Uri($"/api/v2/lessons", UriKind.Relative);
+            var response = client.Post<Lesson, Lesson>(uri, newLesson, out statusCode);
 
-        public AddLessonTestSteps VerifyLessonExist()
+            newLessonInSystem = response;
+
+            return this;
+        }
+        public AddLessonTestSteps VerifyNewlyAddedLessonNotExist()
+        {
+
+            Assert.AreEqual(HttpStatusCode.Forbidden, statusCode, "VerifyNewlyAddedLessonNotExist From Desscription");
+            return this;
+        }
+        public AddLessonTestSteps VerifyNewlyAddedLessonNotExistAuth()
+        {
+            Assert.AreEqual(HttpStatusCode.Unauthorized, statusCode, "VerifyNewlyAddedLessonNotExist From Desscription");
+            return this;
+        }
+        public AddLessonTestSteps VerifyNewlyAddedLessonExist(Lesson expectedLesson)
         {
             uri = new Uri($"/api/v2/lessons/{newLessonInSystem.Id}", UriKind.Relative);
             var response = client.Get<Lesson>(uri, out statusCode);
-            Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(HttpStatusCode.OK, statusCode, "Status code response");
+                Assert.AreEqual(expectedLesson.ThemeName, response.ThemeName, "Lessons themes are same ?");
+                Assert.AreEqual(expectedLesson.MentorId, response.MentorId, "Mentors are same ?");
+            });
+
             return this;
         }
-
-        RegisterUserDto GenereteUserForRegistration()
-        {
-            throw new NotImplementedException();
-        }
     }
-
-    
 }

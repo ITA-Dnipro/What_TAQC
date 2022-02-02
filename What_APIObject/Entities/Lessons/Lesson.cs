@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace What_APIObject.Entities.Lessons
+namespace API.Models
 {
     public class Lesson
     {
@@ -49,28 +49,38 @@ namespace What_APIObject.Entities.Lessons
     {
         protected Lesson lesson;
         public LessonBuilder() => lesson = new Lesson();
+        public static ClassBook[] CreateClassBook(int[] studentsId)
+        {
+            Random random = new Random();
+            ClassBook[] classBook = new ClassBook[studentsId.Length];
 
-        public LessonBuilder AddLessonTheme(string theme)
+            for (int i = 0; i < studentsId.Length; i++)
+            {
+                classBook[i] = new ClassBook { StudentId = studentsId[i], StudentMark = random.Next(1, 12), Presence = true };
+            }
+            return classBook;
+        }
+        public LessonBuilder SetLessonTheme(string theme)
         {
             lesson.ThemeName = theme;
             return this;
         }
-        public LessonBuilder AddMentorById(int mentorId)
+        public LessonBuilder SetMentorById(int mentorId)
         {
             lesson.MentorId = mentorId;
             return this;
         }
-        public LessonBuilder AddStudentsGroupById(int groupId)
+        public LessonBuilder SetStudentsGroupById(int groupId)
         {
             lesson.StudentGroupId = groupId;
             return this;
         }
-        public LessonBuilder AddLessonDate(DateTime lessonDate)
+        public LessonBuilder SetLessonDate(DateTime lessonDate)
         {
             lesson.LessonDate = lessonDate;
             return this;
         }
-        public LessonBuilder AddClassBook(ClassBook[] classBook)
+        public LessonBuilder SetClassBook(ClassBook[] classBook)
         {
             lesson.ClassJournal = classBook;
             return this;
