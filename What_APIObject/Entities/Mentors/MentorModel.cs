@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace What_APITest.Entities.Mentors
 {
-    public class MentorModel
+    public class Mentor
     {
         [JsonProperty ("id")]
         public int Id { get; set; }  

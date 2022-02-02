@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using What_APIObject.Entities.Accounts;
 using What_Common.Utils;
+using What_Common.Resources;
 
 namespace What_APIObject.Objects.Mentors
 {
@@ -17,7 +18,8 @@ namespace What_APIObject.Objects.Mentors
         private Uri uri;
         private HttpStatusCode statusCode;
         AccountUser accountUser;
-        string response;
+        List<AccountUser> response;
+        
         public MentorObject(User user)
         {
             client = new WHATClient(user);
@@ -26,27 +28,28 @@ namespace What_APIObject.Objects.Mentors
 
         public MentorObject GetAllMentors()
         {
-            uri = new Uri($"/api/v2/mentors", UriKind.Relative);
-            response = client.Get(uri, out statusCode);            
+            uri = new Uri(Endpoints.Mentors.mentors, UriKind.Relative);
+            response = client.Get<List<AccountUser>>(uri, out statusCode);
             return this;
         }
 
         public MentorObject VerifyGetAllMentors()
         {
-            var mentorsList = JsonConvert.DeserializeObject<List<AccountUser>>(response);
+            var mentorsList = response.Find(s => s.Id == accountUser.Id);
             Assert.AreEqual(HttpStatusCode.OK, statusCode);
             return this;
         }
-        public MentorObject GetMentor()
+        public MentorObject GetActiveMentors()
         {
-            uri = new Uri($"/api/v2/mentors/{accountUser.Id}", UriKind.Relative);
-            response = client.Get(uri, out statusCode);
+            uri = new Uri(Endpoints.Mentors.mentorsActive, UriKind.Relative);
+            response = client.Get<List<AccountUser>>(uri, out statusCode);
             return this;
         }
 
-        public MentorObject VerifyGetMentor()
-        {           
-            var mentor = JsonConvert.DeserializeObject<AccountUser>(response);          
+        public MentorObject VerifyGetActiveMentors()
+        {
+            
+            var mentor = response.Find(s => s.Id == accountUser.Id);
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(HttpStatusCode.OK, statusCode);
@@ -63,32 +66,19 @@ namespace What_APIObject.Objects.Mentors
             return this;
         }
 
-        public MentorObject VerifyGetMentorForbidden()
-        {
-            Assert.AreEqual(HttpStatusCode.Forbidden, statusCode);
-            return this;
-        }
-
-        public MentorObject PutInformationMentor()
-        {
-            uri = new Uri($"/api/v2/mentors/{accountUser.Id}", UriKind.Relative);
-            var response = client.Put<RegisterUser, AccountUser>(uri, CreateUser(), out statusCode);
-            Assert.AreEqual(HttpStatusCode.OK, statusCode);
-            return this;
-        }
         public RegisterUser CreateUser()
         {
             RegisterUser user = new RegisterUser();
             user.FirstName = StringGenerator.GenerateString(new Random().Next(2, 30));
             user.LastName = StringGenerator.GenerateString(new Random().Next(2, 30));
-            user.Email = StringGenerator.GenerateEmail;
-            user.Password = StringGenerator.GeneratePassoword(new Random().Next(8, 16));
+            user.Email = StringGenerator.GenerateEmail();
+            user.Password = StringGenerator.GeneratePassword(new Random().Next(8, 16));
             user.ConfirmPassword = user.Password;
             return user;
         }
         public MentorObject RegistrationNewUser()
         {
-            uri = new Uri($"/api/v2/accounts/reg", UriKind.Relative);
+            uri = new Uri(Endpoints.Accounts.accountsReg,UriKind.Relative);
             var response = client.Post<RegisterUser, AccountUser>(uri, CreateUser(), out statusCode);
             accountUser = response;
             Assert.AreEqual(HttpStatusCode.OK, statusCode);
@@ -96,9 +86,37 @@ namespace What_APIObject.Objects.Mentors
         }
         public MentorObject CreateNewMentor()
         {
-            uri = new Uri($"/api/v2/mentors/{accountUser.Id}", UriKind.Relative);
+            uri = new Uri(Endpoints.Mentors.MentorsByAccountId(accountUser.Id), UriKind.Relative);
             var response = client.Post<AccountUser>(uri, out statusCode);
             accountUser = response;
+            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            return this;
+        }
+        public MentorObject VerifyGetMentorById()
+        {
+            uri = new Uri(Endpoints.Mentors.MentorById(accountUser.Id),UriKind.Relative);
+            var response = client.Get<AccountUser>(uri, out statusCode);
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(HttpStatusCode.OK, statusCode);
+                Assert.AreEqual(response.Id, accountUser.Id);
+                Assert.AreEqual(response.FirstName, accountUser.FirstName);
+                Assert.AreEqual(response.LastName, accountUser.LastName);
+                Assert.AreEqual(response.Email, accountUser.Email);
+            });
+            return this;
+        }
+        public MentorObject VerifyGetMentorIdNotFound()
+        {
+            uri = new Uri(Endpoints.Mentors.MentorById(accountUser.Id), UriKind.Relative);
+            var response = client.Get<AccountUser>(uri, out statusCode);
+            Assert.AreEqual(HttpStatusCode.NotFound, statusCode);
+            return this;
+        }
+        public MentorObject VerifyDeleteMentorById()
+        {
+            uri = new Uri(Endpoints.Mentors.MentorById(accountUser.Id), UriKind.Relative);
+            var response = client.Delete<AccountUser>(uri, out statusCode);
             Assert.AreEqual(HttpStatusCode.OK, statusCode);
             return this;
         }

@@ -5,7 +5,7 @@ using What_Common.DataProvider;
 
 namespace What_APITest.API_Tests.MentorsTests
 {
-    public class GET_GetAllMentors_success
+    public class GET_GetActiveMentors_success
     {
         LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
         MentorObject mentorObject;
@@ -17,14 +17,14 @@ namespace What_APITest.API_Tests.MentorsTests
             mentorObject = new MentorObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
             mentorObject.RegistrationNewUser()
                 .CreateNewMentor();
-
         }
 
+
         [Test]
-        public void VerifyGetAllMentors_success()
+        public void VerifyGetActiveMentors_success()
         {
-            mentorObject.GetAllMentors()
-                .VerifyGetAllMentors();
+            mentorObject.GetActiveMentors()
+                .VerifyGetActiveMentors();                
         }
     }
 }

@@ -40,7 +40,7 @@ namespace What_APIObject
             var req = new RestRequest(uri, Method.Get);
             req.AddOrUpdateHeader(Endpoints.authorization, token);
             var response = client.ExecuteAsync<TResponse>(req).GetAwaiter().GetResult();
-
+            
             statusCode = response.StatusCode;
 
             return response.IsSuccessful ? response.Data! : default!;

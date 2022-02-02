@@ -10,22 +10,25 @@ using What_Common.DataProvider;
 
 namespace What_APITest.API_Tests.MentorsTests
 {
-    public class GET_GetMentor_notFound
+    public class DELETE_DeletementorById_success
     {
         LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
         MentorObject mentorObject;
+
 
         [SetUp]
         public void Setup()
         {
             mentorObject = new MentorObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
-            mentorObject.RegistrationNewUser();                
+            mentorObject.RegistrationNewUser()
+                .CreateNewMentor();
         }
+
         [Test]
-        public void Test1()
+        public void VerifyDeleteMentorById_Success()
         {
-            mentorObject.GetMentor()
-                .VerifyGetMentorNotFound();
+            mentorObject.VerifyDeleteMentorById();
         }
+                
     }
 }
