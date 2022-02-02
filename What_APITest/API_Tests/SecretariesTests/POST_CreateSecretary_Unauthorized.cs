@@ -7,33 +7,25 @@ using What_APIObject.Entities.Accounts;
 using What_Common.Utils;
 using NUnit.Allure.Core;
 using NUnit.Allure.Attributes;
-using Allure.Commons;
-using What_Common.Resources;
 using System.Net;
-
-// in process... what get status "Unauthorized"?
 
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
+
     public class POST_CreateSecretary_Unauthorized : BaseTest
     {
-        SecretariesObject secretariesObject;
-
         [Test(Description = "SecretariesTests")]
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
         [AllureSubSuite("POST")]
         public void VerifyCreateSecretary_Unauthorized()
         {
-            //VerifyCreateNewSecretary(HttpStatusCode.Unauthorized);
-        }
-
-        [TearDown]
-        public void After()
-        {
-            secretariesObject.DisableSecretary();
+            AccountUser secretaryAccount;
+            SecretariesObject secretariesObject = new SecretariesObject(null);
+            secretariesObject.RegistrationNewUser(out secretaryAccount);
+            secretariesObject.VerifyCreateNewSecretary(secretaryAccount, HttpStatusCode.Unauthorized);
         }
     }
 }

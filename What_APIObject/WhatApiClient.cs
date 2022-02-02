@@ -13,7 +13,7 @@ namespace What_APIObject
 
         public WHATClient(User user)
         {
-            var options = new RestClientOptions("https://charliebackendapihosting.azurewebsites.net");
+            var options = new RestClientOptions(Resources.hosting);
 
             client = new RestClient(options);
 
@@ -27,8 +27,7 @@ namespace What_APIObject
                 token = "";
                 return;
             }
-
-            var request = new RestRequest("api/v2/accounts/auth", Method.Post) { RequestFormat = DataFormat.Json };
+            var request = new RestRequest(Endpoints.Accounts.accountsAuth, Method.Post) { RequestFormat = DataFormat.Json };
             request.AddJsonBody<Authentication>(new Authentication { UserEmail = user.Email, UserPassword = user.Password });
             var response = client.PostAsync<TokenResponse>(request).GetAwaiter().GetResult();
             token = response!.RoleAndToken.ContainsKey(user.Role) ? response!.RoleAndToken[user.Role] : "";

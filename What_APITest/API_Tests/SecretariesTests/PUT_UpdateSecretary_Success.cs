@@ -7,36 +7,38 @@ using What_APIObject.Entities.Accounts;
 using What_Common.Utils;
 using NUnit.Allure.Core;
 using NUnit.Allure.Attributes;
-using NUnit.Allure.Core;
-using NUnit.Framework;
+using Allure.Commons;
+using What_Common.Resources;
 using System.Net;
+using What_APIObject.Entities.Secretaries;
 
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
-    public class DELETE_DisableSecretary_Success : BaseTest
+    public class PUT_UpdateSecretary_Success : BaseTest
     {
         SecretariesObject secretariesObjectAsAdmin;
-        AccountUser secretaryAccount;
+        AccountUser userAccount;
         SecretariesModel secretariesModel;
-
-        [SetUp]
-        public void Before()
-        {
-            LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
-            secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
-            secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
-            secretariesObjectAsAdmin.CreateNewSecretary(secretaryAccount, out secretariesModel);
-        }
 
         [Test(Description = "SecretariesTests")]
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
-        [AllureSubSuite("DELETE")]
-        public void VerifyDisableSecretary_Success()
+        [AllureSubSuite("PUT")]
+        public void VerifyCreateSecretary_Success()
         {
-            secretariesObjectAsAdmin.VerifyDisableSecretary(secretariesModel, HttpStatusCode.OK);
+            LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
+            secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
+            secretariesObjectAsAdmin.RegistrationNewUser(out userAccount);
+            secretariesObjectAsAdmin.CreateNewSecretary(userAccount, out secretariesModel);
+            secretariesObjectAsAdmin.VerifyUpdateSecretary(secretariesModel, HttpStatusCode.OK);
+        }
+
+        [TearDown]
+        public void After()
+        {
+            secretariesObjectAsAdmin.DisableSecretary(secretariesModel);
         }
     }
 }
