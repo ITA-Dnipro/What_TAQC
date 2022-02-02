@@ -6,7 +6,7 @@ using What_PageObject.SignInPage;
 
 namespace What_UITest.ScheduleTests
 {
-    public class ClickTodayButtonByAdminTest : BaseTest
+    public class ClickTodayButtonAsSecretaryTest : BaseTest
     {
         private SignInPage signInPage;
         private SchedulePage schedule;
@@ -19,22 +19,22 @@ namespace What_UITest.ScheduleTests
         {
             signInPage = new SignInPage();
             schedule = new SchedulePage();
-            user = Controller.GetUser(Controller.UserRole.Admin);
+            user = Controller.GetUser(Controller.UserRole.Secretary);
             signInPage.LogIn(user.Email, user.Password);
         }
 
         [Test(Description = "DP220TAQC-194")]
         public void TodayButtonTest()
         {
-            schedule.ClickNavbarMenuSheduleButton()
+            schedule.SidebarNavigateTo<SchedulePage>()
                     .ClickArrowRandomize(out date)
-                    .VerifyDateStartAtMonday(date)
-                    .VerifyDateEndAtSunday(date)
+                    .VerifyDateStartAtMondayFromTable(date)
+                    .VerifyDateEndAtSundayFromTable(date)
                     .VerifyDateFirstDayOfWeek(date)
                     .VerifyDateLastDayOfWeek(date)
                     .ClickTodayDateButton()
-                    .VerifyDateStartAtMonday(DateTime.Now)
-                    .VerifyDateEndAtSunday(DateTime.Now)
+                    .VerifyDateStartAtMondayFromTable(DateTime.Now)
+                    .VerifyDateEndAtSundayFromTable(DateTime.Now)
                     .VerifyDateFirstDayOfWeek(DateTime.Now)
                     .VerifyDateLastDayOfWeek(DateTime.Now)
                     .VerifyTodayDate();

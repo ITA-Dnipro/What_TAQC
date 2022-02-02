@@ -7,7 +7,7 @@ using What_APIObject.Entities.Accounts;
 using What_APIObject.Entities.Groups;
 using What_APIObject.Entities.Lessons;
 
-namespace What_APITest.Objects.Lessons
+namespace What_APIObject.Objects.Lessons
 {
     public class AddLessonTestSteps
     {
@@ -121,14 +121,14 @@ namespace What_APITest.Objects.Lessons
         {
             uri = new Uri($"/api/v2/student_groups/{newGroupInSystem.Id}", UriKind.Relative);
             var response = client.Get<GroupDto>(uri, out statusCode);
-            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
             return this;
         }
         public AddLessonTestSteps VerifyMentorExist()
         {
             uri = new Uri($"/api/v2/mentors/{newMentorInSystem.Id}", UriKind.Relative);
             var response = client.Get<UserInSystem>(uri, out statusCode);
-            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
             return this;
         }
 
@@ -146,7 +146,7 @@ namespace What_APITest.Objects.Lessons
         {
             uri = new Uri($"/api/v2/lessons/{newLessonInSystem.Id}", UriKind.Relative);
             var response = client.Get<Lesson>(uri, out statusCode);
-            Assert.AreEqual(HttpStatusCode.OK, statusCode);
+            Assert.AreEqual(HttpStatusCode.OK, statusCode,"Assert Equal Fail");
             return this;
         }
 

@@ -13,6 +13,11 @@ namespace What_PageObject.SecretariesPage
         string tableData;
         string cardsData;
 
+        public SecretariesPage()
+        {
+
+        }
+
         public SecretariesPage WaitTableData()
         {
             WaitUntilElementLoads<SecretariesPage>(Locators.SecretaryPage.tableData);

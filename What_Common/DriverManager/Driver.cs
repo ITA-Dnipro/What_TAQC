@@ -6,10 +6,7 @@ namespace What_Common.DriverManager
     public class Driver
     {
         const string url = "http://localhost:8080/";
-        public Driver()
-        {
-
-        }
+        public Driver() { }
 
         private static IWebDriver? driver;
 

@@ -198,7 +198,6 @@ namespace What_Common.Resources
             public static By BottomLeftArrowButton = By.XPath("//button[text()=\"<\"]");
             public static By BottomRightArrowButton = By.XPath("//button[text()=\">\"]");
             public static By SearchInputField = By.XPath("//input[@type='text']");
-            public static By DropDownRowButton = By.XPath("//select[@id='change-visible-people']");
             public static By FirstPagePagination = By.XPath("//ul[2]/li[1]");
             public static By LastPagePagination = By.XPath("//ul[2]/li[last()]");
             public static By SortedByName = By.XPath("//span[text()='Name']");

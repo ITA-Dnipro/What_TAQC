@@ -16,12 +16,9 @@
 
   <ItemGroup>
     <Folder Include="Entities\Errors\" />
-    <Folder Include="Entities\Mentors\" />
-    <Folder Include="Entities\Shedule\" />
     <Folder Include="Entities\Students\" />
     <Folder Include="Objects\Mentors\" />
     <Folder Include="Objects\Students\" />
-    <Folder Include="Objects\Shedule\" />
   </ItemGroup>
 
   <ItemGroup>

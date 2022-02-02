@@ -1,7 +1,8 @@
 ﻿namespace What_Common.Resources
 {
-    class Endpoints
+    public class Endpoints
     {
+        public static readonly string authorization = "authorization";
         public static class Accounts
         {
             public static readonly string
@@ -10,7 +11,7 @@
                 accountsRevoke = "/api/v2/accounts/role/revoke",
                 accountsReg = "/api/v2/accounts/reg",
                 accounts = "/api/v2/accounts",
-                accountsNotAssignedh = "/api/v2/accounts/NotAssigned",
+                accountsNotAssigned = "/api/v2/accounts/NotAssigned",
                 accountsPassword = "/api/v2/accounts/password",
                 accountsPasswordForgot = "/api/v2/accounts/password/forgot";
             public static string AccountsPasswordReset(string guid) => $"/api/v2/accounts/password/reset/{guid}";
@@ -112,10 +113,10 @@
                 schedulesEvents = "/api/v2/schedules/events",
                 schedulesUpdateRange = "/api/v2/schedules/events/updateRange",
                 schedulesEventsOccurrences = "/api/v2/schedules/event-occurrences";
-            public static string SchedulesById(string id) => $"/api/v2/schedules/{id}";
-            public static string SchedulesDetailed(string id) => $"/api/v2/schedules/detailed/{id}";
+            public static string SchedulesById(int id) => $"/api/v2/schedules/{id}";
+            public static string SchedulesDetailed(int id) => $"/api/v2/schedules/detailed/{id}";
             public static string SchedulesEvents(string eventOccurrenceID) => $"/api/v2/schedules/{eventOccurrenceID}";
-            public static string SchedulesEventsOccurrences(string eventOccurrenceID) => $"/api/v2/schedules/eventOccurrences/{eventOccurrenceID}";
+            public static string SchedulesEventsOccurrences(int eventOccurrenceID) => $"/api/v2/schedules/eventOccurrences/{eventOccurrenceID}";
         }
 
         public static class Secretaries
