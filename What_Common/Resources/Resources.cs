@@ -10,6 +10,7 @@ namespace What_Common.Resources
     {
         public const string symbols = "!@#$%^&*()_+-=";
 
+        public const string hosting = "https://charliebackendapihosting.azurewebsites.net";
         public const string url = "http://localhost:8080/auth";
         public const string empty = "";
         public const string ErrorFieldName = "This field is required";
@@ -25,6 +26,7 @@ namespace What_Common.Resources
         public const string WhatCoursesDetailsUrl = @"http://localhost:8080/courses/1";
         public const string WhatAddNewCourseUrl = @"http://localhost:8080/courses/add";
         public const string WhatMyProfileUrl = @"http://localhost:8080/my-profile";
+        public const string WhatForgotPasswordUrl = @"http://localhost:8080/forgot-password";
         public const string UserNotFound = "User not found";
 
         public static class ForgotPassword
@@ -34,6 +36,7 @@ namespace What_Common.Resources
             public const string emptyEmailError = "This field is required";
             public const string invalidEmail = "com@com";
             public const string doesntExistEmail = "lastname@gmail.com";
+            public const string existEmail = "thomas.roberts@example.com";
 
             public static string DoesntExistEmailError(string email)
             {

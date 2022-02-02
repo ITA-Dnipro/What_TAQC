@@ -7,36 +7,39 @@ using What_APIObject.Entities.Accounts;
 using What_Common.Utils;
 using NUnit.Allure.Core;
 using NUnit.Allure.Attributes;
-using NUnit.Allure.Core;
-using NUnit.Framework;
+using Allure.Commons;
+using What_Common.Resources;
 using System.Net;
+using What_APIObject.Entities.Secretaries;
 
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
-    public class DELETE_DisableSecretary_Success : BaseTest
+    public class POST_CreateSecretary_Forbidden : BaseTest
     {
         SecretariesObject secretariesObjectAsAdmin;
-        AccountUser secretaryAccount;
-        SecretariesModel secretariesModel;
+        AccountUser userAccount;
 
         [SetUp]
         public void Before()
         {
             LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
             secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
-            secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
-            secretariesObjectAsAdmin.CreateNewSecretary(secretaryAccount, out secretariesModel);
+            secretariesObjectAsAdmin.RegistrationNewUser(out userAccount);
         }
 
         [Test(Description = "SecretariesTests")]
+        [TestCase(Controller.UserRole.Secretary)]
+        [TestCase(Controller.UserRole.Student)]
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
-        [AllureSubSuite("DELETE")]
-        public void VerifyDisableSecretary_Success()
+        [AllureSubSuite("POST")]
+        public void VerifyCreateSecretary_Forbidden(Controller.UserRole userRole)
         {
-            secretariesObjectAsAdmin.VerifyDisableSecretary(secretariesModel, HttpStatusCode.OK);
+            LoginDetails user = Controller.GetUser(userRole);
+            SecretariesObject secretariesObjectAsUser = new SecretariesObject(new User { Email = user.Email, Password = user.Password, Role = userRole.ToString().ToLower() });
+            secretariesObjectAsUser.VerifyCreateNewSecretary(userAccount, HttpStatusCode.Forbidden);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace What_APIObject
 
         public WHATClient(User user)
         {
-            var options = new RestClientOptions("https://charliebackendapihosting.azurewebsites.net");
+            var options = new RestClientOptions(Resources.hosting);
 
             client = new RestClient(options);
 

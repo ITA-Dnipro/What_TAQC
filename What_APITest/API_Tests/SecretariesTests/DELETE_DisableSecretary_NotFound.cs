@@ -7,15 +7,16 @@ using What_APIObject.Entities.Accounts;
 using What_Common.Utils;
 using NUnit.Allure.Core;
 using NUnit.Allure.Attributes;
-using NUnit.Allure.Core;
-using NUnit.Framework;
+using Allure.Commons;
+using What_Common.Resources;
 using System.Net;
+using What_APIObject.Entities.Secretaries;
 
 namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
-    public class DELETE_DisableSecretary_Success : BaseTest
+    public class DELETE_DisableSecretary_NotFound : BaseTest
     {
         SecretariesObject secretariesObjectAsAdmin;
         AccountUser secretaryAccount;
@@ -34,9 +35,10 @@ namespace What_APITest.API_Tests.SecretariesTests
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
         [AllureSubSuite("DELETE")]
-        public void VerifyDisableSecretary_Success()
+        public void VerifyDisableSecretary_NotFound()
         {
-            secretariesObjectAsAdmin.VerifyDisableSecretary(secretariesModel, HttpStatusCode.OK);
+            secretariesModel.Id = -1;
+            secretariesObjectAsAdmin.VerifyDisableSecretary(secretariesModel, HttpStatusCode.NotFound);
         }
     }
 }

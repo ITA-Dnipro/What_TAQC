@@ -7,7 +7,7 @@ using What_APIObject.Entities.Accounts;
 using What_APIObject.Entities.Groups;
 using What_APIObject.Entities.Lessons;
 
-namespace What_APITest.Objects.Lessons
+namespace What_APIObject.Objects.Lessons
 {
     public class AddLessonTestSteps
     {

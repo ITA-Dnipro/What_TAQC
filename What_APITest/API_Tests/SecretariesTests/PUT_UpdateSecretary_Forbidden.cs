@@ -16,10 +16,10 @@ namespace What_APITest.API_Tests.SecretariesTests
 {
     [AllureNUnit]
     [TestFixture]
-    public class GET_GetAllSecretaries_Unauthorized : BaseTest
+    public class PUT_UpdateSecretary_Forbidden : BaseTest
     {
         SecretariesObject secretariesObjectAsAdmin;
-        AccountUser secretaryAccount;
+        AccountUser userAccount;
         SecretariesModel secretariesModel;
 
         [SetUp]
@@ -27,18 +27,21 @@ namespace What_APITest.API_Tests.SecretariesTests
         {
             LoginDetails admin = Controller.GetUser(Controller.UserRole.Admin);
             secretariesObjectAsAdmin = new SecretariesObject(new User { Email = admin.Email, Password = admin.Password, Role = Controller.UserRole.Admin.ToString().ToLower() });
-            secretariesObjectAsAdmin.RegistrationNewUser(out secretaryAccount);
-            secretariesObjectAsAdmin.CreateNewSecretary(secretaryAccount, out secretariesModel);
+            secretariesObjectAsAdmin.RegistrationNewUser(out userAccount);
+            secretariesObjectAsAdmin.CreateNewSecretary(userAccount, out secretariesModel);
         }
 
         [Test(Description = "SecretariesTests")]
+        [TestCase(Controller.UserRole.Student)]
+        [TestCase(Controller.UserRole.Mentor)]
         [AllureTag("APITests")]
         [AllureSuite("Secretaries")]
-        [AllureSubSuite("GET")]
-        public void VerifyGetAllSecretaries_Unauthorized()
+        [AllureSubSuite("PUT")]
+        public void VerifyCreateSecretary_Forbidden(Controller.UserRole userRole)
         {
-            SecretariesObject secretariesObject = new SecretariesObject(null);
-            secretariesObject.VerifyGetAllSecretaries(null, HttpStatusCode.Unauthorized);
+            LoginDetails user = Controller.GetUser(userRole);
+            SecretariesObject secretariesObjectAsUser = new SecretariesObject(new User { Email = user.Email, Password = user.Password, Role = userRole.ToString().ToLower() });
+            secretariesObjectAsUser.VerifyUpdateSecretary(secretariesModel, HttpStatusCode.Forbidden);
         }
 
         [TearDown]
