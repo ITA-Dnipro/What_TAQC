@@ -29,7 +29,6 @@ namespace What_UITest.CourseTest
             Driver.MaximizeWindow();
             Driver.GoToUrl();
             signInPage = new SignInPage();
-            coursesPage = new CoursesPage(Driver.Current);
             studentsPage = new StudentsPage();
 
         }

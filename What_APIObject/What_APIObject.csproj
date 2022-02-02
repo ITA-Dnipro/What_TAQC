@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Entities\Errors\**" />
+    <EmbeddedResource Remove="Entities\Errors\**" />
+    <None Remove="Entities\Errors\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
@@ -15,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\Errors\" />
     <Folder Include="Entities\Students\" />
     <Folder Include="Objects\Mentors\" />
     <Folder Include="Objects\Students\" />

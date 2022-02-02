@@ -1,10 +1,9 @@
-﻿using API.Models;
-using System.Net;
+﻿using System.Net;
 using What_APIObject;
 using What_APIObject.Entities.Accounts;
 using What_Common.Utils;
 
-namespace API
+namespace What_APIObject
 {
     public class PreconditionGenerator
     {
@@ -74,66 +73,6 @@ namespace API
                     break;
             }
             var response = client.Delete<String>(uri, out statusCode);
-
-            return response;
-        }
-
-        public CourseInSystem CreateNewCourse()
-        {
-            Course newCourse = new Course { Name = StringGenerator.GenerateString(10) };
-            uri = new Uri($"/api/v2/courses", UriKind.Relative);
-            var response = client.Post<Course, CourseInSystem>(uri, newCourse, out statusCode);
-
-            return response;
-        }
-
-        public CourseInSystem DisableCourse(int courseId)
-        {
-            uri = new Uri($"/api/v2/courses/{courseId}", UriKind.Relative);
-            var response = client.Delete<CourseInSystem>(uri, out statusCode);
-
-            return response;
-        }
-
-        public GroupInSystem CreateNewGroup(UserInSystem mentor, List<UserInSystem> students, CourseInSystem course)
-        {
-
-            Group group = new Group
-            {
-                MentorIds = new int[] { mentor.Id },
-                Name = StringGenerator.GenerateString(8),
-                CourseId = course.Id,
-                StudentIds = students.Select( x => x.Id).ToArray(),
-                StartDate = "2020-01-25",
-                FinishDate = "2022-01-26"
-            };
-
-            uri = new Uri($"/api/v2/student_groups", UriKind.Relative);
-            var response = client.Post<Group, GroupInSystem>(uri, group, out statusCode);
-
-            return response;
-        }
-        public Lesson CreateNewLesson(UserInSystem mentor, GroupInSystem studentGroup)
-        { 
-            Lesson newLesson = new Lesson
-            {
-                MentorId = mentor.Id,
-                StudentGroupId = studentGroup.Id,
-                ThemeName = StringGenerator.GenerateString(10),
-                LessonDate = StringGenerator.RandomDay(),
-                ClassJournal = LessonBuilder.CreateClassBook(studentGroup.StudentIds)
-            };
-
-            uri = new Uri($"/api/v2/lessons", UriKind.Relative);
-            var response = client.Post<Lesson, Lesson>(uri, newLesson, out statusCode);
-
-            return response;
-        }
-
-        public GroupInSystem DeleteGroup(int groupId)
-        {
-            uri = new Uri($"/api/v2/courses/{groupId}", UriKind.Relative);
-            var response = client.Delete<GroupInSystem>(uri, out statusCode);
 
             return response;
         }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace API.Models
+namespace What_APIObject
 {
     public class Error
     {
